@@ -1,0 +1,42 @@
+{
+  "id": "stylize.ripple",
+  "displayName": "Ripple",
+  "category": "glitch",
+  "order": 350,
+  "parameters": [
+    {
+      "identifier": "amplitude",
+      "displayName": "Amplitude",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 30,
+      "defaultValue": 8
+    },
+    {
+      "identifier": "frequency",
+      "displayName": "Frequency",
+      "type": "float",
+      "minValue": 1,
+      "maxValue": 20,
+      "defaultValue": 6
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

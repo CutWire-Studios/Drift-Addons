@@ -1,0 +1,18 @@
+{
+  "id": "deepfilternet.v3",
+  "version": "1.0.0",
+  "name": "Noise Removal",
+  "description": "Cleans up background hiss, hum, and room noise while keeping the voice clear. Used by Remove noise.",
+  "details": "DeepFilterNet3 full-band 48 kHz speech enhancement in ONNX. Used by Remove noise. Package id: deepfilternet.v3.",
+  "author": "CutWire",
+  "license": "MIT",
+  "minAppVersion": "0.1.0",
+  "source": "../staging/deepfilternet3",
+  "provides": [
+    {
+      "kind": "denoise-model",
+      "root": "models/deepfilternet3"
+    }
+  ],
+  "zstdLevel": 3
+}

@@ -1,0 +1,34 @@
+{
+  "id": "comic_pop",
+  "displayName": "Comic Pop",
+  "category": "anime",
+  "order": 36,
+  "sync": "onset",
+  "requiresSegmentation": true,
+  "tracks": [
+    {
+      "role": "background",
+      "layers": [
+        {
+          "effectId": "halftone_comic",
+          "params": { "strength": 0.7, "dotSize": 7 }
+        }
+      ]
+    },
+    {
+      "role": "foreground",
+      "layers": [
+        {
+          "effectId": "zoom_pulse",
+          "params": { "punch": 0.0 },
+          "pulse": { "param": "punch", "rest": 0.0, "peak": 0.65, "decayMs": 150 }
+        },
+        {
+          "effectId": "strobe_flash",
+          "params": { "flash": 0.0 },
+          "pulse": { "param": "flash", "rest": 0.0, "peak": 0.3, "decayMs": 70 }
+        }
+      ]
+    }
+  ]
+}

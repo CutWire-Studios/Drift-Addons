@@ -1,0 +1,50 @@
+{
+  "id": "stylize.vhs",
+  "displayName": "VHS",
+  "category": "retro",
+  "order": 220,
+  "parameters": [
+    {
+      "identifier": "noise",
+      "displayName": "Noise",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 80,
+      "defaultValue": 28
+    },
+    {
+      "identifier": "chroma",
+      "displayName": "Chroma shift",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 12,
+      "defaultValue": 3
+    },
+    {
+      "identifier": "saturation",
+      "displayName": "Saturation",
+      "type": "float",
+      "minValue": 0.2,
+      "maxValue": 1.2,
+      "defaultValue": 0.85
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

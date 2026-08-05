@@ -1,0 +1,47 @@
+{
+  "id": "cube_flip",
+  "displayName": "Cube Flip",
+  "category": "geometric",
+  "order": 410,
+  "audioCurve": "crossfade",
+  "parameters": [
+    {
+      "identifier": "perspective",
+      "displayName": "Perspective",
+      "type": "float",
+      "defaultValue": 0.55,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    },
+    {
+      "identifier": "direction",
+      "displayName": "Direction",
+      "type": "float",
+      "defaultValue": 0.0,
+      "minValue": 0.0,
+      "maxValue": 3
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "id": "bodonimoda",
+  "family": "Bodoni Moda",
+  "category": "editorial",
+  "order": 50,
+  "license": "OFL-1.1",
+  "licenseFile": "OFL.txt",
+  "faces": [
+    {
+      "weight": 400,
+      "italic": false,
+      "styleName": "Regular",
+      "file": "BodoniModa-400.ttf"
+    },
+    {
+      "weight": 400,
+      "italic": true,
+      "styleName": "Italic",
+      "file": "BodoniModa-400italic.ttf"
+    },
+    {
+      "weight": 500,
+      "italic": false,
+      "styleName": "Medium",
+      "file": "BodoniModa-500.ttf"
+    },
+    {
+      "weight": 600,
+      "italic": false,
+      "styleName": "SemiBold",
+      "file": "BodoniModa-600.ttf"
+    },
+    {
+      "weight": 700,
+      "italic": false,
+      "styleName": "Bold",
+      "file": "BodoniModa-700.ttf"
+    },
+    {
+      "weight": 700,
+      "italic": true,
+      "styleName": "Bold Italic",
+      "file": "BodoniModa-700italic.ttf"
+    },
+    {
+      "weight": 800,
+      "italic": false,
+      "styleName": "ExtraBold",
+      "file": "BodoniModa-800.ttf"
+    },
+    {
+      "weight": 900,
+      "italic": false,
+      "styleName": "Black",
+      "file": "BodoniModa-900.ttf"
+    }
+  ]
+}

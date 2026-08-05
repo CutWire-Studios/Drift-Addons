@@ -1,0 +1,24 @@
+{
+  "id": "snap_transition",
+  "displayName": "Snap Transition",
+  "category": "transition",
+  "order": 30,
+  "sync": "clip",
+  "layers": [
+    {
+      "effectId": "zoom_pulse",
+      "params": { "punch": 0.0 },
+      "pulse": { "param": "punch", "rest": 0.0, "peak": 0.75, "decayMs": 0 }
+    },
+    {
+      "effectId": "strobe_flash",
+      "params": { "flash": 0.0 },
+      "pulse": { "param": "flash", "rest": 0.0, "peak": 0.55, "decayMs": 0 }
+    },
+    {
+      "effectId": "spin_blur",
+      "params": { "amount": 0.0 },
+      "pulse": { "param": "amount", "rest": 0.0, "peak": 0.5, "decayMs": 0 }
+    }
+  ]
+}

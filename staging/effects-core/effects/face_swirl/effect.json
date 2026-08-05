@@ -1,0 +1,45 @@
+{
+  "id": "face_swirl",
+  "displayName": "Face Swirl",
+  "category": "funny",
+  "order": 650,
+  "requires": "face",
+  "parameters": [
+    {
+      "identifier": "twist",
+      "displayName": "Twist",
+      "type": "float",
+      "minValue": -3.14,
+      "maxValue": 3.14,
+      "defaultValue": 1.2
+    },
+    {
+      "identifier": "coverage",
+      "displayName": "Coverage",
+      "type": "float",
+      "minValue": 0.5,
+      "maxValue": 2,
+      "defaultValue": 1
+    },
+    {
+      "identifier": "faceIndex",
+      "displayName": "Face",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 3,
+      "defaultValue": 0
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [{ "type": "source_texture" }],
+        "output": { "type": "canvas" }
+      }
+    ]
+  }
+}

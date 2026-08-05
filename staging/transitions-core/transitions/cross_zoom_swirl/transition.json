@@ -1,0 +1,54 @@
+{
+  "id": "cross_zoom_swirl",
+  "displayName": "Cross-Zoom Swirl",
+  "category": "cinematic",
+  "order": 540,
+  "parameters": [
+    {
+      "identifier": "zoom",
+      "displayName": "Zoom",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.5,
+      "defaultValue": 0.6
+    },
+    {
+      "identifier": "swirl",
+      "displayName": "Swirl",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 4.0,
+      "defaultValue": 1.6
+    },
+    {
+      "identifier": "blur",
+      "displayName": "Blur",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.5
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

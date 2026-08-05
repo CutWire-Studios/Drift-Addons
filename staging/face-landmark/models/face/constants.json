@@ -1,0 +1,12 @@
+{
+  "model": "mediapipe-face-landmark-attention",
+  "landmark_source": "PINTO_model_zoo/282_face_landmark_with_attention (face_landmark_with_attention_192x192/model_float32.onnx)",
+  "detector_source": "PINTO_model_zoo/387_YuNetV2 (face_detection_yunet_2023mar.onnx)",
+  "landmark_input_size": 192,
+  "detector_input_size": 640,
+  "detector_strides": [8, 16, 32],
+  "detector_score_threshold": 0.4,
+  "detector_nms_threshold": 0.3,
+  "roi_scale": 1.5,
+  "face_presence_threshold": 0.5
+}

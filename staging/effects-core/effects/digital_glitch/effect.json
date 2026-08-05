@@ -1,0 +1,74 @@
+{
+  "id": "digital_glitch",
+  "displayName": "Digital Glitch",
+  "category": "glitch",
+  "order": 340,
+  "parameters": [
+    {
+      "identifier": "intensity",
+      "displayName": "Intensity",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.5
+    },
+    {
+      "identifier": "frequency",
+      "displayName": "Frequency",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.35
+    },
+    {
+      "identifier": "rgbAmount",
+      "displayName": "RGB split",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 40,
+      "defaultValue": 8
+    },
+    {
+      "identifier": "blockAmount",
+      "displayName": "Block shift",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.4
+    },
+    {
+      "identifier": "flashAmount",
+      "displayName": "Flash",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.15
+    },
+    {
+      "identifier": "seed",
+      "displayName": "Seed",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 999999,
+      "defaultValue": 1
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

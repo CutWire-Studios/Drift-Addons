@@ -1,0 +1,17 @@
+{
+  "id": "audioeffects.core",
+  "version": "1.1.0",
+  "name": "Essential Audio Effects",
+  "description": "EQ, compressor, noise gate, and more to clean up sound, plus fun voice changers, echo, telephone, radio, and vinyl effects.",
+  "details": "Native audio effect graph: EQ, compressor, limiter, noise gate, de-esser, voice leveler, plus voice changers, telephone/radio filters, bitcrush, vinyl, echo and chorus. Package id: audioeffects.core.",
+  "author": "CutWire",
+  "license": "GPL-3.0",
+  "minAppVersion": "0.1.0",
+  "source": "../staging/audio-effects-core",
+  "provides": [
+    {
+      "kind": "audio-effects",
+      "root": "audio-effects"
+    }
+  ]
+}

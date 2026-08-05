@@ -1,0 +1,58 @@
+{
+  "id": "spin_blur",
+  "displayName": "Spin Blur",
+  "category": "impact",
+  "order": 85,
+  "parameters": [
+    {
+      "identifier": "amount",
+      "displayName": "Amount",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.35
+    },
+    {
+      "identifier": "centerX",
+      "displayName": "Center X",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.5
+    },
+    {
+      "identifier": "centerY",
+      "displayName": "Center Y",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.5
+    },
+    {
+      "identifier": "samples",
+      "displayName": "Samples",
+      "type": "float",
+      "minValue": 4,
+      "maxValue": 24,
+      "defaultValue": 12
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "id": "utility.deesser",
+  "displayName": "De-esser",
+  "category": "utility",
+  "icon": "ear",
+  "order": 140,
+  "backend": "juce",
+  "processor": "deesser",
+  "prerollMs": 50,
+  "parameters": [
+    {
+      "identifier": "intensity",
+      "displayName": "Intensity",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.35
+    },
+    {
+      "identifier": "amount",
+      "displayName": "Max Reduction",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.5
+    },
+    {
+      "identifier": "frequency",
+      "displayName": "Frequency",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.5
+    }
+  ]
+}

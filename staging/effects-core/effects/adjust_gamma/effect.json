@@ -1,0 +1,34 @@
+{
+  "id": "adjust.gamma",
+  "displayName": "Gamma",
+  "category": "color",
+  "order": 40,
+  "parameters": [
+    {
+      "identifier": "gamma",
+      "displayName": "Amount",
+      "type": "float",
+      "minValue": 0.1,
+      "maxValue": 4,
+      "defaultValue": 1
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "id": "radial_zoom_blur",
+  "displayName": "Radial Zoom Blur",
+  "category": "cinematic",
+  "order": 500,
+  "parameters": [
+    {
+      "identifier": "strength",
+      "displayName": "Blur Strength",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.6
+    },
+    {
+      "identifier": "centerX",
+      "displayName": "Centre X",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.5
+    },
+    {
+      "identifier": "centerY",
+      "displayName": "Centre Y",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.5
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [
+      {
+        "id": "blurFrom",
+        "scale": 0.6
+      },
+      {
+        "id": "blurTo",
+        "scale": 0.6
+      }
+    ],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "blur.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "blurFrom"
+        }
+      },
+      {
+        "passIndex": 1,
+        "fragmentShader": "blur.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "blurTo"
+        }
+      },
+      {
+        "passIndex": 2,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          },
+          {
+            "type": "buffer",
+            "id": "blurFrom"
+          },
+          {
+            "type": "buffer",
+            "id": "blurTo"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

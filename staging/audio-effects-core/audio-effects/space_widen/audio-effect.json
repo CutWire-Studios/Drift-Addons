@@ -1,0 +1,44 @@
+{
+  "id": "space.widen",
+  "displayName": "Stereo Widen",
+  "category": "space",
+  "icon": "unfold-horizontal",
+  "order": 470,
+  "backend": "juce",
+  "processor": "stereowiden",
+  "prerollMs": 50,
+  "parameters": [
+    {
+      "identifier": "drymix",
+      "displayName": "Dry Mix",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.8
+    },
+    {
+      "identifier": "delay",
+      "displayName": "Delay (ms)",
+      "type": "float",
+      "minValue": 1,
+      "maxValue": 100,
+      "defaultValue": 20
+    },
+    {
+      "identifier": "feedback",
+      "displayName": "Feedback",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.3
+    },
+    {
+      "identifier": "crossfeed",
+      "displayName": "Crossfeed",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.3
+    }
+  ]
+}

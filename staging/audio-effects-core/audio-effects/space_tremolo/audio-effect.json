@@ -1,0 +1,28 @@
+{
+  "id": "space.tremolo",
+  "displayName": "Tremolo",
+  "category": "space",
+  "icon": "audio-waveform",
+  "order": 450,
+  "backend": "juce",
+  "processor": "tremolo",
+  "prerollMs": 0,
+  "parameters": [
+    {
+      "identifier": "rate",
+      "displayName": "Rate",
+      "type": "float",
+      "minValue": 0.1,
+      "maxValue": 20.0,
+      "defaultValue": 5.0
+    },
+    {
+      "identifier": "depth",
+      "displayName": "Depth",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.7
+    }
+  ]
+}

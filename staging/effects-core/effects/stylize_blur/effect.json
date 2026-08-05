@@ -1,0 +1,53 @@
+{
+  "id": "stylize.blur",
+  "displayName": "Blur",
+  "category": "dreamy",
+  "order": 100,
+  "parameters": [
+    {
+      "identifier": "sigma",
+      "displayName": "Amount",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 20,
+      "defaultValue": 5
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [
+      {
+        "id": "scratch",
+        "scale": 1.0
+      }
+    ],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "blur_h.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "scratch"
+        }
+      },
+      {
+        "passIndex": 1,
+        "fragmentShader": "blur_v.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "scratch"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

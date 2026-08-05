@@ -1,0 +1,12 @@
+Drift face model addon
+
+face_landmark.onnx
+  MediaPipe face_landmark_with_attention (468 mesh points + iris refinement).
+  Source: https://github.com/google/mediapipe/tree/master/mediapipe/modules/face_landmark
+  ONNX export: https://github.com/PINTO0309/PINTO_model_zoo/tree/main/282_face_landmark_with_attention
+  Copyright The MediaPipe Authors. Apache-2.0 — see LICENSE.mediapipe.txt
+
+face_detector.onnx
+  YuNet face detector (face_detection_yunet_2023mar).
+  Source: https://github.com/opencv/opencv_zoo/tree/main/models/face_detection_yunet
+  Copyright (c) 2020 Shiqi Yu. MIT — see LICENSE.yunet.txt

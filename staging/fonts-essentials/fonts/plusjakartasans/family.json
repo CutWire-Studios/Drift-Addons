@@ -1,0 +1,64 @@
+{
+  "id": "plusjakartasans",
+  "family": "Plus Jakarta Sans",
+  "category": "clean",
+  "order": 20,
+  "license": "OFL-1.1",
+  "licenseFile": "OFL.txt",
+  "faces": [
+    {
+      "weight": 200,
+      "italic": false,
+      "styleName": "ExtraLight",
+      "file": "PlusJakartaSans-200.ttf"
+    },
+    {
+      "weight": 300,
+      "italic": false,
+      "styleName": "Light",
+      "file": "PlusJakartaSans-300.ttf"
+    },
+    {
+      "weight": 400,
+      "italic": false,
+      "styleName": "Regular",
+      "file": "PlusJakartaSans-400.ttf"
+    },
+    {
+      "weight": 400,
+      "italic": true,
+      "styleName": "Italic",
+      "file": "PlusJakartaSans-400italic.ttf"
+    },
+    {
+      "weight": 500,
+      "italic": false,
+      "styleName": "Medium",
+      "file": "PlusJakartaSans-500.ttf"
+    },
+    {
+      "weight": 600,
+      "italic": false,
+      "styleName": "SemiBold",
+      "file": "PlusJakartaSans-600.ttf"
+    },
+    {
+      "weight": 700,
+      "italic": false,
+      "styleName": "Bold",
+      "file": "PlusJakartaSans-700.ttf"
+    },
+    {
+      "weight": 700,
+      "italic": true,
+      "styleName": "Bold Italic",
+      "file": "PlusJakartaSans-700italic.ttf"
+    },
+    {
+      "weight": 800,
+      "italic": false,
+      "styleName": "ExtraBold",
+      "file": "PlusJakartaSans-800.ttf"
+    }
+  ]
+}

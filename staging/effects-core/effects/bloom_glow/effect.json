@@ -1,0 +1,104 @@
+{
+  "id": "bloom_glow",
+  "displayName": "Bloom / Glow",
+  "category": "dreamy",
+  "backend": "gpu",
+  "order": 130,
+  "parameters": [
+    {
+      "identifier": "threshold",
+      "displayName": "Threshold",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.75
+    },
+    {
+      "identifier": "intensity",
+      "displayName": "Intensity",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 2,
+      "defaultValue": 0.6
+    },
+    {
+      "identifier": "blurRadius",
+      "displayName": "Radius",
+      "type": "float",
+      "minValue": 1,
+      "maxValue": 30,
+      "defaultValue": 8
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [
+      {
+        "id": "bright",
+        "scale": 1.0
+      },
+      {
+        "id": "h",
+        "scale": 1.0
+      }
+    ],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "bright.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "bright"
+        }
+      },
+      {
+        "passIndex": 1,
+        "fragmentShader": "blur_h.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "bright"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "h"
+        }
+      },
+      {
+        "passIndex": 2,
+        "fragmentShader": "blur_v.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "h"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "bright"
+        }
+      },
+      {
+        "passIndex": 3,
+        "fragmentShader": "composite.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "bright"
+          },
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

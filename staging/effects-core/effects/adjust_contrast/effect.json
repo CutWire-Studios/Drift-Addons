@@ -1,0 +1,34 @@
+{
+  "id": "adjust.contrast",
+  "displayName": "Contrast",
+  "category": "color",
+  "order": 10,
+  "parameters": [
+    {
+      "identifier": "contrast",
+      "displayName": "Amount",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 3,
+      "defaultValue": 1
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

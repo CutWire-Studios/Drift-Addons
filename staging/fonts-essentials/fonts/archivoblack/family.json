@@ -1,0 +1,16 @@
+{
+  "id": "archivoblack",
+  "family": "Archivo Black",
+  "category": "impact",
+  "order": 30,
+  "license": "OFL-1.1",
+  "licenseFile": "OFL.txt",
+  "faces": [
+    {
+      "weight": 400,
+      "italic": false,
+      "styleName": "Regular",
+      "file": "ArchivoBlack-400.ttf"
+    }
+  ]
+}

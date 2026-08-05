@@ -1,0 +1,76 @@
+{
+  "id": "poppins",
+  "family": "Poppins",
+  "category": "impact",
+  "order": 60,
+  "license": "OFL-1.1",
+  "licenseFile": "OFL.txt",
+  "faces": [
+    {
+      "weight": 100,
+      "italic": false,
+      "styleName": "Regular",
+      "file": "Poppins-100.ttf"
+    },
+    {
+      "weight": 200,
+      "italic": false,
+      "styleName": "Regular",
+      "file": "Poppins-200.ttf"
+    },
+    {
+      "weight": 300,
+      "italic": false,
+      "styleName": "Regular",
+      "file": "Poppins-300.ttf"
+    },
+    {
+      "weight": 400,
+      "italic": false,
+      "styleName": "Regular",
+      "file": "Poppins-400.ttf"
+    },
+    {
+      "weight": 400,
+      "italic": true,
+      "styleName": "Italic",
+      "file": "Poppins-400italic.ttf"
+    },
+    {
+      "weight": 500,
+      "italic": false,
+      "styleName": "Regular",
+      "file": "Poppins-500.ttf"
+    },
+    {
+      "weight": 600,
+      "italic": false,
+      "styleName": "Regular",
+      "file": "Poppins-600.ttf"
+    },
+    {
+      "weight": 700,
+      "italic": false,
+      "styleName": "Bold",
+      "file": "Poppins-700.ttf"
+    },
+    {
+      "weight": 700,
+      "italic": true,
+      "styleName": "Bold Italic",
+      "file": "Poppins-700italic.ttf"
+    },
+    {
+      "weight": 800,
+      "italic": false,
+      "styleName": "Regular",
+      "file": "Poppins-800.ttf"
+    },
+    {
+      "weight": 900,
+      "italic": false,
+      "styleName": "Regular",
+      "file": "Poppins-900.ttf"
+    }
+  ]
+}

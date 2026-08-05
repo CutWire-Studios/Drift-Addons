@@ -1,0 +1,62 @@
+{
+  "id": "rgb_displacement",
+  "displayName": "RGB Displacement",
+  "category": "glitch",
+  "order": 400,
+  "parameters": [
+    {
+      "identifier": "tear",
+      "displayName": "Tear Amount",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 0.5,
+      "defaultValue": 0.12
+    },
+    {
+      "identifier": "split",
+      "displayName": "Channel Split",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 60,
+      "defaultValue": 18
+    },
+    {
+      "identifier": "lines",
+      "displayName": "Tear Bands",
+      "type": "float",
+      "minValue": 4,
+      "maxValue": 120,
+      "defaultValue": 28
+    },
+    {
+      "identifier": "steps",
+      "displayName": "Hold Frames",
+      "type": "float",
+      "minValue": 4,
+      "maxValue": 60,
+      "defaultValue": 24
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

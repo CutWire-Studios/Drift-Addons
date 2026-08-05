@@ -1,0 +1,33 @@
+{
+  "id": "dip",
+  "displayName": "Dip to Black",
+  "category": "basic",
+  "order": 110,
+  "parameters": [],
+  "fixedParams": {
+    "dipColor": "#000000"
+  },
+  "audioCurve": "dip",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

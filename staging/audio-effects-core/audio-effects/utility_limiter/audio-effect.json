@@ -1,0 +1,28 @@
+{
+  "id": "utility.limiter",
+  "displayName": "Limiter",
+  "category": "utility",
+  "icon": "maximize",
+  "order": 120,
+  "backend": "juce",
+  "processor": "limiter",
+  "prerollMs": 150,
+  "parameters": [
+    {
+      "identifier": "drive",
+      "displayName": "Drive",
+      "type": "float",
+      "minValue": 1,
+      "maxValue": 4,
+      "defaultValue": 1
+    },
+    {
+      "identifier": "ceiling",
+      "displayName": "Ceiling",
+      "type": "float",
+      "minValue": 0.5,
+      "maxValue": 1,
+      "defaultValue": 0.95
+    }
+  ]
+}

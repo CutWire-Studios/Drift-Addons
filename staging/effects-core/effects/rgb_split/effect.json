@@ -1,0 +1,58 @@
+{
+  "id": "rgb_split",
+  "displayName": "RGB Split",
+  "category": "glitch",
+  "order": 310,
+  "parameters": [
+    {
+      "identifier": "amount",
+      "displayName": "Amount",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 50,
+      "defaultValue": 8
+    },
+    {
+      "identifier": "angle",
+      "displayName": "Angle",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 360,
+      "defaultValue": 0
+    },
+    {
+      "identifier": "animated",
+      "displayName": "Animated",
+      "type": "bool",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0
+    },
+    {
+      "identifier": "speed",
+      "displayName": "Speed",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 10,
+      "defaultValue": 1
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

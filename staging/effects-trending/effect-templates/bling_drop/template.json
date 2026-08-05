@@ -1,0 +1,18 @@
+{
+  "id": "bling_drop",
+  "displayName": "Bling Drop",
+  "category": "rhythm",
+  "order": 20,
+  "sync": "beat",
+  "layers": [
+    {
+      "effectId": "bling_sparkle",
+      "params": { "intensity": 0.35 },
+      "pulse": { "param": "intensity", "rest": 0.35, "peak": 0.85, "decayMs": 240 }
+    },
+    {
+      "effectId": "halation",
+      "params": { "intensity": 0.5, "threshold": 0.65, "warmth": 0.75 }
+    }
+  ]
+}

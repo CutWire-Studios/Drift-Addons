@@ -1,0 +1,36 @@
+{
+  "id": "utility.eq",
+  "displayName": "EQ",
+  "category": "utility",
+  "icon": "sliders-horizontal",
+  "order": 100,
+  "backend": "juce",
+  "processor": "eq3",
+  "prerollMs": 50,
+  "parameters": [
+    {
+      "identifier": "low",
+      "displayName": "Low",
+      "type": "float",
+      "minValue": -12,
+      "maxValue": 12,
+      "defaultValue": 0
+    },
+    {
+      "identifier": "mid",
+      "displayName": "Mid",
+      "type": "float",
+      "minValue": -12,
+      "maxValue": 12,
+      "defaultValue": 0
+    },
+    {
+      "identifier": "high",
+      "displayName": "High",
+      "type": "float",
+      "minValue": -12,
+      "maxValue": 12,
+      "defaultValue": 0
+    }
+  ]
+}

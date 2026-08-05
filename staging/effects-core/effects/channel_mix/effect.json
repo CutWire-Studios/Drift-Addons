@@ -1,0 +1,98 @@
+{
+  "id": "channel_mix",
+  "displayName": "Channel Mix",
+  "category": "color",
+  "order": 880,
+  "parameters": [
+    {
+      "identifier": "rr",
+      "displayName": "Red\u2190Red",
+      "type": "float",
+      "defaultValue": 1.0,
+      "minValue": -2,
+      "maxValue": 2
+    },
+    {
+      "identifier": "rg",
+      "displayName": "Red\u2190Green",
+      "type": "float",
+      "defaultValue": 0.0,
+      "minValue": -2,
+      "maxValue": 2
+    },
+    {
+      "identifier": "rb",
+      "displayName": "Red\u2190Blue",
+      "type": "float",
+      "defaultValue": 0.0,
+      "minValue": -2,
+      "maxValue": 2
+    },
+    {
+      "identifier": "gr",
+      "displayName": "Green\u2190Red",
+      "type": "float",
+      "defaultValue": 0.0,
+      "minValue": -2,
+      "maxValue": 2
+    },
+    {
+      "identifier": "gg",
+      "displayName": "Green\u2190Green",
+      "type": "float",
+      "defaultValue": 1.0,
+      "minValue": -2,
+      "maxValue": 2
+    },
+    {
+      "identifier": "gb",
+      "displayName": "Green\u2190Blue",
+      "type": "float",
+      "defaultValue": 0.0,
+      "minValue": -2,
+      "maxValue": 2
+    },
+    {
+      "identifier": "br",
+      "displayName": "Blue\u2190Red",
+      "type": "float",
+      "defaultValue": 0.0,
+      "minValue": -2,
+      "maxValue": 2
+    },
+    {
+      "identifier": "bg",
+      "displayName": "Blue\u2190Green",
+      "type": "float",
+      "defaultValue": 0.0,
+      "minValue": -2,
+      "maxValue": 2
+    },
+    {
+      "identifier": "bb",
+      "displayName": "Blue\u2190Blue",
+      "type": "float",
+      "defaultValue": 1.0,
+      "minValue": -2,
+      "maxValue": 2
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

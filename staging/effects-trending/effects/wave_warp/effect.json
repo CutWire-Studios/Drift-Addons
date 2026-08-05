@@ -1,0 +1,58 @@
+{
+  "id": "wave_warp",
+  "displayName": "Wave Warp",
+  "category": "glitch",
+  "order": 385,
+  "parameters": [
+    {
+      "identifier": "amount",
+      "displayName": "Amount",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.35
+    },
+    {
+      "identifier": "frequency",
+      "displayName": "Frequency",
+      "type": "float",
+      "minValue": 1,
+      "maxValue": 20,
+      "defaultValue": 6
+    },
+    {
+      "identifier": "speed",
+      "displayName": "Speed",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 4,
+      "defaultValue": 1
+    },
+    {
+      "identifier": "axis",
+      "displayName": "Axis",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

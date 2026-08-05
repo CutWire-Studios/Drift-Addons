@@ -1,0 +1,46 @@
+{
+  "id": "oswald",
+  "family": "Oswald",
+  "category": "impact",
+  "order": 40,
+  "license": "OFL-1.1",
+  "licenseFile": "OFL.txt",
+  "faces": [
+    {
+      "weight": 200,
+      "italic": false,
+      "styleName": "ExtraLight",
+      "file": "Oswald-200.ttf"
+    },
+    {
+      "weight": 300,
+      "italic": false,
+      "styleName": "Light",
+      "file": "Oswald-300.ttf"
+    },
+    {
+      "weight": 400,
+      "italic": false,
+      "styleName": "Regular",
+      "file": "Oswald-400.ttf"
+    },
+    {
+      "weight": 500,
+      "italic": false,
+      "styleName": "Medium",
+      "file": "Oswald-500.ttf"
+    },
+    {
+      "weight": 600,
+      "italic": false,
+      "styleName": "SemiBold",
+      "file": "Oswald-600.ttf"
+    },
+    {
+      "weight": 700,
+      "italic": false,
+      "styleName": "Bold",
+      "file": "Oswald-700.ttf"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "id": "voice.vader",
+  "displayName": "Dark Lord",
+  "category": "voice",
+  "icon": "shield",
+  "order": 120,
+  "backend": "juce",
+  "processor": "darklord",
+  "prerollMs": 600,
+  "parameters": [
+    {
+      "identifier": "pitch",
+      "displayName": "Pitch",
+      "type": "float",
+      "minValue": 0.6,
+      "maxValue": 0.95,
+      "defaultValue": 0.8
+    },
+    {
+      "identifier": "echo_delay",
+      "displayName": "Echo Delay (ms)",
+      "type": "float",
+      "minValue": 10,
+      "maxValue": 100,
+      "defaultValue": 40
+    },
+    {
+      "identifier": "echo_decay",
+      "displayName": "Echo Decay",
+      "type": "float",
+      "minValue": 0.1,
+      "maxValue": 0.9,
+      "defaultValue": 0.4
+    },
+    {
+      "identifier": "grit",
+      "displayName": "Distortion",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.3
+    }
+  ]
+}

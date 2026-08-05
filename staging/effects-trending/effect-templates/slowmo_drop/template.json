@@ -1,0 +1,24 @@
+{
+  "id": "slowmo_drop",
+  "displayName": "Slowmo Drop",
+  "category": "hype",
+  "order": 25,
+  "sync": "onset",
+  "speedPulse": { "rest": 1.0, "peak": 0.38, "decayMs": 700 },
+  "layers": [
+    {
+      "effectId": "zoom_pulse",
+      "params": { "punch": 0.0 },
+      "pulse": { "param": "punch", "rest": 0.0, "peak": 0.7, "decayMs": 220 }
+    },
+    {
+      "effectId": "beat_shake",
+      "params": { "amount": 0.0 },
+      "pulse": { "param": "amount", "rest": 0.0, "peak": 0.55, "decayMs": 200 }
+    },
+    {
+      "effectId": "halation",
+      "params": { "intensity": 0.4, "warmth": 0.65 }
+    }
+  ]
+}

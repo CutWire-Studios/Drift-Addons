@@ -1,0 +1,64 @@
+{
+  "id": "stylize.bloom",
+  "displayName": "Bloom",
+  "category": "dreamy",
+  "backend": "gpu",
+  "order": 120,
+  "parameters": [
+    {
+      "identifier": "intensity",
+      "displayName": "Intensity",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 2,
+      "defaultValue": 0.75
+    },
+    {
+      "identifier": "blurRadius",
+      "displayName": "Radius",
+      "type": "float",
+      "minValue": 1,
+      "maxValue": 30,
+      "defaultValue": 12
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [
+      {
+        "id": "h",
+        "scale": 0.5
+      }
+    ],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "blur_h.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "h"
+        }
+      },
+      {
+        "passIndex": 1,
+        "fragmentShader": "blur_v_add.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "h"
+          },
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

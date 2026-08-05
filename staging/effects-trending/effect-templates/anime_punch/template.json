@@ -1,0 +1,23 @@
+{
+  "id": "anime_punch",
+  "displayName": "Anime Punch",
+  "category": "rhythm",
+  "order": 70,
+  "sync": "onset",
+  "layers": [
+    {
+      "effectId": "halftone_comic",
+      "params": { "strength": 0.6 }
+    },
+    {
+      "effectId": "zoom_pulse",
+      "params": { "punch": 0.0 },
+      "pulse": { "param": "punch", "rest": 0.0, "peak": 0.7, "decayMs": 160 }
+    },
+    {
+      "effectId": "strobe_flash",
+      "params": { "flash": 0.0 },
+      "pulse": { "param": "flash", "rest": 0.0, "peak": 0.35, "decayMs": 80 }
+    }
+  ]
+}

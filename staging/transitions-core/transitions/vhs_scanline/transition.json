@@ -1,0 +1,78 @@
+{
+  "id": "vhs_scanline",
+  "displayName": "VHS Scanline",
+  "category": "glitch",
+  "order": 410,
+  "parameters": [
+    {
+      "identifier": "roll",
+      "displayName": "Roll Speed",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 4.0,
+      "defaultValue": 1.5
+    },
+    {
+      "identifier": "barWidth",
+      "displayName": "Bar Width",
+      "type": "float",
+      "minValue": 0.02,
+      "maxValue": 0.5,
+      "defaultValue": 0.16
+    },
+    {
+      "identifier": "noise",
+      "displayName": "Static",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.45
+    },
+    {
+      "identifier": "chroma",
+      "displayName": "Chroma Bleed",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 40,
+      "defaultValue": 14
+    },
+    {
+      "identifier": "scanline",
+      "displayName": "Scanlines",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.35
+    },
+    {
+      "identifier": "jitter",
+      "displayName": "Jitter",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 0.2,
+      "defaultValue": 0.03
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

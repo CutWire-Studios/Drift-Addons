@@ -1,0 +1,32 @@
+{
+  "id": "blur_behind",
+  "displayName": "Blur Behind",
+  "category": "dreamy",
+  "order": 16,
+  "sync": "clip",
+  "requiresSegmentation": true,
+  "tracks": [
+    {
+      "role": "background",
+      "layers": [
+        {
+          "effectId": "bokeh_dream",
+          "params": { "intensity": 0.8, "radius": 14, "threshold": 0.45 }
+        },
+        {
+          "effectId": "cinematic_grade",
+          "params": { "strength": 0.4, "teal": 0.5, "orange": 0.35 }
+        }
+      ]
+    },
+    {
+      "role": "foreground",
+      "layers": [
+        {
+          "effectId": "edge_neon",
+          "params": { "intensity": 0.25, "radius": 3, "threshold": 0.35 }
+        }
+      ]
+    }
+  ]
+}

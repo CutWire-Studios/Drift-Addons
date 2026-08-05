@@ -1,0 +1,66 @@
+{
+  "id": "block_glitch",
+  "displayName": "Block Glitch",
+  "category": "glitch",
+  "order": 320,
+  "parameters": [
+    {
+      "identifier": "intensity",
+      "displayName": "Intensity",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.35
+    },
+    {
+      "identifier": "blockSize",
+      "displayName": "Block size",
+      "type": "float",
+      "minValue": 4,
+      "maxValue": 128,
+      "defaultValue": 32
+    },
+    {
+      "identifier": "shiftAmount",
+      "displayName": "Shift",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 100,
+      "defaultValue": 24
+    },
+    {
+      "identifier": "frequency",
+      "displayName": "Frequency",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.25
+    },
+    {
+      "identifier": "seed",
+      "displayName": "Seed",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 999999,
+      "defaultValue": 1
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "id": "color_emboss",
+  "displayName": "Color Emboss",
+  "category": "artistic",
+  "order": 820,
+  "parameters": [
+    {
+      "identifier": "strength",
+      "displayName": "Strength",
+      "type": "float",
+      "defaultValue": 0.7,
+      "minValue": 0.0,
+      "maxValue": 2
+    },
+    {
+      "identifier": "angle",
+      "displayName": "Angle",
+      "type": "float",
+      "defaultValue": 45.0,
+      "minValue": 0.0,
+      "maxValue": 360
+    },
+    {
+      "identifier": "blend",
+      "displayName": "Blend",
+      "type": "float",
+      "defaultValue": 0.85,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

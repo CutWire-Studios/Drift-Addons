@@ -1,0 +1,36 @@
+{
+  "id": "texture.eightbit",
+  "displayName": "8-Bit",
+  "category": "texture",
+  "icon": "cpu",
+  "order": 300,
+  "backend": "juce",
+  "processor": "bitcrush_log",
+  "prerollMs": 0,
+  "parameters": [
+    {
+      "identifier": "bits",
+      "displayName": "Bits",
+      "type": "float",
+      "minValue": 1,
+      "maxValue": 16,
+      "defaultValue": 4
+    },
+    {
+      "identifier": "samples",
+      "displayName": "Sample Rate",
+      "type": "float",
+      "minValue": 1,
+      "maxValue": 64,
+      "defaultValue": 8
+    },
+    {
+      "identifier": "mix",
+      "displayName": "Mix",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 1.0
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id": "effects.core",
+  "version": "1.3.0",
+  "name": "Essential Video Effects",
+  "description": "Colour fixes, blurs, glow, glitch, green screen, warps, beauty makeup, grading tools, and more — the everyday effects for cleaning up and styling clips.",
+  "details": "GPU shader effect library (GLSL). Colour adjustment, blurs, glitch, glow, stylise, chroma key / green screen, face warps, beauty/makeup (lipstick, blush, eyes, teeth), plus addon-only warps, light rays, CDL/levels, grain and weather overlays. Package id: effects.core.",
+  "author": "CutWire",
+  "license": "GPL-3.0",
+  "minAppVersion": "0.1.0",
+  "source": "../staging/effects-core",
+  "provides": [
+    {
+      "kind": "effects",
+      "root": "effects"
+    }
+  ]
+}

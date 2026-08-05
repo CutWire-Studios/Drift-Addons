@@ -1,0 +1,19 @@
+{
+  "architectures": [
+    "DeepFilterNet3"
+  ],
+  "conv_lookahead": 2,
+  "df_bins": 96,
+  "df_lookahead": 2,
+  "df_order": 5,
+  "erb_bands": 32,
+  "fft_bins": 481,
+  "fft_size": 960,
+  "hop_size": 480,
+  "library_name": "onnxruntime",
+  "min_nb_erb_freqs": 2,
+  "model_type": "deepfilternet3",
+  "norm_tau": 1.0,
+  "normalization_alpha": 0.99,
+  "sample_rate": 48000
+}

@@ -1,0 +1,75 @@
+{
+  "id": "matrix_rain",
+  "displayName": "Digital Matrix Rain",
+  "category": "glitch",
+  "order": 420,
+  "parameters": [
+    {
+      "identifier": "columns",
+      "displayName": "Columns",
+      "type": "float",
+      "minValue": 10,
+      "maxValue": 120,
+      "defaultValue": 48
+    },
+    {
+      "identifier": "trail",
+      "displayName": "Trail Length",
+      "type": "float",
+      "minValue": 0.1,
+      "maxValue": 1.0,
+      "defaultValue": 0.45
+    },
+    {
+      "identifier": "brightness",
+      "displayName": "Glyph Brightness",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 2.0,
+      "defaultValue": 1.1
+    },
+    {
+      "identifier": "flicker",
+      "displayName": "Flicker",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.6
+    }
+  ],
+  "fixedParams": {
+    "rainColor": "#33ff66"
+  },
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          },
+          {
+            "type": "texture",
+            "id": "glyphs"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ],
+    "textures": [
+      {
+        "id": "glyphs",
+        "file": "glyphs.png"
+      }
+    ]
+  }
+}

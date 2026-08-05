@@ -1,0 +1,54 @@
+{
+  "id": "kaleidoscope_spin",
+  "displayName": "Kaleidoscope Spin",
+  "category": "cinematic",
+  "order": 530,
+  "parameters": [
+    {
+      "identifier": "segments",
+      "displayName": "Segments",
+      "type": "float",
+      "minValue": 2,
+      "maxValue": 24,
+      "defaultValue": 6
+    },
+    {
+      "identifier": "spin",
+      "displayName": "Spin",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 4.0,
+      "defaultValue": 1.0
+    },
+    {
+      "identifier": "zoom",
+      "displayName": "Tunnel Zoom",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.4
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

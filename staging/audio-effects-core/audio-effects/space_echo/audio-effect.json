@@ -1,0 +1,44 @@
+{
+  "id": "space.echo",
+  "displayName": "Echo",
+  "category": "space",
+  "icon": "repeat",
+  "order": 400,
+  "backend": "juce",
+  "processor": "echo",
+  "prerollMs": 800,
+  "parameters": [
+    {
+      "identifier": "delay",
+      "displayName": "Delay (ms)",
+      "type": "float",
+      "minValue": 10,
+      "maxValue": 900,
+      "defaultValue": 60
+    },
+    {
+      "identifier": "decay",
+      "displayName": "Decay",
+      "type": "float",
+      "minValue": 0.1,
+      "maxValue": 0.9,
+      "defaultValue": 0.4
+    },
+    {
+      "identifier": "in_gain",
+      "displayName": "Input",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.8
+    },
+    {
+      "identifier": "out_gain",
+      "displayName": "Wet Mix",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.88
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "id": "super8_film",
+  "displayName": "Super 8",
+  "category": "retro",
+  "order": 250,
+  "parameters": [
+    {
+      "identifier": "intensity",
+      "displayName": "Intensity",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.7
+    },
+    {
+      "identifier": "grain",
+      "displayName": "Grain",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.55
+    },
+    {
+      "identifier": "scratches",
+      "displayName": "Scratches",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.35
+    },
+    {
+      "identifier": "weave",
+      "displayName": "Gate Weave",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.25
+    },
+    {
+      "identifier": "flicker",
+      "displayName": "Flicker",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.2
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

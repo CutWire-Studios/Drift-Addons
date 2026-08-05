@@ -1,0 +1,36 @@
+{
+  "id": "texture.bitcrush",
+  "displayName": "Bitcrush",
+  "category": "texture",
+  "icon": "binary",
+  "order": 310,
+  "backend": "juce",
+  "processor": "bitcrush",
+  "prerollMs": 0,
+  "parameters": [
+    {
+      "identifier": "bits",
+      "displayName": "Bits",
+      "type": "float",
+      "minValue": 1,
+      "maxValue": 16,
+      "defaultValue": 6
+    },
+    {
+      "identifier": "samples",
+      "displayName": "Sample Rate",
+      "type": "float",
+      "minValue": 1,
+      "maxValue": 64,
+      "defaultValue": 16
+    },
+    {
+      "identifier": "mix",
+      "displayName": "Mix",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.7
+    }
+  ]
+}

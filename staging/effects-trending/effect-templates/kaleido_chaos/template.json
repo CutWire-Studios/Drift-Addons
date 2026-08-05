@@ -1,0 +1,33 @@
+{
+  "id": "kaleido_chaos",
+  "displayName": "Kaleido Chaos",
+  "category": "chaos",
+  "order": 40,
+  "sync": "bar",
+  "requiresSegmentation": true,
+  "tracks": [
+    {
+      "role": "background",
+      "layers": [
+        {
+          "effectId": "kaleidoscope",
+          "params": { "segments": 6, "rotation": 0.15, "zoom": 1.1 }
+        },
+        {
+          "effectId": "wave_warp",
+          "params": { "amount": 0.25, "frequency": 5, "speed": 1.2 }
+        }
+      ]
+    },
+    {
+      "role": "foreground",
+      "layers": [
+        {
+          "effectId": "spin_blur",
+          "params": { "amount": 0.0 },
+          "pulse": { "param": "amount", "rest": 0.0, "peak": 0.4, "decayMs": 350 }
+        }
+      ]
+    }
+  ]
+}

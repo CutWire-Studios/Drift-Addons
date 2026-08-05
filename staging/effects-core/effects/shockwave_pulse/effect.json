@@ -1,0 +1,74 @@
+{
+  "id": "shockwave_pulse",
+  "displayName": "Shockwave / Pulse",
+  "category": "glitch",
+  "order": 370,
+  "parameters": [
+    {
+      "identifier": "centerX",
+      "displayName": "Center X",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.5
+    },
+    {
+      "identifier": "centerY",
+      "displayName": "Center Y",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.5
+    },
+    {
+      "identifier": "radius",
+      "displayName": "Radius",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0
+    },
+    {
+      "identifier": "width",
+      "displayName": "Width",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.08
+    },
+    {
+      "identifier": "strength",
+      "displayName": "Strength",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.35
+    },
+    {
+      "identifier": "speed",
+      "displayName": "Speed",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 10,
+      "defaultValue": 1
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

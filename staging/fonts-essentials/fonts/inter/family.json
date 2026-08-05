@@ -1,0 +1,76 @@
+{
+  "id": "inter",
+  "family": "Inter",
+  "category": "clean",
+  "order": 10,
+  "license": "OFL-1.1",
+  "licenseFile": "OFL.txt",
+  "faces": [
+    {
+      "weight": 100,
+      "italic": false,
+      "styleName": "Thin",
+      "file": "Inter-100.ttf"
+    },
+    {
+      "weight": 200,
+      "italic": false,
+      "styleName": "ExtraLight",
+      "file": "Inter-200.ttf"
+    },
+    {
+      "weight": 300,
+      "italic": false,
+      "styleName": "Light",
+      "file": "Inter-300.ttf"
+    },
+    {
+      "weight": 400,
+      "italic": false,
+      "styleName": "Regular",
+      "file": "Inter-400.ttf"
+    },
+    {
+      "weight": 400,
+      "italic": true,
+      "styleName": "Italic",
+      "file": "Inter-400italic.ttf"
+    },
+    {
+      "weight": 500,
+      "italic": false,
+      "styleName": "Medium",
+      "file": "Inter-500.ttf"
+    },
+    {
+      "weight": 600,
+      "italic": false,
+      "styleName": "SemiBold",
+      "file": "Inter-600.ttf"
+    },
+    {
+      "weight": 700,
+      "italic": false,
+      "styleName": "Bold",
+      "file": "Inter-700.ttf"
+    },
+    {
+      "weight": 700,
+      "italic": true,
+      "styleName": "Bold Italic",
+      "file": "Inter-700italic.ttf"
+    },
+    {
+      "weight": 800,
+      "italic": false,
+      "styleName": "ExtraBold",
+      "file": "Inter-800.ttf"
+    },
+    {
+      "weight": 900,
+      "italic": false,
+      "styleName": "Black",
+      "file": "Inter-900.ttf"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "dream_fade",
+  "displayName": "Dream Fade",
+  "category": "cinematic",
+  "order": 60,
+  "sync": "clip",
+  "layers": [
+    {
+      "effectId": "bokeh_dream",
+      "params": { "intensity": 0.0 },
+      "pulse": { "param": "intensity", "rest": 0.0, "peak": 0.75, "decayMs": 0 }
+    },
+    {
+      "effectId": "halation",
+      "params": { "intensity": 0.55, "warmth": 0.7 }
+    }
+  ]
+}

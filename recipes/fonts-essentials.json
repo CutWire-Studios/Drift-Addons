@@ -1,0 +1,17 @@
+{
+  "id": "fonts.essentials",
+  "version": "1.0.0",
+  "name": "Essential Fonts",
+  "description": "21 fonts for titles, captions, and body text — bold display styles, clean sans, editorial serifs, and playful options.",
+  "details": "21 OFL/UFL font families across display, clean, editorial and playful categories. Package id: fonts.essentials.",
+  "author": "CutWire",
+  "license": "OFL-1.1 / UFL-1.0",
+  "minAppVersion": "0.1.0",
+  "source": "../staging/fonts-essentials",
+  "provides": [
+    {
+      "kind": "fonts",
+      "root": "fonts"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "id": "ghost_walk",
+  "displayName": "Ghost Walk",
+  "category": "clone",
+  "order": 24,
+  "sync": "clip",
+  "requiresSegmentation": true,
+  "clones": {
+    "count": 2,
+    "opacity": [0.3, 0.15],
+    "scale": [0.96, 0.92]
+  },
+  "tracks": [
+    {
+      "role": "background",
+      "layers": [
+        {
+          "effectId": "bokeh_dream",
+          "params": { "intensity": 0.65, "radius": 11 }
+        },
+        {
+          "effectId": "halation",
+          "params": { "intensity": 0.35, "warmth": 0.6 }
+        }
+      ]
+    },
+    {
+      "role": "foreground",
+      "layers": [],
+      "speedPulse": { "rest": 1.0, "peak": 0.5, "decayMs": 0 }
+    },
+    {
+      "role": "clone",
+      "layers": [
+        {
+          "effectId": "motion_trail",
+          "params": { "amount": 0.3, "length": 0.35 }
+        }
+      ]
+    }
+  ]
+}

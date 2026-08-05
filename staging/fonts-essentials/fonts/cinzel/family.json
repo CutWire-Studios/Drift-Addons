@@ -1,0 +1,46 @@
+{
+  "id": "cinzel",
+  "family": "Cinzel",
+  "category": "editorial",
+  "order": 30,
+  "license": "OFL-1.1",
+  "licenseFile": "OFL.txt",
+  "faces": [
+    {
+      "weight": 400,
+      "italic": false,
+      "styleName": "Regular",
+      "file": "Cinzel-400.ttf"
+    },
+    {
+      "weight": 500,
+      "italic": false,
+      "styleName": "Medium",
+      "file": "Cinzel-500.ttf"
+    },
+    {
+      "weight": 600,
+      "italic": false,
+      "styleName": "SemiBold",
+      "file": "Cinzel-600.ttf"
+    },
+    {
+      "weight": 700,
+      "italic": false,
+      "styleName": "Bold",
+      "file": "Cinzel-700.ttf"
+    },
+    {
+      "weight": 800,
+      "italic": false,
+      "styleName": "ExtraBold",
+      "file": "Cinzel-800.ttf"
+    },
+    {
+      "weight": 900,
+      "italic": false,
+      "styleName": "Black",
+      "file": "Cinzel-900.ttf"
+    }
+  ]
+}

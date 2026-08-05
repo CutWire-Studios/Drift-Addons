@@ -1,0 +1,52 @@
+{
+  "id": "cormorantgaramond",
+  "family": "Cormorant Garamond",
+  "category": "editorial",
+  "order": 20,
+  "license": "OFL-1.1",
+  "licenseFile": "OFL.txt",
+  "faces": [
+    {
+      "weight": 300,
+      "italic": false,
+      "styleName": "Light",
+      "file": "CormorantGaramond-300.ttf"
+    },
+    {
+      "weight": 400,
+      "italic": false,
+      "styleName": "Regular",
+      "file": "CormorantGaramond-400.ttf"
+    },
+    {
+      "weight": 400,
+      "italic": true,
+      "styleName": "Italic",
+      "file": "CormorantGaramond-400italic.ttf"
+    },
+    {
+      "weight": 500,
+      "italic": false,
+      "styleName": "Medium",
+      "file": "CormorantGaramond-500.ttf"
+    },
+    {
+      "weight": 600,
+      "italic": false,
+      "styleName": "SemiBold",
+      "file": "CormorantGaramond-600.ttf"
+    },
+    {
+      "weight": 700,
+      "italic": false,
+      "styleName": "Bold",
+      "file": "CormorantGaramond-700.ttf"
+    },
+    {
+      "weight": 700,
+      "italic": true,
+      "styleName": "Bold Italic",
+      "file": "CormorantGaramond-700italic.ttf"
+    }
+  ]
+}

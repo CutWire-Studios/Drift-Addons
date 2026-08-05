@@ -1,0 +1,76 @@
+{
+  "id": "dmsans",
+  "family": "DM Sans",
+  "category": "clean",
+  "order": 30,
+  "license": "OFL-1.1",
+  "licenseFile": "OFL.txt",
+  "faces": [
+    {
+      "weight": 100,
+      "italic": false,
+      "styleName": "Thin",
+      "file": "DMSans-100.ttf"
+    },
+    {
+      "weight": 200,
+      "italic": false,
+      "styleName": "ExtraLight",
+      "file": "DMSans-200.ttf"
+    },
+    {
+      "weight": 300,
+      "italic": false,
+      "styleName": "Light",
+      "file": "DMSans-300.ttf"
+    },
+    {
+      "weight": 400,
+      "italic": false,
+      "styleName": "Regular",
+      "file": "DMSans-400.ttf"
+    },
+    {
+      "weight": 400,
+      "italic": true,
+      "styleName": "Italic",
+      "file": "DMSans-400italic.ttf"
+    },
+    {
+      "weight": 500,
+      "italic": false,
+      "styleName": "Medium",
+      "file": "DMSans-500.ttf"
+    },
+    {
+      "weight": 600,
+      "italic": false,
+      "styleName": "SemiBold",
+      "file": "DMSans-600.ttf"
+    },
+    {
+      "weight": 700,
+      "italic": false,
+      "styleName": "Bold",
+      "file": "DMSans-700.ttf"
+    },
+    {
+      "weight": 700,
+      "italic": true,
+      "styleName": "Bold Italic",
+      "file": "DMSans-700italic.ttf"
+    },
+    {
+      "weight": 800,
+      "italic": false,
+      "styleName": "ExtraBold",
+      "file": "DMSans-800.ttf"
+    },
+    {
+      "weight": 900,
+      "italic": false,
+      "styleName": "Black",
+      "file": "DMSans-900.ttf"
+    }
+  ]
+}

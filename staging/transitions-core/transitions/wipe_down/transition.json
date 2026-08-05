@@ -1,0 +1,38 @@
+{
+  "id": "wipe_down",
+  "displayName": "Wipe Down",
+  "category": "basic",
+  "order": 123,
+  "parameters": [
+    {
+      "identifier": "softness",
+      "displayName": "Softness",
+      "type": "float",
+      "minValue": 0.001,
+      "maxValue": 0.3,
+      "defaultValue": 0.02
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

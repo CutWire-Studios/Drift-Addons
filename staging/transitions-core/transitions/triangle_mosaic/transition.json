@@ -1,0 +1,54 @@
+{
+  "id": "triangle_mosaic",
+  "displayName": "Triangle Mosaic",
+  "category": "geometric",
+  "order": 230,
+  "parameters": [
+    {
+      "identifier": "density",
+      "displayName": "Density",
+      "type": "float",
+      "minValue": 3,
+      "maxValue": 40,
+      "defaultValue": 10
+    },
+    {
+      "identifier": "stagger",
+      "displayName": "Stagger",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.5
+    },
+    {
+      "identifier": "shading",
+      "displayName": "Edge Shading",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.45
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "id": "montserrat",
+  "family": "Montserrat",
+  "category": "impact",
+  "order": 50,
+  "license": "OFL-1.1",
+  "licenseFile": "OFL.txt",
+  "faces": [
+    {
+      "weight": 100,
+      "italic": false,
+      "styleName": "Thin",
+      "file": "Montserrat-100.ttf"
+    },
+    {
+      "weight": 200,
+      "italic": false,
+      "styleName": "ExtraLight",
+      "file": "Montserrat-200.ttf"
+    },
+    {
+      "weight": 300,
+      "italic": false,
+      "styleName": "Light",
+      "file": "Montserrat-300.ttf"
+    },
+    {
+      "weight": 400,
+      "italic": false,
+      "styleName": "Regular",
+      "file": "Montserrat-400.ttf"
+    },
+    {
+      "weight": 400,
+      "italic": true,
+      "styleName": "Italic",
+      "file": "Montserrat-400italic.ttf"
+    },
+    {
+      "weight": 500,
+      "italic": false,
+      "styleName": "Medium",
+      "file": "Montserrat-500.ttf"
+    },
+    {
+      "weight": 600,
+      "italic": false,
+      "styleName": "SemiBold",
+      "file": "Montserrat-600.ttf"
+    },
+    {
+      "weight": 700,
+      "italic": false,
+      "styleName": "Bold",
+      "file": "Montserrat-700.ttf"
+    },
+    {
+      "weight": 700,
+      "italic": true,
+      "styleName": "Bold Italic",
+      "file": "Montserrat-700italic.ttf"
+    },
+    {
+      "weight": 800,
+      "italic": false,
+      "styleName": "ExtraBold",
+      "file": "Montserrat-800.ttf"
+    },
+    {
+      "weight": 900,
+      "italic": false,
+      "styleName": "Black",
+      "file": "Montserrat-900.ttf"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "id": "flash_storm",
+  "displayName": "Flash Storm",
+  "category": "drama",
+  "order": 55,
+  "sync": "onset",
+  "layers": [
+    {
+      "effectId": "strobe_flash",
+      "params": { "flash": 0.0 },
+      "pulse": { "param": "flash", "rest": 0.0, "peak": 0.6, "decayMs": 80 }
+    },
+    {
+      "effectId": "zoom_pulse",
+      "params": { "punch": 0.0 },
+      "pulse": { "param": "punch", "rest": 0.0, "peak": 0.6, "decayMs": 200 }
+    },
+    {
+      "effectId": "lightning_sky",
+      "params": { "intensity": 0.0 },
+      "pulse": { "param": "intensity", "rest": 0.0, "peak": 0.7, "decayMs": 120 }
+    }
+  ]
+}

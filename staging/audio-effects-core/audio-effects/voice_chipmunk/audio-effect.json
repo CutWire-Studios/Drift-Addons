@@ -1,0 +1,20 @@
+{
+  "id": "voice.chipmunk",
+  "displayName": "Chipmunk",
+  "category": "voice",
+  "icon": "rabbit",
+  "order": 100,
+  "backend": "juce",
+  "processor": "pitch",
+  "prerollMs": 300,
+  "parameters": [
+    {
+      "identifier": "pitch",
+      "displayName": "Pitch",
+      "type": "float",
+      "minValue": 1.05,
+      "maxValue": 2.0,
+      "defaultValue": 1.5
+    }
+  ]
+}

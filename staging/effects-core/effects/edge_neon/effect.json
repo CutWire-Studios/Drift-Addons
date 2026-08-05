@@ -1,0 +1,107 @@
+{
+  "id": "edge_neon",
+  "displayName": "Edge Glow / Neon",
+  "category": "dreamy",
+  "backend": "gpu",
+  "order": 140,
+  "parameters": [
+    {
+      "identifier": "threshold",
+      "displayName": "Threshold",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.25
+    },
+    {
+      "identifier": "intensity",
+      "displayName": "Intensity",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 2,
+      "defaultValue": 0.8
+    },
+    {
+      "identifier": "radius",
+      "displayName": "Radius",
+      "type": "float",
+      "minValue": 1,
+      "maxValue": 20,
+      "defaultValue": 4
+    }
+  ],
+  "fixedParams": {
+    "color": "#00ffff"
+  },
+  "pipeline": {
+    "intermediateBuffers": [
+      {
+        "id": "mask",
+        "scale": 1.0
+      },
+      {
+        "id": "h",
+        "scale": 1.0
+      }
+    ],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "sobel.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "mask"
+        }
+      },
+      {
+        "passIndex": 1,
+        "fragmentShader": "blur_h.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "mask"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "h"
+        }
+      },
+      {
+        "passIndex": 2,
+        "fragmentShader": "blur_v.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "h"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "mask"
+        }
+      },
+      {
+        "passIndex": 3,
+        "fragmentShader": "composite.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "mask"
+          },
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

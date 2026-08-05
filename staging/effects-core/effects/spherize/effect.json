@@ -1,0 +1,58 @@
+{
+  "id": "spherize",
+  "displayName": "Spherize",
+  "category": "glitch",
+  "order": 710,
+  "parameters": [
+    {
+      "identifier": "amount",
+      "displayName": "Amount",
+      "type": "float",
+      "defaultValue": 0.5,
+      "minValue": -1,
+      "maxValue": 1
+    },
+    {
+      "identifier": "radius",
+      "displayName": "Radius",
+      "type": "float",
+      "defaultValue": 0.55,
+      "minValue": 0.0,
+      "maxValue": 1
+    },
+    {
+      "identifier": "centerX",
+      "displayName": "Center X",
+      "type": "float",
+      "defaultValue": 0.5,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    },
+    {
+      "identifier": "centerY",
+      "displayName": "Center Y",
+      "type": "float",
+      "defaultValue": 0.5,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

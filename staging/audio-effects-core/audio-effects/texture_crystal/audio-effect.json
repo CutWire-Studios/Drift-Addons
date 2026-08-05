@@ -1,0 +1,28 @@
+{
+  "id": "texture.crystal",
+  "displayName": "Crystalize",
+  "category": "texture",
+  "icon": "gem",
+  "order": 340,
+  "backend": "juce",
+  "processor": "crystalizer",
+  "prerollMs": 0,
+  "parameters": [
+    {
+      "identifier": "intensity",
+      "displayName": "Intensity",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 10.0,
+      "defaultValue": 2.0
+    },
+    {
+      "identifier": "colors",
+      "displayName": "Colors",
+      "type": "float",
+      "minValue": 2,
+      "maxValue": 64,
+      "defaultValue": 8
+    }
+  ]
+}

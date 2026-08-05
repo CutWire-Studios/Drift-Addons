@@ -1,0 +1,18 @@
+{
+  "id": "whisper.small",
+  "version": "1.0.0",
+  "name": "Auto Captions",
+  "description": "Turns speech into subtitle captions in many languages. Used by Create captions from speech.",
+  "details": "OpenAI Whisper small, fp16 ONNX. Automatic speech recognition used by Create captions from speech — about 99 languages. Package id: whisper.small.",
+  "author": "CutWire",
+  "license": "Apache-2.0",
+  "minAppVersion": "0.1.0",
+  "source": "../staging/whisper-small",
+  "provides": [
+    {
+      "kind": "whisper-model",
+      "root": "models/whisper-small"
+    }
+  ],
+  "zstdLevel": 3
+}

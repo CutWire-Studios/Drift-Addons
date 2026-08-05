@@ -1,0 +1,40 @@
+{
+  "id": "fredoka",
+  "family": "Fredoka",
+  "category": "playful",
+  "order": 10,
+  "license": "OFL-1.1",
+  "licenseFile": "OFL.txt",
+  "faces": [
+    {
+      "weight": 300,
+      "italic": false,
+      "styleName": "Light",
+      "file": "Fredoka-300.ttf"
+    },
+    {
+      "weight": 400,
+      "italic": false,
+      "styleName": "Regular",
+      "file": "Fredoka-400.ttf"
+    },
+    {
+      "weight": 500,
+      "italic": false,
+      "styleName": "Medium",
+      "file": "Fredoka-500.ttf"
+    },
+    {
+      "weight": 600,
+      "italic": false,
+      "styleName": "SemiBold",
+      "file": "Fredoka-600.ttf"
+    },
+    {
+      "weight": 700,
+      "italic": false,
+      "styleName": "Bold",
+      "file": "Fredoka-700.ttf"
+    }
+  ]
+}

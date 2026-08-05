@@ -1,0 +1,21 @@
+{
+  "id": "stickers.harmonyos",
+  "version": "1.0.0",
+  "name": "Emoji Stickers",
+  "description": "Colour emoji stickers — smileys, hearts, hands, animals, food, and more — ready to drop onto your timeline.",
+  "details": "Colour emoji stickers extracted from HarmonyOS Sans, plus the emoji font so the picker can reach every glyph. License: Proprietary — HarmonyOS Sans. Package id: stickers.harmonyos.",
+  "author": "CutWire",
+  "license": "Proprietary — HarmonyOS Sans",
+  "minAppVersion": "0.1.0",
+  "source": "../staging/stickers-harmonyos",
+  "provides": [
+    {
+      "kind": "stickers",
+      "root": "stickers"
+    },
+    {
+      "kind": "emoji-font",
+      "root": "emoji-font"
+    }
+  ]
+}

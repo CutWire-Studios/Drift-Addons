@@ -1,0 +1,50 @@
+{
+  "id": "motion_trail",
+  "displayName": "Motion Trail",
+  "category": "impact",
+  "order": 95,
+  "parameters": [
+    {
+      "identifier": "amount",
+      "displayName": "Amount",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.45
+    },
+    {
+      "identifier": "angle",
+      "displayName": "Angle",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.25
+    },
+    {
+      "identifier": "length",
+      "displayName": "Length",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.5
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

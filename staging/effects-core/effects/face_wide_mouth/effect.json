@@ -1,0 +1,53 @@
+{
+  "id": "face_wide_mouth",
+  "displayName": "Wide Mouth",
+  "category": "funny",
+  "order": 620,
+  "requires": "face",
+  "parameters": [
+    {
+      "identifier": "widen",
+      "displayName": "Widen",
+      "type": "float",
+      "minValue": -0.6,
+      "maxValue": 1.5,
+      "defaultValue": 0.6
+    },
+    {
+      "identifier": "heighten",
+      "displayName": "Heighten",
+      "type": "float",
+      "minValue": -0.6,
+      "maxValue": 1.5,
+      "defaultValue": 0.25
+    },
+    {
+      "identifier": "radius",
+      "displayName": "Radius",
+      "type": "float",
+      "minValue": 0.5,
+      "maxValue": 3,
+      "defaultValue": 1.2
+    },
+    {
+      "identifier": "faceIndex",
+      "displayName": "Face",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 3,
+      "defaultValue": 0
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [{ "type": "source_texture" }],
+        "output": { "type": "canvas" }
+      }
+    ]
+  }
+}

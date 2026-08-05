@@ -1,0 +1,55 @@
+{
+  "id": "prism_wipe",
+  "displayName": "Prism Wipe",
+  "category": "stylized",
+  "order": 430,
+  "audioCurve": "crossfade",
+  "parameters": [
+    {
+      "identifier": "dispersion",
+      "displayName": "Dispersion",
+      "type": "float",
+      "defaultValue": 0.55,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    },
+    {
+      "identifier": "softness",
+      "displayName": "Softness",
+      "type": "float",
+      "defaultValue": 0.2,
+      "minValue": 0.01,
+      "maxValue": 0.5
+    },
+    {
+      "identifier": "angle",
+      "displayName": "Angle",
+      "type": "float",
+      "defaultValue": 25.0,
+      "minValue": 0.0,
+      "maxValue": 180
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

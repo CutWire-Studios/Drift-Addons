@@ -1,0 +1,28 @@
+{
+  "id": "transmission.telephone",
+  "displayName": "Telephone",
+  "category": "transmission",
+  "icon": "phone",
+  "order": 200,
+  "backend": "juce",
+  "processor": "bandlimit",
+  "prerollMs": 50,
+  "parameters": [
+    {
+      "identifier": "low_cut",
+      "displayName": "High-Pass",
+      "type": "float",
+      "minValue": 100,
+      "maxValue": 800,
+      "defaultValue": 300
+    },
+    {
+      "identifier": "high_cut",
+      "displayName": "Low-Pass",
+      "type": "float",
+      "minValue": 2000,
+      "maxValue": 6000,
+      "defaultValue": 3400
+    }
+  ]
+}

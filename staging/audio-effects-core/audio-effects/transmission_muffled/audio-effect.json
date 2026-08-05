@@ -1,0 +1,28 @@
+{
+  "id": "transmission.muffled",
+  "displayName": "Muffled",
+  "category": "transmission",
+  "icon": "volume-x",
+  "order": 240,
+  "backend": "juce",
+  "processor": "muffled",
+  "prerollMs": 50,
+  "parameters": [
+    {
+      "identifier": "cutoff",
+      "displayName": "Cutoff",
+      "type": "float",
+      "minValue": 200,
+      "maxValue": 4000,
+      "defaultValue": 800
+    },
+    {
+      "identifier": "gain",
+      "displayName": "Gain",
+      "type": "float",
+      "minValue": 0.1,
+      "maxValue": 2.0,
+      "defaultValue": 1.0
+    }
+  ]
+}

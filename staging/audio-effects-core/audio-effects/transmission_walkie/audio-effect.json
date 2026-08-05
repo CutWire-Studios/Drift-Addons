@@ -1,0 +1,36 @@
+{
+  "id": "transmission.walkie",
+  "displayName": "Walkie-Talkie",
+  "category": "transmission",
+  "icon": "radio-receiver",
+  "order": 210,
+  "backend": "juce",
+  "processor": "walkie",
+  "prerollMs": 50,
+  "parameters": [
+    {
+      "identifier": "grit",
+      "displayName": "Grit",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.4
+    },
+    {
+      "identifier": "low_cut",
+      "displayName": "High-Pass",
+      "type": "float",
+      "minValue": 200,
+      "maxValue": 800,
+      "defaultValue": 400
+    },
+    {
+      "identifier": "high_cut",
+      "displayName": "Low-Pass",
+      "type": "float",
+      "minValue": 1500,
+      "maxValue": 5000,
+      "defaultValue": 3000
+    }
+  ]
+}

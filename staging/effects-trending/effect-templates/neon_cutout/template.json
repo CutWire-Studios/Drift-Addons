@@ -1,0 +1,37 @@
+{
+  "id": "neon_cutout",
+  "displayName": "Neon Cutout",
+  "category": "dreamy",
+  "order": 18,
+  "sync": "bar",
+  "requiresSegmentation": true,
+  "tracks": [
+    {
+      "role": "background",
+      "layers": [
+        {
+          "effectId": "duotone",
+          "params": {
+            "strength": 0.6,
+            "shadowColor": "#0a1628",
+            "highlightColor": "#ff2d95"
+          }
+        },
+        {
+          "effectId": "bloom_glow",
+          "params": { "intensity": 0.4, "threshold": 0.72 }
+        }
+      ]
+    },
+    {
+      "role": "foreground",
+      "layers": [
+        {
+          "effectId": "edge_neon",
+          "params": { "intensity": 0.0, "radius": 5 },
+          "pulse": { "param": "intensity", "rest": 0.5, "peak": 0.95, "decayMs": 380 }
+        }
+      ]
+    }
+  ]
+}

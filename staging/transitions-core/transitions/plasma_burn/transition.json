@@ -1,0 +1,58 @@
+{
+  "id": "plasma_burn",
+  "displayName": "Plasma Burn",
+  "category": "liquid",
+  "order": 320,
+  "parameters": [
+    {
+      "identifier": "scale",
+      "displayName": "Noise Scale",
+      "type": "float",
+      "minValue": 1,
+      "maxValue": 20,
+      "defaultValue": 5
+    },
+    {
+      "identifier": "intensity",
+      "displayName": "Ember Intensity",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 2.0,
+      "defaultValue": 1.0
+    },
+    {
+      "identifier": "edgeWidth",
+      "displayName": "Edge Width",
+      "type": "float",
+      "minValue": 0.01,
+      "maxValue": 0.25,
+      "defaultValue": 0.07
+    }
+  ],
+  "fixedParams": {
+    "hotColor": "#fff0a0",
+    "coolColor": "#ff5008"
+  },
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

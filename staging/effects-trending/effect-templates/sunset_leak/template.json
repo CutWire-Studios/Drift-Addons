@@ -1,0 +1,27 @@
+{
+  "id": "sunset_leak",
+  "displayName": "Sunset Leak",
+  "category": "dreamy",
+  "order": 17,
+  "sync": "clip",
+  "requiresSegmentation": true,
+  "tracks": [
+    {
+      "role": "background",
+      "layers": [
+        {
+          "effectId": "light_leak",
+          "params": { "intensity": 0.55, "hue": 0.06, "speed": 0.45, "softness": 0.4 }
+        },
+        {
+          "effectId": "halation",
+          "params": { "intensity": 0.45, "warmth": 0.85 }
+        }
+      ]
+    },
+    {
+      "role": "foreground",
+      "layers": []
+    }
+  ]
+}

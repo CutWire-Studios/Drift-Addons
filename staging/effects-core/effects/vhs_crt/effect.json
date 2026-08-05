@@ -1,0 +1,74 @@
+{
+  "id": "vhs_crt",
+  "displayName": "VHS / CRT",
+  "category": "retro",
+  "order": 230,
+  "parameters": [
+    {
+      "identifier": "scanlines",
+      "displayName": "Scanlines",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.35
+    },
+    {
+      "identifier": "noise",
+      "displayName": "Noise",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.25
+    },
+    {
+      "identifier": "colorBleed",
+      "displayName": "Color bleed",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 20,
+      "defaultValue": 3
+    },
+    {
+      "identifier": "distortion",
+      "displayName": "Distortion",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.2
+    },
+    {
+      "identifier": "vignette",
+      "displayName": "Vignette",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.25
+    },
+    {
+      "identifier": "desaturation",
+      "displayName": "Desaturation",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.15
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

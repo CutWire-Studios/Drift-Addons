@@ -1,0 +1,42 @@
+{
+  "id": "mirror",
+  "displayName": "Mirror",
+  "category": "glitch",
+  "order": 750,
+  "parameters": [
+    {
+      "identifier": "mode",
+      "displayName": "Mode",
+      "type": "float",
+      "defaultValue": 0.0,
+      "minValue": 0.0,
+      "maxValue": 3
+    },
+    {
+      "identifier": "offset",
+      "displayName": "Offset",
+      "type": "float",
+      "defaultValue": 0.5,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "id": "film_burn",
+  "displayName": "Film Burn / Light Leak",
+  "category": "retro",
+  "order": 240,
+  "parameters": [
+    {
+      "identifier": "intensity",
+      "displayName": "Intensity",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.45
+    },
+    {
+      "identifier": "warmth",
+      "displayName": "Warmth",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.8
+    },
+    {
+      "identifier": "flicker",
+      "displayName": "Flicker",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.35
+    },
+    {
+      "identifier": "seed",
+      "displayName": "Seed",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 999999,
+      "defaultValue": 1
+    }
+  ],
+  "fixedParams": {
+    "position": "left"
+  },
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

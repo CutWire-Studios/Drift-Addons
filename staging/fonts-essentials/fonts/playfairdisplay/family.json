@@ -1,0 +1,58 @@
+{
+  "id": "playfairdisplay",
+  "family": "Playfair Display",
+  "category": "editorial",
+  "order": 10,
+  "license": "OFL-1.1",
+  "licenseFile": "OFL.txt",
+  "faces": [
+    {
+      "weight": 400,
+      "italic": false,
+      "styleName": "Regular",
+      "file": "PlayfairDisplay-400.ttf"
+    },
+    {
+      "weight": 400,
+      "italic": true,
+      "styleName": "Italic",
+      "file": "PlayfairDisplay-400italic.ttf"
+    },
+    {
+      "weight": 500,
+      "italic": false,
+      "styleName": "Medium",
+      "file": "PlayfairDisplay-500.ttf"
+    },
+    {
+      "weight": 600,
+      "italic": false,
+      "styleName": "SemiBold",
+      "file": "PlayfairDisplay-600.ttf"
+    },
+    {
+      "weight": 700,
+      "italic": false,
+      "styleName": "Bold",
+      "file": "PlayfairDisplay-700.ttf"
+    },
+    {
+      "weight": 700,
+      "italic": true,
+      "styleName": "Bold Italic",
+      "file": "PlayfairDisplay-700italic.ttf"
+    },
+    {
+      "weight": 800,
+      "italic": false,
+      "styleName": "ExtraBold",
+      "file": "PlayfairDisplay-800.ttf"
+    },
+    {
+      "weight": 900,
+      "italic": false,
+      "styleName": "Black",
+      "file": "PlayfairDisplay-900.ttf"
+    }
+  ]
+}

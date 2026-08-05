@@ -1,0 +1,44 @@
+{
+  "id": "voice.alien",
+  "displayName": "Alien",
+  "category": "voice",
+  "icon": "orbit",
+  "order": 140,
+  "backend": "juce",
+  "processor": "flanger",
+  "prerollMs": 150,
+  "parameters": [
+    {
+      "identifier": "speed",
+      "displayName": "Speed",
+      "type": "float",
+      "minValue": 0.1,
+      "maxValue": 5.0,
+      "defaultValue": 1.5
+    },
+    {
+      "identifier": "delay",
+      "displayName": "Delay (ms)",
+      "type": "float",
+      "minValue": 1,
+      "maxValue": 20,
+      "defaultValue": 10
+    },
+    {
+      "identifier": "depth",
+      "displayName": "Depth",
+      "type": "float",
+      "minValue": 1,
+      "maxValue": 20,
+      "defaultValue": 8
+    },
+    {
+      "identifier": "regen",
+      "displayName": "Feedback",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 95,
+      "defaultValue": 60
+    }
+  ]
+}

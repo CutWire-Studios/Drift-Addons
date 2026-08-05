@@ -1,0 +1,16 @@
+{
+  "id": "pacifico",
+  "family": "Pacifico",
+  "category": "playful",
+  "order": 20,
+  "license": "OFL-1.1",
+  "licenseFile": "OFL.txt",
+  "faces": [
+    {
+      "weight": 400,
+      "italic": false,
+      "styleName": "Regular",
+      "file": "Pacifico-400.ttf"
+    }
+  ]
+}

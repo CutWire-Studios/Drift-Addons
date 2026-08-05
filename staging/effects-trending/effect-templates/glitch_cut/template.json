@@ -1,0 +1,24 @@
+{
+  "id": "glitch_cut",
+  "displayName": "Glitch Cut",
+  "category": "rhythm",
+  "order": 50,
+  "sync": "onset",
+  "layers": [
+    {
+      "effectId": "digital_glitch",
+      "params": { "intensity": 0.0 },
+      "pulse": { "param": "intensity", "rest": 0.0, "peak": 0.55, "decayMs": 120 }
+    },
+    {
+      "effectId": "rgb_split",
+      "params": { "amount": 0.0 },
+      "pulse": { "param": "amount", "rest": 0.0, "peak": 0.4, "decayMs": 100 }
+    },
+    {
+      "effectId": "block_glitch",
+      "params": { "intensity": 0.0 },
+      "pulse": { "param": "intensity", "rest": 0.0, "peak": 0.45, "decayMs": 140 }
+    }
+  ]
+}

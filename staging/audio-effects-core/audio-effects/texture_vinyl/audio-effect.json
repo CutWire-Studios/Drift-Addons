@@ -1,0 +1,44 @@
+{
+  "id": "texture.vinyl",
+  "displayName": "Vinyl",
+  "category": "texture",
+  "icon": "disc-3",
+  "order": 320,
+  "backend": "juce",
+  "processor": "vinyl",
+  "prerollMs": 100,
+  "parameters": [
+    {
+      "identifier": "flutter",
+      "displayName": "Flutter",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 0.5,
+      "defaultValue": 0.15
+    },
+    {
+      "identifier": "highpass",
+      "displayName": "Rumble",
+      "type": "float",
+      "minValue": 50,
+      "maxValue": 500,
+      "defaultValue": 200
+    },
+    {
+      "identifier": "lowpass",
+      "displayName": "Cutoff",
+      "type": "float",
+      "minValue": 2000,
+      "maxValue": 12000,
+      "defaultValue": 6000
+    },
+    {
+      "identifier": "wobble",
+      "displayName": "Wobble Rate",
+      "type": "float",
+      "minValue": 0.1,
+      "maxValue": 5.0,
+      "defaultValue": 0.5
+    }
+  ]
+}

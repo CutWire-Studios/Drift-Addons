@@ -1,0 +1,28 @@
+{
+  "id": "voice.robot",
+  "displayName": "Robot",
+  "category": "voice",
+  "icon": "bot",
+  "order": 130,
+  "backend": "juce",
+  "processor": "tremolo",
+  "prerollMs": 0,
+  "parameters": [
+    {
+      "identifier": "freq",
+      "displayName": "Frequency",
+      "type": "float",
+      "minValue": 10,
+      "maxValue": 200,
+      "defaultValue": 50
+    },
+    {
+      "identifier": "depth",
+      "displayName": "Depth",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 1.0
+    }
+  ]
+}

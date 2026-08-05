@@ -1,0 +1,54 @@
+{
+  "id": "duotone",
+  "displayName": "Duotone",
+  "category": "artistic",
+  "order": 530,
+  "parameters": [
+    {
+      "identifier": "strength",
+      "displayName": "Strength",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.8
+    },
+    {
+      "identifier": "shadowColor",
+      "displayName": "Shadow",
+      "type": "string",
+      "defaultValue": "#0a1628"
+    },
+    {
+      "identifier": "highlightColor",
+      "displayName": "Highlight",
+      "type": "string",
+      "defaultValue": "#ff6b35"
+    },
+    {
+      "identifier": "contrast",
+      "displayName": "Contrast",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.5
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

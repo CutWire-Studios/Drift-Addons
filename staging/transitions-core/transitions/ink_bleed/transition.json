@@ -1,0 +1,65 @@
+{
+  "id": "ink_bleed",
+  "displayName": "Ink Bleed",
+  "category": "liquid",
+  "order": 330,
+  "parameters": [
+    {
+      "identifier": "scale",
+      "displayName": "Noise Scale",
+      "type": "float",
+      "minValue": 1,
+      "maxValue": 20,
+      "defaultValue": 6
+    },
+    {
+      "identifier": "distort",
+      "displayName": "Distortion",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.55
+    },
+    {
+      "identifier": "darkness",
+      "displayName": "Ink Darkness",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.7
+    },
+    {
+      "identifier": "softness",
+      "displayName": "Softness",
+      "type": "float",
+      "minValue": 0.005,
+      "maxValue": 0.3,
+      "defaultValue": 0.04
+    }
+  ],
+  "fixedParams": {
+    "inkColor": "#0a0710"
+  },
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

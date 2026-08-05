@@ -1,0 +1,28 @@
+{
+  "id": "voice.wobble",
+  "displayName": "Wobble",
+  "category": "voice",
+  "icon": "activity",
+  "order": 150,
+  "backend": "juce",
+  "processor": "vibrato",
+  "prerollMs": 100,
+  "parameters": [
+    {
+      "identifier": "rate",
+      "displayName": "Rate",
+      "type": "float",
+      "minValue": 0.1,
+      "maxValue": 20.0,
+      "defaultValue": 4.0
+    },
+    {
+      "identifier": "depth",
+      "displayName": "Depth",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.6
+    }
+  ]
+}

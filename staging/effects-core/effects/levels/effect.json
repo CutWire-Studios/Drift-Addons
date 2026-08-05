@@ -1,0 +1,66 @@
+{
+  "id": "levels",
+  "displayName": "Levels",
+  "category": "color",
+  "order": 910,
+  "parameters": [
+    {
+      "identifier": "inBlack",
+      "displayName": "Input Black",
+      "type": "float",
+      "defaultValue": 0.0,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    },
+    {
+      "identifier": "inWhite",
+      "displayName": "Input White",
+      "type": "float",
+      "defaultValue": 1.0,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    },
+    {
+      "identifier": "gamma",
+      "displayName": "Gamma",
+      "type": "float",
+      "defaultValue": 1.0,
+      "minValue": 0.2,
+      "maxValue": 3
+    },
+    {
+      "identifier": "outBlack",
+      "displayName": "Output Black",
+      "type": "float",
+      "defaultValue": 0.0,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    },
+    {
+      "identifier": "outWhite",
+      "displayName": "Output White",
+      "type": "float",
+      "defaultValue": 1.0,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

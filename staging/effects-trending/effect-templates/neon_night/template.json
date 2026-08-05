@@ -1,0 +1,26 @@
+{
+  "id": "neon_night",
+  "displayName": "Neon Night",
+  "category": "look",
+  "order": 40,
+  "sync": "bar",
+  "layers": [
+    {
+      "effectId": "edge_neon",
+      "params": { "intensity": 0.7, "radius": 5.0 },
+      "pulse": { "param": "intensity", "rest": 0.55, "peak": 0.95, "decayMs": 400 }
+    },
+    {
+      "effectId": "bloom_glow",
+      "params": { "intensity": 0.45, "threshold": 0.7 }
+    },
+    {
+      "effectId": "duotone",
+      "params": {
+        "strength": 0.55,
+        "shadowColor": "#0a1628",
+        "highlightColor": "#ff2d95"
+      }
+    }
+  ]
+}

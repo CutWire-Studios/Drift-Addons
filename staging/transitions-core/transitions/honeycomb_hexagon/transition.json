@@ -1,0 +1,54 @@
+{
+  "id": "honeycomb_hexagon",
+  "displayName": "Honeycomb Hexagon",
+  "category": "geometric",
+  "order": 200,
+  "parameters": [
+    {
+      "identifier": "density",
+      "displayName": "Cell Density",
+      "type": "float",
+      "minValue": 4,
+      "maxValue": 60,
+      "defaultValue": 18
+    },
+    {
+      "identifier": "stagger",
+      "displayName": "Stagger",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.55
+    },
+    {
+      "identifier": "softness",
+      "displayName": "Edge Softness",
+      "type": "float",
+      "minValue": 0.001,
+      "maxValue": 0.2,
+      "defaultValue": 0.03
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

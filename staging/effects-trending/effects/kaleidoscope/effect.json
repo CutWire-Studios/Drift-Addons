@@ -1,0 +1,66 @@
+{
+  "id": "kaleidoscope",
+  "displayName": "Kaleidoscope",
+  "category": "glitch",
+  "order": 380,
+  "parameters": [
+    {
+      "identifier": "segments",
+      "displayName": "Segments",
+      "type": "float",
+      "minValue": 2,
+      "maxValue": 12,
+      "defaultValue": 6
+    },
+    {
+      "identifier": "rotation",
+      "displayName": "Rotation",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0
+    },
+    {
+      "identifier": "centerX",
+      "displayName": "Center X",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.5
+    },
+    {
+      "identifier": "centerY",
+      "displayName": "Center Y",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.5
+    },
+    {
+      "identifier": "zoom",
+      "displayName": "Zoom",
+      "type": "float",
+      "minValue": 0.5,
+      "maxValue": 2,
+      "defaultValue": 1
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "id": "liquid_smudge",
+  "displayName": "Liquid Smudge",
+  "category": "liquid",
+  "order": 310,
+  "parameters": [
+    {
+      "identifier": "strength",
+      "displayName": "Melt Strength",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.5
+    },
+    {
+      "identifier": "swirl",
+      "displayName": "Swirl",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.5
+    },
+    {
+      "identifier": "melt",
+      "displayName": "Downward Melt",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.6
+    },
+    {
+      "identifier": "bleed",
+      "displayName": "Bleed",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.5
+    },
+    {
+      "identifier": "scale",
+      "displayName": "Noise Scale",
+      "type": "float",
+      "minValue": 1,
+      "maxValue": 20,
+      "defaultValue": 5
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [
+      {
+        "id": "warpA",
+        "scale": 0.5
+      },
+      {
+        "id": "warpB",
+        "scale": 0.5
+      }
+    ],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "warp_init.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "warpA"
+        }
+      },
+      {
+        "passIndex": 1,
+        "fragmentShader": "warp_step.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "warpA"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "warpB"
+        }
+      },
+      {
+        "passIndex": 2,
+        "fragmentShader": "warp_step.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "warpB"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "warpA"
+        }
+      },
+      {
+        "passIndex": 3,
+        "fragmentShader": "warp_step.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "warpA"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "warpB"
+        }
+      },
+      {
+        "passIndex": 4,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "warpB"
+          },
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

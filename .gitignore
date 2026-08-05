@@ -1,0 +1,18 @@
+node_modules/
+dist/
+.secrets/
+.wrangler/
+worker/wrangler.local.jsonc
+worker-configuration.d.ts
+__pycache__/
+*.pyc
+Archive.zip
+
+# staging/: commit fonts, images, JSON, shaders. Large weights/libs stay out of git;
+# a sibling <name>.sha256 is committed instead (see recipes/staging_hashes.py).
+staging/.cache/
+staging/**/*.onnx
+staging/**/*.bin
+staging/**/*.so
+staging/**/*.dylib
+staging/**/*.dll

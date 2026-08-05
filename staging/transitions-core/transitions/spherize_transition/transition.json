@@ -1,0 +1,47 @@
+{
+  "id": "spherize_transition",
+  "displayName": "Spherize",
+  "category": "distortion",
+  "order": 450,
+  "audioCurve": "crossfade",
+  "parameters": [
+    {
+      "identifier": "amount",
+      "displayName": "Amount",
+      "type": "float",
+      "defaultValue": 0.85,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    },
+    {
+      "identifier": "radius",
+      "displayName": "Radius",
+      "type": "float",
+      "defaultValue": 0.7,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

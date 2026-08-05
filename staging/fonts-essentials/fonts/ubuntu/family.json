@@ -1,0 +1,46 @@
+{
+  "id": "ubuntu",
+  "family": "Ubuntu",
+  "category": "clean",
+  "order": 50,
+  "license": "UFL-1.0",
+  "licenseFile": "UFL.txt",
+  "faces": [
+    {
+      "weight": 300,
+      "italic": false,
+      "styleName": "Regular",
+      "file": "Ubuntu-300.ttf"
+    },
+    {
+      "weight": 400,
+      "italic": false,
+      "styleName": "Regular",
+      "file": "Ubuntu-400.ttf"
+    },
+    {
+      "weight": 400,
+      "italic": true,
+      "styleName": "Italic",
+      "file": "Ubuntu-400italic.ttf"
+    },
+    {
+      "weight": 500,
+      "italic": false,
+      "styleName": "Regular",
+      "file": "Ubuntu-500.ttf"
+    },
+    {
+      "weight": 700,
+      "italic": false,
+      "styleName": "Bold",
+      "file": "Ubuntu-700.ttf"
+    },
+    {
+      "weight": 700,
+      "italic": true,
+      "styleName": "Bold Italic",
+      "file": "Ubuntu-700italic.ttf"
+    }
+  ]
+}

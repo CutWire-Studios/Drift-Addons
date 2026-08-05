@@ -1,0 +1,45 @@
+{
+  "id": "face_big_eyes",
+  "displayName": "Big Eyes",
+  "category": "funny",
+  "order": 600,
+  "requires": "face",
+  "parameters": [
+    {
+      "identifier": "amount",
+      "displayName": "Amount",
+      "type": "float",
+      "minValue": -0.8,
+      "maxValue": 0.8,
+      "defaultValue": 0.45
+    },
+    {
+      "identifier": "radius",
+      "displayName": "Radius",
+      "type": "float",
+      "minValue": 1,
+      "maxValue": 8,
+      "defaultValue": 3.5
+    },
+    {
+      "identifier": "faceIndex",
+      "displayName": "Face",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 3,
+      "defaultValue": 0
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [{ "type": "source_texture" }],
+        "output": { "type": "canvas" }
+      }
+    ]
+  }
+}

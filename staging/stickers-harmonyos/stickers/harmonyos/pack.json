@@ -1,0 +1,1046 @@
+{
+  "id": "harmonyos",
+  "name": "HarmonyOS Emoji",
+  "license": "Proprietary \u2014 HarmonyOS Sans",
+  "order": 0,
+  "categories": [
+    {
+      "id": "smileys",
+      "label": "Smileys"
+    },
+    {
+      "id": "hearts",
+      "label": "Hearts & Symbols"
+    },
+    {
+      "id": "hands",
+      "label": "Hands & Gestures"
+    },
+    {
+      "id": "animals",
+      "label": "Animals & Nature"
+    },
+    {
+      "id": "food",
+      "label": "Food & Drink"
+    },
+    {
+      "id": "activities",
+      "label": "Activities & Objects"
+    },
+    {
+      "id": "signs",
+      "label": "Signs & Arrows"
+    }
+  ],
+  "stickers": [
+    {
+      "id": "grinning",
+      "label": "Grinning",
+      "category": "smileys",
+      "file": "grinning.png"
+    },
+    {
+      "id": "smiley",
+      "label": "Smiley",
+      "category": "smileys",
+      "file": "smiley.png"
+    },
+    {
+      "id": "grin",
+      "label": "Grin",
+      "category": "smileys",
+      "file": "grin.png"
+    },
+    {
+      "id": "beaming",
+      "label": "Beaming",
+      "category": "smileys",
+      "file": "beaming.png"
+    },
+    {
+      "id": "laughing",
+      "label": "Laughing",
+      "category": "smileys",
+      "file": "laughing.png"
+    },
+    {
+      "id": "sweat-smile",
+      "label": "Sweat Smile",
+      "category": "smileys",
+      "file": "sweat-smile.png"
+    },
+    {
+      "id": "joy",
+      "label": "Joy",
+      "category": "smileys",
+      "file": "joy.png"
+    },
+    {
+      "id": "rofl",
+      "label": "ROFL",
+      "category": "smileys",
+      "file": "rofl.png"
+    },
+    {
+      "id": "blush",
+      "label": "Blush",
+      "category": "smileys",
+      "file": "blush.png"
+    },
+    {
+      "id": "slight-smile",
+      "label": "Slight Smile",
+      "category": "smileys",
+      "file": "slight-smile.png"
+    },
+    {
+      "id": "upside-down",
+      "label": "Upside Down",
+      "category": "smileys",
+      "file": "upside-down.png"
+    },
+    {
+      "id": "wink",
+      "label": "Wink",
+      "category": "smileys",
+      "file": "wink.png"
+    },
+    {
+      "id": "relieved",
+      "label": "Relieved",
+      "category": "smileys",
+      "file": "relieved.png"
+    },
+    {
+      "id": "heart-eyes",
+      "label": "Heart Eyes",
+      "category": "smileys",
+      "file": "heart-eyes.png"
+    },
+    {
+      "id": "smiling-hearts",
+      "label": "Smiling Hearts",
+      "category": "smileys",
+      "file": "smiling-hearts.png"
+    },
+    {
+      "id": "blow-kiss",
+      "label": "Blow a Kiss",
+      "category": "smileys",
+      "file": "blow-kiss.png"
+    },
+    {
+      "id": "kissing",
+      "label": "Kissing",
+      "category": "smileys",
+      "file": "kissing.png"
+    },
+    {
+      "id": "yum",
+      "label": "Yum",
+      "category": "smileys",
+      "file": "yum.png"
+    },
+    {
+      "id": "wink-tongue",
+      "label": "Wink Tongue",
+      "category": "smileys",
+      "file": "wink-tongue.png"
+    },
+    {
+      "id": "zany",
+      "label": "Zany",
+      "category": "smileys",
+      "file": "zany.png"
+    },
+    {
+      "id": "thinking",
+      "label": "Thinking",
+      "category": "smileys",
+      "file": "thinking.png"
+    },
+    {
+      "id": "roll-eyes",
+      "label": "Rolling Eyes",
+      "category": "smileys",
+      "file": "roll-eyes.png"
+    },
+    {
+      "id": "smirk",
+      "label": "Smirk",
+      "category": "smileys",
+      "file": "smirk.png"
+    },
+    {
+      "id": "unamused",
+      "label": "Unamused",
+      "category": "smileys",
+      "file": "unamused.png"
+    },
+    {
+      "id": "sunglasses",
+      "label": "Sunglasses",
+      "category": "smileys",
+      "file": "sunglasses.png"
+    },
+    {
+      "id": "star-struck",
+      "label": "Star-Struck",
+      "category": "smileys",
+      "file": "star-struck.png"
+    },
+    {
+      "id": "partying",
+      "label": "Partying",
+      "category": "smileys",
+      "file": "partying.png"
+    },
+    {
+      "id": "sleeping",
+      "label": "Sleeping",
+      "category": "smileys",
+      "file": "sleeping.png"
+    },
+    {
+      "id": "sob",
+      "label": "Sobbing",
+      "category": "smileys",
+      "file": "sob.png"
+    },
+    {
+      "id": "rage",
+      "label": "Rage",
+      "category": "smileys",
+      "file": "rage.png"
+    },
+    {
+      "id": "angry",
+      "label": "Angry",
+      "category": "smileys",
+      "file": "angry.png"
+    },
+    {
+      "id": "scream",
+      "label": "Screaming",
+      "category": "smileys",
+      "file": "scream.png"
+    },
+    {
+      "id": "hot-face",
+      "label": "Hot Face",
+      "category": "smileys",
+      "file": "hot-face.png"
+    },
+    {
+      "id": "cold-face",
+      "label": "Cold Face",
+      "category": "smileys",
+      "file": "cold-face.png"
+    },
+    {
+      "id": "mask",
+      "label": "Mask",
+      "category": "smileys",
+      "file": "mask.png"
+    },
+    {
+      "id": "clown",
+      "label": "Clown",
+      "category": "smileys",
+      "file": "clown.png"
+    },
+    {
+      "id": "skull",
+      "label": "Skull",
+      "category": "smileys",
+      "file": "skull.png"
+    },
+    {
+      "id": "ghost",
+      "label": "Ghost",
+      "category": "smileys",
+      "file": "ghost.png"
+    },
+    {
+      "id": "alien",
+      "label": "Alien",
+      "category": "smileys",
+      "file": "alien.png"
+    },
+    {
+      "id": "robot",
+      "label": "Robot",
+      "category": "smileys",
+      "file": "robot.png"
+    },
+    {
+      "id": "poop",
+      "label": "Pile of Poo",
+      "category": "smileys",
+      "file": "poop.png"
+    },
+    {
+      "id": "red-heart",
+      "label": "Red Heart",
+      "category": "hearts",
+      "file": "red-heart.png"
+    },
+    {
+      "id": "orange-heart",
+      "label": "Orange Heart",
+      "category": "hearts",
+      "file": "orange-heart.png"
+    },
+    {
+      "id": "yellow-heart",
+      "label": "Yellow Heart",
+      "category": "hearts",
+      "file": "yellow-heart.png"
+    },
+    {
+      "id": "green-heart",
+      "label": "Green Heart",
+      "category": "hearts",
+      "file": "green-heart.png"
+    },
+    {
+      "id": "blue-heart",
+      "label": "Blue Heart",
+      "category": "hearts",
+      "file": "blue-heart.png"
+    },
+    {
+      "id": "purple-heart",
+      "label": "Purple Heart",
+      "category": "hearts",
+      "file": "purple-heart.png"
+    },
+    {
+      "id": "black-heart",
+      "label": "Black Heart",
+      "category": "hearts",
+      "file": "black-heart.png"
+    },
+    {
+      "id": "white-heart",
+      "label": "White Heart",
+      "category": "hearts",
+      "file": "white-heart.png"
+    },
+    {
+      "id": "broken-heart",
+      "label": "Broken Heart",
+      "category": "hearts",
+      "file": "broken-heart.png"
+    },
+    {
+      "id": "two-hearts",
+      "label": "Two Hearts",
+      "category": "hearts",
+      "file": "two-hearts.png"
+    },
+    {
+      "id": "growing-heart",
+      "label": "Growing Heart",
+      "category": "hearts",
+      "file": "growing-heart.png"
+    },
+    {
+      "id": "sparkling-heart",
+      "label": "Sparkling Heart",
+      "category": "hearts",
+      "file": "sparkling-heart.png"
+    },
+    {
+      "id": "cupid",
+      "label": "Cupid",
+      "category": "hearts",
+      "file": "cupid.png"
+    },
+    {
+      "id": "hundred",
+      "label": "Hundred",
+      "category": "hearts",
+      "file": "hundred.png"
+    },
+    {
+      "id": "collision",
+      "label": "Collision",
+      "category": "hearts",
+      "file": "collision.png"
+    },
+    {
+      "id": "sweat-drops",
+      "label": "Sweat Drops",
+      "category": "hearts",
+      "file": "sweat-drops.png"
+    },
+    {
+      "id": "dash",
+      "label": "Dash",
+      "category": "hearts",
+      "file": "dash.png"
+    },
+    {
+      "id": "fire",
+      "label": "Fire",
+      "category": "hearts",
+      "file": "fire.png"
+    },
+    {
+      "id": "star",
+      "label": "Star",
+      "category": "hearts",
+      "file": "star.png"
+    },
+    {
+      "id": "glowing-star",
+      "label": "Glowing Star",
+      "category": "hearts",
+      "file": "glowing-star.png"
+    },
+    {
+      "id": "sparkles",
+      "label": "Sparkles",
+      "category": "hearts",
+      "file": "sparkles.png"
+    },
+    {
+      "id": "high-voltage",
+      "label": "High Voltage",
+      "category": "hearts",
+      "file": "high-voltage.png"
+    },
+    {
+      "id": "rainbow",
+      "label": "Rainbow",
+      "category": "hearts",
+      "file": "rainbow.png"
+    },
+    {
+      "id": "thumbs-up",
+      "label": "Thumbs Up",
+      "category": "hands",
+      "file": "thumbs-up.png"
+    },
+    {
+      "id": "thumbs-down",
+      "label": "Thumbs Down",
+      "category": "hands",
+      "file": "thumbs-down.png"
+    },
+    {
+      "id": "ok-hand",
+      "label": "OK Hand",
+      "category": "hands",
+      "file": "ok-hand.png"
+    },
+    {
+      "id": "victory",
+      "label": "Victory",
+      "category": "hands",
+      "file": "victory.png"
+    },
+    {
+      "id": "crossed-fingers",
+      "label": "Crossed Fingers",
+      "category": "hands",
+      "file": "crossed-fingers.png"
+    },
+    {
+      "id": "clap",
+      "label": "Clapping",
+      "category": "hands",
+      "file": "clap.png"
+    },
+    {
+      "id": "raising-hands",
+      "label": "Raising Hands",
+      "category": "hands",
+      "file": "raising-hands.png"
+    },
+    {
+      "id": "open-hands",
+      "label": "Open Hands",
+      "category": "hands",
+      "file": "open-hands.png"
+    },
+    {
+      "id": "handshake",
+      "label": "Handshake",
+      "category": "hands",
+      "file": "handshake.png"
+    },
+    {
+      "id": "folded-hands",
+      "label": "Folded Hands",
+      "category": "hands",
+      "file": "folded-hands.png"
+    },
+    {
+      "id": "raised-fist",
+      "label": "Raised Fist",
+      "category": "hands",
+      "file": "raised-fist.png"
+    },
+    {
+      "id": "fist-bump",
+      "label": "Fist Bump",
+      "category": "hands",
+      "file": "fist-bump.png"
+    },
+    {
+      "id": "wave",
+      "label": "Waving",
+      "category": "hands",
+      "file": "wave.png"
+    },
+    {
+      "id": "raised-hand",
+      "label": "Raised Hand",
+      "category": "hands",
+      "file": "raised-hand.png"
+    },
+    {
+      "id": "vulcan",
+      "label": "Vulcan Salute",
+      "category": "hands",
+      "file": "vulcan.png"
+    },
+    {
+      "id": "horns",
+      "label": "Sign of the Horns",
+      "category": "hands",
+      "file": "horns.png"
+    },
+    {
+      "id": "call-me",
+      "label": "Call Me",
+      "category": "hands",
+      "file": "call-me.png"
+    },
+    {
+      "id": "point-left",
+      "label": "Point Left",
+      "category": "hands",
+      "file": "point-left.png"
+    },
+    {
+      "id": "point-right",
+      "label": "Point Right",
+      "category": "hands",
+      "file": "point-right.png"
+    },
+    {
+      "id": "point-up",
+      "label": "Point Up",
+      "category": "hands",
+      "file": "point-up.png"
+    },
+    {
+      "id": "point-down",
+      "label": "Point Down",
+      "category": "hands",
+      "file": "point-down.png"
+    },
+    {
+      "id": "muscle",
+      "label": "Flexed Biceps",
+      "category": "hands",
+      "file": "muscle.png"
+    },
+    {
+      "id": "dog",
+      "label": "Dog",
+      "category": "animals",
+      "file": "dog.png"
+    },
+    {
+      "id": "cat",
+      "label": "Cat",
+      "category": "animals",
+      "file": "cat.png"
+    },
+    {
+      "id": "rabbit",
+      "label": "Rabbit",
+      "category": "animals",
+      "file": "rabbit.png"
+    },
+    {
+      "id": "fox",
+      "label": "Fox",
+      "category": "animals",
+      "file": "fox.png"
+    },
+    {
+      "id": "bear",
+      "label": "Bear",
+      "category": "animals",
+      "file": "bear.png"
+    },
+    {
+      "id": "panda",
+      "label": "Panda",
+      "category": "animals",
+      "file": "panda.png"
+    },
+    {
+      "id": "tiger",
+      "label": "Tiger",
+      "category": "animals",
+      "file": "tiger.png"
+    },
+    {
+      "id": "lion",
+      "label": "Lion",
+      "category": "animals",
+      "file": "lion.png"
+    },
+    {
+      "id": "pig",
+      "label": "Pig",
+      "category": "animals",
+      "file": "pig.png"
+    },
+    {
+      "id": "frog",
+      "label": "Frog",
+      "category": "animals",
+      "file": "frog.png"
+    },
+    {
+      "id": "monkey",
+      "label": "Monkey",
+      "category": "animals",
+      "file": "monkey.png"
+    },
+    {
+      "id": "see-no-evil",
+      "label": "See-No-Evil",
+      "category": "animals",
+      "file": "see-no-evil.png"
+    },
+    {
+      "id": "chicken",
+      "label": "Chicken",
+      "category": "animals",
+      "file": "chicken.png"
+    },
+    {
+      "id": "penguin",
+      "label": "Penguin",
+      "category": "animals",
+      "file": "penguin.png"
+    },
+    {
+      "id": "duck",
+      "label": "Duck",
+      "category": "animals",
+      "file": "duck.png"
+    },
+    {
+      "id": "bee",
+      "label": "Bee",
+      "category": "animals",
+      "file": "bee.png"
+    },
+    {
+      "id": "butterfly",
+      "label": "Butterfly",
+      "category": "animals",
+      "file": "butterfly.png"
+    },
+    {
+      "id": "unicorn",
+      "label": "Unicorn",
+      "category": "animals",
+      "file": "unicorn.png"
+    },
+    {
+      "id": "whale",
+      "label": "Whale",
+      "category": "animals",
+      "file": "whale.png"
+    },
+    {
+      "id": "octopus",
+      "label": "Octopus",
+      "category": "animals",
+      "file": "octopus.png"
+    },
+    {
+      "id": "clover",
+      "label": "Four Leaf Clover",
+      "category": "animals",
+      "file": "clover.png"
+    },
+    {
+      "id": "cherry-blossom",
+      "label": "Cherry Blossom",
+      "category": "animals",
+      "file": "cherry-blossom.png"
+    },
+    {
+      "id": "sunflower",
+      "label": "Sunflower",
+      "category": "animals",
+      "file": "sunflower.png"
+    },
+    {
+      "id": "rose",
+      "label": "Rose",
+      "category": "animals",
+      "file": "rose.png"
+    },
+    {
+      "id": "pizza",
+      "label": "Pizza",
+      "category": "food",
+      "file": "pizza.png"
+    },
+    {
+      "id": "burger",
+      "label": "Burger",
+      "category": "food",
+      "file": "burger.png"
+    },
+    {
+      "id": "fries",
+      "label": "Fries",
+      "category": "food",
+      "file": "fries.png"
+    },
+    {
+      "id": "taco",
+      "label": "Taco",
+      "category": "food",
+      "file": "taco.png"
+    },
+    {
+      "id": "donut",
+      "label": "Donut",
+      "category": "food",
+      "file": "donut.png"
+    },
+    {
+      "id": "cake",
+      "label": "Cake",
+      "category": "food",
+      "file": "cake.png"
+    },
+    {
+      "id": "birthday-cake",
+      "label": "Birthday Cake",
+      "category": "food",
+      "file": "birthday-cake.png"
+    },
+    {
+      "id": "cookie",
+      "label": "Cookie",
+      "category": "food",
+      "file": "cookie.png"
+    },
+    {
+      "id": "ice-cream",
+      "label": "Ice Cream",
+      "category": "food",
+      "file": "ice-cream.png"
+    },
+    {
+      "id": "apple",
+      "label": "Apple",
+      "category": "food",
+      "file": "apple.png"
+    },
+    {
+      "id": "banana",
+      "label": "Banana",
+      "category": "food",
+      "file": "banana.png"
+    },
+    {
+      "id": "grapes",
+      "label": "Grapes",
+      "category": "food",
+      "file": "grapes.png"
+    },
+    {
+      "id": "strawberry",
+      "label": "Strawberry",
+      "category": "food",
+      "file": "strawberry.png"
+    },
+    {
+      "id": "watermelon",
+      "label": "Watermelon",
+      "category": "food",
+      "file": "watermelon.png"
+    },
+    {
+      "id": "peach",
+      "label": "Peach",
+      "category": "food",
+      "file": "peach.png"
+    },
+    {
+      "id": "cherries",
+      "label": "Cherries",
+      "category": "food",
+      "file": "cherries.png"
+    },
+    {
+      "id": "coffee",
+      "label": "Coffee",
+      "category": "food",
+      "file": "coffee.png"
+    },
+    {
+      "id": "beer",
+      "label": "Beer",
+      "category": "food",
+      "file": "beer.png"
+    },
+    {
+      "id": "cocktail",
+      "label": "Tropical Drink",
+      "category": "food",
+      "file": "cocktail.png"
+    },
+    {
+      "id": "soccer",
+      "label": "Soccer",
+      "category": "activities",
+      "file": "soccer.png"
+    },
+    {
+      "id": "basketball",
+      "label": "Basketball",
+      "category": "activities",
+      "file": "basketball.png"
+    },
+    {
+      "id": "football",
+      "label": "Football",
+      "category": "activities",
+      "file": "football.png"
+    },
+    {
+      "id": "video-game",
+      "label": "Video Game",
+      "category": "activities",
+      "file": "video-game.png"
+    },
+    {
+      "id": "guitar",
+      "label": "Guitar",
+      "category": "activities",
+      "file": "guitar.png"
+    },
+    {
+      "id": "music",
+      "label": "Music Note",
+      "category": "activities",
+      "file": "music.png"
+    },
+    {
+      "id": "headphones",
+      "label": "Headphones",
+      "category": "activities",
+      "file": "headphones.png"
+    },
+    {
+      "id": "camera",
+      "label": "Camera",
+      "category": "activities",
+      "file": "camera.png"
+    },
+    {
+      "id": "bulb",
+      "label": "Light Bulb",
+      "category": "activities",
+      "file": "bulb.png"
+    },
+    {
+      "id": "gift",
+      "label": "Gift",
+      "category": "activities",
+      "file": "gift.png"
+    },
+    {
+      "id": "balloon",
+      "label": "Balloon",
+      "category": "activities",
+      "file": "balloon.png"
+    },
+    {
+      "id": "party-popper",
+      "label": "Party Popper",
+      "category": "activities",
+      "file": "party-popper.png"
+    },
+    {
+      "id": "confetti",
+      "label": "Confetti",
+      "category": "activities",
+      "file": "confetti.png"
+    },
+    {
+      "id": "trophy",
+      "label": "Trophy",
+      "category": "activities",
+      "file": "trophy.png"
+    },
+    {
+      "id": "gold-medal",
+      "label": "Gold Medal",
+      "category": "activities",
+      "file": "gold-medal.png"
+    },
+    {
+      "id": "rocket",
+      "label": "Rocket",
+      "category": "activities",
+      "file": "rocket.png"
+    },
+    {
+      "id": "car",
+      "label": "Car",
+      "category": "activities",
+      "file": "car.png"
+    },
+    {
+      "id": "alarm-clock",
+      "label": "Alarm Clock",
+      "category": "activities",
+      "file": "alarm-clock.png"
+    },
+    {
+      "id": "money-bag",
+      "label": "Money Bag",
+      "category": "activities",
+      "file": "money-bag.png"
+    },
+    {
+      "id": "key",
+      "label": "Key",
+      "category": "activities",
+      "file": "key.png"
+    },
+    {
+      "id": "lock",
+      "label": "Lock",
+      "category": "activities",
+      "file": "lock.png"
+    },
+    {
+      "id": "check-mark",
+      "label": "Check Mark",
+      "category": "signs",
+      "file": "check-mark.png"
+    },
+    {
+      "id": "cross-mark",
+      "label": "Cross Mark",
+      "category": "signs",
+      "file": "cross-mark.png"
+    },
+    {
+      "id": "exclamation",
+      "label": "Exclamation",
+      "category": "signs",
+      "file": "exclamation.png"
+    },
+    {
+      "id": "question",
+      "label": "Question",
+      "category": "signs",
+      "file": "question.png"
+    },
+    {
+      "id": "warning",
+      "label": "Warning",
+      "category": "signs",
+      "file": "warning.png"
+    },
+    {
+      "id": "prohibited",
+      "label": "Prohibited",
+      "category": "signs",
+      "file": "prohibited.png"
+    },
+    {
+      "id": "arrow-up",
+      "label": "Arrow Up",
+      "category": "signs",
+      "file": "arrow-up.png"
+    },
+    {
+      "id": "arrow-down",
+      "label": "Arrow Down",
+      "category": "signs",
+      "file": "arrow-down.png"
+    },
+    {
+      "id": "arrow-right",
+      "label": "Arrow Right",
+      "category": "signs",
+      "file": "arrow-right.png"
+    },
+    {
+      "id": "arrow-left",
+      "label": "Arrow Left",
+      "category": "signs",
+      "file": "arrow-left.png"
+    },
+    {
+      "id": "red-triangle-up",
+      "label": "Red Triangle Up",
+      "category": "signs",
+      "file": "red-triangle-up.png"
+    },
+    {
+      "id": "red-triangle-down",
+      "label": "Red Triangle Down",
+      "category": "signs",
+      "file": "red-triangle-down.png"
+    },
+    {
+      "id": "chart-up",
+      "label": "Chart Up",
+      "category": "signs",
+      "file": "chart-up.png"
+    },
+    {
+      "id": "chart-down",
+      "label": "Chart Down",
+      "category": "signs",
+      "file": "chart-down.png"
+    },
+    {
+      "id": "plus",
+      "label": "Plus",
+      "category": "signs",
+      "file": "plus.png"
+    },
+    {
+      "id": "minus",
+      "label": "Minus",
+      "category": "signs",
+      "file": "minus.png"
+    },
+    {
+      "id": "top",
+      "label": "TOP Arrow",
+      "category": "signs",
+      "file": "top.png"
+    },
+    {
+      "id": "new",
+      "label": "NEW Button",
+      "category": "signs",
+      "file": "new.png"
+    }
+  ]
+}

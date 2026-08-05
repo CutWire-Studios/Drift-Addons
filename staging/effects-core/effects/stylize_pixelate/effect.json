@@ -1,0 +1,42 @@
+{
+  "id": "stylize.pixelate",
+  "displayName": "Pixelate",
+  "category": "glitch",
+  "order": 300,
+  "parameters": [
+    {
+      "identifier": "width",
+      "displayName": "Block width",
+      "type": "float",
+      "minValue": 2,
+      "maxValue": 64,
+      "defaultValue": 8
+    },
+    {
+      "identifier": "height",
+      "displayName": "Block height",
+      "type": "float",
+      "minValue": 2,
+      "maxValue": 64,
+      "defaultValue": 8
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

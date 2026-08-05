@@ -1,0 +1,33 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "drift-addons",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-07-18",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  },
+  "r2_buckets": [
+    {
+      "binding": "BUCKET",
+      // Filled from PUBLISH_BUCKET in .secrets/config.env by packer/config.py
+      "bucket_name": "__PUBLISH_BUCKET__"
+    }
+  ],
+  "ratelimits": [
+    {
+      // The app refreshes the catalogue at most every 6 hours, so anything above a handful a
+      // minute is a scraper.
+      "name": "INDEX_LIMITER",
+      "namespace_id": "1001",
+      "simple": { "limit": 20, "period": 60 }
+    },
+    {
+      // Generous: a whole addon is one request, but a resuming client may retry a few times.
+      "name": "DOWNLOAD_LIMITER",
+      "namespace_id": "1002",
+      "simple": { "limit": 60, "period": 60 }
+    }
+  ]
+}

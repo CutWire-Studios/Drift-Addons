@@ -1,0 +1,4 @@
+Sticker images are extracted at build time from HarmonyOS_4.0.ttf (HarmonyOS MFFM Emoji),
+which is derived from Google's Noto Emoji (github.com/googlefonts/noto-emoji), licensed under
+the Apache License 2.0. The font is not distributed with this project. These PNGs are generated
+locally and are not committed to the repository.

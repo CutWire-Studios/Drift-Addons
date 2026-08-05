@@ -1,0 +1,59 @@
+{
+  "id": "key.chroma",
+  "displayName": "Chroma Key",
+  "category": "keying",
+  "order": 400,
+  "description": "Remove a green or blue screen background. Drag Key Colour to match your backdrop, then raise Tolerance until the background disappears.",
+  "backend": "gpu",
+  "parameters": [
+    {
+      "identifier": "u_keyHue",
+      "displayName": "Key Colour",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 360.0,
+      "defaultValue": 120.0
+    },
+    {
+      "identifier": "u_tolerance",
+      "displayName": "Tolerance",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.5
+    },
+    {
+      "identifier": "u_softness",
+      "displayName": "Edge Softness",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.35
+    },
+    {
+      "identifier": "u_spill",
+      "displayName": "Spill Removal",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 1.0
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

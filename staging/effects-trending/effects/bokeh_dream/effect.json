@@ -1,0 +1,58 @@
+{
+  "id": "bokeh_dream",
+  "displayName": "Bokeh Dream",
+  "category": "dreamy",
+  "order": 195,
+  "parameters": [
+    {
+      "identifier": "intensity",
+      "displayName": "Intensity",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.65
+    },
+    {
+      "identifier": "radius",
+      "displayName": "Radius",
+      "type": "float",
+      "minValue": 1,
+      "maxValue": 24,
+      "defaultValue": 10
+    },
+    {
+      "identifier": "threshold",
+      "displayName": "Threshold",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.55
+    },
+    {
+      "identifier": "softness",
+      "displayName": "Softness",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.5
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

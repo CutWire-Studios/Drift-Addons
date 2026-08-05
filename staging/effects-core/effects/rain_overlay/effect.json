@@ -1,0 +1,66 @@
+{
+  "id": "rain_overlay",
+  "displayName": "Rain",
+  "category": "dreamy",
+  "order": 980,
+  "parameters": [
+    {
+      "identifier": "amount",
+      "displayName": "Amount",
+      "type": "float",
+      "defaultValue": 0.55,
+      "minValue": 0.0,
+      "maxValue": 1
+    },
+    {
+      "identifier": "speed",
+      "displayName": "Speed",
+      "type": "float",
+      "defaultValue": 1.5,
+      "minValue": 0.0,
+      "maxValue": 5
+    },
+    {
+      "identifier": "streakLength",
+      "displayName": "Streak Length",
+      "type": "float",
+      "defaultValue": 0.45,
+      "minValue": 0.0,
+      "maxValue": 1
+    },
+    {
+      "identifier": "angle",
+      "displayName": "Angle",
+      "type": "float",
+      "defaultValue": 12.0,
+      "minValue": -30,
+      "maxValue": 30
+    },
+    {
+      "identifier": "opacity",
+      "displayName": "Opacity",
+      "type": "float",
+      "defaultValue": 0.55,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

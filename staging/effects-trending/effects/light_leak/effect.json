@@ -1,0 +1,74 @@
+{
+  "id": "light_leak",
+  "displayName": "Light Leak",
+  "category": "dreamy",
+  "order": 180,
+  "parameters": [
+    {
+      "identifier": "intensity",
+      "displayName": "Intensity",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.55
+    },
+    {
+      "identifier": "hue",
+      "displayName": "Hue",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.06
+    },
+    {
+      "identifier": "angle",
+      "displayName": "Angle",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0
+    },
+    {
+      "identifier": "speed",
+      "displayName": "Speed",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 4,
+      "defaultValue": 1
+    },
+    {
+      "identifier": "softness",
+      "displayName": "Softness",
+      "type": "float",
+      "minValue": 0.02,
+      "maxValue": 1,
+      "defaultValue": 0.3
+    },
+    {
+      "identifier": "flicker",
+      "displayName": "Flicker",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.2
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

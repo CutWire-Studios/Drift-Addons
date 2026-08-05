@@ -1,0 +1,46 @@
+{
+  "id": "luma_fade",
+  "displayName": "Luma Fade",
+  "category": "cinematic",
+  "order": 510,
+  "parameters": [
+    {
+      "identifier": "softness",
+      "displayName": "Softness",
+      "type": "float",
+      "minValue": 0.01,
+      "maxValue": 1.0,
+      "defaultValue": 0.25
+    },
+    {
+      "identifier": "invert",
+      "displayName": "Highlights First",
+      "type": "bool",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

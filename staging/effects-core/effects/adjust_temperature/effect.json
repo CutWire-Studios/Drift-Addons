@@ -1,0 +1,34 @@
+{
+  "id": "adjust.temperature",
+  "displayName": "Temperature",
+  "category": "color",
+  "order": 60,
+  "parameters": [
+    {
+      "identifier": "temperature",
+      "displayName": "Kelvin",
+      "type": "float",
+      "minValue": 3000,
+      "maxValue": 7000,
+      "defaultValue": 6500
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

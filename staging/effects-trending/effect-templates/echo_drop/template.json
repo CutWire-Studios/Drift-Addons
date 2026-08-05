@@ -1,0 +1,24 @@
+{
+  "id": "echo_drop",
+  "displayName": "Echo Drop",
+  "category": "clone",
+  "order": 22,
+  "sync": "onset",
+  "layers": [
+    {
+      "effectId": "motion_trail",
+      "params": { "amount": 0.0 },
+      "pulse": { "param": "amount", "rest": 0.0, "peak": 0.65, "decayMs": 200 }
+    },
+    {
+      "effectId": "beat_shake",
+      "params": { "amount": 0.0 },
+      "pulse": { "param": "amount", "rest": 0.0, "peak": 0.5, "decayMs": 160 }
+    },
+    {
+      "effectId": "zoom_pulse",
+      "params": { "punch": 0.0 },
+      "pulse": { "param": "punch", "rest": 0.0, "peak": 0.55, "decayMs": 180 }
+    }
+  ]
+}

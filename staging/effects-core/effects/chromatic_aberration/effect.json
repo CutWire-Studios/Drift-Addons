@@ -1,0 +1,58 @@
+{
+  "id": "chromatic_aberration",
+  "displayName": "Chromatic Aberration",
+  "category": "glitch",
+  "order": 950,
+  "parameters": [
+    {
+      "identifier": "amount",
+      "displayName": "Amount",
+      "type": "float",
+      "defaultValue": 0.4,
+      "minValue": 0.0,
+      "maxValue": 1
+    },
+    {
+      "identifier": "falloff",
+      "displayName": "Edge Falloff",
+      "type": "float",
+      "defaultValue": 0.7,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    },
+    {
+      "identifier": "centerX",
+      "displayName": "Center X",
+      "type": "float",
+      "defaultValue": 0.5,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    },
+    {
+      "identifier": "centerY",
+      "displayName": "Center Y",
+      "type": "float",
+      "defaultValue": 0.5,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

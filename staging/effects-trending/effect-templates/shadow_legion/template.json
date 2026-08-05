@@ -1,0 +1,48 @@
+{
+  "id": "shadow_legion",
+  "displayName": "Shadow Legion",
+  "category": "clone",
+  "order": 20,
+  "sync": "onset",
+  "requiresSegmentation": true,
+  "clones": {
+    "count": 3,
+    "opacity": [0.38, 0.22, 0.12],
+    "scale": [0.97, 0.94, 0.91]
+  },
+  "tracks": [
+    {
+      "role": "background",
+      "layers": [
+        {
+          "effectId": "cinematic_grade",
+          "params": { "strength": 0.45, "teal": 0.55, "orange": 0.3 }
+        }
+      ]
+    },
+    {
+      "role": "foreground",
+      "layers": [
+        {
+          "effectId": "zoom_pulse",
+          "params": { "punch": 0.0 },
+          "pulse": { "param": "punch", "rest": 0.0, "peak": 0.65, "decayMs": 180 }
+        },
+        {
+          "effectId": "beat_shake",
+          "params": { "amount": 0.0 },
+          "pulse": { "param": "amount", "rest": 0.0, "peak": 0.45, "decayMs": 150 }
+        }
+      ]
+    },
+    {
+      "role": "clone",
+      "layers": [
+        {
+          "effectId": "motion_trail",
+          "params": { "amount": 0.35, "length": 0.4 }
+        }
+      ]
+    }
+  ]
+}

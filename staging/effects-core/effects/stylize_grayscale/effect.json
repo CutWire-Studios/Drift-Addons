@@ -1,0 +1,25 @@
+{
+  "id": "stylize.grayscale",
+  "displayName": "Grayscale",
+  "category": "retro",
+  "order": 200,
+  "parameters": [],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

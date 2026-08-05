@@ -1,0 +1,24 @@
+{
+  "id": "manga_intro",
+  "displayName": "Manga Intro",
+  "category": "anime",
+  "order": 35,
+  "sync": "clip",
+  "requiresSegmentation": true,
+  "tracks": [
+    {
+      "role": "background",
+      "layers": [
+        {
+          "effectId": "halftone_comic",
+          "params": { "strength": 0.0 },
+          "pulse": { "param": "strength", "rest": 0.75, "peak": 0.0, "decayMs": 0 }
+        }
+      ]
+    },
+    {
+      "role": "foreground",
+      "layers": []
+    }
+  ]
+}

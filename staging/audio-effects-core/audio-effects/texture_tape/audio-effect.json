@@ -1,0 +1,44 @@
+{
+  "id": "texture.tape",
+  "displayName": "Tape Saturation",
+  "category": "texture",
+  "icon": "cassette-tape",
+  "order": 330,
+  "backend": "juce",
+  "processor": "tape",
+  "prerollMs": 200,
+  "parameters": [
+    {
+      "identifier": "ratio",
+      "displayName": "Ratio",
+      "type": "float",
+      "minValue": 1.0,
+      "maxValue": 20.0,
+      "defaultValue": 4.0
+    },
+    {
+      "identifier": "threshold",
+      "displayName": "Threshold",
+      "type": "float",
+      "minValue": 0.01,
+      "maxValue": 1.0,
+      "defaultValue": 0.2
+    },
+    {
+      "identifier": "attack",
+      "displayName": "Attack (ms)",
+      "type": "float",
+      "minValue": 1,
+      "maxValue": 200,
+      "defaultValue": 5
+    },
+    {
+      "identifier": "release",
+      "displayName": "Release (ms)",
+      "type": "float",
+      "minValue": 10,
+      "maxValue": 1000,
+      "defaultValue": 50
+    }
+  ]
+}

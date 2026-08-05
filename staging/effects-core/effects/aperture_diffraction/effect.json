@@ -1,0 +1,96 @@
+{
+  "id": "aperture_diffraction",
+  "displayName": "Aperture Diffraction",
+  "category": "dreamy",
+  "order": 810,
+  "parameters": [
+    {
+      "identifier": "intensity",
+      "displayName": "Intensity",
+      "type": "float",
+      "defaultValue": 0.85,
+      "minValue": 0.0,
+      "maxValue": 2
+    },
+    {
+      "identifier": "threshold",
+      "displayName": "Threshold",
+      "type": "float",
+      "defaultValue": 0.78,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    },
+    {
+      "identifier": "bladeCount",
+      "displayName": "Blades",
+      "type": "float",
+      "defaultValue": 6,
+      "minValue": 4,
+      "maxValue": 10
+    },
+    {
+      "identifier": "spikeLength",
+      "displayName": "Length",
+      "type": "float",
+      "defaultValue": 0.45,
+      "minValue": 0.0,
+      "maxValue": 1
+    },
+    {
+      "identifier": "rotation",
+      "displayName": "Rotation",
+      "type": "float",
+      "defaultValue": 0.0,
+      "minValue": 0.0,
+      "maxValue": 1
+    },
+    {
+      "identifier": "dispersion",
+      "displayName": "Dispersion",
+      "type": "float",
+      "defaultValue": 0.35,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [
+      {
+        "id": "bright",
+        "scale": 1.0
+      }
+    ],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "bright.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "bright"
+        }
+      },
+      {
+        "passIndex": 1,
+        "fragmentShader": "streak.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "bright"
+          },
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

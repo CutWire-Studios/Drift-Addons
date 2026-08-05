@@ -1,0 +1,18 @@
+{
+  "id": "face.landmark",
+  "version": "1.0.0",
+  "name": "Funny Face Effects",
+  "description": "Finds faces in your clip so funny face warps can follow them as people move.",
+  "details": "MediaPipe face mesh plus the YuNet detector, in ONNX. Scans a clip once so Funny Face warps can follow landmarks frame to frame. Package id: face.landmark.",
+  "author": "CutWire",
+  "license": "Apache-2.0 AND MIT",
+  "minAppVersion": "0.1.0",
+  "source": "../staging/face-landmark",
+  "provides": [
+    {
+      "kind": "face-model",
+      "root": "models/face"
+    }
+  ],
+  "zstdLevel": 3
+}

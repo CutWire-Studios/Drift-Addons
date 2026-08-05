@@ -1,0 +1,65 @@
+{
+  "id": "lens_flare_wipe",
+  "displayName": "Lens Flare Wipe",
+  "category": "cinematic",
+  "order": 520,
+  "parameters": [
+    {
+      "identifier": "intensity",
+      "displayName": "Intensity",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 3.0,
+      "defaultValue": 1.4
+    },
+    {
+      "identifier": "width",
+      "displayName": "Streak Width",
+      "type": "float",
+      "minValue": 0.05,
+      "maxValue": 1.0,
+      "defaultValue": 0.3
+    },
+    {
+      "identifier": "distort",
+      "displayName": "Distortion",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.5
+    },
+    {
+      "identifier": "softness",
+      "displayName": "Edge Softness",
+      "type": "float",
+      "minValue": 0.01,
+      "maxValue": 0.4,
+      "defaultValue": 0.08
+    }
+  ],
+  "fixedParams": {
+    "flareColor": "#9fd0ff"
+  },
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

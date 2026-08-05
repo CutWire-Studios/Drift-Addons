@@ -1,0 +1,60 @@
+{
+  "id": "space.chorus",
+  "displayName": "Chorus",
+  "category": "space",
+  "icon": "layers",
+  "order": 420,
+  "backend": "juce",
+  "processor": "chorus",
+  "prerollMs": 150,
+  "parameters": [
+    {
+      "identifier": "in_gain",
+      "displayName": "Input",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.6
+    },
+    {
+      "identifier": "out_gain",
+      "displayName": "Output",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.9
+    },
+    {
+      "identifier": "delay",
+      "displayName": "Delay (ms)",
+      "type": "float",
+      "minValue": 1,
+      "maxValue": 100,
+      "defaultValue": 55
+    },
+    {
+      "identifier": "decay",
+      "displayName": "Decay",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.4
+    },
+    {
+      "identifier": "speed",
+      "displayName": "Speed",
+      "type": "float",
+      "minValue": 0.1,
+      "maxValue": 5.0,
+      "defaultValue": 0.25
+    },
+    {
+      "identifier": "depth",
+      "displayName": "Depth",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 10.0,
+      "defaultValue": 2.0
+    }
+  ]
+}

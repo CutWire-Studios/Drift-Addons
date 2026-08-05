@@ -1,0 +1,38 @@
+{
+  "id": "zoom_in",
+  "displayName": "Zoom In",
+  "category": "basic",
+  "order": 131,
+  "parameters": [
+    {
+      "identifier": "startScale",
+      "displayName": "Start Scale",
+      "type": "float",
+      "minValue": 0.5,
+      "maxValue": 1.0,
+      "defaultValue": 0.82
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "id": "space.slapback",
+  "displayName": "Slapback",
+  "category": "space",
+  "icon": "reply",
+  "order": 410,
+  "backend": "juce",
+  "processor": "echo",
+  "prerollMs": 300,
+  "parameters": [
+    {
+      "identifier": "delay",
+      "displayName": "Delay (ms)",
+      "type": "float",
+      "minValue": 5,
+      "maxValue": 120,
+      "defaultValue": 15
+    },
+    {
+      "identifier": "decay",
+      "displayName": "Decay",
+      "type": "float",
+      "minValue": 0.1,
+      "maxValue": 0.9,
+      "defaultValue": 0.3
+    },
+    {
+      "identifier": "in_gain",
+      "displayName": "Input",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.8
+    },
+    {
+      "identifier": "out_gain",
+      "displayName": "Wet Mix",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.5
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "id": "star_filter",
+  "displayName": "Star Filter",
+  "category": "dreamy",
+  "order": 175,
+  "parameters": [
+    {
+      "identifier": "intensity",
+      "displayName": "Intensity",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 2,
+      "defaultValue": 0.8
+    },
+    {
+      "identifier": "threshold",
+      "displayName": "Threshold",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.75
+    },
+    {
+      "identifier": "spikeLength",
+      "displayName": "Length",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.4
+    },
+    {
+      "identifier": "points",
+      "displayName": "Points",
+      "type": "float",
+      "minValue": 2,
+      "maxValue": 6,
+      "defaultValue": 4
+    },
+    {
+      "identifier": "rotation",
+      "displayName": "Rotation",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0
+    },
+    {
+      "identifier": "rainbow",
+      "displayName": "Diffraction",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.25
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [
+      {
+        "id": "bright",
+        "scale": 1.0
+      }
+    ],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "bright.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "bright"
+        }
+      },
+      {
+        "passIndex": 1,
+        "fragmentShader": "streak.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "bright"
+          },
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "id": "scanline_glitch",
+  "displayName": "Scanline Glitch",
+  "category": "glitch",
+  "order": 330,
+  "parameters": [
+    {
+      "identifier": "jitter",
+      "displayName": "Jitter",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.25
+    },
+    {
+      "identifier": "lineStrength",
+      "displayName": "Scanlines",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.35
+    },
+    {
+      "identifier": "colorShift",
+      "displayName": "Color shift",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 20,
+      "defaultValue": 4
+    },
+    {
+      "identifier": "speed",
+      "displayName": "Speed",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 10,
+      "defaultValue": 2
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

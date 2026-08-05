@@ -1,0 +1,21 @@
+{
+  "id": "retro_tape",
+  "displayName": "Retro Tape",
+  "category": "look",
+  "order": 30,
+  "sync": "clip",
+  "layers": [
+    {
+      "effectId": "super8_film",
+      "params": { "intensity": 0.65, "grain": 0.5, "scratches": 0.3 }
+    },
+    {
+      "effectId": "light_leak",
+      "params": { "intensity": 0.45, "hue": 0.08, "speed": 0.6 }
+    },
+    {
+      "effectId": "vhs_crt",
+      "params": { "scanlines": 0.35, "noise": 0.25, "colorBleed": 3.0 }
+    }
+  ]
+}

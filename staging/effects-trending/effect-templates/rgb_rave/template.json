@@ -1,0 +1,23 @@
+{
+  "id": "rgb_rave",
+  "displayName": "RGB Rave",
+  "category": "chaos",
+  "order": 45,
+  "sync": "bar",
+  "layers": [
+    {
+      "effectId": "rgb_split",
+      "params": { "amount": 0.0 },
+      "pulse": { "param": "amount", "rest": 2.0, "peak": 14.0, "decayMs": 280 }
+    },
+    {
+      "effectId": "strobe_flash",
+      "params": { "flash": 0.0 },
+      "pulse": { "param": "flash", "rest": 0.0, "peak": 0.35, "decayMs": 120 }
+    },
+    {
+      "effectId": "edge_neon",
+      "params": { "intensity": 0.55, "radius": 4 }
+    }
+  ]
+}

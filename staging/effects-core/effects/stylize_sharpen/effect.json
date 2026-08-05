@@ -1,0 +1,34 @@
+{
+  "id": "stylize.sharpen",
+  "displayName": "Sharpen",
+  "category": "impact",
+  "order": 70,
+  "parameters": [
+    {
+      "identifier": "luma_amount",
+      "displayName": "Amount",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 3,
+      "defaultValue": 1
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

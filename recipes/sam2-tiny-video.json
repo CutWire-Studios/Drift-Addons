@@ -1,0 +1,18 @@
+{
+  "id": "sam2.tiny",
+  "version": "1.0.0",
+  "name": "Subject Cutout",
+  "description": "Lets you click a person or object and cut it out from the background across a whole clip.",
+  "details": "Meta SAM 2.1 tiny, full video pipeline in ONNX. Powers subject segmentation and tracking across a clip. Package id: sam2.tiny.",
+  "author": "CutWire",
+  "license": "Apache-2.0",
+  "minAppVersion": "0.1.0",
+  "source": "../staging/sam2-tiny",
+  "provides": [
+    {
+      "kind": "sam2-model",
+      "root": "models/sam2"
+    }
+  ],
+  "zstdLevel": 3
+}

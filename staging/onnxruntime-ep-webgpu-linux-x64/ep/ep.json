@@ -1,0 +1,6 @@
+{
+  "variant": "webgpu",
+  "library": "libonnxruntime_providers_webgpu.so",
+  "minApiVersion": 24,
+  "platform": "linux-x64"
+}

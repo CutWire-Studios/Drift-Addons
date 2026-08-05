@@ -1,0 +1,28 @@
+{
+  "id": "bubble_world",
+  "displayName": "Bubble World",
+  "category": "dreamy",
+  "order": 15,
+  "sync": "beat",
+  "requiresSegmentation": true,
+  "tracks": [
+    {
+      "role": "background",
+      "layers": [
+        {
+          "effectId": "bokeh_dream",
+          "params": { "intensity": 0.55, "radius": 12 },
+          "pulse": { "param": "intensity", "rest": 0.45, "peak": 0.9, "decayMs": 320 }
+        },
+        {
+          "effectId": "light_leak",
+          "params": { "intensity": 0.35, "hue": 0.08, "speed": 0.5 }
+        }
+      ]
+    },
+    {
+      "role": "foreground",
+      "layers": []
+    }
+  ]
+}

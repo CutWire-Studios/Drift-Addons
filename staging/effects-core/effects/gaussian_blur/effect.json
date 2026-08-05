@@ -1,0 +1,59 @@
+{
+  "id": "builtin.effects.gaussian_blur",
+  "version": "1.0.0",
+  "displayName": "Gaussian Blur (GPU)",
+  "category": "dreamy",
+  "description": "A high-performance two-pass hardware-accelerated blur.",
+  "backend": "gpu",
+  "parameters": [
+    {
+      "identifier": "u_blurRadius",
+      "displayName": "Blur Amount",
+      "type": "float",
+      "defaultValue": 10.0,
+      "minValue": 0.0,
+      "maxValue": 100.0,
+      "ui": {
+        "control": "slider",
+        "precision": 1
+      }
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [
+      {
+        "id": "buf_horizontal_scratch",
+        "scale": 1.0
+      }
+    ],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "blur_h.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "buf_horizontal_scratch"
+        }
+      },
+      {
+        "passIndex": 1,
+        "fragmentShader": "blur_v.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "buf_horizontal_scratch"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  },
+  "order": 160
+}
