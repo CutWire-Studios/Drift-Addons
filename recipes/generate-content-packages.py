@@ -876,6 +876,224 @@ void main() {
     )
 
     # --- Color ---
+    # Lightroom-style tone and HSL tools. Distinct from bundled brightness/hue/
+    # saturation and from the RGB overlay `tint` already in this pack.
+    write_effect(
+        "adjust_exposure", "Exposure", "color", 5,
+        [param("exposure", "Stops", default=0.0, min_v=-3, max_v=3)],
+        """#version 330 core
+in vec2 v_texCoord; out vec4 fragColor;
+uniform sampler2D u_currentTexture; uniform float exposure;
+void main() {
+    vec4 c = texture(u_currentTexture, v_texCoord);
+    fragColor = vec4(clamp(c.rgb * exp2(exposure), 0.0, 1.0), c.a);
+}
+""",
+    )
+
+    write_effect(
+        "adjust_highlights", "Highlights", "color", 22,
+        [param("highlights", "Amount", default=0.0, min_v=-1, max_v=1)],
+        """#version 330 core
+in vec2 v_texCoord; out vec4 fragColor;
+uniform sampler2D u_currentTexture; uniform float highlights;
+void main() {
+    vec4 c = texture(u_currentTexture, v_texCoord);
+    float l = dot(c.rgb, vec3(0.299, 0.587, 0.114));
+    float w = smoothstep(0.45, 1.0, l);
+    vec3 room = highlights >= 0.0 ? (1.0 - c.rgb) : c.rgb * 0.6;
+    fragColor = vec4(clamp(c.rgb + highlights * w * room, 0.0, 1.0), c.a);
+}
+""",
+    )
+
+    write_effect(
+        "adjust_shadows", "Shadows", "color", 24,
+        [param("shadows", "Amount", default=0.0, min_v=-1, max_v=1)],
+        """#version 330 core
+in vec2 v_texCoord; out vec4 fragColor;
+uniform sampler2D u_currentTexture; uniform float shadows;
+void main() {
+    vec4 c = texture(u_currentTexture, v_texCoord);
+    float l = dot(c.rgb, vec3(0.299, 0.587, 0.114));
+    float w = (1.0 - smoothstep(0.0, 0.55, l)) * smoothstep(0.0, 0.10, l);
+    vec3 room = shadows >= 0.0 ? (1.0 - c.rgb) * 0.5 : c.rgb * 0.7;
+    fragColor = vec4(clamp(c.rgb + shadows * w * room, 0.0, 1.0), c.a);
+}
+""",
+    )
+
+    write_effect(
+        "adjust_whites", "Whites", "color", 26,
+        [param("whites", "Amount", default=0.0, min_v=-1, max_v=1)],
+        """#version 330 core
+in vec2 v_texCoord; out vec4 fragColor;
+uniform sampler2D u_currentTexture; uniform float whites;
+void main() {
+    vec4 c = texture(u_currentTexture, v_texCoord);
+    float l = dot(c.rgb, vec3(0.299, 0.587, 0.114));
+    float w = smoothstep(0.30, 1.0, l);
+    float wp = clamp(1.0 - whites * 0.55, 0.1, 2.0);
+    fragColor = vec4(clamp(mix(c.rgb, c.rgb / wp, w), 0.0, 1.0), c.a);
+}
+""",
+    )
+
+    write_effect(
+        "adjust_blacks", "Blacks", "color", 28,
+        [param("blacks", "Amount", default=0.0, min_v=-1, max_v=1)],
+        """#version 330 core
+in vec2 v_texCoord; out vec4 fragColor;
+uniform sampler2D u_currentTexture; uniform float blacks;
+void main() {
+    vec4 c = texture(u_currentTexture, v_texCoord);
+    float l = dot(c.rgb, vec3(0.299, 0.587, 0.114));
+    float w = 1.0 - smoothstep(0.0, 0.65, l);
+    float bp = -blacks * 0.25;
+    vec3 v = (c.rgb - bp) / max(1.0 - bp, 0.05);
+    fragColor = vec4(clamp(mix(c.rgb, v, w), 0.0, 1.0), c.a);
+}
+""",
+    )
+
+    write_effect(
+        "adjust_vibrance", "Vibrance", "color", 32,
+        [param("vibrance", "Amount", default=0.0, min_v=-1, max_v=1)],
+        """#version 330 core
+in vec2 v_texCoord; out vec4 fragColor;
+uniform sampler2D u_currentTexture; uniform float vibrance;
+void main() {
+    vec4 c = texture(u_currentTexture, v_texCoord);
+    float mx = max(c.r, max(c.g, c.b));
+    float mn = min(c.r, min(c.g, c.b));
+    float sat = mx - mn;
+    float l = dot(c.rgb, vec3(0.299, 0.587, 0.114));
+    float amt = vibrance * (1.0 - sat);
+    float skin = smoothstep(0.0, 0.35, c.r - c.b) * step(c.b, c.g);
+    amt *= 1.0 - 0.5 * skin;
+    fragColor = vec4(clamp(mix(vec3(l), c.rgb, 1.0 + amt), 0.0, 1.0), c.a);
+}
+""",
+    )
+
+    write_effect(
+        "adjust_tint", "Tint (Green/Magenta)", "color", 62,
+        [param("tint", "Amount", default=0.0, min_v=-1, max_v=1)],
+        """#version 330 core
+in vec2 v_texCoord; out vec4 fragColor;
+uniform sampler2D u_currentTexture; uniform float tint;
+void main() {
+    vec4 c = texture(u_currentTexture, v_texCoord);
+    vec3 gain = vec3(1.0 + tint * 0.18, 1.0 - tint * 0.22, 1.0 + tint * 0.18);
+    fragColor = vec4(clamp(c.rgb * gain, 0.0, 1.0), c.a);
+}
+""",
+    )
+
+    hsl_bands = [
+        param("red", "Red", default=0.0, min_v=-1, max_v=1),
+        param("orange", "Orange", default=0.0, min_v=-1, max_v=1),
+        param("yellow", "Yellow", default=0.0, min_v=-1, max_v=1),
+        param("green", "Green", default=0.0, min_v=-1, max_v=1),
+        param("aqua", "Aqua", default=0.0, min_v=-1, max_v=1),
+        param("blue", "Blue", default=0.0, min_v=-1, max_v=1),
+        param("purple", "Purple", default=0.0, min_v=-1, max_v=1),
+        param("magenta", "Magenta", default=0.0, min_v=-1, max_v=1),
+    ]
+    hsl_band_helpers = """
+const float BAND_H[8]  = float[8](  0.0,  32.0,  60.0, 120.0, 180.0, 240.0, 280.0, 320.0);
+const float BAND_LO[8] = float[8]( 40.0,  32.0,  28.0,  60.0,  60.0,  60.0,  40.0,  40.0);
+const float BAND_HI[8] = float[8]( 32.0,  28.0,  60.0,  60.0,  60.0,  40.0,  40.0,  40.0);
+
+vec3 rgb2hsv(vec3 c) {
+    vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
+    vec4 p = mix(vec4(c.bg, K.wz), vec4(c.gb, K.xy), step(c.b, c.g));
+    vec4 q = mix(vec4(p.xyw, c.r), vec4(c.r, p.yzx), step(p.x, c.r));
+    float d = q.x - min(q.w, q.y);
+    return vec3(abs(q.z + (q.w - q.y) / (6.0 * d + 1e-10)), d / (q.x + 1e-10), q.x);
+}
+
+vec3 hsv2rgb(vec3 c) {
+    vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+    vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);
+    return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
+}
+
+float band(int i, float h) {
+    float d = mod(h - BAND_H[i] + 540.0, 360.0) - 180.0;
+    return 1.0 - smoothstep(0.0, d < 0.0 ? BAND_LO[i] : BAND_HI[i], abs(d));
+}
+
+float bandMix(float h) {
+    float v[8] = float[8](red, orange, yellow, green, aqua, blue, purple, magenta);
+    float sum = 0.0;
+    float tot = 0.0;
+    for (int i = 0; i < 8; ++i) {
+        float w = band(i, h);
+        sum += w * v[i];
+        tot += w;
+    }
+    return tot > 1e-4 ? sum / tot : 0.0;
+}
+"""
+
+    write_effect(
+        "adjust_hsl_hue", "HSL Hue", "color", 70,
+        hsl_bands,
+        f"""#version 330 core
+in vec2 v_texCoord; out vec4 fragColor;
+uniform sampler2D u_currentTexture;
+uniform float red, orange, yellow, green, aqua, blue, purple, magenta;
+{hsl_band_helpers}
+void main() {{
+    vec4 c = texture(u_currentTexture, v_texCoord);
+    vec3 hsv = rgb2hsv(c.rgb);
+    float h = hsv.x * 360.0;
+    float gate = smoothstep(0.04, 0.20, hsv.y);
+    hsv.x = fract((h + bandMix(h) * 30.0 * gate) / 360.0);
+    fragColor = vec4(clamp(hsv2rgb(hsv), 0.0, 1.0), c.a);
+}}
+""",
+    )
+
+    write_effect(
+        "adjust_hsl_saturation", "HSL Saturation", "color", 72,
+        hsl_bands,
+        f"""#version 330 core
+in vec2 v_texCoord; out vec4 fragColor;
+uniform sampler2D u_currentTexture;
+uniform float red, orange, yellow, green, aqua, blue, purple, magenta;
+{hsl_band_helpers}
+void main() {{
+    vec4 c = texture(u_currentTexture, v_texCoord);
+    vec3 hsv = rgb2hsv(c.rgb);
+    float h = hsv.x * 360.0;
+    float gate = smoothstep(0.04, 0.20, hsv.y);
+    hsv.y = clamp(hsv.y * (1.0 + bandMix(h) * gate), 0.0, 1.0);
+    fragColor = vec4(clamp(hsv2rgb(hsv), 0.0, 1.0), c.a);
+}}
+""",
+    )
+
+    write_effect(
+        "adjust_hsl_luminance", "HSL Luminance", "color", 74,
+        hsl_bands,
+        f"""#version 330 core
+in vec2 v_texCoord; out vec4 fragColor;
+uniform sampler2D u_currentTexture;
+uniform float red, orange, yellow, green, aqua, blue, purple, magenta;
+{hsl_band_helpers}
+void main() {{
+    vec4 c = texture(u_currentTexture, v_texCoord);
+    vec3 hsv = rgb2hsv(c.rgb);
+    float h = hsv.x * 360.0;
+    float gate = smoothstep(0.04, 0.20, hsv.y);
+    hsv.z = clamp(hsv.z * (1.0 + bandMix(h) * 0.6 * gate), 0.0, 1.0);
+    fragColor = vec4(clamp(hsv2rgb(hsv), 0.0, 1.0), c.a);
+}}
+""",
+    )
+
     write_effect(
         "invert", "Invert", "color", 870,
         [param("strength", "Strength", default=1.0)],

@@ -1,0 +1,58 @@
+{
+  "id": "extract",
+  "displayName": "Extract",
+  "category": "color",
+  "order": 940,
+  "parameters": [
+    {
+      "identifier": "mode",
+      "displayName": "Mode",
+      "type": "float",
+      "defaultValue": 0.0,
+      "minValue": 0.0,
+      "maxValue": 2
+    },
+    {
+      "identifier": "blackPoint",
+      "displayName": "Black",
+      "type": "float",
+      "defaultValue": 0.0,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    },
+    {
+      "identifier": "whitePoint",
+      "displayName": "White",
+      "type": "float",
+      "defaultValue": 1.0,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    },
+    {
+      "identifier": "asAlpha",
+      "displayName": "As Alpha",
+      "type": "bool",
+      "defaultValue": 0.0,
+      "minValue": 0,
+      "maxValue": 1
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

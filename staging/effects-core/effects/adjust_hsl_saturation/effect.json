@@ -1,0 +1,90 @@
+{
+  "id": "adjust_hsl_saturation",
+  "displayName": "HSL Saturation",
+  "category": "color",
+  "order": 72,
+  "parameters": [
+    {
+      "identifier": "red",
+      "displayName": "Red",
+      "type": "float",
+      "defaultValue": 0.0,
+      "minValue": -1,
+      "maxValue": 1
+    },
+    {
+      "identifier": "orange",
+      "displayName": "Orange",
+      "type": "float",
+      "defaultValue": 0.0,
+      "minValue": -1,
+      "maxValue": 1
+    },
+    {
+      "identifier": "yellow",
+      "displayName": "Yellow",
+      "type": "float",
+      "defaultValue": 0.0,
+      "minValue": -1,
+      "maxValue": 1
+    },
+    {
+      "identifier": "green",
+      "displayName": "Green",
+      "type": "float",
+      "defaultValue": 0.0,
+      "minValue": -1,
+      "maxValue": 1
+    },
+    {
+      "identifier": "aqua",
+      "displayName": "Aqua",
+      "type": "float",
+      "defaultValue": 0.0,
+      "minValue": -1,
+      "maxValue": 1
+    },
+    {
+      "identifier": "blue",
+      "displayName": "Blue",
+      "type": "float",
+      "defaultValue": 0.0,
+      "minValue": -1,
+      "maxValue": 1
+    },
+    {
+      "identifier": "purple",
+      "displayName": "Purple",
+      "type": "float",
+      "defaultValue": 0.0,
+      "minValue": -1,
+      "maxValue": 1
+    },
+    {
+      "identifier": "magenta",
+      "displayName": "Magenta",
+      "type": "float",
+      "defaultValue": 0.0,
+      "minValue": -1,
+      "maxValue": 1
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

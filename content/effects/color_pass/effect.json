@@ -1,0 +1,58 @@
+{
+  "id": "color_pass",
+  "displayName": "Color Pass",
+  "category": "color",
+  "order": 890,
+  "parameters": [
+    {
+      "identifier": "hue",
+      "displayName": "Hue",
+      "type": "float",
+      "defaultValue": 0.33,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    },
+    {
+      "identifier": "range",
+      "displayName": "Range",
+      "type": "float",
+      "defaultValue": 0.12,
+      "minValue": 0.01,
+      "maxValue": 0.5
+    },
+    {
+      "identifier": "softness",
+      "displayName": "Softness",
+      "type": "float",
+      "defaultValue": 0.08,
+      "minValue": 0.001,
+      "maxValue": 0.4
+    },
+    {
+      "identifier": "desaturateRest",
+      "displayName": "Gray Rest",
+      "type": "float",
+      "defaultValue": 1.0,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

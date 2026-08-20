@@ -1,0 +1,90 @@
+{
+  "id": "color_replace",
+  "displayName": "Color Replace",
+  "category": "color",
+  "order": 900,
+  "parameters": [
+    {
+      "identifier": "sourceR",
+      "displayName": "Source R",
+      "type": "float",
+      "defaultValue": 0.0,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    },
+    {
+      "identifier": "sourceG",
+      "displayName": "Source G",
+      "type": "float",
+      "defaultValue": 1.0,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    },
+    {
+      "identifier": "sourceB",
+      "displayName": "Source B",
+      "type": "float",
+      "defaultValue": 0.0,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    },
+    {
+      "identifier": "targetR",
+      "displayName": "Target R",
+      "type": "float",
+      "defaultValue": 1.0,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    },
+    {
+      "identifier": "targetG",
+      "displayName": "Target G",
+      "type": "float",
+      "defaultValue": 0.0,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    },
+    {
+      "identifier": "targetB",
+      "displayName": "Target B",
+      "type": "float",
+      "defaultValue": 1.0,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    },
+    {
+      "identifier": "tolerance",
+      "displayName": "Tolerance",
+      "type": "float",
+      "defaultValue": 0.25,
+      "minValue": 0.01,
+      "maxValue": 1
+    },
+    {
+      "identifier": "softness",
+      "displayName": "Softness",
+      "type": "float",
+      "defaultValue": 0.15,
+      "minValue": 0.001,
+      "maxValue": 0.5
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

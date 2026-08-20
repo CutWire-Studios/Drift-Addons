@@ -1,0 +1,50 @@
+{
+  "id": "roughen_edges",
+  "displayName": "Roughen Edges",
+  "category": "artistic",
+  "order": 840,
+  "parameters": [
+    {
+      "identifier": "amount",
+      "displayName": "Amount",
+      "type": "float",
+      "defaultValue": 0.45,
+      "minValue": 0.0,
+      "maxValue": 1
+    },
+    {
+      "identifier": "scale",
+      "displayName": "Scale",
+      "type": "float",
+      "defaultValue": 40.0,
+      "minValue": 5,
+      "maxValue": 120
+    },
+    {
+      "identifier": "edgeWidth",
+      "displayName": "Edge Width",
+      "type": "float",
+      "defaultValue": 0.35,
+      "minValue": 0.0,
+      "maxValue": 1
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

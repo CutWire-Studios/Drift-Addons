@@ -1,0 +1,18 @@
+{
+  "id": "object.yolox-tiny",
+  "version": "1.0.0",
+  "name": "Scene Labels",
+  "description": "Works out what is in each shot \u2014 people, animals, vehicles and everyday objects \u2014 so you can find the moments you want.",
+  "details": "YOLOX-Tiny object detection in ONNX, COCO's 80 everyday classes. Drift samples a few frames of each detected shot and labels it, so scenes can be searched and ranked by what is in them. Package id: object.yolox-tiny.",
+  "author": "CutWire",
+  "license": "Apache-2.0",
+  "minAppVersion": "0.2.3",
+  "source": "../staging/yolox-tiny",
+  "provides": [
+    {
+      "kind": "object-model",
+      "root": "models/yolox-tiny"
+    }
+  ],
+  "zstdLevel": 3
+}

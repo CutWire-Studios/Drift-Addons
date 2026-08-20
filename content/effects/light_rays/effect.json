@@ -1,0 +1,96 @@
+{
+  "id": "light_rays",
+  "displayName": "Light Rays",
+  "category": "dreamy",
+  "order": 800,
+  "parameters": [
+    {
+      "identifier": "intensity",
+      "displayName": "Intensity",
+      "type": "float",
+      "defaultValue": 0.7,
+      "minValue": 0.0,
+      "maxValue": 2
+    },
+    {
+      "identifier": "threshold",
+      "displayName": "Threshold",
+      "type": "float",
+      "defaultValue": 0.7,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    },
+    {
+      "identifier": "rayLength",
+      "displayName": "Length",
+      "type": "float",
+      "defaultValue": 0.55,
+      "minValue": 0.0,
+      "maxValue": 1
+    },
+    {
+      "identifier": "centerX",
+      "displayName": "Center X",
+      "type": "float",
+      "defaultValue": 0.5,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    },
+    {
+      "identifier": "centerY",
+      "displayName": "Center Y",
+      "type": "float",
+      "defaultValue": 0.35,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    },
+    {
+      "identifier": "samples",
+      "displayName": "Samples",
+      "type": "float",
+      "defaultValue": 16,
+      "minValue": 6,
+      "maxValue": 32
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [
+      {
+        "id": "bright",
+        "scale": 1.0
+      }
+    ],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "bright.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "bright"
+        }
+      },
+      {
+        "passIndex": 1,
+        "fragmentShader": "rays.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "bright"
+          },
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

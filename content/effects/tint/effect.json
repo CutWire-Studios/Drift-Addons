@@ -1,0 +1,66 @@
+{
+  "id": "tint",
+  "displayName": "Tint",
+  "category": "color",
+  "order": 930,
+  "parameters": [
+    {
+      "identifier": "tintR",
+      "displayName": "Tint R",
+      "type": "float",
+      "defaultValue": 0.4,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    },
+    {
+      "identifier": "tintG",
+      "displayName": "Tint G",
+      "type": "float",
+      "defaultValue": 0.53,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    },
+    {
+      "identifier": "tintB",
+      "displayName": "Tint B",
+      "type": "float",
+      "defaultValue": 1.0,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    },
+    {
+      "identifier": "strength",
+      "displayName": "Strength",
+      "type": "float",
+      "defaultValue": 0.35,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    },
+    {
+      "identifier": "preserveLuma",
+      "displayName": "Preserve Luma",
+      "type": "bool",
+      "defaultValue": 1.0,
+      "minValue": 0,
+      "maxValue": 1
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

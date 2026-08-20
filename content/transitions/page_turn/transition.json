@@ -1,0 +1,55 @@
+{
+  "id": "page_turn",
+  "displayName": "Page Turn",
+  "category": "geometric",
+  "order": 400,
+  "audioCurve": "crossfade",
+  "parameters": [
+    {
+      "identifier": "curl",
+      "displayName": "Curl",
+      "type": "float",
+      "defaultValue": 0.55,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    },
+    {
+      "identifier": "shadow",
+      "displayName": "Shadow",
+      "type": "float",
+      "defaultValue": 0.45,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    },
+    {
+      "identifier": "angle",
+      "displayName": "Angle",
+      "type": "float",
+      "defaultValue": 0.15,
+      "minValue": -0.5,
+      "maxValue": 0.5
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

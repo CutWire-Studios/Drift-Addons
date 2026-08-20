@@ -1,0 +1,66 @@
+{
+  "id": "tilt_shift",
+  "displayName": "Tilt Shift",
+  "category": "dreamy",
+  "order": 790,
+  "parameters": [
+    {
+      "identifier": "blur",
+      "displayName": "Blur",
+      "type": "float",
+      "defaultValue": 0.55,
+      "minValue": 0.0,
+      "maxValue": 1
+    },
+    {
+      "identifier": "focus",
+      "displayName": "Focus Y",
+      "type": "float",
+      "defaultValue": 0.5,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    },
+    {
+      "identifier": "range",
+      "displayName": "Focus Range",
+      "type": "float",
+      "defaultValue": 0.18,
+      "minValue": 0.02,
+      "maxValue": 0.6
+    },
+    {
+      "identifier": "softness",
+      "displayName": "Softness",
+      "type": "float",
+      "defaultValue": 0.25,
+      "minValue": 0.01,
+      "maxValue": 0.6
+    },
+    {
+      "identifier": "samples",
+      "displayName": "Samples",
+      "type": "float",
+      "defaultValue": 10,
+      "minValue": 4,
+      "maxValue": 20
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

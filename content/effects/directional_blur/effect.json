@@ -1,0 +1,50 @@
+{
+  "id": "directional_blur",
+  "displayName": "Directional Blur",
+  "category": "impact",
+  "order": 770,
+  "parameters": [
+    {
+      "identifier": "amount",
+      "displayName": "Amount",
+      "type": "float",
+      "defaultValue": 0.4,
+      "minValue": 0.0,
+      "maxValue": 1
+    },
+    {
+      "identifier": "angle",
+      "displayName": "Angle",
+      "type": "float",
+      "defaultValue": 0.0,
+      "minValue": 0.0,
+      "maxValue": 360
+    },
+    {
+      "identifier": "samples",
+      "displayName": "Samples",
+      "type": "float",
+      "defaultValue": 12,
+      "minValue": 4,
+      "maxValue": 24
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

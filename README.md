@@ -24,6 +24,7 @@ publishes them.
 | Auto Captions | Whisper speech-to-text model for automatic subtitles |
 | Subject Cutout | SAM 2 model for isolating a subject from the background |
 | Funny Face Effects | Face landmark model for face warps and makeup |
+| Scene Labels | YOLOX object detection, so shots can be labelled and searched by what is in them |
 | Noise Removal | DeepFilterNet 3 model for cleaning up background noise |
 | AI Engine | ONNX Runtime, in CPU, NVIDIA and general-GPU builds |
 
@@ -61,12 +62,18 @@ Content is assembled into `staging/`, packed into a signed archive, then publish
 python3 recipes/stage.py fonts effects transitions
 python3 packer/pack.py recipes/fonts-essentials.json
 python3 packer/publish.py dist/fonts.essentials-1.0.0.driftpkg
+python3 packer/release.py
 ```
 
 `stage.py` takes any of `fonts`, `stickers`, `whisper`, `sam2`, `face`, `effects`,
 `effects-trending`, `transitions`, `audio-effects`, `denoise`, and defaults to all of them.
 Packing needs the `zstd` and `openssl` command-line tools; publishing needs an authenticated
-`wrangler`. To cut a new release, bump `version` in the recipe and run the same two commands.
+`wrangler`. To cut a new release, bump `version` in the recipe and run the same commands.
+
+`publish.py` is what Drift actually downloads from. `release.py` then refreshes the
+[packages release](../../releases/tag/packages) so the public mirror matches — it attaches the
+newest build of each addon, drops the version it replaced, and regenerates the notes and
+checksums. `--dry-run` shows what would change without touching anything.
 
 Some effects and transitions exist only as addons rather than in the app. Those are generated with
 `recipes/generate-content-packages.py`, and their thumbnails with `recipes/generate-thumbs.py`.

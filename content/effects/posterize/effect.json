@@ -1,0 +1,42 @@
+{
+  "id": "posterize",
+  "displayName": "Posterize",
+  "category": "artistic",
+  "order": 850,
+  "parameters": [
+    {
+      "identifier": "levels",
+      "displayName": "Levels",
+      "type": "float",
+      "defaultValue": 6,
+      "minValue": 2,
+      "maxValue": 32
+    },
+    {
+      "identifier": "strength",
+      "displayName": "Strength",
+      "type": "float",
+      "defaultValue": 1.0,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}
