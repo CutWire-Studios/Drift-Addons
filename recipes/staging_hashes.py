@@ -23,7 +23,12 @@ SKIP_DIR_NAMES = {".cache", "__pycache__", "node_modules"}
 
 def is_large_artifact(path: Path) -> bool:
     name = path.name.lower()
-    return any(name.endswith(suffix) for suffix in LARGE_SUFFIXES)
+    if name.endswith(".sha256"):
+        return False
+    if any(name.endswith(suffix) for suffix in LARGE_SUFFIXES):
+        return True
+    # NVIDIA SONAMEs keep a version after .so (libcudnn.so.9, libnvrtc-builtins.so.13.3).
+    return ".so." in name
 
 
 def sidecar_path(path: Path) -> Path:

@@ -1,0 +1,20 @@
+{
+  "id": "onnxruntime.cuda.win-x64",
+  "version": "1.1.0",
+  "name": "AI Engine — NVIDIA graphics (faster)",
+  "description": "Same AI features, sped up by an NVIDIA graphics card. Needs NVIDIA driver 580 or newer; CUDA and cuDNN are included. Falls back to this computer if the card can't be used.",
+  "details": "Complete ONNX Runtime build with the CUDA execution provider. CUDA 13 and cuDNN 9 runtimes are bundled — not the full CUDA Toolkit. The host still needs a recent NVIDIA driver (Linux ≥ 580.65 for CUDA 13.0). Falls back to CPU when the device cannot be used. Licensed MIT (ONNX Runtime) plus NVIDIA CUDA and cuDNN redistributable terms. Upstream: Microsoft ONNX Runtime 1.27.0. Platform: win-x64.",
+  "author": "Microsoft, NVIDIA",
+  "license": "MIT + NVIDIA CUDA/cuDNN",
+  "minAppVersion": "0.3.1",
+  "platform": "win-x64",
+  "source": "../../staging/onnxruntime-cuda-win-x64",
+  "provides": [
+    {
+      "kind": "onnxruntime",
+      "root": "runtime",
+      "items": 1
+    }
+  ],
+  "zstdLevel": 6
+}

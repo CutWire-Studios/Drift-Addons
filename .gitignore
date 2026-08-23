@@ -14,5 +14,7 @@ staging/.cache/
 staging/**/*.onnx
 staging/**/*.bin
 staging/**/*.so
+staging/**/*.so.*
 staging/**/*.dylib
 staging/**/*.dll
+!staging/**/*.sha256

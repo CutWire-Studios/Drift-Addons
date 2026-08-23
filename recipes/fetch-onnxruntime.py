@@ -19,6 +19,10 @@ stage any platform from any platform — the packages are cross-built by constru
 generated rather than committed by hand because they are eleven near-identical files whose only
 real content is this table.
 
+The CUDA addon also unpacks pinned NVIDIA redistributable wheels (cublas, cudnn, nvrtc, …) into
+the same runtime/lib/ folder, skips TensorRT and PDBs, and on Linux runs patchelf so the CUDA EP
+finds those libraries via RUNPATH=$ORIGIN.
+
 The archives are large and are cached under ../staging/.cache.
 """
 
@@ -42,6 +46,11 @@ ORT_VERSION = "1.27.0"
 ORT_API_VERSION = 27
 # Addon package version shown in the catalogue — independent of the upstream ORT release.
 PACKAGE_VERSION = "1.0.0"
+# CUDA 1.1.0 bundles NVIDIA redistributables and drops TensorRT / PDBs.
+CUDA_PACKAGE_VERSION = "1.1.0"
+# Windows needs AddDllDirectory (unreleased as of Drift 0.3.0). Linux works with
+# patchelf alone, but both CUDA packs share this floor so the catalogue is honest.
+CUDA_MIN_APP_VERSION = "0.3.1"
 ORT_RELEASE = f"https://github.com/microsoft/onnxruntime/releases/download/v{ORT_VERSION}"
 
 # The WebGPU plugin EP is versioned and published separately from the core, which is the whole
@@ -100,16 +109,105 @@ CORE_COPY = {
     "cuda": {
         "name": "AI Engine — NVIDIA graphics (faster)",
         "description": (
-            "Same AI features, sped up by an NVIDIA graphics card. Needs recent NVIDIA drivers "
-            "with CUDA support already installed on your system (not included here). Falls back "
-            "to this computer if the card can't be used."
+            "Same AI features, sped up by an NVIDIA graphics card. Needs NVIDIA driver 580 or "
+            "newer; CUDA and cuDNN are included. Falls back to this computer if the card can't "
+            "be used."
         ),
         "details": (
-            "Complete ONNX Runtime build with the CUDA execution provider. Requires CUDA 13 and "
-            "cuDNN 9 already installed on the host — neither is bundled. Falls back to CPU when "
-            "the device cannot be used. Upstream: Microsoft ONNX Runtime {version}."
+            "Complete ONNX Runtime build with the CUDA execution provider. CUDA 13 and cuDNN 9 "
+            "runtimes are bundled — not the full CUDA Toolkit. The host still needs a recent "
+            "NVIDIA driver (Linux ≥ 580.65 for CUDA 13.0). Falls back to CPU when the device "
+            "cannot be used. Licensed MIT (ONNX Runtime) plus NVIDIA CUDA and cuDNN "
+            "redistributable terms. Upstream: Microsoft ONNX Runtime {version}."
         ),
     },
+}
+
+# NVIDIA redistributables unpacked into runtime/lib/ next to the CUDA EP.
+# Pins follow onnxruntime-gpu 1.27 extras (CUDA 13 / cuDNN 9) under NVIDIA's current names:
+# toolkit wheels dropped the -cu13 suffix; cuDNN still uses nvidia-cudnn-cu13.
+# cublas 13.3.0.5 is the newest 13.3 build that publishes both manylinux and win_amd64
+# (13.6+ is Linux-only on PyPI today). nvcudart_hybrid64.dll is a driver component, like
+# nvcuda.dll, and is not in the cuda-runtime wheel — do not bundle either.
+def _wheel(filename: str, sha256: str, url: str) -> dict[str, str]:
+    return {"filename": filename, "sha256": sha256, "url": url}
+
+
+CUDA_WHEELS: dict[str, list[dict[str, str]]] = {
+    "linux-x64": [
+        _wheel(
+            "nvidia_cuda_runtime-13.3.29-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "e04420616e72f563167a7733272992d7e6df6dc5cb54b2f94f9f1520ea9e30c1",
+            "https://files.pythonhosted.org/packages/97/be/5699b6e642b372f7d24c59c2f41383e2696825e20bab85f7399c7c6a56f7/nvidia_cuda_runtime-13.3.29-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+        ),
+        _wheel(
+            "nvidia_cublas-13.3.0.5-py3-none-manylinux_2_27_x86_64.whl",
+            "366568e2dc59e6fe71ffd179f9f2a38b8b2772aed626320a64008651b1e72974",
+            "https://files.pythonhosted.org/packages/3c/7c/ae5d1751819acff18b0fac29c0a4e93d06d36cfabebe36365ddacc7c32a9/nvidia_cublas-13.3.0.5-py3-none-manylinux_2_27_x86_64.whl",
+        ),
+        _wheel(
+            "nvidia_cufft-12.3.0.29-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+            "edb25c0626bd202ee5acc035b5dd361a3b89ed3b75a81a52df72c89150cb57c2",
+            "https://files.pythonhosted.org/packages/e7/00/fab4a29fa1d7eb43bc6b94de4e86312c5e425d5582e58b9641300b9dffc7/nvidia_cufft-12.3.0.29-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+        ),
+        _wheel(
+            "nvidia_curand-10.4.3.29-py3-none-manylinux_2_27_x86_64.whl",
+            "1859bf37a62754d2c65001393096ca79de399f995971fa7826d0adfd88c3cf7b",
+            "https://files.pythonhosted.org/packages/ee/49/4ca4ce4a9334c9a1ef68ab85b358f019bf85e8c3f51c2471d4cc257a273d/nvidia_curand-10.4.3.29-py3-none-manylinux_2_27_x86_64.whl",
+        ),
+        _wheel(
+            "nvidia_cuda_nvrtc-13.3.33-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl",
+            "82530788b8c6164a54d3fd9ae8bcca8893d397c4aeb998861982a03bbe41e204",
+            "https://files.pythonhosted.org/packages/8b/2c/86916c8a34dcdb0c3ddd1c0e30545041bd781184e437b9cb76fcda70560b/nvidia_cuda_nvrtc-13.3.33-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl",
+        ),
+        _wheel(
+            "nvidia_nvjitlink-13.3.33-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl",
+            "26a6de7fb4c8fdaa7703d3dad720d6d427ddfea5c48a528fd97c11733ad830e5",
+            "https://files.pythonhosted.org/packages/f0/ee/580ca6f29dcab0221db8706badca1bbbb084f1975c4d4e83329c3a7e31f0/nvidia_nvjitlink-13.3.33-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl",
+        ),
+        _wheel(
+            "nvidia_cudnn_cu13-9.25.0.15-py3-none-manylinux_2_27_x86_64.whl",
+            "b910b8108975ba34866bbacc598305d70724646f7da28f24ada6256ce46c53e1",
+            "https://files.pythonhosted.org/packages/73/e0/0e168dd11772e040700413ca4843617d32dd939885d753078ee682afc674/nvidia_cudnn_cu13-9.25.0.15-py3-none-manylinux_2_27_x86_64.whl",
+        ),
+    ],
+    "win-x64": [
+        _wheel(
+            "nvidia_cuda_runtime-13.3.29-py3-none-win_amd64.whl",
+            "0667ec61c3d897388efa305ed4f7609ace88849a753ba9c6311d06dca55fff4f",
+            "https://files.pythonhosted.org/packages/d2/27/b53a5e0397842a5c11f0e1a39d4e5b2f22638a4126e83b3c4e196f62c969/nvidia_cuda_runtime-13.3.29-py3-none-win_amd64.whl",
+        ),
+        _wheel(
+            "nvidia_cublas-13.3.0.5-py3-none-win_amd64.whl",
+            "065b944083560334e02299050979b7cfd91ec79e5fc5c23d602f7f35c0d1356c",
+            "https://files.pythonhosted.org/packages/f8/6f/7ed17e69ac6799098d7ab9ff46789c10ea58d49f75726ba351badc5f109d/nvidia_cublas-13.3.0.5-py3-none-win_amd64.whl",
+        ),
+        _wheel(
+            "nvidia_cufft-12.3.0.29-py3-none-win_amd64.whl",
+            "510036a2bbab5c83ae93dc5c907c3a49d3518e3066ac3a2052ff0f7f9b27dfc4",
+            "https://files.pythonhosted.org/packages/94/64/8e9d808720559d3cbfcd1d1bc8a2e6f55deb29d692513d5a93c8d417b7e5/nvidia_cufft-12.3.0.29-py3-none-win_amd64.whl",
+        ),
+        _wheel(
+            "nvidia_curand-10.4.3.29-py3-none-win_amd64.whl",
+            "34b18d5a2a8e5db4c3846475ae4eef0cacdf3ac5e9c501f3a4efb422f137a74e",
+            "https://files.pythonhosted.org/packages/2a/eb/63f7710fc84837e0118002bc29671542807921aef3a0c710da83a5e7e711/nvidia_curand-10.4.3.29-py3-none-win_amd64.whl",
+        ),
+        _wheel(
+            "nvidia_cuda_nvrtc-13.3.33-py3-none-win_amd64.whl",
+            "7d2af818851c0c224d5f92221e9226e51ee23c236df4b51f9194563979c888be",
+            "https://files.pythonhosted.org/packages/a1/42/edce72f2c5a0f587168109c867f25f4a9a6cd7289ecf0d68ed2b1070f273/nvidia_cuda_nvrtc-13.3.33-py3-none-win_amd64.whl",
+        ),
+        _wheel(
+            "nvidia_nvjitlink-13.3.33-py3-none-win_amd64.whl",
+            "4297ee49639b4f2e07255a1d69b3acc7ab2d011bb892b403e91ac98368962e3b",
+            "https://files.pythonhosted.org/packages/67/f2/ec9c05a108095828dfc58840978c627b3c313fdf2a567c6de9ffbbb46901/nvidia_nvjitlink-13.3.33-py3-none-win_amd64.whl",
+        ),
+        _wheel(
+            "nvidia_cudnn_cu13-9.25.0.15-py3-none-win_amd64.whl",
+            "af0f35094dcc100c7edb1d08ebda980c67d9ade65ca1dec9c351040ffcd78e4e",
+            "https://files.pythonhosted.org/packages/18/d4/c09b11336981836c3183f28a6ca309e08ad080311edb6ff6c28cecdb5f24/nvidia_cudnn_cu13-9.25.0.15-py3-none-win_amd64.whl",
+        ),
+    ],
 }
 
 
@@ -154,6 +252,113 @@ def _copy_real(src: Path, dst: Path) -> None:
     shutil.copy2(src.resolve(), dst)
 
 
+def _is_native_lib(name: str) -> bool:
+    lower = name.lower()
+    if lower.endswith((".dll", ".so", ".dylib")):
+        return True
+    # Versioned SONAMEs must keep the minor, e.g. libnvrtc-builtins.so.13.3
+    return ".so." in lower
+
+
+def _is_license_file(path: Path) -> bool:
+    posix = path.as_posix().replace("\\", "/")
+    if "/licenses/" in posix.lower() and path.suffix.lower() in {".txt", ".md", ""}:
+        return True
+    return path.name.lower() in {"license", "license.txt", "license.md", "eula.txt"}
+
+
+def _stage_nvidia_wheels(platform: str, lib: Path, root: Path) -> None:
+    wheels = CUDA_WHEELS.get(platform)
+    if not wheels:
+        sys.exit(f"no NVIDIA wheels pinned for {platform}")
+
+    seen_license_hashes: set[str] = set()
+    for wheel in wheels:
+        archive = _download(wheel["url"], wheel["filename"], wheel["sha256"])
+        with tempfile.TemporaryDirectory() as tmp:
+            with zipfile.ZipFile(archive) as zf:
+                zf.extractall(tmp)
+            for source in Path(tmp).rglob("*"):
+                if source.is_symlink():
+                    resolved = source.resolve()
+                    if not resolved.is_file():
+                        continue
+                elif source.is_file():
+                    resolved = source
+                else:
+                    continue
+
+                if _is_native_lib(source.name):
+                    dest = lib / source.name
+                    _copy_real(source, dest)
+                    continue
+
+                if not _is_license_file(source):
+                    continue
+                digest = hashlib.sha256(resolved.read_bytes()).hexdigest()
+                if digest in seen_license_hashes:
+                    continue
+                seen_license_hashes.add(digest)
+                if "cudnn" in source.as_posix().lower():
+                    dest_name = "NVIDIA_CUDNN_LICENSE.txt"
+                else:
+                    dest_name = "NVIDIA_CUDA_EULA.txt"
+                dest = root / dest_name
+                # cuDNN and CUDA EULAs can both want the same filename after the first unique
+                # CUDA copy; keep a package-prefixed fallback if that happens.
+                if dest.exists():
+                    dest = root / f"{source.name}"
+                    if dest.exists():
+                        dest = root / f"{archive.stem}-{source.name}"
+                _copy_real(source, dest)
+
+
+# libcudnn.so.9 dlopens these without a SONAME suffix. DT_NEEDED entries already
+# carry versions (libcublas.so.13, …) and must not be duplicated.
+_DLOPEN_UNVERSIONED = {
+    "libcudnn_adv.so",
+    "libcudnn_cnn.so",
+    "libcudnn_engines_precompiled.so",
+    "libcudnn_engines_runtime_compiled.so",
+    "libcudnn_engines_tensor_ir.so",
+    "libcudnn_ext.so",
+    "libcudnn_graph.so",
+    "libcudnn_heuristic.so",
+    "libcudnn_ops.so",
+    "libnvrtc-builtins.so",
+    "libnvrtc.so",
+}
+
+
+def _copy_unversioned_aliases(lib: Path) -> None:
+    """Copy SONAME files to the unversioned names cuDNN dlopens.
+
+    The packer skips symlinks, so each alias is a real copy.
+    """
+    for source in list(lib.iterdir()):
+        if not source.is_file():
+            continue
+        name = source.name
+        if ".so." not in name:
+            continue
+        alias_name = name[: name.index(".so.") + 3]
+        if alias_name not in _DLOPEN_UNVERSIONED:
+            continue
+        alias = lib / alias_name
+        if alias.exists():
+            continue
+        _copy_real(source, alias)
+
+
+def _patchelf_cuda_ep(lib: Path) -> None:
+    ep = lib / "libonnxruntime_providers_cuda.so"
+    if not ep.exists():
+        return
+    if shutil.which("patchelf") is None:
+        sys.exit("patchelf is required to set RUNPATH=$ORIGIN on libonnxruntime_providers_cuda.so")
+    subprocess.run(["patchelf", "--set-rpath", "$ORIGIN", str(ep)], check=True)
+
+
 def _write_recipe(recipe: dict) -> Path:
     out_dir = HERE / "onnxruntime"
     out_dir.mkdir(exist_ok=True)
@@ -177,8 +382,14 @@ def stage_core(variant: str, platform: str) -> None:
         # The release ships libonnxruntime.so, .so.1 and .so.1.27.0 as two symlinks to one file.
         # Only the plain name is staged: the loader looks for it first, and three copies of a
         # 23 MB library would otherwise land in the package, since the packer skips symlinks.
+        # NVIDIA SONAMEs are copied separately and must not be flattened (libnvrtc-builtins.so.13.3).
+        skip_suffixes = {".a", ".lib", ".pdb"}
         for source in sorted((prefix / "lib").iterdir()):
-            if source.is_dir() or source.suffix in {".a", ".lib"}:
+            if source.is_dir():
+                continue
+            if "tensorrt" in source.name.lower():
+                continue
+            if source.suffix.lower() in skip_suffixes:
                 continue
             resolved = source.resolve()
             stem = resolved.name
@@ -191,6 +402,12 @@ def stage_core(variant: str, platform: str) -> None:
             if (prefix / extra).is_file():
                 shutil.copy2(prefix / extra, root / extra)
 
+    if variant == "cuda":
+        _stage_nvidia_wheels(platform, lib, root)
+        if platform.startswith("linux"):
+            _copy_unversioned_aliases(lib)
+            _patchelf_cuda_ep(lib)
+
     (root / "runtime.json").write_text(json.dumps({
         "variant": variant,
         "ortVersion": ORT_VERSION,
@@ -199,17 +416,18 @@ def stage_core(variant: str, platform: str) -> None:
     }, indent=2) + "\n")
 
     copy = CORE_COPY[variant]
+    cuda = variant == "cuda"
     recipe = _write_recipe({
         "id": f"onnxruntime.{variant}.{platform}",
-        "version": PACKAGE_VERSION,
+        "version": CUDA_PACKAGE_VERSION if cuda else PACKAGE_VERSION,
         # Platform stays in the id / platform field; the app filters by OS already, so
         # beginners don't need "(linux-x64)" in the store title.
         "name": copy["name"],
         "description": copy["description"],
         "details": copy["details"].format(version=ORT_VERSION) + f" Platform: {platform}.",
-        "author": "Microsoft",
-        "license": "MIT",
-        "minAppVersion": "0.1.0",
+        "author": "Microsoft, NVIDIA" if cuda else "Microsoft",
+        "license": "MIT + NVIDIA CUDA/cuDNN" if cuda else "MIT",
+        "minAppVersion": CUDA_MIN_APP_VERSION if cuda else "0.1.0",
         "platform": platform,
         "source": f"../../staging/{name}",
         "provides": [{"kind": "onnxruntime", "root": "runtime", "items": 1}],

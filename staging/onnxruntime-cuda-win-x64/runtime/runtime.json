@@ -1,0 +1,6 @@
+{
+  "variant": "cuda",
+  "ortVersion": "1.27.0",
+  "apiVersion": 27,
+  "platform": "win-x64"
+}
