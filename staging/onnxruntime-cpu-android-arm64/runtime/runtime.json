@@ -1,0 +1,6 @@
+{
+  "variant": "cpu",
+  "ortVersion": "1.27.0",
+  "apiVersion": 27,
+  "platform": "android-arm64"
+}

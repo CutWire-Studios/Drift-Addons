@@ -1,0 +1,20 @@
+{
+  "id": "onnxruntime.ep.webgpu.osx-arm64",
+  "version": "1.0.0",
+  "name": "Speed boost \u2014 Any graphics card",
+  "description": "Makes AI features faster using your graphics card (AMD, Intel, or NVIDIA) \u2014 no extra toolkit to install. Install an AI Engine first; this just speeds it up.",
+  "details": "Plugin execution provider (onnxruntime-ep) for WebGPU. Layers onto whichever AI Engine is already loaded \u2014 it does not replace the core. Upstream: Microsoft.ML.OnnxRuntime.EP.WebGpu 0.1.0. Platform: osx-arm64.",
+  "author": "Microsoft",
+  "license": "MIT",
+  "minAppVersion": "0.1.0",
+  "platform": "osx-arm64",
+  "source": "../../staging/onnxruntime-ep-webgpu-osx-arm64",
+  "provides": [
+    {
+      "kind": "onnxruntime-ep",
+      "root": "ep",
+      "items": 1
+    }
+  ],
+  "zstdLevel": 6
+}

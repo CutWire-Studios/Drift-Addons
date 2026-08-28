@@ -2,7 +2,7 @@
 """Stage the ONNX Runtime addons and write their recipes.
 
     ./fetch-onnxruntime.py                  # every variant/platform in the table below
-    ./fetch-onnxruntime.py cpu:linux-x64 webgpu:linux-x64
+    ./fetch-onnxruntime.py cpu:linux-x64 webgpu:linux-x64 android:android-arm64
 
 Drift no longer links ONNX Runtime — it dlopens whichever build the user installed, so the
 runtime ships as an addon and the CPU / CUDA / WebGPU choice belongs to them. Two kinds come out
@@ -13,6 +13,10 @@ of here:
   onnxruntime-ep   a plugin execution provider (ONNX Runtime >= 1.23) that layers onto whichever
                    core is loaded. WebGPU is the only one so far, and it is how AMD and Intel GPUs
                    get accelerated without a second 200 MB core.
+
+The `android:` variant is the same complete runtime as `cpu:`, but Microsoft ships it as an AAR
+on Maven Central rather than a release archive, so it has its own fetch path and its own platform
+tag — an NDK-linked .so must never be offered to a desktop Linux arm64 build.
 
 Unlike the other staging scripts this one downloads rather than copying local assets, and it can
 stage any platform from any platform — the packages are cross-built by construction. Recipes are
@@ -91,6 +95,34 @@ WEBGPU_PLATFORMS = {
     "osx-arm64": ("libonnxruntime_providers_webgpu.dylib", []),
     "win-x64": ("onnxruntime_providers_webgpu.dll", ["dxil.dll", "dxcompiler.dll"]),
     "win-arm64": ("onnxruntime_providers_webgpu.dll", ["dxil.dll", "dxcompiler.dll"]),
+}
+
+# Android is the one platform Microsoft does not publish as a release archive. It ships as an AAR
+# on Maven Central — a plain zip holding one libonnxruntime.so per ABI — but it is the same runtime
+# behind the same C API, so it stages into the identical package shape as the desktop cores.
+ANDROID_AAR = ("https://repo1.maven.org/maven2/com/microsoft/onnxruntime/onnxruntime-android/"
+               f"{ORT_VERSION}/onnxruntime-android-{ORT_VERSION}.aar")
+ANDROID_AAR_SHA256 = "077dec5e2d821234c7dc0aba584bec8f999854b546c754cab93a90741c56fbeb"
+# Platform tag -> the ABI directory inside the AAR. Drift builds arm64-v8a and nothing else.
+ANDROID_PLATFORMS = {"android-arm64": "arm64-v8a"}
+# The android-* tag arrives in AddonPackage.cpp's currentPlatform() in this release. Older Android
+# builds ask for linux-arm64 and would never match these rows, but the catalogue says so anyway.
+ANDROID_MIN_APP_VERSION = "0.4.1"
+# The AAR carries no licence text, unlike every release archive.
+ORT_RAW = f"https://raw.githubusercontent.com/microsoft/onnxruntime/v{ORT_VERSION}"
+
+ANDROID_COPY = {
+    "name": "AI Engine — Any phone",
+    "description": (
+        "Powers auto captions, subject cutout, funny face effects, and noise removal. Runs on "
+        "your phone's processor — there is nothing else to choose."
+    ),
+    "details": (
+        "Complete ONNX Runtime build that Drift dlopens for AI features. Runs on the CPU "
+        "execution provider: NNAPI and XNNPACK are compiled into this build, but Drift does not "
+        "request either yet. Upstream: Microsoft ONNX Runtime {version}, the onnxruntime-android "
+        "AAR from Maven Central."
+    ),
 }
 
 CORE_COPY = {
@@ -393,9 +425,14 @@ def stage_core(variant: str, platform: str) -> None:
                 continue
             resolved = source.resolve()
             stem = resolved.name
-            # libonnxruntime.so.1.27.0 -> libonnxruntime.so ; the .dll/.dylib names are already flat
+            # libonnxruntime.so.1.27.0 -> libonnxruntime.so ; the .dll names are already flat
             if ".so." in stem:
                 stem = stem[:stem.index(".so.") + 3]
+            elif stem.endswith(".dylib"):
+                # libonnxruntime.1.27.0.dylib -> libonnxruntime.dylib. macOS ships the plain name
+                # as a symlink to the versioned file and the packer skips symlinks, so without
+                # this the one staged copy carries a name findLibrary() never looks for.
+                stem = stem[:-len(".dylib")].split(".", 1)[0] + ".dylib"
             _copy_real(source, lib / stem)
 
         for extra in ("LICENSE", "ThirdPartyNotices.txt", "Privacy.md", "README.md"):
@@ -494,10 +531,57 @@ def stage_webgpu(platform: str) -> None:
     print(f"{name}: {size / 1e6:.0f} MB -> {recipe.relative_to(HERE.parent)}")
 
 
+def stage_android(platform: str) -> None:
+    abi = ANDROID_PLATFORMS[platform]
+    aar = _download(ANDROID_AAR, f"onnxruntime-android-{ORT_VERSION}.aar", ANDROID_AAR_SHA256)
+
+    name = f"onnxruntime-cpu-{platform}"
+    target = _reset(name)
+    root = target / "runtime"
+    lib = root / "lib"
+    lib.mkdir(parents=True)
+
+    with zipfile.ZipFile(aar) as zf:
+        # Only the runtime itself: libonnxruntime4j_jni.so beside it is the Java binding, and
+        # Drift drives the C API. The headers/ and classes.jar in the AAR are build inputs.
+        with zf.open(f"jni/{abi}/libonnxruntime.so") as src, \
+                (lib / "libonnxruntime.so").open("wb") as dst:
+            shutil.copyfileobj(src, dst)
+
+    for extra in ("LICENSE", "ThirdPartyNotices.txt"):
+        text = _download(f"{ORT_RAW}/{extra}", f"onnxruntime-{ORT_VERSION}-{extra}", None)
+        shutil.copy2(text, root / extra)
+
+    (root / "runtime.json").write_text(json.dumps({
+        "variant": "cpu",
+        "ortVersion": ORT_VERSION,
+        "apiVersion": ORT_API_VERSION,
+        "platform": platform,
+    }, indent=2) + "\n")
+
+    recipe = _write_recipe({
+        "id": f"onnxruntime.cpu.{platform}",
+        "version": PACKAGE_VERSION,
+        "name": ANDROID_COPY["name"],
+        "description": ANDROID_COPY["description"],
+        "details": ANDROID_COPY["details"].format(version=ORT_VERSION) + f" Platform: {platform}.",
+        "author": "Microsoft",
+        "license": "MIT",
+        "minAppVersion": ANDROID_MIN_APP_VERSION,
+        "platform": platform,
+        "source": f"../../staging/{name}",
+        "provides": [{"kind": "onnxruntime", "root": "runtime", "items": 1}],
+        "zstdLevel": 6,
+    })
+    size = sum(f.stat().st_size for f in target.rglob("*") if f.is_file())
+    print(f"{name}: {size / 1e6:.0f} MB -> {recipe.relative_to(HERE.parent)}")
+
+
 def all_targets() -> list[str]:
     targets = [f"{variant}:{platform}"
                for variant, platforms in CORES.items() for platform in platforms]
     targets += [f"webgpu:{platform}" for platform in WEBGPU_PLATFORMS]
+    targets += [f"android:{platform}" for platform in ANDROID_PLATFORMS]
     return targets
 
 
@@ -513,6 +597,10 @@ def main() -> None:
             if platform not in WEBGPU_PLATFORMS:
                 sys.exit(f"no WebGPU EP for {platform}")
             stage_webgpu(platform)
+        elif variant == "android":
+            if platform not in ANDROID_PLATFORMS:
+                sys.exit(f"upstream publishes no Android build for {platform}")
+            stage_android(platform)
         elif variant in CORES:
             if platform not in CORES[variant]:
                 sys.exit(f"upstream publishes no {variant} build for {platform}")

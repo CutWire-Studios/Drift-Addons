@@ -1,0 +1,6 @@
+{
+  "variant": "webgpu",
+  "library": "libonnxruntime_providers_webgpu.dylib",
+  "minApiVersion": 24,
+  "platform": "osx-arm64"
+}

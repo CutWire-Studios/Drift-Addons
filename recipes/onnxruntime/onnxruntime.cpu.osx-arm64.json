@@ -1,0 +1,20 @@
+{
+  "id": "onnxruntime.cpu.osx-arm64",
+  "version": "1.0.0",
+  "name": "AI Engine \u2014 Any computer",
+  "description": "Powers auto captions, subject cutout, funny face effects, and noise removal. Works on every computer \u2014 install this first unless you know you want a faster graphics option.",
+  "details": "Complete ONNX Runtime build that Drift dlopens for AI features. Ships the CPU execution provider only. Upstream: Microsoft ONNX Runtime 1.27.0. Platform: osx-arm64.",
+  "author": "Microsoft",
+  "license": "MIT",
+  "minAppVersion": "0.1.0",
+  "platform": "osx-arm64",
+  "source": "../../staging/onnxruntime-cpu-osx-arm64",
+  "provides": [
+    {
+      "kind": "onnxruntime",
+      "root": "runtime",
+      "items": 1
+    }
+  ],
+  "zstdLevel": 6
+}
