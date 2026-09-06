@@ -1,0 +1,8 @@
+{
+ "model": "rvm_mobilenetv3",
+ "variant": "mobilenetv3",
+ "files": {
+  "fp32": "rvm_mobilenetv3_fp32.onnx",
+  "fp16": "rvm_mobilenetv3_fp16.onnx"
+ }
+}

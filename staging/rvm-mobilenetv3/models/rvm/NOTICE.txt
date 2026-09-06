@@ -1,0 +1,7 @@
+Robust Video Matting
+Copyright (c) 2021 Peter Lin
+Licensed under the GNU General Public License v3.0.
+Source: https://github.com/PeterL1n/RobustVideoMatting
+
+The bundled weights are the ONNX exports published with RVM release v1.0.0.
+Trained on VideoMatte240K, Distinctions-646 and Adobe Image Matting.

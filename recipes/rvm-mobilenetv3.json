@@ -1,0 +1,18 @@
+{
+  "id": "rvm.mobilenetv3",
+  "version": "1.0.0",
+  "name": "People Cutout",
+  "description": "Cuts people out from the background automatically, with no clicking — soft edges that keep hair looking natural.",
+  "details": "Robust Video Matting, MobileNetV3 backbone, in ONNX. Recurrent human matting: no prompt, soft alpha rather than a hard mask, and a colour-decontaminated foreground that removes background spill from hair. Ships fp32 and fp16 weights; fp32 is used unless an execution provider is chosen by name. Package id: rvm.mobilenetv3.",
+  "author": "CutWire",
+  "license": "GPL-3.0",
+  "minAppVersion": "0.5.2",
+  "source": "../staging/rvm-mobilenetv3",
+  "provides": [
+    {
+      "kind": "rvm-model",
+      "root": "models/rvm"
+    }
+  ],
+  "zstdLevel": 3
+}

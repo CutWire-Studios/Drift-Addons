@@ -23,6 +23,8 @@ publishes them.
 | Emoji Stickers | Emoji sticker set and the emoji font used for text |
 | Auto Captions | Whisper speech-to-text model for automatic subtitles |
 | Subject Cutout | SAM 2 model for isolating a subject from the background |
+| People Cutout | Robust Video Matting, so people can be cut out with no clicking and a soft edge |
+| People Cutout — Best Quality | The larger RVM model, for cleaner edges on difficult shots |
 | Funny Face Effects | Face landmark model for face warps and makeup |
 | Scene Labels | YOLOX object detection, so shots can be labelled and searched by what is in them |
 | Noise Removal | DeepFilterNet 3 model for cleaning up background noise |

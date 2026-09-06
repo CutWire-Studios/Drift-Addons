@@ -1,0 +1,7 @@
+{
+ "model": "rvm_resnet50",
+ "variant": "resnet50",
+ "files": {
+  "fp32": "rvm_resnet50_fp32.onnx"
+ }
+}

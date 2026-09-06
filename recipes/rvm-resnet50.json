@@ -1,0 +1,18 @@
+{
+  "id": "rvm.resnet50",
+  "version": "1.0.0",
+  "name": "People Cutout — Best Quality",
+  "description": "A larger, slower people cutout with cleaner edges on difficult shots. Install People Cutout first — this is the same thing, only heavier.",
+  "details": "Robust Video Matting, ResNet-50 backbone, in ONNX. Same recurrent human matting as the MobileNetV3 pack with tighter edges on fine hair and motion blur, at roughly twice the processing time and five times the download. Both can be installed together and picked between in the cutout window. Package id: rvm.resnet50.",
+  "author": "CutWire",
+  "license": "GPL-3.0",
+  "minAppVersion": "0.5.2",
+  "source": "../staging/rvm-resnet50",
+  "provides": [
+    {
+      "kind": "rvm-model",
+      "root": "models/rvm-resnet50"
+    }
+  ],
+  "zstdLevel": 3
+}
