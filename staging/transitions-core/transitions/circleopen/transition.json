@@ -1,0 +1,46 @@
+{
+  "id": "circleopen",
+  "displayName": "Circleopen",
+  "category": "basic",
+  "order": 732,
+  "parameters": [
+    {
+      "identifier": "smoothness",
+      "displayName": "Smoothness",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 0.6,
+      "defaultValue": 0.3
+    },
+    {
+      "identifier": "p_opening",
+      "displayName": "Opening",
+      "type": "bool",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 1.0
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

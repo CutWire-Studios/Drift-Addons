@@ -1,0 +1,29 @@
+{
+  "id": "old_tv_lost_signal",
+  "displayName": "Old Tv Lost Signal",
+  "category": "glitch",
+  "order": 782,
+  "parameters": [],
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

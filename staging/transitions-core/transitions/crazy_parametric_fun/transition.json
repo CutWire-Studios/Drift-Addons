@@ -1,0 +1,62 @@
+{
+  "id": "crazy_parametric_fun",
+  "displayName": "Crazy Parametric Fun",
+  "category": "basic",
+  "order": 622,
+  "parameters": [
+    {
+      "identifier": "a",
+      "displayName": "A",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 8.0,
+      "defaultValue": 4.0
+    },
+    {
+      "identifier": "b",
+      "displayName": "B",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 2.0,
+      "defaultValue": 1.0
+    },
+    {
+      "identifier": "amplitude",
+      "displayName": "Amplitude",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 240.0,
+      "defaultValue": 120.0
+    },
+    {
+      "identifier": "smoothness",
+      "displayName": "Smoothness",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 0.2,
+      "defaultValue": 0.1
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

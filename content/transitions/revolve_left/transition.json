@@ -1,0 +1,118 @@
+{
+  "id": "revolve_left",
+  "displayName": "Revolve Left",
+  "category": "stylized",
+  "order": 678,
+  "parameters": [
+    {
+      "identifier": "p_center_x",
+      "displayName": "Center X",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.46
+    },
+    {
+      "identifier": "p_center_y",
+      "displayName": "Center Y",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.52
+    },
+    {
+      "identifier": "direction",
+      "displayName": "Direction",
+      "type": "float",
+      "minValue": -1.0,
+      "maxValue": 1.0,
+      "defaultValue": -1.0
+    },
+    {
+      "identifier": "maxRotation",
+      "displayName": "Max Rotation",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 3.9,
+      "defaultValue": 1.95
+    },
+    {
+      "identifier": "peakZoom",
+      "displayName": "Peak Zoom",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 4.44,
+      "defaultValue": 2.22
+    },
+    {
+      "identifier": "swirl",
+      "displayName": "Swirl",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 5.7,
+      "defaultValue": 2.85
+    },
+    {
+      "identifier": "barrel",
+      "displayName": "Barrel",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 0.76,
+      "defaultValue": 0.38
+    },
+    {
+      "identifier": "motionBlur",
+      "displayName": "Motion Blur",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 2.0,
+      "defaultValue": 1.0
+    },
+    {
+      "identifier": "switchStart",
+      "displayName": "Switch Start",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 0.6,
+      "defaultValue": 0.3
+    },
+    {
+      "identifier": "switchEnd",
+      "displayName": "Switch End",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.5
+    },
+    {
+      "identifier": "shadow",
+      "displayName": "Shadow",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 0.32,
+      "defaultValue": 0.16
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

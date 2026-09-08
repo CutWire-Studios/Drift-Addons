@@ -1,0 +1,62 @@
+{
+  "id": "crosshatch",
+  "displayName": "Crosshatch",
+  "category": "geometric",
+  "order": 738,
+  "parameters": [
+    {
+      "identifier": "p_center_x",
+      "displayName": "Center X",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.5
+    },
+    {
+      "identifier": "p_center_y",
+      "displayName": "Center Y",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.5
+    },
+    {
+      "identifier": "threshold",
+      "displayName": "Threshold",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 6.0,
+      "defaultValue": 3.0
+    },
+    {
+      "identifier": "fadeEdge",
+      "displayName": "Fade Edge",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 0.2,
+      "defaultValue": 0.1
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

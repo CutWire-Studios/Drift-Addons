@@ -1,0 +1,38 @@
+{
+  "id": "film_burn",
+  "displayName": "Film Burn",
+  "category": "cinematic",
+  "order": 642,
+  "parameters": [
+    {
+      "identifier": "Seed",
+      "displayName": "Seed",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 4.62,
+      "defaultValue": 2.31
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

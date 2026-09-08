@@ -1,0 +1,46 @@
+{
+  "id": "windowslice",
+  "displayName": "Windowslice",
+  "category": "geometric",
+  "order": 836,
+  "parameters": [
+    {
+      "identifier": "count",
+      "displayName": "Count",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 20.0,
+      "defaultValue": 10.0
+    },
+    {
+      "identifier": "smoothness",
+      "displayName": "Smoothness",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.5
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

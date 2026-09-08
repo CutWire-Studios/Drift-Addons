@@ -169,6 +169,11 @@ def _merge_content_packages(staged_root: Path, kind: str) -> int:
             shutil.rmtree(dest)
         shutil.copytree(package, dest)
         merged += 1
+    # Ships with the package: the ported gl-transitions shaders are MIT, and their per-file
+    # Author/License headers plus this index are the attribution that has to travel with them.
+    attribution = source / "ATTRIBUTION.md"
+    if attribution.is_file():
+        shutil.copy2(attribution, staged_root / kind / "ATTRIBUTION.md")
     if merged:
         print(f"{kind}: +{merged} from content/{kind}")
     return merged

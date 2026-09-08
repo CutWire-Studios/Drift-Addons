@@ -1,0 +1,73 @@
+{
+  "id": "star_wipe",
+  "displayName": "Star Wipe",
+  "category": "geometric",
+  "order": 692,
+  "parameters": [
+    {
+      "identifier": "border_thickness",
+      "displayName": "Border thickness",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 0.02,
+      "defaultValue": 0.01
+    },
+    {
+      "identifier": "star_rotation",
+      "displayName": "Star rotation",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.5,
+      "defaultValue": 0.75
+    },
+    {
+      "identifier": "p_border_color_a",
+      "displayName": "Border color Opacity",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.0
+    },
+    {
+      "identifier": "p_star_center_x",
+      "displayName": "Star center X",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.5
+    },
+    {
+      "identifier": "p_star_center_y",
+      "displayName": "Star center Y",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.5
+    }
+  ],
+  "fixedParams": {
+    "p_border_color": "#ffffff"
+  },
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

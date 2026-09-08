@@ -1,0 +1,78 @@
+{
+  "id": "drop_zone_flicker",
+  "displayName": "Drop Zone Flicker",
+  "category": "basic",
+  "order": 638,
+  "parameters": [
+    {
+      "identifier": "frameRate",
+      "displayName": "Frame Rate",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 48.0,
+      "defaultValue": 24.0
+    },
+    {
+      "identifier": "rgbOffset",
+      "displayName": "Rgb Offset",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 0.028,
+      "defaultValue": 0.014
+    },
+    {
+      "identifier": "blockAmount",
+      "displayName": "Block Amount",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.44,
+      "defaultValue": 0.72
+    },
+    {
+      "identifier": "ghostAmount",
+      "displayName": "Ghost Amount",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.24,
+      "defaultValue": 0.62
+    },
+    {
+      "identifier": "redCyan",
+      "displayName": "Red Cyan",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.16,
+      "defaultValue": 0.58
+    },
+    {
+      "identifier": "scanline",
+      "displayName": "Scanline",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 0.15,
+      "defaultValue": 0.075
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

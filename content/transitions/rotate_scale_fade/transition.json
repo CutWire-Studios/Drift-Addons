@@ -1,0 +1,73 @@
+{
+  "id": "rotate_scale_fade",
+  "displayName": "Rotate Scale Fade",
+  "category": "basic",
+  "order": 804,
+  "parameters": [
+    {
+      "identifier": "p_center_x",
+      "displayName": "Center X",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.5
+    },
+    {
+      "identifier": "p_center_y",
+      "displayName": "Center Y",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.5
+    },
+    {
+      "identifier": "rotations",
+      "displayName": "Rotations",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 2.0,
+      "defaultValue": 1.0
+    },
+    {
+      "identifier": "scale",
+      "displayName": "Scale",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 16.0,
+      "defaultValue": 8.0
+    },
+    {
+      "identifier": "p_backColor_a",
+      "displayName": "Back Color Opacity",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.0
+    }
+  ],
+  "fixedParams": {
+    "p_backColor": "#262626"
+  },
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

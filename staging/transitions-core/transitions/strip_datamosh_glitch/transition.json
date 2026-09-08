@@ -1,0 +1,102 @@
+{
+  "id": "strip_datamosh_glitch",
+  "displayName": "Strip Datamosh Glitch",
+  "category": "glitch",
+  "order": 698,
+  "parameters": [
+    {
+      "identifier": "strength",
+      "displayName": "Strength",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 2.0,
+      "defaultValue": 1.0
+    },
+    {
+      "identifier": "horizontalBars",
+      "displayName": "Horizontal Bars",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 84.0,
+      "defaultValue": 42.0
+    },
+    {
+      "identifier": "verticalSlits",
+      "displayName": "Vertical Slits",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 36.0,
+      "defaultValue": 18.0
+    },
+    {
+      "identifier": "tear",
+      "displayName": "Tear",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 0.36,
+      "defaultValue": 0.18
+    },
+    {
+      "identifier": "chroma",
+      "displayName": "Chroma",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 0.064,
+      "defaultValue": 0.032
+    },
+    {
+      "identifier": "residue",
+      "displayName": "Residue",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.24,
+      "defaultValue": 0.62
+    },
+    {
+      "identifier": "noiseAmount",
+      "displayName": "Noise Amount",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 0.32,
+      "defaultValue": 0.16
+    },
+    {
+      "identifier": "scanAmount",
+      "displayName": "Scan Amount",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 0.26,
+      "defaultValue": 0.13
+    },
+    {
+      "identifier": "flashAmount",
+      "displayName": "Flash Amount",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 0.4,
+      "defaultValue": 0.2
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

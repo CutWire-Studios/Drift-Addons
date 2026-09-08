@@ -1,0 +1,38 @@
+{
+  "id": "defocus_blur",
+  "displayName": "Defocus Blur",
+  "category": "distortion",
+  "order": 626,
+  "parameters": [
+    {
+      "identifier": "blurSize",
+      "displayName": "Blur Size",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 0.04,
+      "defaultValue": 0.02
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

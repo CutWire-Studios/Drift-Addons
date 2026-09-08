@@ -1,0 +1,58 @@
+{
+  "id": "dissolve",
+  "displayName": "Dissolve",
+  "category": "liquid",
+  "order": 752,
+  "parameters": [
+    {
+      "identifier": "uLineWidth",
+      "displayName": "Line Width",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 0.2,
+      "defaultValue": 0.1
+    },
+    {
+      "identifier": "uPow",
+      "displayName": "Pow",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 10.0,
+      "defaultValue": 5.0
+    },
+    {
+      "identifier": "uIntensity",
+      "displayName": "Intensity",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 2.0,
+      "defaultValue": 1.0
+    }
+  ],
+  "fixedParams": {
+    "uSpreadClr": "#ff0000",
+    "uHotClr": "#e6e633"
+  },
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

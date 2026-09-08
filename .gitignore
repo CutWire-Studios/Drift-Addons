@@ -18,3 +18,7 @@ staging/**/*.so.*
 staging/**/*.dylib
 staging/**/*.dll
 !staging/**/*.sha256
+
+# Upstream gl-transitions checkout, fetched by hand and pinned in
+# content/transitions/ATTRIBUTION.md; recipes/import-gl-transitions.py prints the clone command.
+vendor/

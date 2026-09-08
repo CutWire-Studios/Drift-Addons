@@ -1,0 +1,32 @@
+{
+  "id": "burn",
+  "displayName": "Burn",
+  "category": "liquid",
+  "order": 722,
+  "parameters": [],
+  "fixedParams": {
+    "color": "#e66633"
+  },
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

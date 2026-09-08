@@ -1,0 +1,54 @@
+{
+  "id": "doorway",
+  "displayName": "Doorway",
+  "category": "stylized",
+  "order": 754,
+  "parameters": [
+    {
+      "identifier": "reflection",
+      "displayName": "Reflection",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.4
+    },
+    {
+      "identifier": "perspective",
+      "displayName": "Perspective",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.4
+    },
+    {
+      "identifier": "depth",
+      "displayName": "Depth",
+      "type": "float",
+      "minValue": 1.0,
+      "maxValue": 10.0,
+      "defaultValue": 3.0
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

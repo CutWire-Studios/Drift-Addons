@@ -18,6 +18,10 @@ HERE = Path(__file__).parent
 ROOT = HERE.parent
 ASSETS = ROOT / "assets"
 BASE = ASSETS / "base-image.jpeg"
+# Transitions need two visibly different frames to read at all: a cool road scene
+# against a warm barley field separates on both colour and structure.
+TRANSITION_BASE_A = ASSETS / "transitions" / "road.jpg"
+TRANSITION_BASE_B = ASSETS / "transitions" / "barley.jpg"
 EFFECTS = ROOT / "content" / "effects"
 TRANSITIONS = ROOT / "content" / "transitions"
 
@@ -58,8 +62,13 @@ def main() -> None:
             sys.exit(f"missing {TRANSITIONTHUMBS} — build VideoEd tools first")
         if not TRANSITIONS.is_dir() or not any(TRANSITIONS.iterdir()):
             sys.exit(f"no transition packages under {TRANSITIONS}")
+        # Two different photos, not one: passing the same image as both bases made every
+        # preview a transition between identical frames, which shows nothing.
+        for base in (TRANSITION_BASE_A, TRANSITION_BASE_B):
+            if not base.is_file():
+                sys.exit(f"missing {base}")
         cmd = [str(TRANSITIONTHUMBS), "--transitions", str(TRANSITIONS),
-               "--base-a", str(BASE), "--base-b", str(BASE),
+               "--base-a", str(TRANSITION_BASE_A), "--base-b", str(TRANSITION_BASE_B),
                "--size", "128", "--frames", "12"]
         # transitionthumbs always rewrites named packages; no --force flag needed
         subprocess.run(cmd, check=True)

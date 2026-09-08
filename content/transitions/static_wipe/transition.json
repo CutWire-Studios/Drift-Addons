@@ -1,0 +1,46 @@
+{
+  "id": "static_wipe",
+  "displayName": "Static Wipe",
+  "category": "glitch",
+  "order": 824,
+  "parameters": [
+    {
+      "identifier": "p_u_transitionUpToDown",
+      "displayName": "U transition Up To Down",
+      "type": "bool",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 1.0
+    },
+    {
+      "identifier": "u_max_static_span",
+      "displayName": "U max static span",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.5
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

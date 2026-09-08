@@ -1,0 +1,94 @@
+{
+  "id": "colorphase",
+  "displayName": "Colorphase",
+  "category": "cinematic",
+  "order": 734,
+  "parameters": [
+    {
+      "identifier": "p_fromStep_x",
+      "displayName": "From Step X",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.0
+    },
+    {
+      "identifier": "p_fromStep_y",
+      "displayName": "From Step Y",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 0.4,
+      "defaultValue": 0.2
+    },
+    {
+      "identifier": "p_fromStep_z",
+      "displayName": "From Step Z",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 0.8,
+      "defaultValue": 0.4
+    },
+    {
+      "identifier": "p_fromStep_w",
+      "displayName": "From Step W",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.0
+    },
+    {
+      "identifier": "p_toStep_x",
+      "displayName": "To Step X",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.2,
+      "defaultValue": 0.6
+    },
+    {
+      "identifier": "p_toStep_y",
+      "displayName": "To Step Y",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.6,
+      "defaultValue": 0.8
+    },
+    {
+      "identifier": "p_toStep_z",
+      "displayName": "To Step Z",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 2.0,
+      "defaultValue": 1.0
+    },
+    {
+      "identifier": "p_toStep_w",
+      "displayName": "To Step W",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 2.0,
+      "defaultValue": 1.0
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

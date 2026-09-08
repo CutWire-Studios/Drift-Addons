@@ -1,0 +1,38 @@
+{
+  "id": "polar_function",
+  "displayName": "Polar Function",
+  "category": "distortion",
+  "order": 792,
+  "parameters": [
+    {
+      "identifier": "p_segments",
+      "displayName": "Segments",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 10.0,
+      "defaultValue": 5.0
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

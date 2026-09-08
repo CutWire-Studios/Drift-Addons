@@ -1,11 +1,11 @@
 {
   "id": "transitions.core",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "name": "Essential Transitions",
-  "description": "Fades, wipes, slides, zooms, page turns, and other ways to move between clips.",
-  "details": "GPU transition shaders: fades, wipes, slides, zooms, distortions, page turn, cube flip, energy burst, prism wipe. Package id: transitions.core.",
+  "description": "Fades, wipes, slides, zooms, page turns, and over a hundred other ways to move between clips.",
+  "details": "GPU transition shaders: fades, wipes, slides, zooms, distortions, page turn, cube flip, energy burst, prism wipe, plus the gl-transitions collection — glitch, warp, kaleidoscope, film burn, water drop and more. Package id: transitions.core.",
   "author": "CutWire",
-  "license": "GPL-3.0",
+  "license": "GPL-3.0 AND MIT",
   "minAppVersion": "0.1.0",
   "source": "../staging/transitions-core",
   "provides": [

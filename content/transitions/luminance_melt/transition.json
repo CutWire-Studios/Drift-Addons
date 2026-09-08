@@ -1,0 +1,54 @@
+{
+  "id": "luminance_melt",
+  "displayName": "Luminance Melt",
+  "category": "liquid",
+  "order": 774,
+  "parameters": [
+    {
+      "identifier": "p_direction",
+      "displayName": "Direction",
+      "type": "bool",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.0
+    },
+    {
+      "identifier": "l_threshold",
+      "displayName": "L threshold",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.6,
+      "defaultValue": 0.8
+    },
+    {
+      "identifier": "p_above",
+      "displayName": "Above",
+      "type": "bool",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.0
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

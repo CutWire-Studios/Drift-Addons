@@ -1,0 +1,102 @@
+{
+  "FilmBurn": {
+    "category": "cinematic",
+    "patches": [
+      [
+        "vec4 texture(vec2 p) {",
+        "vec4 sampleBurn(vec2 p) {"
+      ],
+      [
+        "blurred_image += texture(uv2);",
+        "blurred_image += sampleBurn(uv2);"
+      ]
+    ]
+  },
+  "colorphase": {
+    "vec4_scalars": {
+      "fromStep": true,
+      "toStep": true
+    }
+  },
+  "cube": {
+    "category": "stylized",
+    "displayName": "Cube Flip",
+    "id": "cube_flip",
+    "order": 430,
+    "ranges": {
+      "floating": [
+        0.0,
+        10.0
+      ],
+      "persp": [
+        0.0,
+        1.0
+      ],
+      "reflection": [
+        0.0,
+        1.0
+      ],
+      "unzoom": [
+        0.0,
+        1.0
+      ]
+    }
+  },
+  "doorway": {
+    "category": "stylized",
+    "ranges": {
+      "depth": [
+        1.0,
+        10.0
+      ],
+      "perspective": [
+        0.0,
+        1.0
+      ],
+      "reflection": [
+        0.0,
+        1.0
+      ]
+    }
+  },
+  "kaleidoscope": {
+    "category": "distortion",
+    "displayName": "Kaleidoscope Spin",
+    "id": "kaleidoscope_spin",
+    "order": 400,
+    "ranges": {
+      "angle": [
+        0.0,
+        6.2832
+      ],
+      "power": [
+        0.0,
+        4.0
+      ],
+      "speed": [
+        0.0,
+        4.0
+      ]
+    }
+  },
+  "pixelize": {
+    "category": "geometric",
+    "displayName": "Pixelate",
+    "id": "pixelate_matrix",
+    "order": 300,
+    "ranges": {
+      "p_squaresMin_x": [
+        1.0,
+        80.0
+      ],
+      "p_squaresMin_y": [
+        1.0,
+        80.0
+      ],
+      "p_steps": [
+        0.0,
+        100.0
+      ]
+    }
+  }
+}

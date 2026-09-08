@@ -1,25 +1,40 @@
 {
   "id": "cube_flip",
   "displayName": "Cube Flip",
-  "category": "geometric",
-  "order": 410,
-  "audioCurve": "crossfade",
+  "category": "stylized",
+  "order": 430,
   "parameters": [
     {
-      "identifier": "perspective",
-      "displayName": "Perspective",
+      "identifier": "persp",
+      "displayName": "Persp",
       "type": "float",
-      "defaultValue": 0.55,
       "minValue": 0.0,
-      "maxValue": 1.0
+      "maxValue": 1.0,
+      "defaultValue": 0.7
     },
     {
-      "identifier": "direction",
-      "displayName": "Direction",
+      "identifier": "unzoom",
+      "displayName": "Unzoom",
       "type": "float",
-      "defaultValue": 0.0,
       "minValue": 0.0,
-      "maxValue": 3
+      "maxValue": 1.0,
+      "defaultValue": 0.3
+    },
+    {
+      "identifier": "reflection",
+      "displayName": "Reflection",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.4
+    },
+    {
+      "identifier": "floating",
+      "displayName": "Floating",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 10.0,
+      "defaultValue": 3.0
     }
   ],
   "pipeline": {

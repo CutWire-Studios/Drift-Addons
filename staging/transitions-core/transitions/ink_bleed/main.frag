@@ -8,23 +8,14 @@ uniform sampler2D u_toTexture;      // incoming clip layer
 uniform vec2 u_resolution;
 uniform float u_progress;           // 0..1 across the transition window
 
-float hash11(float p) {
-    p = fract(p * 0.1031);
-    p *= p + 33.33;
-    p *= p + p;
-    return fract(p);
-}
-
+// Integer grid hash — the float fract() form of this can differ by an LSB
+// across scrubs on Apple's GL, which made ink_bleed fail the determinism test.
 float hash21(vec2 p) {
-    vec3 p3 = fract(vec3(p.xyx) * 0.1031);
-    p3 += dot(p3, p3.yzx + 33.33);
-    return fract((p3.x + p3.y) * p3.z);
-}
-
-vec2 hash22(vec2 p) {
-    vec3 p3 = fract(vec3(p.xyx) * vec3(0.1031, 0.1030, 0.0973));
-    p3 += dot(p3, p3.yzx + 33.33);
-    return fract((p3.xx + p3.yz) * p3.zy);
+    uvec2 ip = uvec2(ivec2(floor(p)));
+    uint n = ip.x * 1597334677u ^ ip.y * 3812015801u;
+    n ^= n << 13u;
+    n *= 1274126177u;
+    return float(n) * (1.0 / 4294967296.0);
 }
 
 float valueNoise(vec2 p) {
@@ -47,14 +38,6 @@ float fbm(vec2 p) {
         amp *= 0.5;
     }
     return v;
-}
-
-// Straight-alpha source-over. Clip layers are transparent outside the clip rect.
-vec4 over(vec4 top, vec4 bot) {
-    float oa = top.a + bot.a * (1.0 - top.a);
-    if (oa <= 0.0001) return vec4(0.0);
-    vec3 rgb = (top.rgb * top.a + bot.rgb * bot.a * (1.0 - top.a)) / oa;
-    return vec4(rgb, oa);
 }
 
 float aspectRatio() { return u_resolution.x / max(u_resolution.y, 1.0); }

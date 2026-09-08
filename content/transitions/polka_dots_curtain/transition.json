@@ -1,0 +1,54 @@
+{
+  "id": "polka_dots_curtain",
+  "displayName": "Polka Dots Curtain",
+  "category": "geometric",
+  "order": 668,
+  "parameters": [
+    {
+      "identifier": "dots",
+      "displayName": "Dots",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 40.0,
+      "defaultValue": 20.0
+    },
+    {
+      "identifier": "p_center_x",
+      "displayName": "Center X",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.0
+    },
+    {
+      "identifier": "p_center_y",
+      "displayName": "Center Y",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.0
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

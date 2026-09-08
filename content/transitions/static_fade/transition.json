@@ -1,0 +1,46 @@
+{
+  "id": "static_fade",
+  "displayName": "Static Fade",
+  "category": "glitch",
+  "order": 694,
+  "parameters": [
+    {
+      "identifier": "n_noise_pixels",
+      "displayName": "N noise pixels",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 400.0,
+      "defaultValue": 200.0
+    },
+    {
+      "identifier": "static_luminosity",
+      "displayName": "Static luminosity",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.6,
+      "defaultValue": 0.8
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

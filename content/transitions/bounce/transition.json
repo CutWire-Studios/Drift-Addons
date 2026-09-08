@@ -1,0 +1,57 @@
+{
+  "id": "bounce",
+  "displayName": "Bounce",
+  "category": "distortion",
+  "order": 606,
+  "parameters": [
+    {
+      "identifier": "p_shadow_colour_a",
+      "displayName": "Shadow colour Opacity",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.0
+    },
+    {
+      "identifier": "shadow_height",
+      "displayName": "Shadow height",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 0.15,
+      "defaultValue": 0.075
+    },
+    {
+      "identifier": "bounces",
+      "displayName": "Bounces",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 6.0,
+      "defaultValue": 3.0
+    }
+  ],
+  "fixedParams": {
+    "p_shadow_colour": "#000000"
+  },
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

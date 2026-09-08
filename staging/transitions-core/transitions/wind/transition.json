@@ -1,0 +1,46 @@
+{
+  "id": "wind",
+  "displayName": "Wind",
+  "category": "basic",
+  "order": 832,
+  "parameters": [
+    {
+      "identifier": "size",
+      "displayName": "Size",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 0.4,
+      "defaultValue": 0.2
+    },
+    {
+      "identifier": "p_reversed",
+      "displayName": "Reversed",
+      "type": "bool",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.0
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

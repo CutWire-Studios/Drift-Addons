@@ -1,0 +1,62 @@
+{
+  "id": "tiles_wave",
+  "displayName": "Tiles Wave",
+  "category": "liquid",
+  "order": 704,
+  "parameters": [
+    {
+      "identifier": "p_tileCount_x",
+      "displayName": "Tile Count X",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 16.0,
+      "defaultValue": 8.0
+    },
+    {
+      "identifier": "p_tileCount_y",
+      "displayName": "Tile Count Y",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 16.0,
+      "defaultValue": 8.0
+    },
+    {
+      "identifier": "p_flipX",
+      "displayName": "Flip X",
+      "type": "bool",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 1.0
+    },
+    {
+      "identifier": "p_flipY",
+      "displayName": "Flip Y",
+      "type": "bool",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.0
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

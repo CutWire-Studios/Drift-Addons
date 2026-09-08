@@ -1,0 +1,46 @@
+{
+  "id": "bow_tie_with_parameter",
+  "displayName": "Bow Tie With Parameter",
+  "category": "basic",
+  "order": 612,
+  "parameters": [
+    {
+      "identifier": "adjust",
+      "displayName": "Adjust",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.5
+    },
+    {
+      "identifier": "p_reverse",
+      "displayName": "Reverse",
+      "type": "bool",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.0
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture",
+            "index": 0
+          },
+          {
+            "type": "source_texture",
+            "index": 1
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}
