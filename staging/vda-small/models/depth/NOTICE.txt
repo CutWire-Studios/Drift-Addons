@@ -1,0 +1,8 @@
+Video Depth Anything
+Copyright (2025) Bytedance Ltd. and/or its affiliates.
+Licensed under the Apache License, Version 2.0.
+Source: https://github.com/DepthAnything/Video-Depth-Anything
+
+The bundled weights are the Small (ViT-S) relative-depth checkpoint, exported to ONNX by
+drift-addons/recipes/fetch-vda.py from commit 4f5ae23172ba60fd7bc11ef671cca678842c7072.
+The motion module derives from AnimateDiff (Apache-2.0); the encoder is DINOv2 (Apache-2.0).

@@ -1,0 +1,89 @@
+{
+  "id": "face_beautify",
+  "version": "1.0.0",
+  "displayName": "Beautify",
+  "category": "beauty",
+  "description": "Smooths skin inside the face while keeping eyes, brows and lips fully sharp.",
+  "order": 707,
+  "requires": "face",
+  "parameters": [
+    {
+      "identifier": "amount",
+      "displayName": "Smoothing",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.6
+    },
+    {
+      "identifier": "detailKeep",
+      "displayName": "Keep detail",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.25
+    },
+    {
+      "identifier": "evenness",
+      "displayName": "Even tone",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.35
+    },
+    {
+      "identifier": "glow",
+      "displayName": "Glow",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.2
+    },
+    {
+      "identifier": "feather",
+      "displayName": "Feather",
+      "type": "float",
+      "minValue": 0.05,
+      "maxValue": 1,
+      "defaultValue": 0.45
+    },
+    {
+      "identifier": "faceIndex",
+      "displayName": "Face",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 3,
+      "defaultValue": 0
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [
+      { "id": "blur_h", "scale": 0.5 },
+      { "id": "blur_v", "scale": 0.5 }
+    ],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "blur_h.frag",
+        "inputs": [{ "type": "source_texture" }],
+        "output": { "type": "buffer", "id": "blur_h" }
+      },
+      {
+        "passIndex": 1,
+        "fragmentShader": "blur_v.frag",
+        "inputs": [{ "type": "buffer", "id": "blur_h" }],
+        "output": { "type": "buffer", "id": "blur_v" }
+      },
+      {
+        "passIndex": 2,
+        "fragmentShader": "composite.frag",
+        "inputs": [
+          { "type": "source_texture" },
+          { "type": "buffer", "id": "blur_v" }
+        ],
+        "output": { "type": "canvas" }
+      }
+    ]
+  }
+}

@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """Generate effect thumbnails and transition preview strips for content/.
 
-Always uses assets/base-image.jpeg so browser previews stay consistent.
+Effects render from the photos in assets/thumbs/, chosen per effect by assets/thumbs/bases.json:
+faces for face effects, a lake for colour, a neon sign for glitch, and so on — each picked so the
+effect reads at a glance. Every photo there is CC0; see assets/thumbs/CREDITS.md. Face and depth
+effects use the real models when DRIFT_FACE_MODEL_DIR / DRIFT_DEPTH_MODEL_DIR point at them.
 
     ./generate-thumbs.py              # only packages missing thumbs
     ./generate-thumbs.py --force      # rewrite every content package
@@ -17,7 +20,7 @@ from pathlib import Path
 HERE = Path(__file__).parent
 ROOT = HERE.parent
 ASSETS = ROOT / "assets"
-BASE = ASSETS / "base-image.jpeg"
+BASES = ASSETS / "thumbs" / "bases.json"
 # Transitions need two visibly different frames to read at all: a cool road scene
 # against a warm barley field separates on both colour and structure.
 TRANSITION_BASE_A = ASSETS / "transitions" / "road.jpg"
@@ -39,9 +42,8 @@ def main() -> None:
     parser.add_argument("--size", type=int, default=256)
     args = parser.parse_args()
 
-    if not BASE.is_file():
-        sys.exit(f"missing base image: {BASE}\n"
-                 f"Copy the portrait JPEG to assets/base-image.jpeg first.")
+    if not BASES.is_file():
+        sys.exit(f"missing {BASES}")
 
     do_effects = not args.transitions_only
     do_transitions = not args.effects_only
@@ -52,7 +54,7 @@ def main() -> None:
         if not EFFECTS.is_dir() or not any(EFFECTS.iterdir()):
             sys.exit(f"no effect packages under {EFFECTS}")
         cmd = [str(EFFECTTHUMBS), "--effects", str(EFFECTS),
-               "--base", str(BASE), "--size", str(args.size)]
+               "--bases", str(BASES), "--size", str(args.size)]
         if args.force:
             cmd.append("--force")
         subprocess.run(cmd, check=True)

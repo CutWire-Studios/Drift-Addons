@@ -1,0 +1,18 @@
+{
+  "id": "depth.vda-small",
+  "version": "1.0.0",
+  "name": "Depth (3D Lighting & Focus)",
+  "description": "Works out how far away everything in a video is, so you can add lights that fall on the scene, realistic background blur, fog, and titles that sit behind people.",
+  "details": "Video Depth Anything Small in ONNX: a DINOv2 ViT-S encoder run per frame and a temporal DPT head run per 32-frame window, which keeps depth steady from frame to frame instead of flickering. Outputs relative inverse depth. Ships fp32 and fp16 weights; fp32 is used unless a GPU execution provider is active. Package id: depth.vda-small.",
+  "author": "CutWire",
+  "license": "Apache-2.0",
+  "minAppVersion": "0.7.0",
+  "source": "../staging/vda-small",
+  "provides": [
+    {
+      "kind": "depth-model",
+      "root": "models/depth"
+    }
+  ],
+  "zstdLevel": 3
+}

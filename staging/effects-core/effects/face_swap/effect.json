@@ -1,0 +1,68 @@
+{
+  "id": "face_swap",
+  "displayName": "Face Swap",
+  "category": "funny",
+  "order": 620,
+  "backend": "faceswap",
+  "requires": "face",
+  "parameters": [
+    {
+      "identifier": "sourceImage",
+      "displayName": "Face photo",
+      "type": "file",
+      "defaultValue": "",
+      "fileFilters": [
+        "Images (*.png *.jpg *.jpeg *.webp *.heic *.heif *.avif *.bmp)",
+        "All files (*)"
+      ]
+    },
+    {
+      "identifier": "opacity",
+      "displayName": "Opacity",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 1.0
+    },
+    {
+      "identifier": "feather",
+      "displayName": "Edge Feather",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.35
+    },
+    {
+      "identifier": "colorMatch",
+      "displayName": "Match Lighting",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.8
+    },
+    {
+      "identifier": "keepEyes",
+      "displayName": "Keep Eyes",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.6
+    },
+    {
+      "identifier": "keepMouth",
+      "displayName": "Keep Mouth",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.4
+    },
+    {
+      "identifier": "faceIndex",
+      "displayName": "Face",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 3,
+      "defaultValue": 0
+    }
+  ]
+}

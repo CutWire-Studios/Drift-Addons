@@ -1,0 +1,42 @@
+{
+ "model": "video_depth_anything_vits",
+ "variant": "vda-small",
+ "output": "disparity",
+ "files": {
+  "fp32": {
+   "encoder": "vda_small_encoder_fp32.onnx",
+   "head": "vda_small_head_fp32.onnx"
+  },
+  "fp16": {
+   "encoder": "vda_small_encoder_fp16.onnx",
+   "head": "vda_small_head_fp16.onnx"
+  }
+ },
+ "window": 32,
+ "overlap": 10,
+ "keyframes": [
+  0,
+  12,
+  24,
+  25,
+  26,
+  27,
+  28,
+  29,
+  30,
+  31
+ ],
+ "interpLen": 8,
+ "shortSide": 518,
+ "multipleOf": 14,
+ "mean": [
+  0.485,
+  0.456,
+  0.406
+ ],
+ "std": [
+  0.229,
+  0.224,
+  0.225
+ ]
+}

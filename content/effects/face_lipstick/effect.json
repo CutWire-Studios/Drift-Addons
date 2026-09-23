@@ -1,0 +1,67 @@
+{
+  "id": "face_lipstick",
+  "version": "1.0.0",
+  "displayName": "Lipstick",
+  "category": "beauty",
+  "description": "Recolours the lips using the tracked lip contour, preserving their own shading.",
+  "order": 700,
+  "requires": "face",
+  "parameters": [
+    {
+      "identifier": "shade",
+      "displayName": "Shade",
+      "type": "color",
+      "defaultValue": "#b03048"
+    },
+    {
+      "identifier": "opacity",
+      "displayName": "Opacity",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.75
+    },
+    {
+      "identifier": "gloss",
+      "displayName": "Gloss",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.3
+    },
+    {
+      "identifier": "feather",
+      "displayName": "Feather",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.35
+    },
+    {
+      "identifier": "coverInner",
+      "displayName": "Fill mouth",
+      "type": "bool",
+      "defaultValue": 0
+    },
+    {
+      "identifier": "faceIndex",
+      "displayName": "Face",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 3,
+      "defaultValue": 0
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [{ "type": "source_texture" }],
+        "output": { "type": "canvas" }
+      }
+    ]
+  }
+}

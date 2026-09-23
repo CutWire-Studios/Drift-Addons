@@ -1,0 +1,61 @@
+{
+  "id": "face_eyeliner",
+  "version": "1.0.0",
+  "displayName": "Eyeliner",
+  "category": "beauty",
+  "description": "A line along each upper lid, thickening toward the outer corner, with an optional wing.",
+  "order": 703,
+  "requires": "face",
+  "parameters": [
+    {
+      "identifier": "shade",
+      "displayName": "Shade",
+      "type": "color",
+      "defaultValue": "#101014"
+    },
+    {
+      "identifier": "thickness",
+      "displayName": "Thickness",
+      "type": "float",
+      "minValue": 0.05,
+      "maxValue": 1,
+      "defaultValue": 0.35
+    },
+    {
+      "identifier": "wing",
+      "displayName": "Wing",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.35
+    },
+    {
+      "identifier": "opacity",
+      "displayName": "Opacity",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.85
+    },
+    {
+      "identifier": "faceIndex",
+      "displayName": "Face",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 3,
+      "defaultValue": 0
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [{ "type": "source_texture" }],
+        "output": { "type": "canvas" }
+      }
+    ]
+  }
+}

@@ -28,6 +28,7 @@ publishes them.
 | Funny Face Effects | Face landmark model for face warps and makeup |
 | Scene Labels | YOLOX object detection, so shots can be labelled and searched by what is in them |
 | Noise Removal | DeepFilterNet 3 model for cleaning up background noise |
+| Depth (3D Lighting & Focus) | Video Depth Anything model for depth-based lighting, background blur, fog and occlusion |
 | AI Engine | ONNX Runtime, in CPU, NVIDIA and general-GPU builds |
 
 ## How it works
@@ -49,7 +50,7 @@ recipes/    one recipe per addon, plus the scripts that assemble their content
 packer/     builds, signs and publishes .driftpkg archives
 worker/     the Cloudflare Worker that serves the catalogue
 staging/    assembled addon trees, ready to pack
-assets/     shared inputs, such as the base image used for effect thumbnails
+assets/     shared inputs, such as the CC0 photos effect thumbnails are rendered from
 ```
 
 Large model weights and native libraries are not in git — a checksum sits beside each one and the

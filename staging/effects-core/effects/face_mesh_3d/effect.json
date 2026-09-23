@@ -1,0 +1,148 @@
+{
+  "id": "face_mesh_3d",
+  "displayName": "3D Face Mesh",
+  "category": "props",
+  "order": 810,
+  "backend": "model3d",
+  "requires": "face",
+  "fixedParams": {
+    "warpMesh": 1
+  },
+  "parameters": [
+    {
+      "identifier": "model",
+      "displayName": "Rest mesh",
+      "type": "file",
+      "defaultValue": "sfm_face.bin",
+      "fileFilters": ["Face mesh (*.bin)", "All files (*)"]
+    },
+    {
+      "identifier": "fillOpacity",
+      "displayName": "Fill Opacity",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.25,
+      "desktopGlOnly": true
+    },
+    {
+      "identifier": "wireframe",
+      "displayName": "Wireframe",
+      "type": "bool",
+      "defaultValue": 1,
+      "desktopGlOnly": true
+    },
+    {
+      "identifier": "wireColor",
+      "displayName": "Wire Color",
+      "type": "color",
+      "defaultValue": "#33f2ff",
+      "desktopGlOnly": true
+    },
+    {
+      "identifier": "wireWidth",
+      "displayName": "Wire Width",
+      "type": "float",
+      "minValue": 0.5,
+      "maxValue": 4.0,
+      "defaultValue": 1.0,
+      "desktopGlOnly": true
+    },
+    {
+      "identifier": "scale",
+      "displayName": "Scale",
+      "type": "float",
+      "minValue": 0.1,
+      "maxValue": 3.0,
+      "defaultValue": 1.0
+    },
+    {
+      "identifier": "offsetX",
+      "displayName": "Offset X",
+      "type": "float",
+      "minValue": -1.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.0
+    },
+    {
+      "identifier": "offsetY",
+      "displayName": "Offset Y",
+      "type": "float",
+      "minValue": -1.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.0
+    },
+    {
+      "identifier": "offsetZ",
+      "displayName": "Offset Z",
+      "type": "float",
+      "minValue": -1.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.0
+    },
+    {
+      "identifier": "rotX",
+      "displayName": "Rotate X",
+      "type": "float",
+      "minValue": -180.0,
+      "maxValue": 180.0,
+      "defaultValue": 0.0
+    },
+    {
+      "identifier": "rotY",
+      "displayName": "Rotate Y",
+      "type": "float",
+      "minValue": -180.0,
+      "maxValue": 180.0,
+      "defaultValue": 0.0
+    },
+    {
+      "identifier": "rotZ",
+      "displayName": "Rotate Z",
+      "type": "float",
+      "minValue": -180.0,
+      "maxValue": 180.0,
+      "defaultValue": 0.0
+    },
+    {
+      "identifier": "lightYaw",
+      "displayName": "Light Yaw",
+      "type": "float",
+      "minValue": -180.0,
+      "maxValue": 180.0,
+      "defaultValue": 30.0
+    },
+    {
+      "identifier": "lightPitch",
+      "displayName": "Light Pitch",
+      "type": "float",
+      "minValue": -90.0,
+      "maxValue": 90.0,
+      "defaultValue": 20.0
+    },
+    {
+      "identifier": "lightIntensity",
+      "displayName": "Light Intensity",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 3.0,
+      "defaultValue": 1.0
+    },
+    {
+      "identifier": "ambient",
+      "displayName": "Ambient",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 1.0,
+      "defaultValue": 0.45
+    },
+    {
+      "identifier": "faceIndex",
+      "displayName": "Face",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 3,
+      "defaultValue": 0
+    }
+  ]
+}
