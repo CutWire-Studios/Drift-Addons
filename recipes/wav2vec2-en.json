@@ -1,0 +1,18 @@
+{
+  "id": "align.wav2vec2-en",
+  "version": "1.0.0",
+  "name": "Word Timing (English)",
+  "description": "Pins every transcribed English word to the moment it was spoken, so cuts land between words instead of inside them.",
+  "details": "wav2vec2-base-960h (Facebook AI, fine-tuned on LibriSpeech) as a character CTC model, 8-bit quantized ONNX export by Xenova. Drift force-aligns Whisper's words against it to get real word start and end times for transcript-driven cutting and word-accurate captions. Package id: align.wav2vec2-en.",
+  "author": "CutWire",
+  "license": "Apache-2.0",
+  "minAppVersion": "0.7.0",
+  "source": "../staging/wav2vec2-en",
+  "provides": [
+    {
+      "kind": "align-model",
+      "root": "models/align/en"
+    }
+  ],
+  "zstdLevel": 3
+}

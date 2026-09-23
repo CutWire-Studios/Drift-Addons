@@ -1,0 +1,9 @@
+{
+ "language": "en",
+ "model": "model.onnx",
+ "blank": 0,
+ "word_sep": "|",
+ "upper": true,
+ "normalize": true,
+ "stride": 320
+}

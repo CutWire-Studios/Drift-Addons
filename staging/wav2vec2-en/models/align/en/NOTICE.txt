@@ -1,0 +1,6 @@
+wav2vec2-base-960h
+Copyright (c) Facebook, Inc. and its affiliates.
+Licensed under the Apache License, Version 2.0.
+Model: https://huggingface.co/facebook/wav2vec2-base-960h
+ONNX export: https://huggingface.co/Xenova/wav2vec2-base-960h (revision a19f851b3d42865797e410752b4c570c871e4825)
+Fine-tuned on LibriSpeech (http://www.openslr.org/12), CC BY 4.0.

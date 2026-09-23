@@ -1,0 +1,10 @@
+pyannote segmentation-3.0
+Copyright (c) 2023 CNRS. Licensed under the MIT License.
+Source: https://huggingface.co/pyannote/segmentation-3.0
+
+3D-Speaker ERes2Net (speech_eres2net_base_sv_zh-cn_3dspeaker_16k)
+Copyright (c) Alibaba, Inc. and its affiliates. Licensed under the Apache License, Version 2.0.
+Source: https://github.com/modelscope/3D-Speaker
+
+ONNX exports with inference metadata by sherpa-onnx (Apache-2.0):
+https://github.com/k2-fsa/sherpa-onnx

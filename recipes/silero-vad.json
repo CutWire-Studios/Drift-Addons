@@ -1,0 +1,18 @@
+{
+  "id": "silero.vad",
+  "version": "1.0.0",
+  "name": "Speech Detection",
+  "description": "Finds exactly where people are talking, so silence removal skips breaths, music and room noise instead of cutting them as speech.",
+  "details": "Silero VAD v5 in ONNX: one speech probability every 32 ms of 16 kHz audio. Used by Detect / Remove Silence with the voice-activity method and to tighten transcript word timings. Package id: silero.vad.",
+  "author": "CutWire",
+  "license": "MIT",
+  "minAppVersion": "0.7.0",
+  "source": "../staging/silero-vad",
+  "provides": [
+    {
+      "kind": "vad-model",
+      "root": "models/silero-vad"
+    }
+  ],
+  "zstdLevel": 3
+}

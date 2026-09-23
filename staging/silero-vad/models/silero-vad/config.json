@@ -1,0 +1,6 @@
+{
+ "sample_rate": 16000,
+ "window": 512,
+ "context": 64,
+ "version": "v5.1.2"
+}

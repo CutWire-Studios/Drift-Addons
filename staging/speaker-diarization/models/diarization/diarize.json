@@ -1,0 +1,6 @@
+{
+ "segmentation": "pyannote/segmentation-3.0",
+ "embedding": "3dspeaker_speech_eres2net_base_sv_zh-cn_3dspeaker_16k",
+ "window_shift_ratio": 0.1,
+ "threshold": 0.5
+}

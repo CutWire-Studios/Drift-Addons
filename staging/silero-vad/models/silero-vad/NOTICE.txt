@@ -1,0 +1,4 @@
+Silero VAD
+Copyright (c) 2020-present Silero Team
+Licensed under the MIT License.
+Source: https://github.com/snakers4/silero-vad (release v5.1.2)

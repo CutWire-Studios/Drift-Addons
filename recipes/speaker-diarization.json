@@ -1,0 +1,18 @@
+{
+  "id": "diarize.pyannote-eres2net",
+  "version": "1.0.0",
+  "name": "Speaker Labels",
+  "description": "Tells who is speaking when, so interviews and conversations come out with each line labelled by speaker.",
+  "details": "pyannote segmentation-3.0 finds active speakers in overlapping 10 s windows and 3D-Speaker ERes2Net fingerprints each voice; Drift clusters the fingerprints to match voices across the whole recording. The ONNX exports are the ones published by sherpa-onnx. Package id: diarize.pyannote-eres2net.",
+  "author": "CutWire",
+  "license": "MIT AND Apache-2.0",
+  "minAppVersion": "0.7.0",
+  "source": "../staging/speaker-diarization",
+  "provides": [
+    {
+      "kind": "diarize-model",
+      "root": "models/diarization"
+    }
+  ],
+  "zstdLevel": 3
+}
