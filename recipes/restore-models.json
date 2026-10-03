@@ -1,0 +1,18 @@
+{
+  "id": "restore.models",
+  "version": "1.0.0",
+  "name": "Enhance Video Models",
+  "description": "Upscalers for anime, live action and 3D animation, plus a clean-up model that removes compression and noise.",
+  "details": "Fifteen single-image models run frame by frame on ONNX Runtime: 2x and 4x upscalers for anime and drawings (Adore, Ani4K v2, Balanced, Strong v1.5/v2.5/v3, Real-ESRGAN Anime Video), live action and 3D renders (LiveAction V1, OpenProteus, NomosUni, ClearReality V1, Nomos8k Strong), a general Real-ESRGAN 4x, and GaterV3 for compression clean-up without resizing. Licenses vary by model, including non-commercial ones; see NOTICE.txt. Package id: restore.models.",
+  "author": "CutWire",
+  "license": "Mixed: CC-BY-4.0, CC-BY-NC-4.0, CC-BY-NC-SA-4.0, BSD-3-Clause, unknown (see NOTICE.txt)",
+  "minAppVersion": "0.7.1",
+  "source": "../staging/restore-models",
+  "provides": [
+    {
+      "kind": "restore-model",
+      "root": "models/restore/restore-models"
+    }
+  ],
+  "zstdLevel": 3
+}

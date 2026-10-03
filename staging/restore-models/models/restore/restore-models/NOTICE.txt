@@ -1,0 +1,94 @@
+Thumbnails show frames from Tears of Steel (c) Blender Foundation | mango.blender.org, CC BY 3.0,
+and Pepper&Carrot by David Revoy, www.peppercarrot.com, CC BY 4.0.
+
+1xGaterV3.onnx
+1xgaterv3_r_restore by Philip Hofmann (Helaman), GaterV3 architecture (MIT)
+Source: https://github.com/Phhofm/models/releases/tag/1xgaterv3_r_restore
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+https://creativecommons.org/licenses/by/4.0/
+
+2xBalanced.onnx
+Balanced_2x (UltraCompact)
+Original author and license unknown. Redistributed from the Thanawanit/Upscale collection
+on Hugging Face, which itself lists the origin as unknown.
+
+2xAdore.onnx
+Adore by renarchi, UpCunet2x_fast architecture
+Source: https://github.com/renarchi/Re-SISR
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)
+https://creativecommons.org/licenses/by-nc-sa/4.0/
+Converted from fp16 to fp32 for this package where noted; otherwise unmodified.
+Converted from fp16 to fp32.
+
+2xAni4Kv2.onnx
+Ani4K v2 (Compact) by Sirosky
+Source: https://github.com/Sirosky/Upscale-Hub
+Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
+https://creativecommons.org/licenses/by-nc/4.0/
+
+2xStrong_v1.5.onnx
+Strong_v1.5 (Compact)
+Original author and license unknown. Redistributed from the Thanawanit/Upscale collection
+on Hugging Face, which itself lists the origin as unknown.
+
+2xStrong_v2.5.onnx
+Strong_v2.5 (Compact)
+Original author and license unknown. Redistributed from the Thanawanit/Upscale collection
+on Hugging Face, which itself lists the origin as unknown.
+
+2xStrong_v3.onnx
+Strong_v3 (Compact)
+Original author and license unknown. Redistributed from the Thanawanit/Upscale collection
+on Hugging Face, which itself lists the origin as unknown.
+
+2xRealESRGAN-AnimeVideo.onnx
+realesr-animevideov3 (2x, SRVGGNetCompact) by Xintao Wang
+Source: https://github.com/xinntao/Real-ESRGAN
+BSD 3-Clause License
+https://github.com/xinntao/Real-ESRGAN/blob/master/LICENSE
+Converted from fp16 to fp32.
+
+2xLiveActionV1.onnx
+2xLiveActionV1_SPAN (490000 iterations) by jcj83429
+Source: https://openmodeldb.info/models/2x-LiveActionV1-SPAN
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)
+https://creativecommons.org/licenses/by-nc-sa/4.0/
+Converted from fp16 to fp32 for this package where noted; otherwise unmodified.
+
+2xNomosUni.onnx
+2xNomosUni_span_multijpg by Philip Hofmann (Helaman)
+Source: https://github.com/Phhofm/models/releases/tag/2xNomosUni_span_multijpg
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+https://creativecommons.org/licenses/by/4.0/
+
+2xOpenProteus.onnx
+Open Proteus (2x_OpenProteus_Compact_i2_70K) by Sirosky
+Source: https://github.com/Sirosky/Upscale-Hub/releases/tag/OpenProteus
+Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
+https://creativecommons.org/licenses/by-nc/4.0/
+
+4xClearReality.onnx
+4x-ClearRealityV1 by Kim2091, SPAN architecture
+Source: https://openmodeldb.info/models/4x-ClearRealityV1
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)
+https://creativecommons.org/licenses/by-nc-sa/4.0/
+Converted from fp16 to fp32 for this package where noted; otherwise unmodified.
+
+4xNomosUni.onnx
+4xNomosUni_span_multijpg by Philip Hofmann (Helaman)
+Source: https://github.com/Phhofm/models/releases/tag/4xNomosUni_span_multijpg
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+https://creativecommons.org/licenses/by/4.0/
+
+4xNomos8kStrong.onnx
+4xNomos8k_span_otf_strong by Philip Hofmann (Helaman)
+Source: https://openmodeldb.info/models/4x-Nomos8k-span-otf-strong
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+https://creativecommons.org/licenses/by/4.0/
+
+4xRealESRGAN-General.onnx
+realesr-general-x4v3 (SRVGGNetCompact) by Xintao Wang
+Source: https://github.com/xinntao/Real-ESRGAN
+BSD 3-Clause License
+https://github.com/xinntao/Real-ESRGAN/blob/master/LICENSE
+Weights converted from fp16 to fp32.

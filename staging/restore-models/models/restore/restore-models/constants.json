@@ -1,0 +1,235 @@
+{
+ "models": [
+  {
+   "model": "1xGaterV3",
+   "name": "GaterV3",
+   "task": "decompress",
+   "scale": 1,
+   "content": [
+    "general"
+   ],
+   "summary": "Cleans up compression, noise and mild blur without changing the size.",
+   "secondsPerMegapixel": 8.35,
+   "files": {
+    "fp32": "1xGaterV3.onnx"
+   },
+   "thumbnail": "thumbs/1xGaterV3.jpg"
+  },
+  {
+   "model": "2xBalanced",
+   "name": "Balanced",
+   "task": "upscale",
+   "scale": 2,
+   "content": [
+    "anime"
+   ],
+   "summary": "The fastest anime upscaler. Clean, slightly bolder lines.",
+   "secondsPerMegapixel": 2.01,
+   "files": {
+    "fp32": "2xBalanced.onnx"
+   },
+   "thumbnail": "thumbs/2xBalanced.jpg"
+  },
+  {
+   "model": "2xAdore",
+   "name": "Adore",
+   "task": "upscale",
+   "scale": 2,
+   "content": [
+    "anime"
+   ],
+   "summary": "Clears blur and sharpens line art in anime. Very fast.",
+   "secondsPerMegapixel": 2.06,
+   "files": {
+    "fp32": "2xAdore.onnx"
+   },
+   "thumbnail": "thumbs/2xAdore.jpg"
+  },
+  {
+   "model": "2xAni4Kv2",
+   "name": "Ani4K v2",
+   "task": "upscale",
+   "scale": 2,
+   "content": [
+    "anime",
+    "cg"
+   ],
+   "summary": "Natural anime upscales that keep soft backgrounds and depth of field.",
+   "secondsPerMegapixel": 3.68,
+   "files": {
+    "fp32": "2xAni4Kv2.onnx"
+   },
+   "thumbnail": "thumbs/2xAni4Kv2.jpg"
+  },
+  {
+   "model": "2xStrong_v1.5",
+   "name": "Strong v1.5",
+   "task": "upscale",
+   "scale": 2,
+   "content": [
+    "anime"
+   ],
+   "summary": "Removes compression and noise from anime while keeping a natural look.",
+   "secondsPerMegapixel": 4.58,
+   "files": {
+    "fp32": "2xStrong_v1.5.onnx"
+   },
+   "thumbnail": "thumbs/2xStrong_v1.5.jpg"
+  },
+  {
+   "model": "2xStrong_v2.5",
+   "name": "Strong v2.5",
+   "task": "upscale",
+   "scale": 2,
+   "content": [
+    "anime"
+   ],
+   "summary": "Smooths anime and draws bold, dark lines.",
+   "secondsPerMegapixel": 4.51,
+   "files": {
+    "fp32": "2xStrong_v2.5.onnx"
+   },
+   "thumbnail": "thumbs/2xStrong_v2.5.jpg"
+  },
+  {
+   "model": "2xStrong_v3",
+   "name": "Strong v3",
+   "task": "upscale",
+   "scale": 2,
+   "content": [
+    "anime"
+   ],
+   "summary": "The heaviest anime clean-up: flat colour and crisp, thick lines. Makes real faces look painted.",
+   "secondsPerMegapixel": 4.5,
+   "files": {
+    "fp32": "2xStrong_v3.onnx"
+   },
+   "thumbnail": "thumbs/2xStrong_v3.jpg"
+  },
+  {
+   "model": "2xRealESRGAN-AnimeVideo",
+   "name": "Real-ESRGAN Anime Video",
+   "task": "upscale",
+   "scale": 2,
+   "content": [
+    "anime"
+   ],
+   "summary": "Smooth, clean anime with bold edges.",
+   "secondsPerMegapixel": 4.44,
+   "files": {
+    "fp32": "2xRealESRGAN-AnimeVideo.onnx"
+   },
+   "thumbnail": "thumbs/2xRealESRGAN-AnimeVideo.jpg"
+  },
+  {
+   "model": "2xLiveActionV1",
+   "name": "LiveAction V1",
+   "task": "upscale",
+   "scale": 2,
+   "content": [
+    "live",
+    "cg"
+   ],
+   "summary": "Made for live-action video: faces, skin and film footage.",
+   "secondsPerMegapixel": 3.25,
+   "files": {
+    "fp32": "2xLiveActionV1.onnx"
+   },
+   "thumbnail": "thumbs/2xLiveActionV1.jpg"
+  },
+  {
+   "model": "2xNomosUni",
+   "name": "NomosUni",
+   "task": "upscale",
+   "scale": 2,
+   "content": [
+    "live",
+    "general"
+   ],
+   "summary": "General photo and video upscaler that copes with JPEG compression.",
+   "secondsPerMegapixel": 3.23,
+   "files": {
+    "fp32": "2xNomosUni.onnx"
+   },
+   "thumbnail": "thumbs/2xNomosUni.jpg"
+  },
+  {
+   "model": "2xOpenProteus",
+   "name": "OpenProteus",
+   "task": "upscale",
+   "scale": 2,
+   "content": [
+    "live",
+    "cg"
+   ],
+   "summary": "Natural detail for clean HD live action and 3D renders.",
+   "secondsPerMegapixel": 4.29,
+   "files": {
+    "fp32": "2xOpenProteus.onnx"
+   },
+   "thumbnail": "thumbs/2xOpenProteus.jpg"
+  },
+  {
+   "model": "4xClearReality",
+   "name": "ClearReality V1",
+   "task": "upscale",
+   "scale": 4,
+   "content": [
+    "live"
+   ],
+   "summary": "Soft, natural 4x for real footage. Good on faces, hair and nature.",
+   "secondsPerMegapixel": 3.19,
+   "files": {
+    "fp32": "4xClearReality.onnx"
+   },
+   "thumbnail": "thumbs/4xClearReality.jpg"
+  },
+  {
+   "model": "4xNomosUni",
+   "name": "NomosUni",
+   "task": "upscale",
+   "scale": 4,
+   "content": [
+    "live",
+    "general"
+   ],
+   "summary": "General photo and video upscaler that copes with JPEG compression.",
+   "secondsPerMegapixel": 3.33,
+   "files": {
+    "fp32": "4xNomosUni.onnx"
+   },
+   "thumbnail": "thumbs/4xNomosUni.jpg"
+  },
+  {
+   "model": "4xNomos8kStrong",
+   "name": "Nomos8k Strong",
+   "task": "upscale",
+   "scale": 4,
+   "content": [
+    "live"
+   ],
+   "summary": "For badly degraded footage: removes heavy blur, noise and compression.",
+   "secondsPerMegapixel": 3.31,
+   "files": {
+    "fp32": "4xNomos8kStrong.onnx"
+   },
+   "thumbnail": "thumbs/4xNomos8kStrong.jpg"
+  },
+  {
+   "model": "4xRealESRGAN-General",
+   "name": "Real-ESRGAN General",
+   "task": "upscale",
+   "scale": 4,
+   "content": [
+    "general",
+    "anime"
+   ],
+   "summary": "Smooth and clean on most content. The slowest upscaler here.",
+   "secondsPerMegapixel": 8.98,
+   "files": {
+    "fp32": "4xRealESRGAN-General.onnx"
+   },
+   "thumbnail": "thumbs/4xRealESRGAN-General.jpg"
+  }
+ ]
+}
