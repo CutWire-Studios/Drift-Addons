@@ -1,11 +1,12 @@
 # Thumbnail base images
 
 Every photo here is dedicated to the public domain under CC0 1.0 (Unsplash photos mirrored on
-Wikimedia Commons), cropped square and downscaled. They are the inputs `generate-thumbs.py` renders
+Wikimedia Commons), cropped square and downscaled, except `beauty.jpg`, which is the project's own. They are the inputs `generate-thumbs.py` renders
 effect and template thumbnails from; `bases.json` says which effect uses which.
 
 | File | Photo | Author | License |
 | --- | --- | --- | --- |
+| `beauty.jpg` | Original image supplied by the Drift project | CutWire | Free to use |
 | `aerial.jpg` | [City in Progress (Unsplash).jpg](https://commons.wikimedia.org/wiki/File:City_in_Progress_(Unsplash).jpg) | Christy Ash izelle | CC0 |
 | `city-night.jpg` | [Brooklyn Bridge, New York, United States (Unsplash DiBu1qTQQ8s).jpg](https://commons.wikimedia.org/wiki/File:Brooklyn_Bridge,_New_York,_United_States_(Unsplash_DiBu1qTQQ8s).jpg) | Pedro Lastra peterlaster | CC0 |
 | `cyclist.jpg` | [Orange cyclist (Unsplash).jpg](https://commons.wikimedia.org/wiki/File:Orange_cyclist_(Unsplash).jpg) | Jack Alexander jackalexander_ | CC0 |

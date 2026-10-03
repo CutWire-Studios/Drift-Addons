@@ -3,8 +3,9 @@
 
 Effects render from the photos in assets/thumbs/, chosen per effect by assets/thumbs/bases.json:
 faces for face effects, a lake for colour, a neon sign for glitch, and so on — each picked so the
-effect reads at a glance. Every photo there is CC0; see assets/thumbs/CREDITS.md. Face and depth
-effects use the real models when DRIFT_FACE_MODEL_DIR / DRIFT_DEPTH_MODEL_DIR point at them.
+effect reads at a glance. Every photo there is CC0 or the project's own; see
+assets/thumbs/CREDITS.md. Face and depth effects use the real models when DRIFT_FACE_MODEL_DIR /
+DRIFT_DEPTH_MODEL_DIR point at them.
 
     ./generate-thumbs.py              # only packages missing thumbs
     ./generate-thumbs.py --force      # rewrite every content package
