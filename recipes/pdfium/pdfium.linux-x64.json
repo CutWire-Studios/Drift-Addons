@@ -1,0 +1,20 @@
+{
+  "id": "pdfium.linux-x64",
+  "version": "1.0.0",
+  "name": "PDF Viewer",
+  "description": "Shows PDF pages on the timeline, sharp at any zoom.",
+  "details": "Google's PDFium rendering library, used to rasterise PDF pages at the zoom the timeline needs. Upstream: chromium/8086 build by bblanchon/pdfium-binaries. Platform: linux-x64.",
+  "author": "Google (PDFium)",
+  "license": "BSD-3-Clause",
+  "minAppVersion": "0.8.0",
+  "platform": "linux-x64",
+  "source": "../../staging/pdfium-linux-x64",
+  "provides": [
+    {
+      "kind": "pdfium",
+      "root": "pdfium",
+      "items": 1
+    }
+  ],
+  "zstdLevel": 6
+}
