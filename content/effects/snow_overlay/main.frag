@@ -41,7 +41,7 @@ void main() {
     for (int layer = 0; layer < 3; ++layer) {
         float dens = mix(12.0, 40.0, amount) * (1.0 + float(layer) * 0.55);
         vec2 uv = vec2(v_texCoord.x * aspect, v_texCoord.y) * dens;
-        uv.y += u_time * speed * (0.6 + float(layer) * 0.5);
+        uv.y -= u_time * speed * (0.6 + float(layer) * 0.5);
         uv.x += sin(u_time * 0.4 + float(layer)) * 0.4;
         vec2 id = floor(uv);
         vec2 f = fract(uv) - 0.5;
