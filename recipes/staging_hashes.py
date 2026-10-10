@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parent.parent
 STAGING = ROOT / "staging"
 
 # Must stay in sync with .gitignore patterns under staging/.
-LARGE_SUFFIXES = (".onnx", ".bin", ".so", ".dylib", ".dll")
+LARGE_SUFFIXES = (".onnx", ".onnx_data", ".bin", ".so", ".dylib", ".dll", ".wav")
 SKIP_DIR_NAMES = {".cache", "__pycache__", "node_modules"}
 
 

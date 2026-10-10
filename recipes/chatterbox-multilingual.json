@@ -1,0 +1,18 @@
+{
+  "id": "tts.chatterbox-multilingual",
+  "version": "1.0.0",
+  "name": "Text to Speech",
+  "description": "Natural voiceovers in 21 languages, and clone a voice from a short sample.",
+  "details": "Chatterbox Multilingual by Resemble AI (MIT), exported to ONNX by onnx-community. Drift speaks text in 21 languages with a q4-quantized language model, and can match a reference voice from a short recording. Package id: tts.chatterbox-multilingual.",
+  "author": "CutWire",
+  "license": "MIT",
+  "minAppVersion": "0.8.0",
+  "source": "../staging/chatterbox-multilingual",
+  "provides": [
+    {
+      "kind": "tts-model",
+      "root": "models/chatterbox-multilingual"
+    }
+  ],
+  "zstdLevel": 3
+}

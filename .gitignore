@@ -12,6 +12,8 @@ Archive.zip
 # a sibling <name>.sha256 is committed instead (see recipes/staging_hashes.py).
 staging/.cache/
 staging/**/*.onnx
+staging/**/*.onnx_data
+staging/**/*.wav
 staging/**/*.bin
 staging/**/*.so
 staging/**/*.so.*

@@ -1,0 +1,9 @@
+Chatterbox Multilingual
+Copyright (c) Resemble AI.
+Licensed under the MIT License.
+Model: https://github.com/resemble-ai/chatterbox
+ONNX export: https://huggingface.co/onnx-community/chatterbox-multilingual-ONNX (revision 452d3f434aa592098f1eedac9099f33642ab2da5)
+ONNX export by onnx-community (Xenova) and Vladislav Bronzov.
+S3Gen decoder (s3gen_prepare, s3gen_estimator, s3gen_vocoder): exported by recipes/export-chatterbox-s3gen.py
+from https://huggingface.co/ResembleAI/chatterbox (revision 5bb1f6ee58e50c3b8d408bc82a6d3740c2db6e18, s3gen.safetensors,
+sha256 2b78103c654207393955e4900aac14a12de8ef25f4b09424f1ef91941f161d4e).

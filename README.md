@@ -29,6 +29,7 @@ publishes them.
 | Scene Labels | YOLOX object detection, so shots can be labelled and searched by what is in them |
 | Noise Removal | DeepFilterNet 3 model for cleaning up background noise |
 | Depth (3D Lighting & Focus) | Video Depth Anything model for depth-based lighting, background blur, fog and occlusion |
+| Text to Speech | Chatterbox Multilingual voiceovers in 21 languages, with voice cloning from a short sample |
 | AI Engine | ONNX Runtime, in CPU, NVIDIA and general-GPU builds |
 
 ## How it works
