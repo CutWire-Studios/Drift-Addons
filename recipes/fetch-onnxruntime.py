@@ -69,7 +69,7 @@ WEBGPU_MIN_API = 24
 # and attaches it to this repo's onnxruntime-builds release. Fill the checksum from the
 # onnxruntime-osx-x86_64-<ver>.tgz.sha256 asset after the first run.
 PLACEHOLDER = "FILL_AFTER_FIRST_CI_RUN"
-OSX_X64_SHA256 = PLACEHOLDER
+OSX_X64_SHA256 = "f86971b817cd077beb0bf013587b8735963e738543e1095beed5ad27af8b82d8"
 OWN_BUILDS_RELEASE = "https://github.com/CutWire-Studios/Drift-Addons/releases/download/onnxruntime-builds"
 SOURCE_BUILT = {("cpu", "osx-x64")}
 
