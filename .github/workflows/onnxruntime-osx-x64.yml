@@ -1,0 +1,108 @@
+name: onnxruntime-osx-x64
+
+# Microsoft publishes no osx-x86_64 ONNX Runtime archive, so Intel Macs get one built here. The
+# result is laid out like upstream's onnxruntime-osx-arm64-<ver>.tgz so recipes/fetch-onnxruntime.py
+# can stage it with the same code path.
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: ONNX Runtime version (git tag v<version>)
+        default: "1.27.0"
+        required: true
+
+permissions:
+  contents: write
+
+env:
+  ORT_VERSION: ${{ inputs.version }}
+  PKG: onnxruntime-osx-x86_64-${{ inputs.version }}
+
+jobs:
+  build:
+    runs-on: macos-15-intel
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: microsoft/onnxruntime
+          ref: v${{ inputs.version }}
+          submodules: recursive
+          path: ort
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # ORT 1.27 requires CMake >= 3.28; pinned below 4 because ORT's vendored deps predate 4.x policy removals.
+      - name: Install build tools
+        run: pip install "cmake>=3.28,<4" numpy packaging wheel flatbuffers
+
+      - name: Restore build cache
+        uses: actions/cache@v4
+        with:
+          path: ort/build
+          key: ort-osx-x64-${{ inputs.version }}-${{ runner.os }}-${{ runner.arch }}
+
+      - name: Build
+        working-directory: ort
+        run: |
+          ./build.sh --config Release --build_shared_lib --parallel --skip_tests \
+            --compile_no_warning_as_error --osx_arch x86_64 --apple_deploy_target 12.0
+
+      - name: Package
+        run: |
+          set -euo pipefail
+          out="$RUNNER_TEMP/out"
+          rm -rf "$out"; mkdir -p "$out/$PKG/lib" "$out/$PKG/include"
+          built=$(ls ort/build/MacOS/Release/libonnxruntime.*.*.*.dylib | head -n1)
+          cp "$built" "$out/$PKG/lib/libonnxruntime.$ORT_VERSION.dylib"
+          ln -s "libonnxruntime.$ORT_VERSION.dylib" "$out/$PKG/lib/libonnxruntime.dylib"
+          for f in LICENSE ThirdPartyNotices.txt Privacy.md README.md VERSION_NUMBER; do
+            [ -f "ort/$f" ] && cp "ort/$f" "$out/$PKG/$f"
+          done
+
+          # Mirror upstream's include/ list so consumers see the same headers.
+          curl -sSfL "https://github.com/microsoft/onnxruntime/releases/download/v$ORT_VERSION/onnxruntime-osx-arm64-$ORT_VERSION.tgz" \
+            -o "$RUNNER_TEMP/arm64.tgz"
+          tar -tzf "$RUNNER_TEMP/arm64.tgz" > "$RUNNER_TEMP/arm64.list"
+          grep "/include/[^/]*$" "$RUNNER_TEMP/arm64.list" | while read -r p; do
+            h=$(basename "$p")
+            src=$(find ort/include -name "$h" -type f | head -n1)
+            if [ -n "$src" ]; then cp "$src" "$out/$PKG/include/$h"; else echo "::warning::header $h not found in source tree"; fi
+          done
+          echo "upstream arm64 top-level entries for comparison:"
+          grep -E "^[^/]+/[^/]+/?$" "$RUNNER_TEMP/arm64.list" || true
+
+          dylib="$out/$PKG/lib/libonnxruntime.$ORT_VERSION.dylib"
+          file "$dylib"
+          archs=$(lipo -archs "$dylib")
+          echo "archs: $archs"
+          [ "$archs" = "x86_64" ] || { echo "::error::expected x86_64, got $archs"; exit 1; }
+          otool -L "$dylib"
+          # first line is the file itself, its own install name follows
+          bad=$(otool -L "$dylib" | tail -n +2 | awk '{print $1}' | grep -v -E '^(/usr/lib/|/System/Library/|@rpath/libonnxruntime)' || true)
+          [ -z "$bad" ] || { echo "::error::non-system dependencies: $bad"; exit 1; }
+
+          tar -C "$out" -czf "$GITHUB_WORKSPACE/$PKG.tgz" "$PKG"
+          shasum -a 256 "$GITHUB_WORKSPACE/$PKG.tgz" | awk '{print $1}' > "$GITHUB_WORKSPACE/$PKG.tgz.sha256"
+          cat "$GITHUB_WORKSPACE/$PKG.tgz.sha256"
+          tar -tzf "$GITHUB_WORKSPACE/$PKG.tgz"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.PKG }}
+          path: |
+            ${{ env.PKG }}.tgz
+            ${{ env.PKG }}.tgz.sha256
+
+      - name: Publish to onnxruntime-builds release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh release view onnxruntime-builds >/dev/null 2>&1 || gh release create onnxruntime-builds \
+            --title "ONNX Runtime source builds" \
+            --notes "ONNX Runtime archives built from source for platforms Microsoft does not publish."
+          gh release upload onnxruntime-builds --clobber "$PKG.tgz" "$PKG.tgz.sha256"

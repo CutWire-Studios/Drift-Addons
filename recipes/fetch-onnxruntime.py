@@ -65,6 +65,14 @@ WEBGPU_NUPKG = ("https://www.nuget.org/api/v2/package/"
                 f"Microsoft.ML.OnnxRuntime.EP.WebGpu/{WEBGPU_VERSION}")
 WEBGPU_MIN_API = 24
 
+# Microsoft publishes no osx-x86_64 archive, so .github/workflows/onnxruntime-osx-x64.yml builds one
+# and attaches it to this repo's onnxruntime-builds release. Fill the checksum from the
+# onnxruntime-osx-x86_64-<ver>.tgz.sha256 asset after the first run.
+PLACEHOLDER = "FILL_AFTER_FIRST_CI_RUN"
+OSX_X64_SHA256 = PLACEHOLDER
+OWN_BUILDS_RELEASE = "https://github.com/CutWire-Studios/Drift-Addons/releases/download/onnxruntime-builds"
+SOURCE_BUILT = {("cpu", "osx-x64")}
+
 # variant -> platform -> (archive name, sha256). Only what Microsoft actually publishes: there is
 # no ROCm (removed from ONNX Runtime in 1.23) and no OpenVINO C/C++ package at all.
 CORES = {
@@ -75,6 +83,7 @@ CORES = {
                         "3e4d83ac06924a32a07b6d7f91ce6f852876153fc0bbdf931bf517a140bfbe48"),
         "osx-arm64": (f"onnxruntime-osx-arm64-{ORT_VERSION}.tgz",
                       "545e81c58152353acb0d1e8bd6ce4b62f830c0961f5b3acfedc790ffd76e477a"),
+        "osx-x64": (f"onnxruntime-osx-x86_64-{ORT_VERSION}.tgz", OSX_X64_SHA256),
         "win-x64": (f"onnxruntime-win-x64-{ORT_VERSION}.zip",
                     "c5c81710938e68079ff1a192b04897faabe4b43830d48f39f27ecd4e16138bfc"),
         "win-arm64": (f"onnxruntime-win-arm64-{ORT_VERSION}.zip",
@@ -401,7 +410,13 @@ def _write_recipe(recipe: dict) -> Path:
 
 def stage_core(variant: str, platform: str) -> None:
     archive_name, sha256 = CORES[variant][platform]
-    archive = _download(f"{ORT_RELEASE}/{archive_name}", archive_name, sha256)
+    built = (variant, platform) in SOURCE_BUILT
+    if sha256 == PLACEHOLDER:
+        sys.exit(f"{variant}:{platform} has no pinned checksum yet: run the onnxruntime-osx-x64 "
+                 "workflow, then set OSX_X64_SHA256 from the .sha256 asset on the "
+                 "onnxruntime-builds release")
+    base = OWN_BUILDS_RELEASE if built else ORT_RELEASE
+    archive = _download(f"{base}/{archive_name}", archive_name, sha256)
 
     name = f"onnxruntime-{variant}-{platform}"
     target = _reset(name)
@@ -461,7 +476,10 @@ def stage_core(variant: str, platform: str) -> None:
         # beginners don't need "(linux-x64)" in the store title.
         "name": copy["name"],
         "description": copy["description"],
-        "details": copy["details"].format(version=ORT_VERSION) + f" Platform: {platform}.",
+        "details": copy["details"].format(version=ORT_VERSION)
+                   + (" Built from the upstream source tag in CI, since Microsoft publishes no "
+                      "binary for this platform." if built else "")
+                   + f" Platform: {platform}.",
         "author": "Microsoft, NVIDIA" if cuda else "Microsoft",
         "license": "MIT + NVIDIA CUDA/cuDNN" if cuda else "MIT",
         "minAppVersion": CUDA_MIN_APP_VERSION if cuda else "0.1.0",
@@ -579,7 +597,8 @@ def stage_android(platform: str) -> None:
 
 def all_targets() -> list[str]:
     targets = [f"{variant}:{platform}"
-               for variant, platforms in CORES.items() for platform in platforms]
+               for variant, platforms in CORES.items() for platform in platforms
+               if platforms[platform][1] != OSX_X64_SHA256 or OSX_X64_SHA256 != PLACEHOLDER]
     targets += [f"webgpu:{platform}" for platform in WEBGPU_PLATFORMS]
     targets += [f"android:{platform}" for platform in ANDROID_PLATFORMS]
     return targets

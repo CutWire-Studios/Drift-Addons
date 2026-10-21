@@ -106,6 +106,10 @@ python3 recipes/fetch-onnxruntime.py cpu:linux-x64       # or one at a time
 The script writes the recipes too. Upgrading ONNX Runtime means editing one version table at the
 top of it and re-running, rather than hand-editing a dozen near-identical files.
 
+`cpu:osx-x64` is the exception: Microsoft publishes no Intel Mac build, so it is built from source by
+`.github/workflows/onnxruntime-osx-x64.yml` (`gh workflow run onnxruntime-osx-x64.yml`) and fetched
+from this repo's `onnxruntime-builds` release; pin its sha256 in the script after the first run.
+
 There is no ROCm build — upstream removed it in 1.23 — and no OpenVINO, which ships only as a
 Python wheel.
 
