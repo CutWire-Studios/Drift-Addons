@@ -1,0 +1,17 @@
+{
+  "id": "looks.essentials",
+  "version": "1.0.0",
+  "name": "Essential Looks",
+  "description": "Film emulations and editor's-choice color looks.",
+  "details": "One-click looks for the Color workspace, each adjustable in intensity. Film emulations of classic stocks plus editor's-choice grades. Package id: looks.essentials.",
+  "author": "CutWire",
+  "license": "Free to redistribute",
+  "minAppVersion": "0.9.0",
+  "source": "../staging/looks-essentials",
+  "provides": [
+    {
+      "kind": "looks",
+      "root": "looks"
+    }
+  ]
+}

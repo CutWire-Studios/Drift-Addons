@@ -1,0 +1,17 @@
+{
+  "id": "looks.extra",
+  "version": "1.0.0",
+  "name": "More Looks",
+  "description": "Hundreds of creative color looks.",
+  "details": "One-click creative looks for the Color workspace, each adjustable in intensity. Package id: looks.extra.",
+  "author": "CutWire",
+  "license": "Free to redistribute",
+  "minAppVersion": "0.9.0",
+  "source": "../staging/looks-extra",
+  "provides": [
+    {
+      "kind": "looks",
+      "root": "looks"
+    }
+  ]
+}

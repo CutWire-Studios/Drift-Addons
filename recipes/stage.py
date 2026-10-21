@@ -11,6 +11,9 @@ large weights/libs stay gitignored with a sibling `.sha256` sidecar (see staging
 
 import argparse
 import json
+import multiprocessing
+import os
+import re
 import shutil
 import subprocess
 import sys
@@ -309,12 +312,183 @@ def stage_denoise(source: Path) -> Path:
     print(f"denoise: {size / 1e6:.1f} MB")
     return target
 
+LOOK_SIZE = 33
+LOOK_STOPWORDS_UPPER = {"bw", "hdr", "eh", "uc", "nc", "ii"}
+LOOK_FOLDERS_ESSENTIALS = {
+    # folder: (id namespace, category, filename prefix to drop from the stem)
+    "EditorsChoice": ("ec", "Editor's Choice", ""),
+    "Film": ("film", "Film", "Film-"),
+}
+LOOK_FOLDERS_EXTRA = {
+    "Creative": ("creative", "Creative", "Creative-"),
+    "Miscellaneous": ("misc", "Miscellaneous", "Miscellaneous-"),
+}
+
+
+class LookError(Exception):
+    pass
+
+
+def _parse_cube(path: Path):
+    size = None
+    lo = (0.0, 0.0, 0.0)
+    hi = (1.0, 1.0, 1.0)
+    rows = []
+    for raw in path.read_text(errors="replace").splitlines():
+        line = raw.split("#", 1)[0].strip()
+        if not line:
+            continue
+        parts = line.split()
+        key = parts[0].upper()
+        if key == "LUT_1D_SIZE":
+            raise LookError("1D LUT, not a 3D cube")
+        if key == "LUT_3D_SIZE":
+            size = int(parts[1])
+        elif key == "DOMAIN_MIN":
+            lo = tuple(float(v) for v in parts[1:4])
+        elif key == "DOMAIN_MAX":
+            hi = tuple(float(v) for v in parts[1:4])
+        elif key[0].isalpha():
+            continue
+        else:
+            if len(parts) != 3:
+                raise LookError(f"data row with {len(parts)} values")
+            rows.append(tuple(float(v) for v in parts))
+    if size is None or size < 2:
+        raise LookError("missing or invalid LUT_3D_SIZE")
+    if len(rows) != size ** 3:
+        raise LookError(f"{len(rows)} data rows, expected {size ** 3}")
+    if any(h <= l for l, h in zip(lo, hi)):
+        raise LookError("DOMAIN_MAX must be greater than DOMAIN_MIN")
+    return size, lo, hi, rows
+
+
+def _resample(size, lo, hi, rows):
+    """Trilinear resample of the source cube onto a LOOK_SIZE^3 lattice over the unit domain."""
+    axes = []
+    for c in range(3):
+        span = hi[c] - lo[c]
+        samples = []
+        for i in range(LOOK_SIZE):
+            s = (i / (LOOK_SIZE - 1) - lo[c]) / span
+            x = min(max(s, 0.0), 1.0) * (size - 1)
+            i0 = min(int(x), size - 2)
+            samples.append((i0, x - i0))
+        axes.append(samples)
+
+    out = []
+    for b in range(LOOK_SIZE):
+        b0, fb = axes[2][b]
+        for g in range(LOOK_SIZE):
+            g0, fg = axes[1][g]
+            for r in range(LOOK_SIZE):
+                r0, fr = axes[0][r]
+                acc = [0.0, 0.0, 0.0]
+                for db, wb in ((0, 1.0 - fb), (1, fb)):
+                    for dg, wg in ((0, 1.0 - fg), (1, fg)):
+                        base = ((b0 + db) * size + (g0 + dg)) * size + r0
+                        for dr, wr in ((0, 1.0 - fr), (1, fr)):
+                            w = wb * wg * wr
+                            if w == 0.0:
+                                continue
+                            v = rows[base + dr]
+                            acc[0] += w * v[0]
+                            acc[1] += w * v[1]
+                            acc[2] += w * v[2]
+                out.append(tuple(min(max(x, 0.0), 1.0) for x in acc))
+    return out
+
+
+def _convert_look(job: dict):
+    """Returns an error message for a skipped file, or None once look.cube is written."""
+    try:
+        size, lo, hi, rows = _parse_cube(job["src"])
+        lattice = _resample(size, lo, hi, rows)
+    except (LookError, ValueError, OSError) as e:
+        return str(e)
+    out_dir = job["dir"]
+    out_dir.mkdir(parents=True, exist_ok=True)
+    lines = [f'TITLE "{job["name"]}"', f"LUT_3D_SIZE {LOOK_SIZE}"]
+    lines.extend("%.6f %.6f %.6f" % v for v in lattice)
+    (out_dir / "look.cube").write_text("\n".join(lines) + "\n")
+    return None
+
+
+def _look_name(short: str) -> str:
+    words = []
+    for token in short.split("-"):
+        if not token:
+            continue
+        if any(ch.isdigit() for ch in token) or token.lower() in LOOK_STOPWORDS_UPPER:
+            words.append(token.upper())
+        else:
+            words.append(token[:1].upper() + token[1:].lower())
+    return " ".join(words)
+
+
+def stage_looks(name: str, folders: dict, luts_dir: Path) -> Path:
+    """looks/<id>/{look.cube, look.json} — one pack per folder group, Technical is never staged."""
+    target = _reset(name)
+    jobs = []
+    for folder, (namespace, category, prefix) in sorted(folders.items()):
+        source = luts_dir / folder
+        if not source.is_dir():
+            sys.exit(f"no {folder} folder under {luts_dir}")
+        for cube in sorted(source.iterdir(), key=lambda p: p.name):
+            if cube.suffix.lower() != ".cube":
+                continue
+            stem = cube.stem
+            short = stem[len(prefix):] if prefix and stem.lower().startswith(prefix.lower()) else stem
+            slug = re.sub(r"[^a-z0-9]+", "-", short.lower()).strip("-")
+            look_id = f"{namespace}.{slug}"
+            jobs.append({
+                "src": cube,
+                "id": look_id,
+                "name": _look_name(short),
+                "category": category,
+                "dir": target / "looks" / look_id,
+            })
+
+    seen = {}
+    for job in jobs:
+        if job["id"] in seen:
+            sys.exit(f"duplicate look id {job['id']}: {seen[job['id']]} and {job['src']}")
+        seen[job["id"]] = job["src"]
+
+    with multiprocessing.Pool(os.cpu_count()) as pool:
+        errors = pool.map(_convert_look, jobs)
+
+    kept = []
+    for job, error in zip(jobs, errors):
+        if error is None:
+            kept.append(job)
+        else:
+            print(f"  skip {job['src'].name}: {error}")
+
+    by_category = {}
+    for job in kept:
+        by_category.setdefault(job["category"], []).append(job)
+    for category_jobs in by_category.values():
+        category_jobs.sort(key=lambda j: j["id"])
+        for order, job in enumerate(category_jobs):
+            (job["dir"] / "look.json").write_text(json.dumps({
+                "name": job["name"],
+                "category": job["category"],
+                "order": order,
+            }, indent=2) + "\n")
+
+    size = sum(f.stat().st_size for f in target.rglob("*") if f.is_file())
+    print(f"{name}: {len(kept)} looks, {len(jobs) - len(kept)} skipped, {size / 1e6:.0f} MB")
+    return target
+
 
 def main() -> None:
     parser = argparse.ArgumentParser()
     all_targets = ["fonts", "stickers", "whisper", "sam2", "face", "effects", "effects-trending",
-                   "transitions", "audio-effects", "denoise"]
-    parser.add_argument("targets", nargs="*", default=all_targets, choices=all_targets)
+                   "transitions", "audio-effects", "denoise", "looks-essentials", "looks-extra"]
+    parser.add_argument("targets", nargs="*", default=all_targets,
+                        choices=all_targets + ["looks"],
+                        help="'looks' stages both looks packs")
     parser.add_argument("--fonts-dir", type=Path, default=DRIFT / "fonts")
     parser.add_argument("--emoji-font", type=Path,
                         default=Path.home() / "Downloads" / "emojis" / "HarmonyOS_4.0.ttf")
@@ -326,7 +500,11 @@ def main() -> None:
     parser.add_argument("--transitions-dir", type=Path, default=DRIFT / "transitions")
     parser.add_argument("--audio-effects-dir", type=Path, default=DRIFT / "audio-effects")
     parser.add_argument("--denoise-dir", type=Path, default=DRIFT / "models" / "deepfilternet3")
+    parser.add_argument("--luts-dir", type=Path, default=Path.home() / "Documents" / "LUTS")
     args = parser.parse_args()
+
+    if "looks" in args.targets:
+        args.targets = [t for t in args.targets if t != "looks"] + ["looks-essentials", "looks-extra"]
 
     if "fonts" in args.targets:
         stage_fonts(args.fonts_dir)
@@ -350,6 +528,10 @@ def main() -> None:
         stage_packages("audio-effects-core", "audio-effects", args.audio_effects_dir)
     if "denoise" in args.targets:
         stage_denoise(args.denoise_dir)
+    if "looks-essentials" in args.targets:
+        stage_looks("looks-essentials", LOOK_FOLDERS_ESSENTIALS, args.luts_dir)
+    if "looks-extra" in args.targets:
+        stage_looks("looks-extra", LOOK_FOLDERS_EXTRA, args.luts_dir)
 
     print("sha256 sidecars:")
     staging_hashes.write_sidecars_under(STAGING)
