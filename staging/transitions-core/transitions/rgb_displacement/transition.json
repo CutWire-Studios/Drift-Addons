@@ -2,6 +2,7 @@
   "id": "rgb_displacement",
   "displayName": "RGB Displacement",
   "category": "glitch",
+  "previewStrip": "preview_strip.webp",
   "order": 400,
   "parameters": [
     {

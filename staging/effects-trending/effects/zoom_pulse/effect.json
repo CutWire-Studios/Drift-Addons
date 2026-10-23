@@ -2,6 +2,7 @@
   "id": "zoom_pulse",
   "displayName": "Zoom Punch",
   "category": "impact",
+  "thumbnail": "thumbnail.webp",
   "order": 80,
   "parameters": [
     {

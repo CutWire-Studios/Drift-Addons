@@ -2,6 +2,7 @@
   "id": "static_wipe",
   "displayName": "Static Wipe",
   "category": "glitch",
+  "previewStrip": "preview_strip.webp",
   "order": 824,
   "parameters": [
     {

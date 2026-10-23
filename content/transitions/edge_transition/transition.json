@@ -2,6 +2,7 @@
   "id": "edge_transition",
   "displayName": "Edge Transition",
   "category": "basic",
+  "previewStrip": "preview_strip.webp",
   "order": 640,
   "parameters": [
     {

@@ -2,6 +2,7 @@
   "id": "face_fat_slim",
   "displayName": "Fat / Slim Face",
   "category": "funny",
+  "thumbnail": "thumbnail.webp",
   "order": 630,
   "requires": "face",
   "parameters": [

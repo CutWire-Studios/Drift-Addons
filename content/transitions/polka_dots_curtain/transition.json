@@ -2,6 +2,7 @@
   "id": "polka_dots_curtain",
   "displayName": "Polka Dots Curtain",
   "category": "geometric",
+  "previewStrip": "preview_strip.webp",
   "order": 668,
   "parameters": [
     {

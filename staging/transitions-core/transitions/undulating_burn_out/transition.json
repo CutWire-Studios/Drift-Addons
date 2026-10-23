@@ -2,6 +2,7 @@
   "id": "undulating_burn_out",
   "displayName": "Undulating Burn Out",
   "category": "liquid",
+  "previewStrip": "preview_strip.webp",
   "order": 830,
   "parameters": [
     {

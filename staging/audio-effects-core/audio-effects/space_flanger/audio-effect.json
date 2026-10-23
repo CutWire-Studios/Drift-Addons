@@ -2,6 +2,7 @@
   "id": "space.flanger",
   "displayName": "Flanger",
   "category": "space",
+  "thumbnail": "thumbnail.webp",
   "icon": "circle-dashed",
   "order": 430,
   "backend": "juce",

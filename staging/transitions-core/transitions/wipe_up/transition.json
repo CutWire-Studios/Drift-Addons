@@ -2,6 +2,7 @@
   "id": "wipe_up",
   "displayName": "Wipe Up",
   "category": "basic",
+  "previewStrip": "preview_strip.webp",
   "order": 122,
   "parameters": [
     {

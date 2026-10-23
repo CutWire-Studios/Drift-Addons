@@ -2,6 +2,7 @@
   "id": "rectangle",
   "displayName": "Rectangle",
   "category": "geometric",
+  "previewStrip": "preview_strip.webp",
   "order": 674,
   "parameters": [
     {

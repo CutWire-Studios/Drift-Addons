@@ -2,6 +2,7 @@
   "id": "power_kaleido",
   "displayName": "Power Kaleido",
   "category": "distortion",
+  "previewStrip": "preview_strip.webp",
   "order": 794,
   "parameters": [
     {

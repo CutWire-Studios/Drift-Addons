@@ -2,6 +2,7 @@
   "id": "tv_static",
   "displayName": "Tv Static",
   "category": "glitch",
+  "previewStrip": "preview_strip.webp",
   "order": 702,
   "parameters": [
     {

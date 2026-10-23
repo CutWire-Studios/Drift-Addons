@@ -2,6 +2,7 @@
   "id": "zoom_rigth_wipe",
   "displayName": "Zoom Rigth Wipe",
   "category": "distortion",
+  "previewStrip": "preview_strip.webp",
   "order": 718,
   "parameters": [
     {

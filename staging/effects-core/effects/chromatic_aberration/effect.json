@@ -2,6 +2,7 @@
   "id": "chromatic_aberration",
   "displayName": "Chromatic Aberration",
   "category": "glitch",
+  "thumbnail": "thumbnail.webp",
   "order": 950,
   "parameters": [
     {

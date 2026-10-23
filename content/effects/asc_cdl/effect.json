@@ -2,6 +2,7 @@
   "id": "asc_cdl",
   "displayName": "ASC CDL",
   "category": "color",
+  "thumbnail": "thumbnail.webp",
   "order": 920,
   "parameters": [
     {

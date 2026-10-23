@@ -2,6 +2,7 @@
   "id": "luma_fade",
   "displayName": "Luma Fade",
   "category": "cinematic",
+  "previewStrip": "preview_strip.webp",
   "order": 510,
   "parameters": [
     {

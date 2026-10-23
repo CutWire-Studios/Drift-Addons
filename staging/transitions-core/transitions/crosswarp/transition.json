@@ -2,6 +2,7 @@
   "id": "crosswarp",
   "displayName": "Crosswarp",
   "category": "geometric",
+  "previewStrip": "preview_strip.webp",
   "order": 740,
   "parameters": [],
   "pipeline": {

@@ -2,6 +2,7 @@
   "id": "strip_datamosh_glitch",
   "displayName": "Strip Datamosh Glitch",
   "category": "glitch",
+  "previewStrip": "preview_strip.webp",
   "order": 698,
   "parameters": [
     {

@@ -2,6 +2,7 @@
   "id": "vertical_close",
   "displayName": "Vertical Close",
   "category": "basic",
+  "previewStrip": "preview_strip.webp",
   "order": 708,
   "parameters": [],
   "pipeline": {

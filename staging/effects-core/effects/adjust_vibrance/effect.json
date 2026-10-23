@@ -2,6 +2,7 @@
   "id": "adjust_vibrance",
   "displayName": "Vibrance",
   "category": "color",
+  "thumbnail": "thumbnail.webp",
   "order": 32,
   "parameters": [
     {

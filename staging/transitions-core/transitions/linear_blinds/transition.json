@@ -2,6 +2,7 @@
   "id": "linear_blinds",
   "displayName": "Linear Blinds",
   "category": "geometric",
+  "previewStrip": "preview_strip.webp",
   "order": 240,
   "parameters": [
     {

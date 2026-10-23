@@ -2,6 +2,7 @@
   "id": "overexposure",
   "displayName": "Overexposure",
   "category": "cinematic",
+  "previewStrip": "preview_strip.webp",
   "order": 666,
   "parameters": [
     {

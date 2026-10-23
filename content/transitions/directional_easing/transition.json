@@ -2,6 +2,7 @@
   "id": "directional_easing",
   "displayName": "Directional Easing",
   "category": "geometric",
+  "previewStrip": "preview_strip.webp",
   "order": 744,
   "parameters": [
     {

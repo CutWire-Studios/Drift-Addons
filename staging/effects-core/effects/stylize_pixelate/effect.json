@@ -2,6 +2,7 @@
   "id": "stylize.pixelate",
   "displayName": "Pixelate",
   "category": "glitch",
+  "thumbnail": "thumbnail.webp",
   "order": 300,
   "parameters": [
     {

@@ -2,6 +2,7 @@
   "id": "page_turn",
   "displayName": "Page Turn",
   "category": "geometric",
+  "previewStrip": "preview_strip.webp",
   "order": 400,
   "audioCurve": "crossfade",
   "parameters": [

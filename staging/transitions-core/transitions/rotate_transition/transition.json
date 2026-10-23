@@ -2,6 +2,7 @@
   "id": "rotate_transition",
   "displayName": "Rotate Transition",
   "category": "basic",
+  "previewStrip": "preview_strip.webp",
   "order": 802,
   "parameters": [],
   "pipeline": {

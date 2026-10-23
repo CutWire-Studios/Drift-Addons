@@ -2,6 +2,7 @@
   "id": "face_mesh_3d",
   "displayName": "3D Face Mesh",
   "category": "props",
+  "thumbnail": "thumbnail.webp",
   "order": 810,
   "backend": "model3d",
   "requires": "face",

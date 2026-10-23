@@ -2,6 +2,7 @@
   "id": "heart",
   "displayName": "Heart",
   "category": "basic",
+  "previewStrip": "preview_strip.webp",
   "order": 766,
   "parameters": [],
   "pipeline": {

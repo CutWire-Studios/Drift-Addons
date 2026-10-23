@@ -2,6 +2,7 @@
   "id": "space.tremolo",
   "displayName": "Tremolo",
   "category": "space",
+  "thumbnail": "thumbnail.webp",
   "icon": "audio-waveform",
   "order": 450,
   "backend": "juce",

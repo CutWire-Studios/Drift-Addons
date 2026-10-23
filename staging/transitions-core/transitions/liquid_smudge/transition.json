@@ -2,6 +2,7 @@
   "id": "liquid_smudge",
   "displayName": "Liquid Smudge",
   "category": "liquid",
+  "previewStrip": "preview_strip.webp",
   "order": 310,
   "parameters": [
     {

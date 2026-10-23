@@ -2,6 +2,7 @@
   "id": "voice.alien",
   "displayName": "Alien",
   "category": "voice",
+  "thumbnail": "thumbnail.webp",
   "icon": "orbit",
   "order": 140,
   "backend": "juce",

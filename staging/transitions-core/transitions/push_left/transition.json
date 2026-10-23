@@ -2,6 +2,7 @@
   "id": "push_left",
   "displayName": "Push Left",
   "category": "basic",
+  "previewStrip": "preview_strip.webp",
   "order": 130,
   "parameters": [],
   "pipeline": {

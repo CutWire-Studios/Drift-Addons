@@ -2,6 +2,7 @@
   "id": "time_echo",
   "displayName": "Time Echo / Trail",
   "category": "dreamy",
+  "thumbnail": "thumbnail.webp",
   "order": 150,
   "parameters": [
     {

@@ -2,6 +2,7 @@
   "id": "aperture_diffraction",
   "displayName": "Aperture Diffraction",
   "category": "dreamy",
+  "thumbnail": "thumbnail.webp",
   "order": 810,
   "parameters": [
     {

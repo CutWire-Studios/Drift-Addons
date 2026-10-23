@@ -1,0 +1,842 @@
+{
+  "id": "stylize.outline",
+  "version": "1.0.0",
+  "displayName": "Outline",
+  "category": "artistic",
+  "thumbnail": "thumbnail.webp",
+  "description": "Sticker outlines, borders and strokes around images, video, cutouts and text: double outlines, dashes, gradients, hand-drawn wobble, torn, burnt and stamp edges, shadows and glows.",
+  "order": 50,
+  "backend": "gpu",
+  "requires": "mask",
+  "parameters": [
+    {
+      "identifier": "source",
+      "displayName": "Outline",
+      "type": "choice",
+      "options": [
+        "Alpha / cutout",
+        "Brightness",
+        "Frame"
+      ],
+      "defaultValue": 0,
+      "group": "Outline"
+    },
+    {
+      "identifier": "color",
+      "displayName": "Colour",
+      "type": "color",
+      "alpha": true,
+      "defaultValue": "#ffffffff",
+      "group": "Outline",
+      "swatches": [
+        "#ffffff",
+        "#000000",
+        "#ff2d95",
+        "#ffd400",
+        "#00e5ff",
+        "#39ff14",
+        "#ff6a00",
+        "#7c4dff"
+      ]
+    },
+    {
+      "identifier": "width",
+      "displayName": "Width",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 200,
+      "defaultValue": 14,
+      "group": "Outline"
+    },
+    {
+      "identifier": "strokePosition",
+      "displayName": "Position",
+      "type": "choice",
+      "options": [
+        "Outside",
+        "Centre",
+        "Inside"
+      ],
+      "defaultValue": 0,
+      "group": "Outline"
+    },
+    {
+      "identifier": "offset",
+      "displayName": "Gap",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 100,
+      "defaultValue": 0,
+      "group": "Outline"
+    },
+    {
+      "identifier": "corners",
+      "displayName": "Corners",
+      "type": "choice",
+      "options": [
+        "Round",
+        "Square",
+        "Bevel"
+      ],
+      "defaultValue": 0,
+      "group": "Outline"
+    },
+    {
+      "identifier": "softness",
+      "displayName": "Softness",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 20,
+      "defaultValue": 0.5,
+      "group": "Outline"
+    },
+    {
+      "identifier": "threshold",
+      "displayName": "Threshold",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.5,
+      "group": "Outline"
+    },
+    {
+      "identifier": "frameRadius",
+      "displayName": "Frame corner radius",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 540,
+      "defaultValue": 0,
+      "group": "Outline"
+    },
+    {
+      "identifier": "fitInside",
+      "displayName": "Shrink to fit",
+      "type": "bool",
+      "defaultValue": 1,
+      "group": "Outline"
+    },
+    {
+      "identifier": "hideContent",
+      "displayName": "Outline only",
+      "type": "bool",
+      "defaultValue": 0,
+      "group": "Outline"
+    },
+    {
+      "identifier": "fillType",
+      "displayName": "Fill",
+      "type": "choice",
+      "options": [
+        "Solid",
+        "Linear gradient",
+        "Radial gradient",
+        "Along the outline",
+        "Rainbow"
+      ],
+      "defaultValue": 0,
+      "group": "Fill",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "color2",
+      "displayName": "Second colour",
+      "type": "color",
+      "alpha": true,
+      "defaultValue": "#ff2d95ff",
+      "group": "Fill",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "gradientAngle",
+      "displayName": "Angle",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 360,
+      "defaultValue": 0,
+      "group": "Fill",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "gradientSpeed",
+      "displayName": "Animate",
+      "type": "float",
+      "minValue": -2,
+      "maxValue": 2,
+      "defaultValue": 0,
+      "group": "Fill",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "dashed",
+      "displayName": "Dashed",
+      "type": "bool",
+      "defaultValue": 0,
+      "group": "Dashes",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "dashLength",
+      "displayName": "Dash",
+      "type": "float",
+      "minValue": 1,
+      "maxValue": 300,
+      "defaultValue": 40,
+      "group": "Dashes",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "dashGap",
+      "displayName": "Gap",
+      "type": "float",
+      "minValue": 1,
+      "maxValue": 300,
+      "defaultValue": 24,
+      "group": "Dashes",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "roundCaps",
+      "displayName": "Round caps",
+      "type": "bool",
+      "defaultValue": 1,
+      "group": "Dashes",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "dashSpeed",
+      "displayName": "March speed",
+      "type": "float",
+      "minValue": -400,
+      "maxValue": 400,
+      "defaultValue": 0,
+      "group": "Dashes",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "outline2",
+      "displayName": "Second outline",
+      "type": "bool",
+      "defaultValue": 0,
+      "group": "Second outline",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "color3",
+      "displayName": "Colour",
+      "type": "color",
+      "alpha": true,
+      "defaultValue": "#000000ff",
+      "group": "Second outline",
+      "enables": "outline2",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "width2",
+      "displayName": "Width",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 200,
+      "defaultValue": 8,
+      "group": "Second outline",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "offset2",
+      "displayName": "Gap",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 100,
+      "defaultValue": 0,
+      "group": "Second outline",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "wobble",
+      "displayName": "Wobble",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 40,
+      "defaultValue": 0,
+      "group": "Hand-drawn",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "wobbleScale",
+      "displayName": "Wobble size",
+      "type": "float",
+      "minValue": 2,
+      "maxValue": 300,
+      "defaultValue": 60,
+      "group": "Hand-drawn",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "widthJitter",
+      "displayName": "Width variation",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0,
+      "group": "Hand-drawn",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "boil",
+      "displayName": "Boil (fps)",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 24,
+      "defaultValue": 0,
+      "group": "Hand-drawn",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "innerEdge",
+      "displayName": "Inner edge",
+      "type": "choice",
+      "options": [
+        "None",
+        "Torn paper",
+        "Burnt",
+        "Stamp (perforated)",
+        "Zigzag (pinking)",
+        "Scalloped",
+        "Tape (serrated)",
+        "Wavy",
+        "Rough"
+      ],
+      "defaultValue": 0,
+      "group": "Edge texture",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "innerDepth",
+      "displayName": "Inner depth",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 200,
+      "defaultValue": 24,
+      "group": "Edge texture",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "innerScale",
+      "displayName": "Inner size",
+      "type": "float",
+      "minValue": 2,
+      "maxValue": 400,
+      "defaultValue": 40,
+      "group": "Edge texture",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "outerEdge",
+      "displayName": "Outer edge",
+      "type": "choice",
+      "options": [
+        "None",
+        "Torn paper",
+        "Burnt",
+        "Stamp (perforated)",
+        "Zigzag (pinking)",
+        "Scalloped",
+        "Tape (serrated)",
+        "Wavy",
+        "Rough"
+      ],
+      "defaultValue": 0,
+      "group": "Edge texture",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "outerDepth",
+      "displayName": "Outer depth",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 200,
+      "defaultValue": 16,
+      "group": "Edge texture",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "outerScale",
+      "displayName": "Outer size",
+      "type": "float",
+      "minValue": 2,
+      "maxValue": 400,
+      "defaultValue": 30,
+      "group": "Edge texture",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "edgeSeed",
+      "displayName": "Variation",
+      "type": "int",
+      "minValue": 0,
+      "maxValue": 100,
+      "defaultValue": 0,
+      "group": "Edge texture",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "rimColor",
+      "displayName": "Rim colour",
+      "type": "color",
+      "alpha": true,
+      "defaultValue": "#f6f1e7ff",
+      "group": "Edge texture",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "rimWidth",
+      "displayName": "Rim width",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 60,
+      "defaultValue": 0,
+      "group": "Edge texture",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "burnColor",
+      "displayName": "Char colour",
+      "type": "color",
+      "defaultValue": "#1c0f06",
+      "group": "Edge texture",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "emberColor",
+      "displayName": "Ember",
+      "type": "color",
+      "alpha": true,
+      "defaultValue": "#ff7a1aff",
+      "group": "Edge texture",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "shadow",
+      "displayName": "Drop shadow",
+      "type": "bool",
+      "defaultValue": 0,
+      "group": "Drop shadow",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "shadowColor",
+      "displayName": "Colour",
+      "type": "color",
+      "alpha": true,
+      "defaultValue": "#00000099",
+      "group": "Drop shadow",
+      "enables": "shadow",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "shadowAngle",
+      "displayName": "Angle",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 360,
+      "defaultValue": 45,
+      "group": "Drop shadow",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "shadowDistance",
+      "displayName": "Distance",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 200,
+      "defaultValue": 14,
+      "group": "Drop shadow",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "shadowBlur",
+      "displayName": "Blur",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 100,
+      "defaultValue": 12,
+      "group": "Drop shadow",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "shadowSpread",
+      "displayName": "Spread",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 100,
+      "defaultValue": 0,
+      "group": "Drop shadow",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "innerShadow",
+      "displayName": "Inner shadow",
+      "type": "bool",
+      "defaultValue": 0,
+      "group": "Inner shadow",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "innerShadowColor",
+      "displayName": "Colour",
+      "type": "color",
+      "alpha": true,
+      "defaultValue": "#000000a0",
+      "group": "Inner shadow",
+      "enables": "innerShadow",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "innerShadowAngle",
+      "displayName": "Angle",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 360,
+      "defaultValue": 45,
+      "group": "Inner shadow",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "innerShadowDistance",
+      "displayName": "Distance",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 200,
+      "defaultValue": 10,
+      "group": "Inner shadow",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "innerShadowBlur",
+      "displayName": "Blur",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 100,
+      "defaultValue": 12,
+      "group": "Inner shadow",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "innerShadowSpread",
+      "displayName": "Choke",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 100,
+      "defaultValue": 0,
+      "group": "Inner shadow",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "glow",
+      "displayName": "Outer glow",
+      "type": "bool",
+      "defaultValue": 0,
+      "group": "Outer glow",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "glowColor",
+      "displayName": "Colour",
+      "type": "color",
+      "alpha": true,
+      "defaultValue": "#00e5ffff",
+      "group": "Outer glow",
+      "enables": "glow",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "glowSize",
+      "displayName": "Size",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 300,
+      "defaultValue": 40,
+      "group": "Outer glow",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "glowIntensity",
+      "displayName": "Intensity",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 3,
+      "defaultValue": 1,
+      "group": "Outer glow",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "innerGlow",
+      "displayName": "Inner glow",
+      "type": "bool",
+      "defaultValue": 0,
+      "group": "Inner glow",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "innerGlowColor",
+      "displayName": "Colour",
+      "type": "color",
+      "alpha": true,
+      "defaultValue": "#ffffffff",
+      "group": "Inner glow",
+      "enables": "innerGlow",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "innerGlowSize",
+      "displayName": "Size",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 300,
+      "defaultValue": 30,
+      "group": "Inner glow",
+      "groupCollapsed": true
+    },
+    {
+      "identifier": "innerGlowIntensity",
+      "displayName": "Intensity",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 3,
+      "defaultValue": 1,
+      "group": "Inner glow",
+      "groupCollapsed": true
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [
+      {
+        "id": "a",
+        "scale": 1.0
+      },
+      {
+        "id": "b",
+        "scale": 1.0
+      },
+      {
+        "id": "bounds",
+        "scale": 0.0001
+      }
+    ],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "seed.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "a"
+        }
+      },
+      {
+        "passIndex": 1,
+        "fragmentShader": "jfa.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "a"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "b"
+        }
+      },
+      {
+        "passIndex": 2,
+        "fragmentShader": "jfa.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "b"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "a"
+        }
+      },
+      {
+        "passIndex": 3,
+        "fragmentShader": "jfa.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "a"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "b"
+        }
+      },
+      {
+        "passIndex": 4,
+        "fragmentShader": "jfa.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "b"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "a"
+        }
+      },
+      {
+        "passIndex": 5,
+        "fragmentShader": "jfa.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "a"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "b"
+        }
+      },
+      {
+        "passIndex": 6,
+        "fragmentShader": "jfa.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "b"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "a"
+        }
+      },
+      {
+        "passIndex": 7,
+        "fragmentShader": "jfa.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "a"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "b"
+        }
+      },
+      {
+        "passIndex": 8,
+        "fragmentShader": "jfa.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "b"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "a"
+        }
+      },
+      {
+        "passIndex": 9,
+        "fragmentShader": "jfa.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "a"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "b"
+        }
+      },
+      {
+        "passIndex": 10,
+        "fragmentShader": "jfa.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "b"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "a"
+        }
+      },
+      {
+        "passIndex": 11,
+        "fragmentShader": "jfa.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "a"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "b"
+        }
+      },
+      {
+        "passIndex": 12,
+        "fragmentShader": "jfa.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "b"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "a"
+        }
+      },
+      {
+        "passIndex": 13,
+        "fragmentShader": "bounds.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "bounds"
+        }
+      },
+      {
+        "passIndex": 14,
+        "fragmentShader": "composite.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "a"
+          },
+          {
+            "type": "source_texture"
+          },
+          {
+            "type": "buffer",
+            "id": "bounds"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

@@ -2,6 +2,7 @@
   "id": "angular",
   "displayName": "Angular",
   "category": "basic",
+  "previewStrip": "preview_strip.webp",
   "order": 720,
   "parameters": [
     {

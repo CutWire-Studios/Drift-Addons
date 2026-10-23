@@ -2,6 +2,7 @@
   "id": "droste_zoom",
   "displayName": "Infinite Zoom",
   "category": "glitch",
+  "thumbnail": "thumbnail.webp",
   "order": 390,
   "parameters": [
     {

@@ -2,6 +2,7 @@
   "id": "zoom_in",
   "displayName": "Zoom In",
   "category": "basic",
+  "previewStrip": "preview_strip.webp",
   "order": 131,
   "parameters": [
     {

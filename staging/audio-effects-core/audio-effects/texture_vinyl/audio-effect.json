@@ -2,6 +2,7 @@
   "id": "texture.vinyl",
   "displayName": "Vinyl",
   "category": "texture",
+  "thumbnail": "thumbnail.webp",
   "icon": "disc-3",
   "order": 320,
   "backend": "juce",

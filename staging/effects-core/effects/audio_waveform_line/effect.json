@@ -1,0 +1,56 @@
+{
+  "id": "builtin.effects.audio_waveform_line",
+  "version": "1.0.0",
+  "displayName": "Audio Waveform Line",
+  "category": "artistic",
+  "description": "An oscilloscope line drawn from the waveform of an audio source.",
+  "backend": "gpu",
+  "order": 960,
+  "parameters": [
+    {
+      "identifier": "audio",
+      "displayName": "Audio source",
+      "type": "audio"
+    },
+    {
+      "identifier": "color",
+      "displayName": "Colour",
+      "type": "color",
+      "alpha": true,
+      "defaultValue": "#ffffffff"
+    },
+    {
+      "identifier": "thickness",
+      "displayName": "Thickness",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 0.1,
+      "defaultValue": 0.01
+    },
+    {
+      "identifier": "amplitude",
+      "displayName": "Amplitude",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 2.0,
+      "defaultValue": 1.0
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

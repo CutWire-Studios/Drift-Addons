@@ -2,6 +2,7 @@
   "id": "spherize_transition",
   "displayName": "Spherize",
   "category": "distortion",
+  "previewStrip": "preview_strip.webp",
   "order": 450,
   "audioCurve": "crossfade",
   "parameters": [

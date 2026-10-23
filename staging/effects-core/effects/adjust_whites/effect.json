@@ -2,6 +2,7 @@
   "id": "adjust_whites",
   "displayName": "Whites",
   "category": "color",
+  "thumbnail": "thumbnail.webp",
   "order": 26,
   "parameters": [
     {

@@ -2,6 +2,7 @@
   "id": "texture.bitcrush",
   "displayName": "Bitcrush",
   "category": "texture",
+  "thumbnail": "thumbnail.webp",
   "icon": "binary",
   "order": 310,
   "backend": "juce",

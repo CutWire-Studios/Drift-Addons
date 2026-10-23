@@ -2,6 +2,7 @@
   "id": "energy_burst",
   "displayName": "Energy Burst",
   "category": "stylized",
+  "previewStrip": "preview_strip.webp",
   "order": 420,
   "audioCurve": "crossfade",
   "parameters": [

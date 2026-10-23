@@ -1,7 +1,8 @@
 {
   "id": "film_grain",
   "displayName": "Film Grain",
-  "category": "retro",
+  "category": "color",
+  "thumbnail": "thumbnail.webp",
   "order": 970,
   "parameters": [
     {
@@ -35,6 +36,20 @@
       "defaultValue": 0.3,
       "minValue": 0.0,
       "maxValue": 1.0
+    },
+    {
+      "identifier": "lumaResponse",
+      "displayName": "Midtone Bias",
+      "type": "float",
+      "defaultValue": 0,
+      "minValue": 0,
+      "maxValue": 1
+    },
+    {
+      "identifier": "animated",
+      "displayName": "Animated",
+      "type": "bool",
+      "defaultValue": 1
     }
   ],
   "backend": "gpu",

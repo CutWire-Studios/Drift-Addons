@@ -2,6 +2,7 @@
   "id": "glitch_memories",
   "displayName": "Glitch Memories",
   "category": "glitch",
+  "previewStrip": "preview_strip.webp",
   "order": 648,
   "parameters": [],
   "pipeline": {

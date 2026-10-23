@@ -2,6 +2,7 @@
   "id": "swap",
   "displayName": "Swap",
   "category": "basic",
+  "previewStrip": "preview_strip.webp",
   "order": 826,
   "parameters": [
     {

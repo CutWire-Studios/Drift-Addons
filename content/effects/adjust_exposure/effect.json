@@ -2,6 +2,7 @@
   "id": "adjust_exposure",
   "displayName": "Exposure",
   "category": "color",
+  "thumbnail": "thumbnail.webp",
   "order": 5,
   "parameters": [
     {

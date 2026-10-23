@@ -2,6 +2,7 @@
   "id": "x_axis_translation",
   "displayName": "X Axis Translation",
   "category": "basic",
+  "previewStrip": "preview_strip.webp",
   "order": 846,
   "parameters": [],
   "pipeline": {

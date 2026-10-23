@@ -2,6 +2,7 @@
   "id": "split_slide_in_horizontal",
   "displayName": "Split Slide In Horizontal",
   "category": "stylized",
+  "previewStrip": "preview_strip.webp",
   "order": 808,
   "parameters": [
     {

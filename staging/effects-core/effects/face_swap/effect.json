@@ -2,6 +2,7 @@
   "id": "face_swap",
   "displayName": "Face Swap",
   "category": "funny",
+  "thumbnail": "thumbnail.webp",
   "order": 620,
   "backend": "faceswap",
   "requires": "face",

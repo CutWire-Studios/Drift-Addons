@@ -2,6 +2,7 @@
   "id": "color_replace",
   "displayName": "Color Replace",
   "category": "color",
+  "thumbnail": "thumbnail.webp",
   "order": 900,
   "parameters": [
     {

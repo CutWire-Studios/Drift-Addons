@@ -2,6 +2,7 @@
   "id": "adjust.temperature",
   "displayName": "Temperature",
   "category": "color",
+  "thumbnail": "thumbnail.webp",
   "order": 60,
   "parameters": [
     {

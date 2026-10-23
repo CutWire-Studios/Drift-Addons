@@ -2,6 +2,7 @@
   "id": "morph",
   "displayName": "Morph",
   "category": "distortion",
+  "previewStrip": "preview_strip.webp",
   "order": 776,
   "parameters": [
     {

@@ -2,6 +2,7 @@
   "id": "transmission.muffled",
   "displayName": "Muffled",
   "category": "transmission",
+  "thumbnail": "thumbnail.webp",
   "icon": "volume-x",
   "order": 240,
   "backend": "juce",

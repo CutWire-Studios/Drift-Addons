@@ -2,6 +2,7 @@
   "id": "colorphase",
   "displayName": "Colorphase",
   "category": "cinematic",
+  "previewStrip": "preview_strip.webp",
   "order": 734,
   "parameters": [
     {

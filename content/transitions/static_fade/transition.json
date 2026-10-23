@@ -2,6 +2,7 @@
   "id": "static_fade",
   "displayName": "Static Fade",
   "category": "glitch",
+  "previewStrip": "preview_strip.webp",
   "order": 694,
   "parameters": [
     {

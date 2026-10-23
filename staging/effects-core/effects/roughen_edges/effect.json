@@ -2,6 +2,7 @@
   "id": "roughen_edges",
   "displayName": "Roughen Edges",
   "category": "artistic",
+  "thumbnail": "thumbnail.webp",
   "order": 840,
   "parameters": [
     {

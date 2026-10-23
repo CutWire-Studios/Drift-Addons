@@ -2,6 +2,7 @@
   "id": "fadecolor",
   "displayName": "Fadecolor",
   "category": "cinematic",
+  "previewStrip": "preview_strip.webp",
   "order": 758,
   "parameters": [
     {

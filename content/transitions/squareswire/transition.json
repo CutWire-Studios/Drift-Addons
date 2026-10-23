@@ -2,6 +2,7 @@
   "id": "squareswire",
   "displayName": "Squareswire",
   "category": "geometric",
+  "previewStrip": "preview_strip.webp",
   "order": 820,
   "parameters": [
     {

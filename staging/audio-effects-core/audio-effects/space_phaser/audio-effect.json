@@ -2,6 +2,7 @@
   "id": "space.phaser",
   "displayName": "Phaser",
   "category": "space",
+  "thumbnail": "thumbnail.webp",
   "icon": "circle-dot-dashed",
   "order": 440,
   "backend": "juce",

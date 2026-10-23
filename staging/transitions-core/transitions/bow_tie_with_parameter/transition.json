@@ -2,6 +2,7 @@
   "id": "bow_tie_with_parameter",
   "displayName": "Bow Tie With Parameter",
   "category": "basic",
+  "previewStrip": "preview_strip.webp",
   "order": 612,
   "parameters": [
     {

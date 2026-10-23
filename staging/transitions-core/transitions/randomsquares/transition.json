@@ -2,6 +2,7 @@
   "id": "randomsquares",
   "displayName": "Randomsquares",
   "category": "geometric",
+  "previewStrip": "preview_strip.webp",
   "order": 798,
   "parameters": [
     {

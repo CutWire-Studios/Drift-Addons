@@ -2,6 +2,7 @@
   "id": "vertical_open",
   "displayName": "Vertical Open",
   "category": "basic",
+  "previewStrip": "preview_strip.webp",
   "order": 710,
   "parameters": [],
   "pipeline": {

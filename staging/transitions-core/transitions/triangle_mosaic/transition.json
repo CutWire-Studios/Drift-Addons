@@ -2,6 +2,7 @@
   "id": "triangle_mosaic",
   "displayName": "Triangle Mosaic",
   "category": "geometric",
+  "previewStrip": "preview_strip.webp",
   "order": 230,
   "parameters": [
     {

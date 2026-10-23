@@ -2,6 +2,7 @@
   "id": "zoom_in_out",
   "displayName": "Zoom In Out",
   "category": "distortion",
+  "previewStrip": "preview_strip.webp",
   "order": 848,
   "parameters": [],
   "pipeline": {

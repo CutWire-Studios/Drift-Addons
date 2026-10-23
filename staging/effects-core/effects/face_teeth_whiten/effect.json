@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "displayName": "Teeth Whiten",
   "category": "beauty",
+  "thumbnail": "thumbnail.webp",
   "description": "Lifts yellow out of the teeth, inside the mouth opening only.",
   "order": 702,
   "requires": "face",
@@ -47,8 +48,14 @@
       {
         "passIndex": 0,
         "fragmentShader": "main.frag",
-        "inputs": [{ "type": "source_texture" }],
-        "output": { "type": "canvas" }
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
       }
     ]
   }

@@ -2,6 +2,7 @@
   "id": "kaleidoscope_spin",
   "displayName": "Kaleidoscope Spin",
   "category": "distortion",
+  "previewStrip": "preview_strip.webp",
   "order": 400,
   "parameters": [
     {

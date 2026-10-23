@@ -2,6 +2,7 @@
   "id": "block_glitch",
   "displayName": "Block Glitch",
   "category": "glitch",
+  "thumbnail": "thumbnail.webp",
   "order": 320,
   "parameters": [
     {

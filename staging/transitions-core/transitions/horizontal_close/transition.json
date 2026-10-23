@@ -2,6 +2,7 @@
   "id": "horizontal_close",
   "displayName": "Horizontal Close",
   "category": "basic",
+  "previewStrip": "preview_strip.webp",
   "order": 654,
   "parameters": [],
   "pipeline": {

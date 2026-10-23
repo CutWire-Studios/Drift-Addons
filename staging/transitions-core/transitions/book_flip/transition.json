@@ -2,6 +2,7 @@
   "id": "book_flip",
   "displayName": "Book Flip",
   "category": "stylized",
+  "previewStrip": "preview_strip.webp",
   "order": 604,
   "parameters": [],
   "pipeline": {

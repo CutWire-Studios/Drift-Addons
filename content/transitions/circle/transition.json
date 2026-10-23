@@ -2,6 +2,7 @@
   "id": "circle",
   "displayName": "Circle",
   "category": "basic",
+  "previewStrip": "preview_strip.webp",
   "order": 730,
   "parameters": [
     {

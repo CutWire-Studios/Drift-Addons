@@ -2,6 +2,7 @@
   "id": "depth.view",
   "displayName": "Depth View",
   "category": "depth",
+  "thumbnail": "thumbnail.webp",
   "order": 930,
   "description": "Shows the clip's estimated depth, near bright and far dark, to check it or export it as a depth pass.",
   "backend": "gpu",

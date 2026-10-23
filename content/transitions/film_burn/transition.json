@@ -2,6 +2,7 @@
   "id": "film_burn",
   "displayName": "Film Burn",
   "category": "cinematic",
+  "previewStrip": "preview_strip.webp",
   "order": 642,
   "parameters": [
     {

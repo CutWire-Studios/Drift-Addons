@@ -406,6 +406,7 @@ def convert(path, over, order):
         "id": pkg_id,
         "displayName": over.get("displayName", title(stem)),
         "category": over.get("category", guess_category(stem)),
+        "previewStrip": "preview_strip.webp",
         "order": over.get("order", order),
         "parameters": params,
     }

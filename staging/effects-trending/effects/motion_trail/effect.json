@@ -2,6 +2,7 @@
   "id": "motion_trail",
   "displayName": "Motion Trail",
   "category": "impact",
+  "thumbnail": "thumbnail.webp",
   "order": 95,
   "parameters": [
     {

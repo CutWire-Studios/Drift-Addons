@@ -2,6 +2,7 @@
   "id": "squeeze",
   "displayName": "Squeeze",
   "category": "basic",
+  "previewStrip": "preview_strip.webp",
   "order": 822,
   "parameters": [
     {

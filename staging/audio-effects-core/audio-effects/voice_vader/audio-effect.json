@@ -2,6 +2,7 @@
   "id": "voice.vader",
   "displayName": "Dark Lord",
   "category": "voice",
+  "thumbnail": "thumbnail.webp",
   "icon": "shield",
   "order": 120,
   "backend": "juce",

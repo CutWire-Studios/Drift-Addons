@@ -2,6 +2,7 @@
   "id": "invert",
   "displayName": "Invert",
   "category": "color",
+  "thumbnail": "thumbnail.webp",
   "order": 870,
   "parameters": [
     {

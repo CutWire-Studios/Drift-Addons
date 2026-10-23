@@ -2,6 +2,7 @@
   "id": "light_rays",
   "displayName": "Light Rays",
   "category": "dreamy",
+  "thumbnail": "thumbnail.webp",
   "order": 800,
   "parameters": [
     {

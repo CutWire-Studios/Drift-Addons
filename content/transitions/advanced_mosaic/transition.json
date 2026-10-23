@@ -2,6 +2,7 @@
   "id": "advanced_mosaic",
   "displayName": "Advanced Mosaic",
   "category": "distortion",
+  "previewStrip": "preview_strip.webp",
   "order": 600,
   "parameters": [
     {

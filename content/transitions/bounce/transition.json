@@ -2,6 +2,7 @@
   "id": "bounce",
   "displayName": "Bounce",
   "category": "distortion",
+  "previewStrip": "preview_strip.webp",
   "order": 606,
   "parameters": [
     {

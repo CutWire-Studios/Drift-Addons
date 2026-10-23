@@ -2,6 +2,7 @@
   "id": "scale_in",
   "displayName": "Scale In",
   "category": "basic",
+  "previewStrip": "preview_strip.webp",
   "order": 806,
   "parameters": [],
   "pipeline": {

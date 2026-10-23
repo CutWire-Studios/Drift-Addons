@@ -2,6 +2,7 @@
   "id": "face_props",
   "displayName": "Face Props",
   "category": "props",
+  "thumbnail": "thumbnail.webp",
   "order": 800,
   "backend": "model3d",
   "requires": "face",

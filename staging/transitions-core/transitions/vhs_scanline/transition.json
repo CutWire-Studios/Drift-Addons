@@ -2,6 +2,7 @@
   "id": "vhs_scanline",
   "displayName": "VHS Scanline",
   "category": "glitch",
+  "previewStrip": "preview_strip.webp",
   "order": 410,
   "parameters": [
     {

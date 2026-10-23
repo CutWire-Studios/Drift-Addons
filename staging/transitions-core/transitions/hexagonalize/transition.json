@@ -2,6 +2,7 @@
   "id": "hexagonalize",
   "displayName": "Hexagonalize",
   "category": "geometric",
+  "previewStrip": "preview_strip.webp",
   "order": 768,
   "parameters": [
     {

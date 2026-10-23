@@ -2,6 +2,7 @@
   "id": "honeycomb_hexagon",
   "displayName": "Honeycomb Hexagon",
   "category": "geometric",
+  "previewStrip": "preview_strip.webp",
   "order": 200,
   "parameters": [
     {

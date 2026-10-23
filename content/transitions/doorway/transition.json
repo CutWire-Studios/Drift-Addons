@@ -2,6 +2,7 @@
   "id": "doorway",
   "displayName": "Doorway",
   "category": "stylized",
+  "previewStrip": "preview_strip.webp",
   "order": 754,
   "parameters": [
     {

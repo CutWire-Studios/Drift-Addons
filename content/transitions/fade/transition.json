@@ -2,6 +2,7 @@
   "id": "fade",
   "displayName": "Fade",
   "category": "basic",
+  "previewStrip": "preview_strip.webp",
   "order": 756,
   "parameters": [],
   "pipeline": {

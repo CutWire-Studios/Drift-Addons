@@ -2,6 +2,7 @@
   "id": "texture.tape",
   "displayName": "Tape Saturation",
   "category": "texture",
+  "thumbnail": "thumbnail.webp",
   "icon": "cassette-tape",
   "order": 330,
   "backend": "juce",

@@ -2,6 +2,7 @@
   "id": "voice.chipmunk",
   "displayName": "Chipmunk",
   "category": "voice",
+  "thumbnail": "thumbnail.webp",
   "icon": "rabbit",
   "order": 100,
   "backend": "juce",

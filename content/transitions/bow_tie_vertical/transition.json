@@ -2,6 +2,7 @@
   "id": "bow_tie_vertical",
   "displayName": "Bow Tie Vertical",
   "category": "basic",
+  "previewStrip": "preview_strip.webp",
   "order": 610,
   "parameters": [],
   "pipeline": {

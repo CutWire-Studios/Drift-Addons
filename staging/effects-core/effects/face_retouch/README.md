@@ -55,7 +55,7 @@ and its template coordinate taken from GPUPixel's reference face. `templateBound
 PNG sits on that reference face, in its 1280-pixel frame — the same numbers GPUPixel's
 `LipstickFilter` and `BlusherFilter` use. See `docs/gpu-effects.md`.
 
-The 468 → 111 mapping lives in `src/engine/Face111.cpp`;
+The 468 → 111 mapping lives in `src/engine/face/tracking/Face111.cpp`;
 `face111MappingMatchesGpuPixelReference` in `tests/tst_engine.cpp` keeps it honest.
 
 ## License

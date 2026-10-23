@@ -2,6 +2,7 @@
   "id": "slides",
   "displayName": "Slides",
   "category": "stylized",
+  "previewStrip": "preview_strip.webp",
   "order": 690,
   "parameters": [
     {

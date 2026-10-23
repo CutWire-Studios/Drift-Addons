@@ -2,6 +2,7 @@
   "id": "adjust.hue",
   "displayName": "Hue",
   "category": "color",
+  "thumbnail": "thumbnail.webp",
   "order": 50,
   "parameters": [
     {

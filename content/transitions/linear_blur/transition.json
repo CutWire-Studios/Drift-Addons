@@ -2,6 +2,7 @@
   "id": "linear_blur",
   "displayName": "Linear Blur",
   "category": "distortion",
+  "previewStrip": "preview_strip.webp",
   "order": 662,
   "parameters": [
     {

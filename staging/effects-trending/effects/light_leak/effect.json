@@ -2,6 +2,7 @@
   "id": "light_leak",
   "displayName": "Light Leak",
   "category": "dreamy",
+  "thumbnail": "thumbnail.webp",
   "order": 180,
   "parameters": [
     {

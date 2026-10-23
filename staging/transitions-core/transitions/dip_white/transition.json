@@ -2,6 +2,7 @@
   "id": "dip_white",
   "displayName": "Dip to White",
   "category": "basic",
+  "previewStrip": "preview_strip.webp",
   "order": 111,
   "parameters": [],
   "fixedParams": {

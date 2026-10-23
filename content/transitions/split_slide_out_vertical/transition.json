@@ -2,6 +2,7 @@
   "id": "split_slide_out_vertical",
   "displayName": "Split Slide Out Vertical",
   "category": "stylized",
+  "previewStrip": "preview_strip.webp",
   "order": 818,
   "parameters": [
     {

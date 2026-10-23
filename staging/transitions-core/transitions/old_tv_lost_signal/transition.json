@@ -2,6 +2,7 @@
   "id": "old_tv_lost_signal",
   "displayName": "Old Tv Lost Signal",
   "category": "glitch",
+  "previewStrip": "preview_strip.webp",
   "order": 782,
   "parameters": [],
   "pipeline": {

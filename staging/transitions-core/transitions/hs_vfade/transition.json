@@ -2,6 +2,7 @@
   "id": "hs_vfade",
   "displayName": "Hs Vfade",
   "category": "basic",
+  "previewStrip": "preview_strip.webp",
   "order": 652,
   "parameters": [],
   "pipeline": {

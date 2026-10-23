@@ -2,6 +2,7 @@
   "id": "face_alien_head",
   "displayName": "Alien Head",
   "category": "funny",
+  "thumbnail": "thumbnail.webp",
   "order": 640,
   "requires": "face",
   "parameters": [

@@ -2,6 +2,7 @@
   "id": "polar_function",
   "displayName": "Polar Function",
   "category": "distortion",
+  "previewStrip": "preview_strip.webp",
   "order": 792,
   "parameters": [
     {

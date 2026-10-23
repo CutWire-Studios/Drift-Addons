@@ -2,8 +2,57 @@
   "id": "stylize.vignette",
   "displayName": "Vignette",
   "category": "dreamy",
+  "thumbnail": "thumbnail.webp",
   "order": 110,
-  "parameters": [],
+  "parameters": [
+    {
+      "identifier": "amount",
+      "displayName": "Amount",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.55
+    },
+    {
+      "identifier": "feather",
+      "displayName": "Feather",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0
+    },
+    {
+      "identifier": "roundness",
+      "displayName": "Roundness",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0
+    },
+    {
+      "identifier": "color",
+      "displayName": "Color",
+      "type": "color",
+      "defaultValue": "#000000"
+    },
+    {
+      "identifier": "center",
+      "displayName": "Center",
+      "type": "point",
+      "minValue": [
+        0,
+        0
+      ],
+      "maxValue": [
+        1,
+        1
+      ],
+      "defaultValue": [
+        0.5,
+        0.5
+      ]
+    }
+  ],
   "backend": "gpu",
   "pipeline": {
     "intermediateBuffers": [],

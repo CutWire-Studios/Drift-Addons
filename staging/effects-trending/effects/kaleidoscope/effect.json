@@ -2,6 +2,7 @@
   "id": "kaleidoscope",
   "displayName": "Kaleidoscope",
   "category": "glitch",
+  "thumbnail": "thumbnail.webp",
   "order": 380,
   "parameters": [
     {

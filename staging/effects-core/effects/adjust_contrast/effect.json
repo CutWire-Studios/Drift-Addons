@@ -2,6 +2,7 @@
   "id": "adjust.contrast",
   "displayName": "Contrast",
   "category": "color",
+  "thumbnail": "thumbnail.webp",
   "order": 10,
   "parameters": [
     {

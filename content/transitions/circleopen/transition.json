@@ -2,6 +2,7 @@
   "id": "circleopen",
   "displayName": "Circleopen",
   "category": "basic",
+  "previewStrip": "preview_strip.webp",
   "order": 732,
   "parameters": [
     {

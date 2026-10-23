@@ -2,6 +2,7 @@
   "id": "corner_pin",
   "displayName": "Corner Pin",
   "category": "glitch",
+  "thumbnail": "thumbnail.webp",
   "order": 730,
   "parameters": [
     {

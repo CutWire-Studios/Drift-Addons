@@ -2,6 +2,7 @@
   "id": "face_fisheye",
   "displayName": "Face Fisheye",
   "category": "funny",
+  "thumbnail": "thumbnail.webp",
   "order": 610,
   "requires": "face",
   "parameters": [

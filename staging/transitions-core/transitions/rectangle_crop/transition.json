@@ -2,6 +2,7 @@
   "id": "rectangle_crop",
   "displayName": "Rectangle Crop",
   "category": "geometric",
+  "previewStrip": "preview_strip.webp",
   "order": 676,
   "parameters": [
     {

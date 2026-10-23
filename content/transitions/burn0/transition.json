@@ -2,6 +2,7 @@
   "id": "burn0",
   "displayName": "Burn0",
   "category": "liquid",
+  "previewStrip": "preview_strip.webp",
   "order": 724,
   "parameters": [],
   "fixedParams": {

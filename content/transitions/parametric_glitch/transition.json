@@ -2,6 +2,7 @@
   "id": "parametric_glitch",
   "displayName": "Parametric Glitch",
   "category": "glitch",
+  "previewStrip": "preview_strip.webp",
   "order": 784,
   "parameters": [
     {

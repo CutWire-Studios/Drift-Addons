@@ -2,6 +2,7 @@
   "id": "directional",
   "displayName": "Directional",
   "category": "geometric",
+  "previewStrip": "preview_strip.webp",
   "order": 628,
   "parameters": [
     {

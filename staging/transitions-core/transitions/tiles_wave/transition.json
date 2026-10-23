@@ -2,6 +2,7 @@
   "id": "tiles_wave",
   "displayName": "Tiles Wave",
   "category": "liquid",
+  "previewStrip": "preview_strip.webp",
   "order": 704,
   "parameters": [
     {

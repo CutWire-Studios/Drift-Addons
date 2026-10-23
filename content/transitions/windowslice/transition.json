@@ -2,6 +2,7 @@
   "id": "windowslice",
   "displayName": "Windowslice",
   "category": "geometric",
+  "previewStrip": "preview_strip.webp",
   "order": 836,
   "parameters": [
     {

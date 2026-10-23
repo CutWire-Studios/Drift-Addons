@@ -2,6 +2,7 @@
   "id": "ink_bleed",
   "displayName": "Ink Bleed",
   "category": "liquid",
+  "previewStrip": "preview_strip.webp",
   "order": 330,
   "parameters": [
     {

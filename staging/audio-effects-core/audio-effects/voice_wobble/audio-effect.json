@@ -2,6 +2,7 @@
   "id": "voice.wobble",
   "displayName": "Wobble",
   "category": "voice",
+  "thumbnail": "thumbnail.webp",
   "icon": "activity",
   "order": 150,
   "backend": "juce",

@@ -2,6 +2,7 @@
   "id": "adjust.brightness",
   "displayName": "Brightness",
   "category": "color",
+  "thumbnail": "thumbnail.webp",
   "order": 20,
   "parameters": [
     {

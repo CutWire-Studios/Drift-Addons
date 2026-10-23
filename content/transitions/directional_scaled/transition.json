@@ -2,6 +2,7 @@
   "id": "directional_scaled",
   "displayName": "Directional Scaled",
   "category": "geometric",
+  "previewStrip": "preview_strip.webp",
   "order": 630,
   "parameters": [
     {

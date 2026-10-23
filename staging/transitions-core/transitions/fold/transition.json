@@ -2,6 +2,7 @@
   "id": "fold",
   "displayName": "Fold",
   "category": "stylized",
+  "previewStrip": "preview_strip.webp",
   "order": 644,
   "parameters": [],
   "pipeline": {

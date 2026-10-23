@@ -2,6 +2,7 @@
   "id": "turbulent_displace",
   "displayName": "Turbulent Displace",
   "category": "glitch",
+  "thumbnail": "thumbnail.webp",
   "order": 700,
   "parameters": [
     {

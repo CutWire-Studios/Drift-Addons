@@ -2,6 +2,7 @@
   "id": "colour_distance",
   "displayName": "Colour Distance",
   "category": "cinematic",
+  "previewStrip": "preview_strip.webp",
   "order": 620,
   "parameters": [
     {

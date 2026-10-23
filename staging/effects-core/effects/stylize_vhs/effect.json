@@ -2,6 +2,7 @@
   "id": "stylize.vhs",
   "displayName": "VHS",
   "category": "retro",
+  "thumbnail": "thumbnail.webp",
   "order": 220,
   "parameters": [
     {

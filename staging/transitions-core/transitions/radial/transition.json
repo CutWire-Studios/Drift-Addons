@@ -2,6 +2,7 @@
   "id": "radial",
   "displayName": "Radial",
   "category": "basic",
+  "previewStrip": "preview_strip.webp",
   "order": 672,
   "parameters": [
     {

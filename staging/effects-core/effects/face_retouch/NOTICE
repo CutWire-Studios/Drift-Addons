@@ -24,4 +24,4 @@ Unmodified files, copied from src/res:
   lookup_gray.png, lookup_origin.png, lookup_skin.png, lookup_light.png
 
 The 111-point triangle list and reference coordinates in Drift's
-src/engine/Face111.cpp are copied from src/filter/face_makeup_filter.cc.
+src/engine/face/tracking/Face111.cpp are copied from src/filter/face_makeup_filter.cc.

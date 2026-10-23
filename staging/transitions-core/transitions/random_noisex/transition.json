@@ -2,6 +2,7 @@
   "id": "random_noisex",
   "displayName": "Random Noisex",
   "category": "glitch",
+  "previewStrip": "preview_strip.webp",
   "order": 796,
   "parameters": [],
   "pipeline": {

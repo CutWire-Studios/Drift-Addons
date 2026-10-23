@@ -2,6 +2,7 @@
   "id": "water_drop",
   "displayName": "Water Drop",
   "category": "liquid",
+  "previewStrip": "preview_strip.webp",
   "order": 712,
   "parameters": [
     {

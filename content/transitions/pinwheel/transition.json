@@ -2,6 +2,7 @@
   "id": "pinwheel",
   "displayName": "Pinwheel",
   "category": "distortion",
+  "previewStrip": "preview_strip.webp",
   "order": 788,
   "parameters": [
     {

@@ -2,6 +2,7 @@
   "id": "radial_zoom_blur",
   "displayName": "Radial Zoom Blur",
   "category": "cinematic",
+  "previewStrip": "preview_strip.webp",
   "order": 500,
   "parameters": [
     {

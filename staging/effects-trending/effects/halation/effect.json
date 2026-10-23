@@ -2,6 +2,7 @@
   "id": "halation",
   "displayName": "Halation",
   "category": "dreamy",
+  "thumbnail": "thumbnail.webp",
   "order": 190,
   "parameters": [
     {

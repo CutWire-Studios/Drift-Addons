@@ -2,6 +2,7 @@
   "id": "luminance_melt",
   "displayName": "Luminance Melt",
   "category": "liquid",
+  "previewStrip": "preview_strip.webp",
   "order": 774,
   "parameters": [
     {

@@ -2,6 +2,7 @@
   "id": "crossfade",
   "displayName": "Crossfade",
   "category": "basic",
+  "previewStrip": "preview_strip.webp",
   "order": 100,
   "parameters": [],
   "pipeline": {

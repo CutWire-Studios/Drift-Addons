@@ -2,6 +2,7 @@
   "id": "holographic",
   "displayName": "Holographic",
   "category": "glitch",
+  "thumbnail": "thumbnail.webp",
   "order": 1000,
   "parameters": [
     {

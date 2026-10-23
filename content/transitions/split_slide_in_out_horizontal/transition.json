@@ -2,6 +2,7 @@
   "id": "split_slide_in_out_horizontal",
   "displayName": "Split Slide In Out Horizontal",
   "category": "stylized",
+  "previewStrip": "preview_strip.webp",
   "order": 810,
   "parameters": [
     {

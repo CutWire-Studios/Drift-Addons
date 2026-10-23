@@ -2,6 +2,7 @@
   "id": "plasma_burn",
   "displayName": "Plasma Burn",
   "category": "liquid",
+  "previewStrip": "preview_strip.webp",
   "order": 320,
   "parameters": [
     {

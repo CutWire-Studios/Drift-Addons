@@ -2,6 +2,7 @@
   "id": "key.chroma",
   "displayName": "Chroma Key",
   "category": "keying",
+  "thumbnail": "thumbnail.webp",
   "order": 400,
   "description": "Remove a green or blue screen background. Drag Key Colour to match your backdrop, then raise Tolerance until the background disappears.",
   "backend": "gpu",

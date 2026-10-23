@@ -2,6 +2,7 @@
   "id": "simple_zoom_out",
   "displayName": "Simple Zoom Out",
   "category": "distortion",
+  "previewStrip": "preview_strip.webp",
   "order": 688,
   "parameters": [
     {

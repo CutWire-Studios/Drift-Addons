@@ -2,6 +2,7 @@
   "id": "lens_flare_wipe",
   "displayName": "Lens Flare Wipe",
   "category": "cinematic",
+  "previewStrip": "preview_strip.webp",
   "order": 520,
   "parameters": [
     {

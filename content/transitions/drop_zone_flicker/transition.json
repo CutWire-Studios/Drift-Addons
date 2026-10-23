@@ -2,6 +2,7 @@
   "id": "drop_zone_flicker",
   "displayName": "Drop Zone Flicker",
   "category": "basic",
+  "previewStrip": "preview_strip.webp",
   "order": 638,
   "parameters": [
     {

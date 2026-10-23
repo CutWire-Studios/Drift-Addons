@@ -2,6 +2,7 @@
   "id": "spherize",
   "displayName": "Spherize",
   "category": "glitch",
+  "thumbnail": "thumbnail.webp",
   "order": 710,
   "parameters": [
     {

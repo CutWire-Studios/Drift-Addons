@@ -2,6 +2,7 @@
   "id": "windowblinds",
   "displayName": "Windowblinds",
   "category": "geometric",
+  "previewStrip": "preview_strip.webp",
   "order": 834,
   "parameters": [],
   "pipeline": {

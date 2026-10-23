@@ -2,6 +2,7 @@
   "id": "wipe_left",
   "displayName": "Wipe Left",
   "category": "basic",
+  "previewStrip": "preview_strip.webp",
   "order": 120,
   "parameters": [
     {

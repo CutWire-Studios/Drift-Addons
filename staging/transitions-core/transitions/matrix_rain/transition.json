@@ -2,6 +2,7 @@
   "id": "matrix_rain",
   "displayName": "Digital Matrix Rain",
   "category": "glitch",
+  "previewStrip": "preview_strip.webp",
   "order": 420,
   "parameters": [
     {

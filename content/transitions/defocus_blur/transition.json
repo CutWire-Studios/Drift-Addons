@@ -2,6 +2,7 @@
   "id": "defocus_blur",
   "displayName": "Defocus Blur",
   "category": "distortion",
+  "previewStrip": "preview_strip.webp",
   "order": 626,
   "parameters": [
     {

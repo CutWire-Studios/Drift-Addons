@@ -2,6 +2,7 @@
   "id": "simple_zoom",
   "displayName": "Simple Zoom",
   "category": "distortion",
+  "previewStrip": "preview_strip.webp",
   "order": 686,
   "parameters": [
     {

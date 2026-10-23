@@ -1,12 +1,12 @@
 {
   "id": "effects.trending",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "name": "Trending Effects",
   "description": "Looks made for short-form edits: sparkle, beat shake, kaleidoscope, lightning, clones, cutouts, and ready-made effect templates.",
   "details": "Short-form GPU looks plus 23 beat-synced effect templates: sparkle, halation, beat shake, kaleidoscope, lightning, cutout stacks, clones. Package ids: effects.trending.",
   "author": "CutWire",
   "license": "GPL-3.0",
-  "minAppVersion": "0.1.0",
+  "minAppVersion": "0.9.0",
   "source": "../staging/effects-trending",
   "provides": [
     {

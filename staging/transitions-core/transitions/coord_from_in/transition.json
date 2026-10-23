@@ -2,6 +2,7 @@
   "id": "coord_from_in",
   "displayName": "Coord From In",
   "category": "basic",
+  "previewStrip": "preview_strip.webp",
   "order": 736,
   "parameters": [],
   "pipeline": {

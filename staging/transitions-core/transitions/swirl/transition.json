@@ -2,6 +2,7 @@
   "id": "swirl",
   "displayName": "Swirl",
   "category": "distortion",
+  "previewStrip": "preview_strip.webp",
   "order": 700,
   "parameters": [],
   "pipeline": {

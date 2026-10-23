@@ -2,6 +2,7 @@
   "id": "perlin",
   "displayName": "Perlin",
   "category": "liquid",
+  "previewStrip": "preview_strip.webp",
   "order": 786,
   "parameters": [
     {

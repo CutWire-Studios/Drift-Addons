@@ -2,6 +2,7 @@
   "id": "glitch_displace",
   "displayName": "Glitch Displace",
   "category": "glitch",
+  "previewStrip": "preview_strip.webp",
   "order": 646,
   "parameters": [],
   "pipeline": {

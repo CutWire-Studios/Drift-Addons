@@ -2,6 +2,7 @@
   "id": "ripple_water",
   "displayName": "Ripple / Water",
   "category": "glitch",
+  "thumbnail": "thumbnail.webp",
   "order": 360,
   "parameters": [
     {

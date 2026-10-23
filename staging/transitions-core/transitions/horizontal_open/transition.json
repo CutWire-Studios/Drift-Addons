@@ -2,6 +2,7 @@
   "id": "horizontal_open",
   "displayName": "Horizontal Open",
   "category": "basic",
+  "previewStrip": "preview_strip.webp",
   "order": 656,
   "parameters": [],
   "pipeline": {

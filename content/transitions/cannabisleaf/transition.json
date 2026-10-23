@@ -2,6 +2,7 @@
   "id": "cannabisleaf",
   "displayName": "Cannabisleaf",
   "category": "basic",
+  "previewStrip": "preview_strip.webp",
   "order": 726,
   "parameters": [],
   "pipeline": {

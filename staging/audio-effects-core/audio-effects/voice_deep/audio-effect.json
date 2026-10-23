@@ -2,6 +2,7 @@
   "id": "voice.deep",
   "displayName": "Deep Voice",
   "category": "voice",
+  "thumbnail": "thumbnail.webp",
   "icon": "arrow-down-wide-narrow",
   "order": 110,
   "backend": "juce",

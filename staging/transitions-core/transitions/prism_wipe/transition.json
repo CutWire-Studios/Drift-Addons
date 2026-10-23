@@ -2,6 +2,7 @@
   "id": "prism_wipe",
   "displayName": "Prism Wipe",
   "category": "stylized",
+  "previewStrip": "preview_strip.webp",
   "order": 430,
   "audioCurve": "crossfade",
   "parameters": [

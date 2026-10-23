@@ -2,6 +2,7 @@
   "id": "particle_wind",
   "displayName": "Particle Wind",
   "category": "liquid",
+  "previewStrip": "preview_strip.webp",
   "order": 300,
   "parameters": [
     {

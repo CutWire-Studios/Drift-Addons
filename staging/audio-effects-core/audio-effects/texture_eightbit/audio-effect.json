@@ -2,6 +2,7 @@
   "id": "texture.eightbit",
   "displayName": "8-Bit",
   "category": "texture",
+  "thumbnail": "thumbnail.webp",
   "icon": "cpu",
   "order": 300,
   "backend": "juce",

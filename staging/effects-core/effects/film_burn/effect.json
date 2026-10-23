@@ -2,6 +2,7 @@
   "id": "film_burn",
   "displayName": "Film Burn / Light Leak",
   "category": "retro",
+  "thumbnail": "thumbnail.webp",
   "order": 240,
   "parameters": [
     {

@@ -2,6 +2,7 @@
   "id": "cross_zoom_swirl",
   "displayName": "Cross-Zoom Swirl",
   "category": "cinematic",
+  "previewStrip": "preview_strip.webp",
   "order": 540,
   "parameters": [
     {

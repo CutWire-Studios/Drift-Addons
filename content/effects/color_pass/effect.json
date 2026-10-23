@@ -2,6 +2,7 @@
   "id": "color_pass",
   "displayName": "Color Pass",
   "category": "color",
+  "thumbnail": "thumbnail.webp",
   "order": 890,
   "parameters": [
     {

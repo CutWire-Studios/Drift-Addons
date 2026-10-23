@@ -2,6 +2,7 @@
   "id": "directionalwipe",
   "displayName": "Directionalwipe",
   "category": "geometric",
+  "previewStrip": "preview_strip.webp",
   "order": 748,
   "parameters": [
     {

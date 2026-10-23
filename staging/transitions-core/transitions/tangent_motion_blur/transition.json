@@ -2,6 +2,7 @@
   "id": "tangent_motion_blur",
   "displayName": "Tangent Motion Blur",
   "category": "distortion",
+  "previewStrip": "preview_strip.webp",
   "order": 828,
   "parameters": [],
   "pipeline": {

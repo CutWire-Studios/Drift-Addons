@@ -2,6 +2,7 @@
   "id": "bling_sparkle",
   "displayName": "Bling",
   "category": "dreamy",
+  "thumbnail": "thumbnail.webp",
   "order": 170,
   "parameters": [
     {

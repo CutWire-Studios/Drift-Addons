@@ -2,6 +2,7 @@
   "id": "transmission.telephone",
   "displayName": "Telephone",
   "category": "transmission",
+  "thumbnail": "thumbnail.webp",
   "icon": "phone",
   "order": 200,
   "backend": "juce",

@@ -1,0 +1,74 @@
+{
+  "id": "builtin.effects.audio_spectrum_bars",
+  "version": "1.0.0",
+  "displayName": "Audio Spectrum Bars",
+  "category": "artistic",
+  "description": "Vertical bars that rise and fall with the frequency spectrum of an audio source.",
+  "backend": "gpu",
+  "order": 950,
+  "parameters": [
+    {
+      "identifier": "audio",
+      "displayName": "Audio source",
+      "type": "audio"
+    },
+    {
+      "identifier": "bars",
+      "displayName": "Bar count",
+      "type": "int",
+      "minValue": 8,
+      "maxValue": 128,
+      "defaultValue": 48
+    },
+    {
+      "identifier": "color",
+      "displayName": "Colour",
+      "type": "color",
+      "alpha": true,
+      "defaultValue": "#ffffffff"
+    },
+    {
+      "identifier": "gap",
+      "displayName": "Bar gap",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 0.9,
+      "defaultValue": 0.3
+    },
+    {
+      "identifier": "heightScale",
+      "displayName": "Height scale",
+      "type": "float",
+      "minValue": 0.0,
+      "maxValue": 2.0,
+      "defaultValue": 1.0
+    },
+    {
+      "identifier": "mirror",
+      "displayName": "Mirror",
+      "type": "choice",
+      "options": [
+        "Off",
+        "Vertical"
+      ],
+      "defaultValue": 0
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

@@ -2,6 +2,7 @@
   "id": "ripple",
   "displayName": "Ripple",
   "category": "liquid",
+  "previewStrip": "preview_strip.webp",
   "order": 800,
   "parameters": [
     {

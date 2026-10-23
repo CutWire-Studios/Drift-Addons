@@ -2,6 +2,7 @@
   "id": "mosaic_transition",
   "displayName": "Mosaic Transition",
   "category": "distortion",
+  "previewStrip": "preview_strip.webp",
   "order": 778,
   "parameters": [
     {

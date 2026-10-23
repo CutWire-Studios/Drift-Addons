@@ -2,6 +2,7 @@
   "id": "levels",
   "displayName": "Levels",
   "category": "color",
+  "thumbnail": "thumbnail.webp",
   "order": 910,
   "parameters": [
     {

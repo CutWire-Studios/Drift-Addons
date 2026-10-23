@@ -2,6 +2,7 @@
   "id": "lens_distortion",
   "displayName": "Lens Distortion",
   "category": "glitch",
+  "thumbnail": "thumbnail.webp",
   "order": 720,
   "parameters": [
     {

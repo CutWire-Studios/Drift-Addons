@@ -2,6 +2,7 @@
   "id": "block_dissolve",
   "displayName": "Block Dissolve",
   "category": "liquid",
+  "previewStrip": "preview_strip.webp",
   "order": 602,
   "parameters": [
     {

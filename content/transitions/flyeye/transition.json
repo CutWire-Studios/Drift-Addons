@@ -2,6 +2,7 @@
   "id": "flyeye",
   "displayName": "Flyeye",
   "category": "distortion",
+  "previewStrip": "preview_strip.webp",
   "order": 762,
   "parameters": [
     {

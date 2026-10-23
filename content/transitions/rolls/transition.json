@@ -2,6 +2,7 @@
   "id": "rolls",
   "displayName": "Rolls",
   "category": "stylized",
+  "previewStrip": "preview_strip.webp",
   "order": 680,
   "parameters": [
     {

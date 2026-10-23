@@ -2,6 +2,7 @@
   "id": "zoom_in_circles",
   "displayName": "Zoom In Circles",
   "category": "distortion",
+  "previewStrip": "preview_strip.webp",
   "order": 714,
   "parameters": [],
   "pipeline": {

@@ -2,6 +2,7 @@
   "id": "voice.robot",
   "displayName": "Robot",
   "category": "voice",
+  "thumbnail": "thumbnail.webp",
   "icon": "bot",
   "order": 130,
   "backend": "juce",

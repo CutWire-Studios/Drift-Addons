@@ -2,6 +2,7 @@
   "id": "simple_flip",
   "displayName": "Simple Flip",
   "category": "stylized",
+  "previewStrip": "preview_strip.webp",
   "order": 684,
   "parameters": [],
   "pipeline": {

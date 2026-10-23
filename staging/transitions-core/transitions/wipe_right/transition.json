@@ -2,6 +2,7 @@
   "id": "wipe_right",
   "displayName": "Wipe Right",
   "category": "basic",
+  "previewStrip": "preview_strip.webp",
   "order": 121,
   "parameters": [
     {

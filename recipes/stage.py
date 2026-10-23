@@ -119,9 +119,10 @@ def stage_stickers(font: Path) -> Path:
 def stage_packages(name: str, kind: str, source: Path) -> Path:
     """effects/<id>/ and transitions/<id>/ — copied verbatim from the app repo.
 
-    Unlike the other addons these ship with the build too, as the baseline every install starts
-    with. The addon exists so an updated shader can be pushed without an app release; installed
-    packages take priority over the bundled copy of the same id.
+    Only a core set of these ships with the app (DRIFT_CORE_EFFECTS / DRIFT_CORE_TRANSITIONS in
+    the app's CMakeLists.txt); everything staged here is delivered through the addon alone. The
+    addon also lets an updated shader be pushed without an app release; installed packages take
+    priority over a bundled copy of the same id.
     """
     target = _reset(name)
     packages = sorted(p for p in source.iterdir()

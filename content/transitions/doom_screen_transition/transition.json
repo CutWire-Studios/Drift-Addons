@@ -2,6 +2,7 @@
   "id": "doom_screen_transition",
   "displayName": "Doom Screen Transition",
   "category": "geometric",
+  "previewStrip": "preview_strip.webp",
   "order": 632,
   "parameters": [
     {

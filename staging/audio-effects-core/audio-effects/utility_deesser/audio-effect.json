@@ -2,6 +2,7 @@
   "id": "utility.deesser",
   "displayName": "De-esser",
   "category": "utility",
+  "thumbnail": "thumbnail.webp",
   "icon": "ear",
   "order": 140,
   "backend": "juce",

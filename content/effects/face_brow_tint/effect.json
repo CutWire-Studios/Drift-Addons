@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "displayName": "Brow Tint",
   "category": "beauty",
+  "thumbnail": "thumbnail.webp",
   "description": "Darkens and colours the brow hairs without flooding the skin between them.",
   "order": 705,
   "requires": "face",
@@ -53,8 +54,14 @@
       {
         "passIndex": 0,
         "fragmentShader": "main.frag",
-        "inputs": [{ "type": "source_texture" }],
-        "output": { "type": "canvas" }
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
       }
     ]
   }

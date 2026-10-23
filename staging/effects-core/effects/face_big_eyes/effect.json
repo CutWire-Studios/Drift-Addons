@@ -2,6 +2,7 @@
   "id": "face_big_eyes",
   "displayName": "Big Eyes",
   "category": "funny",
+  "thumbnail": "thumbnail.webp",
   "order": 600,
   "requires": "face",
   "parameters": [

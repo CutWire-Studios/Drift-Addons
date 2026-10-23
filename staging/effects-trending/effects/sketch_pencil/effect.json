@@ -2,6 +2,7 @@
   "id": "sketch_pencil",
   "displayName": "Pencil Sketch",
   "category": "artistic",
+  "thumbnail": "thumbnail.webp",
   "order": 510,
   "parameters": [
     {

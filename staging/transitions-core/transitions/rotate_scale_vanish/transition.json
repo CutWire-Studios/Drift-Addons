@@ -2,6 +2,7 @@
   "id": "rotate_scale_vanish",
   "displayName": "Rotate Scale Vanish",
   "category": "basic",
+  "previewStrip": "preview_strip.webp",
   "order": 682,
   "parameters": [
     {

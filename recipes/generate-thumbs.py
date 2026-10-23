@@ -34,6 +34,14 @@ EFFECTTHUMBS = Path.home() / "Projects" / "VideoEd" / "build" / "tools" / "effec
 TRANSITIONTHUMBS = Path.home() / "Projects" / "VideoEd" / "build" / "tools" / "transitionthumbs"
 
 
+def to_webp(root: Path, name: str) -> None:
+    """The tools only write PNG; the packages reference WebP through their json thumbnail keys."""
+    for png in sorted(root.glob(f"*/{name}")):
+        subprocess.run(["magick", str(png), "-quality", "85", str(png.with_suffix(".webp"))],
+                       check=True)
+        png.unlink()
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--force", action="store_true",
@@ -59,6 +67,7 @@ def main() -> None:
         if args.force:
             cmd.append("--force")
         subprocess.run(cmd, check=True)
+        to_webp(EFFECTS, "thumbnail.png")
 
     if do_transitions:
         if not TRANSITIONTHUMBS.is_file():
@@ -75,6 +84,7 @@ def main() -> None:
                "--size", "128", "--frames", "12"]
         # transitionthumbs always rewrites named packages; no --force flag needed
         subprocess.run(cmd, check=True)
+        to_webp(TRANSITIONS, "preview_strip.png")
 
 
 if __name__ == "__main__":

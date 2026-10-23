@@ -2,6 +2,7 @@
   "id": "stereo_viewer",
   "displayName": "Stereo Viewer",
   "category": "distortion",
+  "previewStrip": "preview_strip.webp",
   "order": 696,
   "parameters": [
     {

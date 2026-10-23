@@ -2,6 +2,7 @@
   "id": "posterize",
   "displayName": "Posterize",
   "category": "artistic",
+  "thumbnail": "thumbnail.webp",
   "order": 850,
   "parameters": [
     {

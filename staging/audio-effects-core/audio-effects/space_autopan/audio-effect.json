@@ -2,6 +2,7 @@
   "id": "space.autopan",
   "displayName": "Auto-Pan",
   "category": "space",
+  "thumbnail": "thumbnail.webp",
   "icon": "move-horizontal",
   "order": 460,
   "backend": "juce",

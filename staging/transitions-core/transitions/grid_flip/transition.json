@@ -2,6 +2,7 @@
   "id": "grid_flip",
   "displayName": "Grid Flip",
   "category": "geometric",
+  "previewStrip": "preview_strip.webp",
   "order": 650,
   "parameters": [
     {

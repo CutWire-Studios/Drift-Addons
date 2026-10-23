@@ -2,6 +2,7 @@
   "id": "color_emboss",
   "displayName": "Color Emboss",
   "category": "artistic",
+  "thumbnail": "thumbnail.webp",
   "order": 820,
   "parameters": [
     {

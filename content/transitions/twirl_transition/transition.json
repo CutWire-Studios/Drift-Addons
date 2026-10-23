@@ -2,6 +2,7 @@
   "id": "twirl_transition",
   "displayName": "Twirl",
   "category": "distortion",
+  "previewStrip": "preview_strip.webp",
   "order": 440,
   "audioCurve": "crossfade",
   "parameters": [

@@ -2,6 +2,7 @@
   "id": "shockwave_pulse",
   "displayName": "Shockwave / Pulse",
   "category": "glitch",
+  "thumbnail": "thumbnail.webp",
   "order": 370,
   "parameters": [
     {

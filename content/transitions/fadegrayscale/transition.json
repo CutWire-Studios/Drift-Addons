@@ -2,6 +2,7 @@
   "id": "fadegrayscale",
   "displayName": "Fadegrayscale",
   "category": "cinematic",
+  "previewStrip": "preview_strip.webp",
   "order": 760,
   "parameters": [
     {

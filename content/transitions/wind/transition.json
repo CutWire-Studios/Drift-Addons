@@ -2,6 +2,7 @@
   "id": "wind",
   "displayName": "Wind",
   "category": "basic",
+  "previewStrip": "preview_strip.webp",
   "order": 832,
   "parameters": [
     {

@@ -2,6 +2,7 @@
   "id": "rain_overlay",
   "displayName": "Rain",
   "category": "dreamy",
+  "thumbnail": "thumbnail.webp",
   "order": 980,
   "parameters": [
     {

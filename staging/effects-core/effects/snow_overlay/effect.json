@@ -2,6 +2,7 @@
   "id": "snow_overlay",
   "displayName": "Snow",
   "category": "dreamy",
+  "thumbnail": "thumbnail.webp",
   "order": 990,
   "parameters": [
     {

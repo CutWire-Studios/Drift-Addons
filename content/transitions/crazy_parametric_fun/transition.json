@@ -2,6 +2,7 @@
   "id": "crazy_parametric_fun",
   "displayName": "Crazy Parametric Fun",
   "category": "basic",
+  "previewStrip": "preview_strip.webp",
   "order": 622,
   "parameters": [
     {

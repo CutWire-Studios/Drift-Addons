@@ -2,6 +2,7 @@
   "id": "split_slide_in_vertical",
   "displayName": "Split Slide In Vertical",
   "category": "stylized",
+  "previewStrip": "preview_strip.webp",
   "order": 814,
   "parameters": [
     {

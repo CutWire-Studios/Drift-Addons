@@ -2,6 +2,7 @@
   "id": "prism_lens",
   "displayName": "Prism Lens",
   "category": "glitch",
+  "thumbnail": "thumbnail.webp",
   "order": 760,
   "parameters": [
     {

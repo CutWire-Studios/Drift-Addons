@@ -2,6 +2,7 @@
   "id": "dip",
   "displayName": "Dip to Black",
   "category": "basic",
+  "previewStrip": "preview_strip.webp",
   "order": 110,
   "parameters": [],
   "fixedParams": {

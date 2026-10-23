@@ -2,6 +2,7 @@
   "id": "directionalwarp",
   "displayName": "Directionalwarp",
   "category": "geometric",
+  "previewStrip": "preview_strip.webp",
   "order": 746,
   "parameters": [
     {

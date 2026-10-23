@@ -2,6 +2,7 @@
   "id": "mirror",
   "displayName": "Mirror",
   "category": "glitch",
+  "thumbnail": "thumbnail.webp",
   "order": 750,
   "parameters": [
     {

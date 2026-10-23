@@ -2,6 +2,7 @@
   "id": "fragment",
   "displayName": "Fragment",
   "category": "basic",
+  "previewStrip": "preview_strip.webp",
   "order": 764,
   "parameters": [],
   "pipeline": {

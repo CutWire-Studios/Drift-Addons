@@ -2,6 +2,7 @@
   "id": "inverted_page_curl",
   "displayName": "Inverted Page Curl",
   "category": "stylized",
+  "previewStrip": "preview_strip.webp",
   "order": 658,
   "parameters": [],
   "pipeline": {

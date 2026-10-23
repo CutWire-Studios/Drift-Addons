@@ -2,6 +2,7 @@
   "id": "zoom_left_wipe",
   "displayName": "Zoom Left Wipe",
   "category": "distortion",
+  "previewStrip": "preview_strip.webp",
   "order": 716,
   "parameters": [
     {

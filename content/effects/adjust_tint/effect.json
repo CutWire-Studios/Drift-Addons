@@ -2,6 +2,7 @@
   "id": "adjust_tint",
   "displayName": "Tint (Green/Magenta)",
   "category": "color",
+  "thumbnail": "thumbnail.webp",
   "order": 62,
   "parameters": [
     {

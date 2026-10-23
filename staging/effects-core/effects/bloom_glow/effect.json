@@ -2,6 +2,7 @@
   "id": "bloom_glow",
   "displayName": "Bloom / Glow",
   "category": "dreamy",
+  "thumbnail": "thumbnail.webp",
   "backend": "gpu",
   "order": 130,
   "parameters": [
@@ -28,6 +29,12 @@
       "minValue": 1,
       "maxValue": 30,
       "defaultValue": 8
+    },
+    {
+      "identifier": "tint",
+      "displayName": "Tint",
+      "type": "color",
+      "defaultValue": "#ffffff"
     }
   ],
   "pipeline": {

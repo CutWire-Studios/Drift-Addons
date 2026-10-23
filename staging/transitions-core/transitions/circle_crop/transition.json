@@ -2,6 +2,7 @@
   "id": "circle_crop",
   "displayName": "Circle Crop",
   "category": "basic",
+  "previewStrip": "preview_strip.webp",
   "order": 618,
   "parameters": [
     {

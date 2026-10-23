@@ -2,6 +2,7 @@
   "id": "rgb_split",
   "displayName": "RGB Split",
   "category": "glitch",
+  "thumbnail": "thumbnail.webp",
   "order": 310,
   "parameters": [
     {

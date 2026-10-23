@@ -2,6 +2,7 @@
   "id": "mosaic_hex",
   "displayName": "Hex Mosaic",
   "category": "artistic",
+  "thumbnail": "thumbnail.webp",
   "order": 860,
   "parameters": [
     {

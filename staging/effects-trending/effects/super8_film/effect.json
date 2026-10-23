@@ -2,6 +2,7 @@
   "id": "super8_film",
   "displayName": "Super 8",
   "category": "retro",
+  "thumbnail": "thumbnail.webp",
   "order": 250,
   "parameters": [
     {

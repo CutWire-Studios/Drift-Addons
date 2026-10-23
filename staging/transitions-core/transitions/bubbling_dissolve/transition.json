@@ -2,6 +2,7 @@
   "id": "bubbling_dissolve",
   "displayName": "Bubbling Dissolve",
   "category": "liquid",
+  "previewStrip": "preview_strip.webp",
   "order": 340,
   "parameters": [
     {

@@ -2,6 +2,7 @@
   "id": "left_right",
   "displayName": "Left Right",
   "category": "basic",
+  "previewStrip": "preview_strip.webp",
   "order": 660,
   "parameters": [],
   "pipeline": {

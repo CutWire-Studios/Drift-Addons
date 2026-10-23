@@ -2,6 +2,7 @@
   "id": "extract",
   "displayName": "Extract",
   "category": "color",
+  "thumbnail": "thumbnail.webp",
   "order": 940,
   "parameters": [
     {

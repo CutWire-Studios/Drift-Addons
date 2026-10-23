@@ -2,6 +2,7 @@
   "id": "bokeh_dream",
   "displayName": "Bokeh Dream",
   "category": "dreamy",
+  "thumbnail": "thumbnail.webp",
   "order": 195,
   "parameters": [
     {

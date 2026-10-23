@@ -2,6 +2,7 @@
   "id": "wipe_down",
   "displayName": "Wipe Down",
   "category": "basic",
+  "previewStrip": "preview_strip.webp",
   "order": 123,
   "parameters": [
     {

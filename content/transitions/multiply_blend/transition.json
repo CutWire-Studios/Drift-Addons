@@ -2,6 +2,7 @@
   "id": "multiply_blend",
   "displayName": "Multiply Blend",
   "category": "basic",
+  "previewStrip": "preview_strip.webp",
   "order": 780,
   "parameters": [],
   "pipeline": {

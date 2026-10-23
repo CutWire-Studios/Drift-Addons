@@ -2,6 +2,7 @@
   "id": "stylize.sharpen",
   "displayName": "Sharpen",
   "category": "impact",
+  "thumbnail": "thumbnail.webp",
   "order": 70,
   "parameters": [
     {

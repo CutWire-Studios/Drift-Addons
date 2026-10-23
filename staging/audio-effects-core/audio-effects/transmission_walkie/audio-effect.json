@@ -2,6 +2,7 @@
   "id": "transmission.walkie",
   "displayName": "Walkie-Talkie",
   "category": "transmission",
+  "thumbnail": "thumbnail.webp",
   "icon": "radio-receiver",
   "order": 210,
   "backend": "juce",

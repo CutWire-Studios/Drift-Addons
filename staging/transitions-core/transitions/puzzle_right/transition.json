@@ -2,6 +2,7 @@
   "id": "puzzle_right",
   "displayName": "Puzzle Right",
   "category": "geometric",
+  "previewStrip": "preview_strip.webp",
   "order": 670,
   "parameters": [
     {

@@ -2,6 +2,7 @@
   "id": "rotate_scale_fade",
   "displayName": "Rotate Scale Fade",
   "category": "basic",
+  "previewStrip": "preview_strip.webp",
   "order": 804,
   "parameters": [
     {

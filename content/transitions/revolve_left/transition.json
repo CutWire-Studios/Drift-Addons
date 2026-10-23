@@ -2,6 +2,7 @@
   "id": "revolve_left",
   "displayName": "Revolve Left",
   "category": "stylized",
+  "previewStrip": "preview_strip.webp",
   "order": 678,
   "parameters": [
     {

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "displayName": "Eyeshadow",
   "category": "beauty",
+  "thumbnail": "thumbnail.webp",
   "description": "Colour swept above each upper lid, cut out of the eye and capped below the brow.",
   "order": 704,
   "requires": "face",
@@ -53,8 +54,14 @@
       {
         "passIndex": 0,
         "fragmentShader": "main.frag",
-        "inputs": [{ "type": "source_texture" }],
-        "output": { "type": "canvas" }
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
       }
     ]
   }

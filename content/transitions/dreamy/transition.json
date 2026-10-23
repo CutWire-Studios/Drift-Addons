@@ -2,6 +2,7 @@
   "id": "dreamy",
   "displayName": "Dreamy",
   "category": "cinematic",
+  "previewStrip": "preview_strip.webp",
   "order": 634,
   "parameters": [],
   "pipeline": {

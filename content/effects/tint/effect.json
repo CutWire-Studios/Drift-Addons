@@ -2,6 +2,7 @@
   "id": "tint",
   "displayName": "Tint",
   "category": "color",
+  "thumbnail": "thumbnail.webp",
   "order": 930,
   "parameters": [
     {

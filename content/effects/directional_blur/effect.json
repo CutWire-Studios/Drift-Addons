@@ -2,6 +2,7 @@
   "id": "directional_blur",
   "displayName": "Directional Blur",
   "category": "impact",
+  "thumbnail": "thumbnail.webp",
   "order": 770,
   "parameters": [
     {

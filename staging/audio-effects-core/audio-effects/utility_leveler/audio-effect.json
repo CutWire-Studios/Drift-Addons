@@ -2,6 +2,7 @@
   "id": "utility.leveler",
   "displayName": "Voice Leveler",
   "category": "utility",
+  "thumbnail": "thumbnail.webp",
   "icon": "equal",
   "order": 150,
   "backend": "juce",

@@ -2,6 +2,7 @@
   "id": "star_wipe",
   "displayName": "Star Wipe",
   "category": "geometric",
+  "previewStrip": "preview_strip.webp",
   "order": 692,
   "parameters": [
     {

@@ -2,6 +2,7 @@
   "id": "stylize.grayscale",
   "displayName": "Grayscale",
   "category": "retro",
+  "thumbnail": "thumbnail.webp",
   "order": 200,
   "parameters": [],
   "backend": "gpu",

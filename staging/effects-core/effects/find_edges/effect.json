@@ -2,6 +2,7 @@
   "id": "find_edges",
   "displayName": "Find Edges",
   "category": "artistic",
+  "thumbnail": "thumbnail.webp",
   "order": 830,
   "parameters": [
     {

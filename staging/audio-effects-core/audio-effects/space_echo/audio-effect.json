@@ -2,6 +2,7 @@
   "id": "space.echo",
   "displayName": "Echo",
   "category": "space",
+  "thumbnail": "thumbnail.webp",
   "icon": "repeat",
   "order": 400,
   "backend": "juce",

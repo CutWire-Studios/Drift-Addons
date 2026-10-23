@@ -2,6 +2,7 @@
   "id": "space.chorus",
   "displayName": "Chorus",
   "category": "space",
+  "thumbnail": "thumbnail.webp",
   "icon": "layers",
   "order": 420,
   "backend": "juce",

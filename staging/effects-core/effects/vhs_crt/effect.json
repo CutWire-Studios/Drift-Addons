@@ -2,6 +2,7 @@
   "id": "vhs_crt",
   "displayName": "VHS / CRT",
   "category": "retro",
+  "thumbnail": "thumbnail.webp",
   "order": 230,
   "parameters": [
     {

@@ -2,6 +2,7 @@
   "id": "analog_interference",
   "displayName": "Analog Interference",
   "category": "glitch",
+  "previewStrip": "preview_strip.webp",
   "order": 430,
   "parameters": [
     {

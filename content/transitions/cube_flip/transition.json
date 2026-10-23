@@ -2,6 +2,7 @@
   "id": "cube_flip",
   "displayName": "Cube Flip",
   "category": "stylized",
+  "previewStrip": "preview_strip.webp",
   "order": 430,
   "parameters": [
     {

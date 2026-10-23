@@ -2,6 +2,7 @@
   "id": "box",
   "displayName": "Box",
   "category": "geometric",
+  "previewStrip": "preview_strip.webp",
   "order": 614,
   "parameters": [
     {

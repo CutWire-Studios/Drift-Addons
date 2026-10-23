@@ -2,6 +2,7 @@
   "id": "halftone_comic",
   "displayName": "Comic",
   "category": "artistic",
+  "thumbnail": "thumbnail.webp",
   "order": 500,
   "parameters": [
     {

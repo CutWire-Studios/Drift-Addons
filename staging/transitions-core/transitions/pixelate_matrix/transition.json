@@ -2,6 +2,7 @@
   "id": "pixelate_matrix",
   "displayName": "Pixelate",
   "category": "geometric",
+  "previewStrip": "preview_strip.webp",
   "order": 300,
   "parameters": [
     {

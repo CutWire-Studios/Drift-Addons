@@ -2,6 +2,7 @@
   "id": "crosshatch",
   "displayName": "Crosshatch",
   "category": "geometric",
+  "previewStrip": "preview_strip.webp",
   "order": 738,
   "parameters": [
     {
