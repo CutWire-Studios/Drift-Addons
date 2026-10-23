@@ -24,6 +24,12 @@ const TICKET_TTL_SECONDS = 60 * 60;
 const INDEX_CACHE_SECONDS = 300;
 
 /**
+ * Drift sends X-Drift-Version from 0.9.0 on. Anything without it is 0.8.0 or older, and is
+ * treated as 0.8.0 so the last stable release keeps getting the builds it can install.
+ */
+const LEGACY_CLIENT_VERSION = "0.8.0";
+
+/**
  * Cloudflare's cache tops out at 512 MB per object, and the Whisper packages are larger than
  * that. Rather than chunk them, large objects stream straight from R2 on every request: one
  * Class B operation per download is a rounding error next to what caching the small, frequently
@@ -94,6 +100,41 @@ function problem(status: number, message: string): Response {
   });
 }
 
+/** Mirrors drift::compareVersions in the app: numeric fields, pre-release suffixes ignored. */
+function compareVersions(a: string, b: string): number {
+  const left = a.split(".");
+  const right = b.split(".");
+  for (let i = 0; i < Math.max(left.length, right.length); i++) {
+    const l = parseInt((left[i] ?? "0").split("-")[0], 10) || 0;
+    const r = parseInt((right[i] ?? "0").split("-")[0], 10) || 0;
+    if (l !== r) return l < r ? -1 : 1;
+  }
+  return 0;
+}
+
+/**
+ * The index may carry several builds of one addon, one per minAppVersion tier. Each client gets
+ * a single row per id: the newest build it can install, or the newest overall when none fits, so
+ * it can still say which Drift version that addon needs.
+ */
+function pickForClient(
+  addons: Array<Record<string, unknown>>,
+  clientVersion: string,
+): Array<Record<string, unknown>> {
+  const best = new Map<string, { row: Record<string, unknown>; fits: boolean }>();
+  for (const row of addons) {
+    const id = String(row.id);
+    const fits = compareVersions(clientVersion, String(row.minAppVersion ?? "0.1.0")) >= 0;
+    const current = best.get(id);
+    const better = !current
+      || (fits && !current.fits)
+      || (fits === current.fits
+        && compareVersions(String(row.version), String(current.row.version)) > 0);
+    if (better) best.set(id, { row, fits });
+  }
+  return [...best.values()].map(({ row }) => row);
+}
+
 async function handleIndex(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
   const url = new URL(request.url);
   const { success } = await env.INDEX_LIMITER.limit({ key: clientKey(request) });
@@ -117,8 +158,9 @@ async function handleIndex(request: Request, env: Env, ctx: ExecutionContext): P
   }
 
   const index = (await raw.json()) as { addons?: Array<Record<string, unknown>> };
+  const clientVersion = request.headers.get("X-Drift-Version") || LEGACY_CLIENT_VERSION;
   const addons = await Promise.all(
-    (index.addons ?? []).map(async ({ key, ...addon }) => ({
+    pickForClient(index.addons ?? [], clientVersion).map(async ({ key, ...addon }) => ({
       ...addon,
       url: await mintTicket(env, String(key), url.origin),
     })),

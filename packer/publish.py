@@ -9,8 +9,10 @@ Object layout in the bucket:
     index.json                                        the only mutable object
 
 The index is rebuilt from whatever is passed in plus whatever is already in the index, so
-publishing one addon does not drop the others. The Worker rewrites each entry's `key` into a
-signed, expiring URL before handing the index to a client.
+publishing one addon does not drop the others. A new build only replaces older builds that need
+the same or a newer Drift; one that raises minAppVersion sits beside the previous build, and the
+Worker hands each client the newest one it can install. The Worker also rewrites each entry's
+`key` into a signed, expiring URL before handing the index to a client.
 """
 
 import argparse
@@ -115,6 +117,21 @@ def entry_for(package: Path) -> dict:
     }
 
 
+def _version_key(version: str) -> tuple[int, ...]:
+    # Same rule as drift::compareVersions: numeric fields, anything after '-' ignored.
+    return tuple(int(part.split("-")[0] or 0) for part in version.split("."))
+
+
+def prune(rows: list[dict]) -> list[dict]:
+    """Drop builds that a newer build of the same addon serves to every client that could use them."""
+    def superseded(row: dict) -> bool:
+        return any(other["id"] == row["id"]
+                   and _version_key(other["version"]) > _version_key(row["version"])
+                   and _version_key(other["minAppVersion"]) <= _version_key(row["minAppVersion"])
+                   for other in rows)
+    return [row for row in rows if not superseded(row)]
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("packages", nargs="+", type=Path)
@@ -122,19 +139,20 @@ def main() -> None:
     args = parser.parse_args()
 
     index = _fetch_index() if not args.dry_run else {"schema": 1, "addons": []}
-    by_id = {addon["id"]: addon for addon in index.get("addons", [])}
+    by_build = {(addon["id"], addon["version"]): addon for addon in index.get("addons", [])}
 
     for package in args.packages:
         entry = entry_for(package)
         print(f"{entry['id']} {entry['version']}  {entry['downloadSize'] / 1e6:.1f} MB")
         if not args.dry_run:
             _put(entry["key"], package, "application/octet-stream")
-        by_id[entry["id"]] = entry
+        by_build[(entry["id"], entry["version"])] = entry
 
     index = {
         "schema": 1,
         "generated": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-        "addons": sorted(by_id.values(), key=lambda a: a["id"]),
+        "addons": sorted(prune(list(by_build.values())),
+                         key=lambda a: (a["id"], _version_key(a["version"]))),
     }
 
     if args.dry_run:

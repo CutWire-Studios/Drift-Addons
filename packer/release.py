@@ -7,9 +7,10 @@
 Run after publish.py. That uploads to R2, which is where Drift actually fetches from; this
 keeps the public GitHub mirror in step so the two do not drift apart.
 
-The release carries exactly the newest build of each package — publishing 1.4.0 removes the
-1.3.0 asset, because a release holding two versions of one addon just invites the wrong
-download. Notes are regenerated every run from what is actually attached.
+The release carries exactly the builds index.json lists, so it follows publish.py's rule: a new
+build replaces the old one unless it raises minAppVersion, in which case both stay so people on
+the older Drift can still download one that installs. Notes are regenerated every run from what
+is actually attached.
 
 The tag is deliberately not a version (packages move independently), so it is reused rather
 than created fresh. The script never moves it: after a force-push the tag keeps pointing at
@@ -22,6 +23,7 @@ import subprocess
 from pathlib import Path
 
 import driftpkg
+import publish
 
 REPO = "CutWire-Studios/Drift-Addons"
 TAG = "packages"
@@ -34,16 +36,16 @@ def _gh(*args: str, check: bool = True) -> subprocess.CompletedProcess:
                           check=check, text=True, capture_output=True)
 
 
-def latest_packages() -> list[tuple[dict, Path]]:
-    """Newest build of each addon id in dist/, as (manifest, path)."""
-    best: dict[str, tuple[tuple[int, ...], dict, Path]] = {}
-    for path in sorted(DIST.glob("*.driftpkg")):
-        meta = driftpkg.read_metadata(path)
-        key = tuple(int(part) for part in meta["version"].split("."))
-        current = best.get(meta["id"])
-        if current is None or key > current[0]:
-            best[meta["id"]] = (key, meta, path)
-    return [(meta, path) for _, meta, path in sorted(best.values(), key=lambda b: b[1]["id"])]
+def published_packages() -> list[tuple[dict, Path]]:
+    """The builds the live index lists, as (manifest, path) from dist/."""
+    packages = []
+    for row in publish._fetch_index().get("addons", []):
+        path = DIST / Path(row["key"]).name
+        if not path.exists():
+            print(f"! {path.name} is in the index but not in {DIST}, skipping")
+            continue
+        packages.append((driftpkg.read_metadata(path), path))
+    return packages
 
 
 def current_assets() -> dict[str, int] | None:
@@ -57,8 +59,8 @@ def current_assets() -> dict[str, int] | None:
 def notes(rows: list[tuple[dict, Path, str]]) -> str:
     total = sum(path.stat().st_size for _, path, _ in rows)
     lines = [
-        "The current release of every Drift addon package. Older versions are not included — each",
-        "row below is the newest build of that package.",
+        "The current release of every Drift addon package. Older versions are not included, except",
+        "the last build for an older Drift when a newer build needs a newer app.",
         "",
         "You do not need to download these by hand. Drift installs addons for you from **Extra "
         "packs**",
@@ -97,7 +99,7 @@ def main() -> None:
                         help="re-upload every asset, not just the ones that look changed")
     args = parser.parse_args()
 
-    packages = latest_packages()
+    packages = published_packages()
     if not packages:
         raise SystemExit(f"no packages in {DIST}")
 
