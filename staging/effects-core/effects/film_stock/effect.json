@@ -1,0 +1,60 @@
+{
+  "id": "film_stock",
+  "displayName": "Film Stocks",
+  "category": "color",
+  "order": 930,
+  "parameters": [
+    {
+      "identifier": "stock",
+      "displayName": "Stock",
+      "type": "choice",
+      "options": [
+        "Kodak 250D",
+        "Kodak 500T",
+        "Fuji Eterna 250D",
+        "Fuji Eterna 500T",
+        "Eterna Vivid 500T",
+        "EXR 500T",
+        "Portra 160",
+        "Portra 400",
+        "Gold 200",
+        "Superia 400",
+        "Ektar 100",
+        "CineStill 400D",
+        "Tri-X 400",
+        "HP5 400",
+        "Delta 3200",
+        "Velvia 50",
+        "Provia 100F",
+        "Ektachrome 100"
+      ],
+      "defaultValue": 7
+    },
+    {
+      "identifier": "strength",
+      "displayName": "Strength",
+      "type": "float",
+      "defaultValue": 1.0,
+      "minValue": 0.0,
+      "maxValue": 1.0
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}
