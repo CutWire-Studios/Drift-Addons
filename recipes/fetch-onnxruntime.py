@@ -27,6 +27,11 @@ The CUDA addon also unpacks pinned NVIDIA redistributable wheels (cublas, cudnn,
 the same runtime/lib/ folder, skips TensorRT and PDBs, and on Linux runs patchelf so the CUDA EP
 finds those libraries via RUNPATH=$ORIGIN.
 
+The `migraphx:` variant is the AMD GPU core. Microsoft publishes it only as a Python wheel, which
+carries the complete C API runtime beside the Python binding, so it stages into the same package
+shape. ROCm itself is deliberately not bundled — it is gigabytes per GPU family — so the EP's
+RUNPATH points at the standard /opt/rocm locations and the user installs ROCm with MIGraphX.
+
 The archives are large and are cached under ../staging/.cache.
 """
 
@@ -74,7 +79,8 @@ OWN_BUILDS_RELEASE = "https://github.com/CutWire-Studios/Drift-Addons/releases/d
 SOURCE_BUILT = {("cpu", "osx-x64")}
 
 # variant -> platform -> (archive name, sha256). Only what Microsoft actually publishes: there is
-# no ROCm (removed from ONNX Runtime in 1.23) and no OpenVINO C/C++ package at all.
+# no ROCm (removed from ONNX Runtime in 1.23; MIGraphX replaces it, below) and no OpenVINO C/C++
+# package at all.
 CORES = {
     "cpu": {
         "linux-x64": (f"onnxruntime-linux-x64-{ORT_VERSION}.tgz",
@@ -96,6 +102,23 @@ CORES = {
                     "d3e0d908bc9b59dcb59b8f453493f173c087dda105d8c110df0588d22d7c8b3e"),
     },
 }
+
+# The MIGraphX EP exists only in the onnxruntime-migraphx wheel, one patch release ahead of the
+# other cores. The wheel's libonnxruntime.so is the plain C API runtime and does not depend on
+# Python, so any cpXY build serves; cp312 is pinned. Built against ROCm 7.2.4 on glibc 2.34.
+MIGRAPHX_ORT_VERSION = "1.27.1"
+MIGRAPHX_WHEEL = (
+    "onnxruntime_migraphx-1.27.1-cp312-cp312-manylinux_2_34_x86_64.whl",
+    "089c992442b6bff9f7786173ce6a31db111b104ae66be34d5467593951d905a4",
+    "https://files.pythonhosted.org/packages/9c/b7/7946bd996b95c859162ccd76c7e1e3f01e3627e5bf06a3ae1bf288fe89bd/onnxruntime_migraphx-1.27.1-cp312-cp312-manylinux_2_34_x86_64.whl",
+)
+MIGRAPHX_PLATFORMS = {"linux-x64"}
+# The wheel's RUNPATH names /opt/rocm-7.2.4 exactly. Pointing at the unversioned /opt/rocm lets any
+# ROCm 7.x resolve libmigraphx_c.so.3 / libamdhip64.so.7, and distro packages that install into
+# /usr/lib are found by the system loader path that follows RUNPATH.
+MIGRAPHX_RUNPATH = "$ORIGIN:/opt/rocm/lib:/opt/rocm/lib/migraphx/lib"
+# The app needs the "migraphx" variant to pick the provider and explain a missing ROCm.
+MIGRAPHX_MIN_APP_VERSION = "0.9.0"
 
 # NuGet runtime identifier -> the extra files that ride along with the EP library. The Windows
 # builds need the DirectX shader compiler beside them.
@@ -162,6 +185,24 @@ CORE_COPY = {
             "redistributable terms. Upstream: Microsoft ONNX Runtime {version}."
         ),
     },
+}
+
+MIGRAPHX_COPY = {
+    "name": "AI Engine — AMD graphics (faster)",
+    "description": (
+        "Same AI features, sped up by an AMD Radeon graphics card. Needs ROCm 7 with MIGraphX "
+        "installed on this computer — Drift explains what to install if it is missing. Falls "
+        "back to this computer if the card can't be used."
+    ),
+    "details": (
+        "Complete ONNX Runtime build with the MIGraphX execution provider. ROCm is not bundled: "
+        "install ROCm 7.x with MIGraphX (tested with 7.2) from AMD or your distribution, and make "
+        "sure your user can open /dev/kfd (the render and video groups). Needs glibc 2.34 or "
+        "newer. Flatpak: install AMD's ROCm under /opt, then run \"flatpak override --user "
+        "--filesystem=/opt:ro --device=all org.cutwire.Drift\". Falls back to CPU when the "
+        "device cannot be used. Upstream: Microsoft ONNX "
+        "Runtime {version}, the onnxruntime-migraphx wheel from PyPI."
+    ),
 }
 
 # NVIDIA redistributables unpacked into runtime/lib/ next to the CUDA EP.
@@ -549,6 +590,63 @@ def stage_webgpu(platform: str) -> None:
     print(f"{name}: {size / 1e6:.0f} MB -> {recipe.relative_to(HERE.parent)}")
 
 
+def stage_migraphx(platform: str) -> None:
+    filename, sha256, url = MIGRAPHX_WHEEL
+    wheel = _download(url, filename, sha256)
+
+    name = f"onnxruntime-migraphx-{platform}"
+    target = _reset(name)
+    root = target / "runtime"
+    lib = root / "lib"
+    lib.mkdir(parents=True)
+
+    with zipfile.ZipFile(wheel) as zf:
+        # onnxruntime_pybind11_state.so is the Python binding; Drift drives the C API.
+        members = {
+            f"onnxruntime/capi/libonnxruntime.so.{MIGRAPHX_ORT_VERSION}": lib / "libonnxruntime.so",
+            "onnxruntime/capi/libonnxruntime_providers_shared.so":
+                lib / "libonnxruntime_providers_shared.so",
+            "onnxruntime/capi/libonnxruntime_providers_migraphx.so":
+                lib / "libonnxruntime_providers_migraphx.so",
+            "onnxruntime/LICENSE": root / "LICENSE",
+            "onnxruntime/ThirdPartyNotices.txt": root / "ThirdPartyNotices.txt",
+            "onnxruntime/Privacy.md": root / "Privacy.md",
+        }
+        for member, dest in members.items():
+            with zf.open(member) as src, dest.open("wb") as dst:
+                shutil.copyfileobj(src, dst)
+
+    if shutil.which("patchelf") is None:
+        sys.exit("patchelf is required to rewrite RUNPATH on libonnxruntime_providers_migraphx.so")
+    subprocess.run(["patchelf", "--set-rpath", MIGRAPHX_RUNPATH,
+                    str(lib / "libonnxruntime_providers_migraphx.so")], check=True)
+
+    (root / "runtime.json").write_text(json.dumps({
+        "variant": "migraphx",
+        "ortVersion": MIGRAPHX_ORT_VERSION,
+        "apiVersion": ORT_API_VERSION,
+        "platform": platform,
+    }, indent=2) + "\n")
+
+    recipe = _write_recipe({
+        "id": f"onnxruntime.migraphx.{platform}",
+        "version": PACKAGE_VERSION,
+        "name": MIGRAPHX_COPY["name"],
+        "description": MIGRAPHX_COPY["description"],
+        "details": MIGRAPHX_COPY["details"].format(version=MIGRAPHX_ORT_VERSION)
+                   + f" Platform: {platform}.",
+        "author": "Microsoft",
+        "license": "MIT",
+        "minAppVersion": MIGRAPHX_MIN_APP_VERSION,
+        "platform": platform,
+        "source": f"../../staging/{name}",
+        "provides": [{"kind": "onnxruntime", "root": "runtime", "items": 1}],
+        "zstdLevel": 6,
+    })
+    size = sum(f.stat().st_size for f in target.rglob("*") if f.is_file())
+    print(f"{name}: {size / 1e6:.0f} MB -> {recipe.relative_to(HERE.parent)}")
+
+
 def stage_android(platform: str) -> None:
     abi = ANDROID_PLATFORMS[platform]
     aar = _download(ANDROID_AAR, f"onnxruntime-android-{ORT_VERSION}.aar", ANDROID_AAR_SHA256)
@@ -601,6 +699,7 @@ def all_targets() -> list[str]:
                if platforms[platform][1] != OSX_X64_SHA256 or OSX_X64_SHA256 != PLACEHOLDER]
     targets += [f"webgpu:{platform}" for platform in WEBGPU_PLATFORMS]
     targets += [f"android:{platform}" for platform in ANDROID_PLATFORMS]
+    targets += [f"migraphx:{platform}" for platform in sorted(MIGRAPHX_PLATFORMS)]
     return targets
 
 
@@ -616,6 +715,10 @@ def main() -> None:
             if platform not in WEBGPU_PLATFORMS:
                 sys.exit(f"no WebGPU EP for {platform}")
             stage_webgpu(platform)
+        elif variant == "migraphx":
+            if platform not in MIGRAPHX_PLATFORMS:
+                sys.exit(f"upstream publishes no MIGraphX build for {platform}")
+            stage_migraphx(platform)
         elif variant == "android":
             if platform not in ANDROID_PLATFORMS:
                 sys.exit(f"upstream publishes no Android build for {platform}")

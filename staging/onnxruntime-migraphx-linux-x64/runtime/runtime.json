@@ -1,0 +1,6 @@
+{
+  "variant": "migraphx",
+  "ortVersion": "1.27.1",
+  "apiVersion": 27,
+  "platform": "linux-x64"
+}

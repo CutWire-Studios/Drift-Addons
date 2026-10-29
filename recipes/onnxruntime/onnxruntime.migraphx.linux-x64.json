@@ -1,0 +1,20 @@
+{
+  "id": "onnxruntime.migraphx.linux-x64",
+  "version": "1.0.0",
+  "name": "AI Engine \u2014 AMD graphics (faster)",
+  "description": "Same AI features, sped up by an AMD Radeon graphics card. Needs ROCm 7 with MIGraphX installed on this computer \u2014 Drift explains what to install if it is missing. Falls back to this computer if the card can't be used.",
+  "details": "Complete ONNX Runtime build with the MIGraphX execution provider. ROCm is not bundled: install ROCm 7.x with MIGraphX (tested with 7.2) from AMD or your distribution, and make sure your user can open /dev/kfd (the render and video groups). Needs glibc 2.34 or newer. Flatpak: install AMD's ROCm under /opt, then run \"flatpak override --user --filesystem=/opt:ro --device=all org.cutwire.Drift\". Falls back to CPU when the device cannot be used. Upstream: Microsoft ONNX Runtime 1.27.1, the onnxruntime-migraphx wheel from PyPI. Platform: linux-x64.",
+  "author": "Microsoft",
+  "license": "MIT",
+  "minAppVersion": "0.9.0",
+  "platform": "linux-x64",
+  "source": "../../staging/onnxruntime-migraphx-linux-x64",
+  "provides": [
+    {
+      "kind": "onnxruntime",
+      "root": "runtime",
+      "items": 1
+    }
+  ],
+  "zstdLevel": 6
+}
