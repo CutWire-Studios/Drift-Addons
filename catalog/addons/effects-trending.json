@@ -1,0 +1,45 @@
+{
+  "id": "effects.trending",
+  "tagline": "Eye-catching looks for short videos",
+  "summary": "Effects made for social clips, such as sparkle, beat shake, kaleidoscope and lightning. Also includes ready-made effect templates that move with the beat of your music.",
+  "categories": [
+    "effects-transitions"
+  ],
+  "keywords": [
+    "tiktok",
+    "shorts",
+    "reels",
+    "beat",
+    "sparkle",
+    "kaleidoscope",
+    "templates"
+  ],
+  "icon": "zap",
+  "useCases": [
+    "Make a clip pop on a short-form video",
+    "Shake or flash the picture on the beat",
+    "Add sparkle or lightning to a highlight",
+    "Start from a ready-made effect template"
+  ],
+  "howTo": [
+    "Select a clip on the timeline",
+    "Open the Effects panel and look for the Trending effects",
+    "Add one to your clip",
+    "Adjust it in the Inspector, or pick a template to apply several at once"
+  ],
+  "unlocks": [
+    {
+      "label": "Trending effects",
+      "location": "Effects panel"
+    },
+    {
+      "label": "Beat-synced effect templates",
+      "location": "Effects panel"
+    }
+  ],
+  "requires": [],
+  "recommends": [],
+  "images": [],
+  "links": [],
+  "order": 20
+}

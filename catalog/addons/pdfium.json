@@ -1,0 +1,36 @@
+{
+  "match": "pdfium.*",
+  "tagline": "Show PDF pages on your timeline",
+  "summary": "Lets Drift display PDF pages as clips that stay sharp at any zoom. Handy for slides, documents and presentations.",
+  "categories": [
+    "engines-runtimes"
+  ],
+  "keywords": [
+    "pdf",
+    "document",
+    "slides",
+    "pages"
+  ],
+  "icon": "file",
+  "useCases": [
+    "Put slides or documents in a video",
+    "Scroll through the pages of a PDF",
+    "Keep text sharp when zooming in"
+  ],
+  "howTo": [
+    "Install the PDF viewer",
+    "Import a PDF into the media bin",
+    "Drag it onto the timeline"
+  ],
+  "unlocks": [
+    {
+      "label": "PDF clips",
+      "location": "Media bin and timeline"
+    }
+  ],
+  "requires": [],
+  "recommends": [],
+  "images": [],
+  "links": [],
+  "order": 50
+}

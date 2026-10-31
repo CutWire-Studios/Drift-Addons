@@ -1,0 +1,47 @@
+{
+  "id": "llm.qwen35-4b",
+  "tagline": "A small AI assistant that runs on your computer",
+  "summary": "A language model that lets the local agent read and edit your open project. Everything stays on your computer, no account needed.",
+  "categories": [
+    "ai-assistant"
+  ],
+  "keywords": [
+    "llm",
+    "agent",
+    "assistant",
+    "chat",
+    "local ai",
+    "qwen"
+  ],
+  "icon": "bot",
+  "useCases": [
+    "Ask the assistant to make edits for you",
+    "Work without sending your project online",
+    "Experiment with an AI helper offline"
+  ],
+  "howTo": [
+    "Open the Agent panel",
+    "Choose the local model",
+    "Type what you want done to your project"
+  ],
+  "unlocks": [
+    {
+      "label": "Local agent",
+      "location": "Agent panel"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "llama-runtime",
+      "prefer": {
+        "linux-x64": "llama.cpp.cpu.linux-x64"
+      },
+      "default": null,
+      "reason": "Runs on the local agent runtime"
+    }
+  ],
+  "recommends": [],
+  "images": [],
+  "links": [],
+  "order": 10
+}

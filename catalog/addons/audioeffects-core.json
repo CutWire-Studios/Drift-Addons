@@ -1,0 +1,43 @@
+{
+  "id": "audioeffects.core",
+  "tagline": "Clean up voices and add fun sound effects",
+  "summary": "Tools like EQ, compressor and noise gate help voices sound clear and even. Also includes voice changers, echo, telephone, radio and vinyl effects for creative touches.",
+  "categories": [
+    "essentials",
+    "audio-cleanup"
+  ],
+  "keywords": [
+    "eq",
+    "compressor",
+    "limiter",
+    "noise gate",
+    "de-esser",
+    "voice changer",
+    "echo",
+    "reverb"
+  ],
+  "icon": "audio",
+  "useCases": [
+    "Make a voice clearer and more even",
+    "Remove soft background noise between phrases",
+    "Make a voice sound like a phone call or radio",
+    "Add echo or chorus for atmosphere"
+  ],
+  "howTo": [
+    "Select an audio or video clip on the timeline",
+    "Open the Audio effects panel",
+    "Pick an effect to add it to the clip",
+    "Tune it with the sliders in the Inspector"
+  ],
+  "unlocks": [
+    {
+      "label": "Audio effects",
+      "location": "Audio effects panel"
+    }
+  ],
+  "requires": [],
+  "recommends": [],
+  "images": [],
+  "links": [],
+  "order": 40
+}

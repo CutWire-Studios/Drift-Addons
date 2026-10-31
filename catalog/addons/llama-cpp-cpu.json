@@ -1,0 +1,34 @@
+{
+  "match": "llama.cpp.cpu.*",
+  "tagline": "The engine that runs the local assistant",
+  "summary": "A small program that runs a language model on your computer's processor, so the local agent works without a graphics card. Installed automatically when needed.",
+  "categories": [
+    "ai-assistant",
+    "engines-runtimes"
+  ],
+  "keywords": [
+    "llama",
+    "runtime",
+    "local agent",
+    "cpu"
+  ],
+  "icon": "cpu",
+  "useCases": [
+    "Required by the local assistant model"
+  ],
+  "howTo": [
+    "Install it together with an assistant model",
+    "No other setup is needed"
+  ],
+  "unlocks": [
+    {
+      "label": "Local agent",
+      "location": "Agent panel"
+    }
+  ],
+  "requires": [],
+  "recommends": [],
+  "images": [],
+  "links": [],
+  "order": 20
+}

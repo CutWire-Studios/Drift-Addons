@@ -2,6 +2,7 @@
   "name": "drift-addons-worker",
   "private": true,
   "scripts": {
+    "test": "bun test",
     "dev": "python3 ../packer/config.py >/dev/null && wrangler dev --config wrangler.local.jsonc",
     "deploy": "python3 ../packer/config.py >/dev/null && wrangler deploy --config wrangler.local.jsonc",
     "typecheck": "python3 ../packer/config.py >/dev/null && wrangler types --config wrangler.local.jsonc && tsc --noEmit"

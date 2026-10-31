@@ -1,0 +1,57 @@
+{
+  "id": "audio.ast",
+  "tagline": "Tell speech, music and silence apart",
+  "summary": "Marks which parts of your timeline are speech, music or silence and names the sounds in between. Useful for quickly understanding long recordings.",
+  "categories": [
+    "audio-cleanup"
+  ],
+  "keywords": [
+    "speech",
+    "music",
+    "silence",
+    "sound classification"
+  ],
+  "icon": "audio",
+  "useCases": [
+    "See where the music starts and stops",
+    "Find speech sections quickly",
+    "Name the sounds in a recording"
+  ],
+  "howTo": [
+    "Select a clip or the whole timeline",
+    "Open audio analysis",
+    "Run the analysis",
+    "Use the results to jump around or cut"
+  ],
+  "unlocks": [
+    {
+      "label": "Speech and music sections",
+      "location": "Audio analysis"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "onnxruntime",
+      "prefer": {
+        "android-arm64": "onnxruntime.cpu.android-arm64",
+        "linux-arm64": "onnxruntime.cpu.linux-arm64",
+        "linux-x64": "onnxruntime.cpu.linux-x64",
+        "osx-arm64": "onnxruntime.cpu.osx-arm64",
+        "osx-x64": "onnxruntime.cpu.osx-x64",
+        "win-arm64": "onnxruntime.cpu.win-arm64",
+        "win-x64": "onnxruntime.cpu.win-x64"
+      },
+      "default": null,
+      "reason": "Runs on the AI engine"
+    }
+  ],
+  "recommends": [
+    {
+      "id": "audio.clap",
+      "reason": "Adds searchable sound tags"
+    }
+  ],
+  "images": [],
+  "links": [],
+  "order": 30
+}

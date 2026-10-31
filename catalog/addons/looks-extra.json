@@ -1,0 +1,38 @@
+{
+  "id": "looks.extra",
+  "tagline": "Hundreds more creative color looks",
+  "summary": "A large extra collection of creative color looks for when the essentials are not enough. Works the same way, with an intensity slider for each.",
+  "categories": [
+    "color-looks"
+  ],
+  "keywords": [
+    "lut",
+    "grade",
+    "creative",
+    "preset",
+    "color"
+  ],
+  "icon": "palette",
+  "useCases": [
+    "Explore bolder, more stylized colors",
+    "Match the mood of a scene",
+    "Find a look that fits your brand"
+  ],
+  "howTo": [
+    "Select a clip and open the Color workspace",
+    "Open the Looks panel",
+    "Browse or search the extra looks",
+    "Click one and adjust its intensity"
+  ],
+  "unlocks": [
+    {
+      "label": "More looks",
+      "location": "Color workspace, Looks panel"
+    }
+  ],
+  "requires": [],
+  "recommends": [],
+  "images": [],
+  "links": [],
+  "order": 80
+}

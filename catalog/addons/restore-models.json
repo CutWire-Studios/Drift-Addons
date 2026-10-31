@@ -1,0 +1,55 @@
+{
+  "id": "restore.models",
+  "tagline": "Upscale and clean up low-quality video",
+  "summary": "Sharpens and enlarges footage with models made for anime, live action and 3D animation, and cleans up compression and noise. Choose the model that suits your footage.",
+  "categories": [
+    "enhance-restore"
+  ],
+  "keywords": [
+    "upscale",
+    "upscaler",
+    "enhance",
+    "denoise",
+    "anime",
+    "sharpen",
+    "4k"
+  ],
+  "icon": "wand",
+  "useCases": [
+    "Upscale old or low-resolution clips",
+    "Clean up blocky compressed video",
+    "Sharpen anime and cartoons"
+  ],
+  "howTo": [
+    "Select a clip on the timeline",
+    "Open the Enhance video tool",
+    "Pick a model and preview it",
+    "Run it to create the enhanced clip"
+  ],
+  "unlocks": [
+    {
+      "label": "Enhance video",
+      "location": "Enhance video tool"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "onnxruntime",
+      "prefer": {
+        "android-arm64": "onnxruntime.cpu.android-arm64",
+        "linux-arm64": "onnxruntime.cpu.linux-arm64",
+        "linux-x64": "onnxruntime.cpu.linux-x64",
+        "osx-arm64": "onnxruntime.cpu.osx-arm64",
+        "osx-x64": "onnxruntime.cpu.osx-x64",
+        "win-arm64": "onnxruntime.cpu.win-arm64",
+        "win-x64": "onnxruntime.cpu.win-x64"
+      },
+      "default": null,
+      "reason": "Runs on the AI engine"
+    }
+  ],
+  "recommends": [],
+  "images": [],
+  "links": [],
+  "order": 10
+}

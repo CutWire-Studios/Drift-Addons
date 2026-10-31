@@ -1,9 +1,11 @@
 /**
  * Drift addon delivery.
  *
- * Two endpoints:
+ * Four endpoints:
  *   GET /v1/index          -> the addon catalogue, with a short-lived signed URL per addon
  *   GET /v1/dl/<key>       -> the bytes, if the ticket in the query string checks out
+ *   GET /v1/catalog        -> store metadata (categories, descriptions, dependencies), public
+ *   GET /v1/media/<path>   -> images referenced by the store metadata, public
  *
  * The gate is cost control, not security. The client token ships inside the Drift binary and is
  * extractable by anyone who cares; the point is to stop casual scraping of the bucket and
@@ -22,6 +24,18 @@ interface Env {
 const INDEX_KEY = "index.json";
 const TICKET_TTL_SECONDS = 60 * 60;
 const INDEX_CACHE_SECONDS = 300;
+const CATALOG_KEY = "catalog/catalog.json";
+const MEDIA_PREFIX = "catalog/media/";
+
+const MEDIA_TYPES: Record<string, string> = {
+  png: "image/png",
+  jpg: "image/jpeg",
+  jpeg: "image/jpeg",
+  webp: "image/webp",
+  gif: "image/gif",
+  svg: "image/svg+xml",
+  mp4: "video/mp4",
+};
 
 /**
  * Drift sends X-Drift-Version from 0.9.0 on. Anything without it is 0.8.0 or older, and is
@@ -225,6 +239,94 @@ async function handleDownload(request: Request, env: Env, ctx: ExecutionContext,
   return response;
 }
 
+/** Primary subtag of the first Accept-Language entry, or null when absent or not a plain code. */
+function preferredLanguage(request: Request): string | null {
+  const first = (request.headers.get("Accept-Language") ?? "").split(",")[0].trim();
+  const primary = first.split(/[-;]/)[0].toLowerCase();
+  return /^[a-z]{2,3}$/.test(primary) ? primary : null;
+}
+
+function matchesEtag(header: string | null, etag: string): boolean {
+  if (!header) return false;
+  return header.split(",").some((candidate) => {
+    const value = candidate.trim().replace(/^W\//, "");
+    return value === "*" || value === etag;
+  });
+}
+
+async function handleCatalog(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+  const { success } = await env.INDEX_LIMITER.limit({ key: clientKey(request) });
+  if (!success) return problem(429, "Too many requests");
+
+  const language = preferredLanguage(request);
+  const keys = language && language !== "en"
+    ? [`catalog/catalog.${language}.json`, CATALOG_KEY]
+    : [CATALOG_KEY];
+
+  const cache = caches.default;
+  let found: Response | null = null;
+  for (const key of keys) {
+    const cacheKey = new Request(`https://addons.internal/${key}`, { method: "GET" });
+    found = (await cache.match(cacheKey)) ?? null;
+    if (!found) {
+      const object = await env.BUCKET.get(key);
+      if (!object) continue;
+      const text = await object.text();
+      let revision = "";
+      try {
+        revision = String((JSON.parse(text) as { revision?: unknown }).revision ?? "");
+      } catch {
+        // An unparseable catalog still serves; the R2 etag identifies it instead.
+      }
+      found = new Response(text, {
+        headers: {
+          "Content-Type": "application/json",
+          "Cache-Control": `public, max-age=${INDEX_CACHE_SECONDS}`,
+          ETag: revision ? `"${revision}"` : object.httpEtag,
+        },
+      });
+      ctx.waitUntil(cache.put(cacheKey, found.clone()));
+    }
+    break;
+  }
+  if (!found) return problem(503, "Catalog is unavailable");
+
+  const headers = new Headers(found.headers);
+  headers.set("Vary", "Accept-Language");
+  if (matchesEtag(request.headers.get("If-None-Match"), headers.get("ETag") ?? "")) {
+    headers.delete("Content-Type");
+    return new Response(null, { status: 304, headers });
+  }
+  return new Response(found.body, { headers });
+}
+
+async function handleMedia(request: Request, env: Env, ctx: ExecutionContext, path: string): Promise<Response> {
+  const { success } = await env.DOWNLOAD_LIMITER.limit({ key: clientKey(request) });
+  if (!success) return problem(429, "Too many requests");
+
+  const key = MEDIA_PREFIX + path;
+  const cache = caches.default;
+  const cacheKey = new Request(`https://addons.internal/${key}`, { method: "GET" });
+  const hit = await cache.match(cacheKey);
+  if (hit) return hit;
+
+  const object = await env.BUCKET.get(key);
+  if (!object) return problem(404, "Not found");
+
+  const headers = new Headers();
+  object.writeHttpMetadata(headers);
+  const extension = path.split(".").pop()?.toLowerCase() ?? "";
+  if (!headers.has("Content-Type")) {
+    headers.set("Content-Type", MEDIA_TYPES[extension] ?? "application/octet-stream");
+  }
+  headers.set("ETag", object.httpEtag);
+  headers.set("Content-Length", String(object.size));
+  headers.set("Cache-Control", "public, max-age=31536000, immutable");
+  const response = new Response(object.body, { headers });
+  ctx.waitUntil(cache.put(cacheKey, response.clone()));
+  return response;
+}
+
 function clientKey(request: Request): string {
   return request.headers.get("CF-Connecting-IP") ?? "unknown";
 }
@@ -249,6 +351,18 @@ export default {
         const key = decodeURIComponent(url.pathname.slice("/v1/dl/".length));
         if (!key || key.includes("..")) return problem(400, "Bad key");
         return await handleDownload(request, env, ctx, key);
+      }
+
+      if (url.pathname === "/v1/catalog") {
+        return await handleCatalog(request, env, ctx);
+      }
+
+      if (url.pathname.startsWith("/v1/media/")) {
+        const path = decodeURIComponent(url.pathname.slice("/v1/media/".length));
+        if (!path || path.includes("..") || path.includes("\\") || path.startsWith("/")) {
+          return problem(400, "Bad path");
+        }
+        return await handleMedia(request, env, ctx, path);
       }
     } catch (error) {
       console.error({ message: "request failed", path: url.pathname, error: String(error) });

@@ -1,0 +1,5 @@
+[
+  {"id": "start-here", "title": "Start here", "addons": ["effects.core", "transitions.core", "audioeffects.core", "fonts.essentials"]},
+  {"id": "popular-ai", "title": "Popular AI tools", "addons": ["whisper.small", "rvm.mobilenetv3", "deepfilternet.v3", "restore.models", "sam2.tiny"]},
+  {"id": "creative-packs", "title": "Creative packs", "addons": ["effects.trending", "looks.essentials", "transitions.core", "stickers.harmonyos"]}
+]

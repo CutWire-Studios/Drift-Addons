@@ -1,0 +1,59 @@
+{
+  "id": "depth.vda-small",
+  "tagline": "Understand depth for lighting and focus",
+  "summary": "Works out how far away everything in a shot is. This lets effects add lights that fall on the scene, blur the background realistically, add fog or place titles behind people.",
+  "categories": [
+    "enhance-restore"
+  ],
+  "keywords": [
+    "depth",
+    "3d",
+    "relight",
+    "depth of field",
+    "fog",
+    "blur"
+  ],
+  "icon": "layers",
+  "useCases": [
+    "Blur the background like a real camera lens",
+    "Add fog that gets thicker with distance",
+    "Light a scene from a new direction",
+    "Put text behind a person"
+  ],
+  "howTo": [
+    "Select a clip on the timeline",
+    "Open the Effects panel",
+    "Add a depth effect such as Depth of field",
+    "Let Drift analyze the clip, then adjust the effect"
+  ],
+  "unlocks": [
+    {
+      "label": "3D relight and depth of field",
+      "location": "Effects panel"
+    },
+    {
+      "label": "Depth fog and titles behind people",
+      "location": "Effects panel"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "onnxruntime",
+      "prefer": {
+        "android-arm64": "onnxruntime.cpu.android-arm64",
+        "linux-arm64": "onnxruntime.cpu.linux-arm64",
+        "linux-x64": "onnxruntime.cpu.linux-x64",
+        "osx-arm64": "onnxruntime.cpu.osx-arm64",
+        "osx-x64": "onnxruntime.cpu.osx-x64",
+        "win-arm64": "onnxruntime.cpu.win-arm64",
+        "win-x64": "onnxruntime.cpu.win-x64"
+      },
+      "default": null,
+      "reason": "Runs on the AI engine"
+    }
+  ],
+  "recommends": [],
+  "images": [],
+  "links": [],
+  "order": 20
+}

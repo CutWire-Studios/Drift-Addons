@@ -1,0 +1,57 @@
+{
+  "id": "diarize.pyannote-eres2net",
+  "tagline": "Label who is speaking and when",
+  "summary": "Works out which person is talking in a recording and labels each line with the speaker. Great for interviews and conversations.",
+  "categories": [
+    "captions-speech"
+  ],
+  "keywords": [
+    "speaker",
+    "diarization",
+    "interview",
+    "who is speaking"
+  ],
+  "icon": "mic",
+  "useCases": [
+    "Label speakers in an interview",
+    "Give each speaker their own caption color",
+    "Find a person's lines quickly"
+  ],
+  "howTo": [
+    "Create captions from speech on a clip",
+    "Open the Captions panel",
+    "Choose to label speakers",
+    "Rename the speakers if you like"
+  ],
+  "unlocks": [
+    {
+      "label": "Speaker labels",
+      "location": "Captions panel"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "onnxruntime",
+      "prefer": {
+        "android-arm64": "onnxruntime.cpu.android-arm64",
+        "linux-arm64": "onnxruntime.cpu.linux-arm64",
+        "linux-x64": "onnxruntime.cpu.linux-x64",
+        "osx-arm64": "onnxruntime.cpu.osx-arm64",
+        "osx-x64": "onnxruntime.cpu.osx-x64",
+        "win-arm64": "onnxruntime.cpu.win-arm64",
+        "win-x64": "onnxruntime.cpu.win-x64"
+      },
+      "default": null,
+      "reason": "Runs on the AI engine"
+    }
+  ],
+  "recommends": [
+    {
+      "id": "whisper.small",
+      "reason": "Needed to create the transcript"
+    }
+  ],
+  "images": [],
+  "links": [],
+  "order": 40
+}

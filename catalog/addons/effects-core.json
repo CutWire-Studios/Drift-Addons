@@ -1,0 +1,57 @@
+{
+  "id": "effects.core",
+  "tagline": "Everyday effects to fix and style your clips",
+  "summary": "A big library of effects for correcting color, blurring, adding glow or glitch, removing green screens and retouching faces. Some effects use depth to relight a scene or blur the background, which works best with the Depth add-on.",
+  "categories": [
+    "essentials",
+    "effects-transitions"
+  ],
+  "keywords": [
+    "blur",
+    "glow",
+    "glitch",
+    "green screen",
+    "chroma key",
+    "beauty",
+    "retouch",
+    "vignette"
+  ],
+  "icon": "sparkles",
+  "useCases": [
+    "Fix exposure, tint and saturation on a dull clip",
+    "Blur or glow parts of a shot",
+    "Remove a green screen background",
+    "Smooth skin and add subtle makeup",
+    "Add a glitch or warp for a stylish moment"
+  ],
+  "howTo": [
+    "Select a clip on the timeline",
+    "Open the Effects panel and browse or search for an effect",
+    "Click an effect to add it to the clip",
+    "Adjust its sliders in the Inspector"
+  ],
+  "unlocks": [
+    {
+      "label": "Video effects",
+      "location": "Effects panel"
+    },
+    {
+      "label": "Green screen",
+      "location": "Effects panel"
+    },
+    {
+      "label": "Face retouch",
+      "location": "Effects panel"
+    }
+  ],
+  "requires": [],
+  "recommends": [
+    {
+      "id": "depth.vda-small",
+      "reason": "Unlocks 3D relighting, background blur and fog"
+    }
+  ],
+  "images": [],
+  "links": [],
+  "order": 10
+}

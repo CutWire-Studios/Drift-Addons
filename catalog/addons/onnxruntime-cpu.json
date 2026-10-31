@@ -1,0 +1,34 @@
+{
+  "match": "onnxruntime.cpu.*",
+  "tagline": "The AI engine that works on every computer",
+  "summary": "Powers Drift's AI tools such as captions, cutouts and noise removal. It runs on your computer's processor and is installed automatically the first time an AI tool needs it.",
+  "categories": [
+    "engines-runtimes"
+  ],
+  "keywords": [
+    "onnx",
+    "ai engine",
+    "runtime",
+    "cpu"
+  ],
+  "icon": "cpu",
+  "useCases": [
+    "Required by every AI tool in Drift",
+    "Works on any computer, no special graphics card needed"
+  ],
+  "howTo": [
+    "Pick an AI tool and install it; the engine is added automatically",
+    "Nothing else to set up"
+  ],
+  "unlocks": [
+    {
+      "label": "All AI tools",
+      "location": "Throughout Drift"
+    }
+  ],
+  "requires": [],
+  "recommends": [],
+  "images": [],
+  "links": [],
+  "order": 10
+}

@@ -1,0 +1,53 @@
+{
+  "id": "silero.vad",
+  "tagline": "Find exactly where people are talking",
+  "summary": "Detects speech so silence removal skips breaths, music and room noise instead of treating them as talking. Also tightens caption timing.",
+  "categories": [
+    "captions-speech",
+    "smart-editing"
+  ],
+  "keywords": [
+    "silence",
+    "voice activity",
+    "speech detection",
+    "jump cut"
+  ],
+  "icon": "mic",
+  "useCases": [
+    "Cut out pauses automatically",
+    "Keep music and ambience while trimming silence",
+    "Get tighter caption timing"
+  ],
+  "howTo": [
+    "Select a clip with speech",
+    "Open the Detect / Remove Silence tool",
+    "Choose the voice detection method",
+    "Review and apply the cuts"
+  ],
+  "unlocks": [
+    {
+      "label": "Voice detection method",
+      "location": "Detect / Remove Silence"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "onnxruntime",
+      "prefer": {
+        "android-arm64": "onnxruntime.cpu.android-arm64",
+        "linux-arm64": "onnxruntime.cpu.linux-arm64",
+        "linux-x64": "onnxruntime.cpu.linux-x64",
+        "osx-arm64": "onnxruntime.cpu.osx-arm64",
+        "osx-x64": "onnxruntime.cpu.osx-x64",
+        "win-arm64": "onnxruntime.cpu.win-arm64",
+        "win-x64": "onnxruntime.cpu.win-x64"
+      },
+      "default": null,
+      "reason": "Runs on the AI engine"
+    }
+  ],
+  "recommends": [],
+  "images": [],
+  "links": [],
+  "order": 30
+}

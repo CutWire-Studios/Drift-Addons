@@ -1,0 +1,36 @@
+{
+  "match": "onnxruntime.cuda.*",
+  "tagline": "Faster AI on NVIDIA graphics cards",
+  "summary": "The same AI features, sped up by an NVIDIA graphics card. Needs a recent NVIDIA driver, and falls back to the processor if the card cannot be used.",
+  "categories": [
+    "engines-runtimes"
+  ],
+  "keywords": [
+    "nvidia",
+    "cuda",
+    "gpu",
+    "faster",
+    "ai engine"
+  ],
+  "icon": "zap",
+  "useCases": [
+    "Speed up captions, cutouts and enhancement",
+    "Handy for long clips and big projects"
+  ],
+  "howTo": [
+    "Install this engine",
+    "Open the AI engine details and choose NVIDIA graphics",
+    "Run any AI tool as usual"
+  ],
+  "unlocks": [
+    {
+      "label": "Faster AI tools",
+      "location": "Throughout Drift"
+    }
+  ],
+  "requires": [],
+  "recommends": [],
+  "images": [],
+  "links": [],
+  "order": 20
+}

@@ -1,0 +1,53 @@
+{
+  "id": "deepfilternet.v3",
+  "tagline": "Remove background noise from voices",
+  "summary": "Cleans up hiss, hum and room noise while keeping the voice clear. Good for rescuing recordings made in noisy places.",
+  "categories": [
+    "audio-cleanup"
+  ],
+  "keywords": [
+    "denoise",
+    "noise reduction",
+    "hiss",
+    "hum",
+    "clean audio"
+  ],
+  "icon": "audio",
+  "useCases": [
+    "Clean up a phone recording",
+    "Reduce fan or air-conditioner noise",
+    "Make interviews clearer"
+  ],
+  "howTo": [
+    "Select a clip with audio on the timeline",
+    "Open the Inspector",
+    "Choose Remove noise",
+    "Compare before and after, then apply"
+  ],
+  "unlocks": [
+    {
+      "label": "Remove noise",
+      "location": "Inspector, audio section"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "onnxruntime",
+      "prefer": {
+        "android-arm64": "onnxruntime.cpu.android-arm64",
+        "linux-arm64": "onnxruntime.cpu.linux-arm64",
+        "linux-x64": "onnxruntime.cpu.linux-x64",
+        "osx-arm64": "onnxruntime.cpu.osx-arm64",
+        "osx-x64": "onnxruntime.cpu.osx-x64",
+        "win-arm64": "onnxruntime.cpu.win-arm64",
+        "win-x64": "onnxruntime.cpu.win-x64"
+      },
+      "default": null,
+      "reason": "Runs on the AI engine"
+    }
+  ],
+  "recommends": [],
+  "images": [],
+  "links": [],
+  "order": 10
+}

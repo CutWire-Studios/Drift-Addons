@@ -1,0 +1,58 @@
+{
+  "id": "rvm.mobilenetv3",
+  "tagline": "Cut people out of the background automatically",
+  "summary": "Removes the background behind people with no clicking, keeping soft edges so hair looks natural. Works across a whole clip.",
+  "categories": [
+    "cutouts-masking"
+  ],
+  "keywords": [
+    "background removal",
+    "matting",
+    "remove background",
+    "person",
+    "green screen"
+  ],
+  "icon": "scissors",
+  "useCases": [
+    "Replace or blur the background without a green screen",
+    "Put text behind a person",
+    "Make a quick cutout for a thumbnail or overlay"
+  ],
+  "howTo": [
+    "Select a clip with a person on the timeline",
+    "Open the People cutout tool",
+    "Run the cutout and preview the result",
+    "Place something behind it or apply effects"
+  ],
+  "unlocks": [
+    {
+      "label": "People cutout",
+      "location": "People cutout tool"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "onnxruntime",
+      "prefer": {
+        "android-arm64": "onnxruntime.cpu.android-arm64",
+        "linux-arm64": "onnxruntime.cpu.linux-arm64",
+        "linux-x64": "onnxruntime.cpu.linux-x64",
+        "osx-arm64": "onnxruntime.cpu.osx-arm64",
+        "osx-x64": "onnxruntime.cpu.osx-x64",
+        "win-arm64": "onnxruntime.cpu.win-arm64",
+        "win-x64": "onnxruntime.cpu.win-x64"
+      },
+      "default": null,
+      "reason": "Runs on the AI engine"
+    }
+  ],
+  "recommends": [
+    {
+      "id": "rvm.resnet50",
+      "reason": "Higher quality, slower"
+    }
+  ],
+  "images": [],
+  "links": [],
+  "order": 10
+}

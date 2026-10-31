@@ -1,0 +1,36 @@
+{
+  "match": "onnxruntime.migraphx.*",
+  "tagline": "Faster AI on AMD graphics cards",
+  "summary": "The same AI features, sped up by an AMD Radeon card. It needs ROCm with MIGraphX installed on your computer, and falls back to the processor if it is missing.",
+  "categories": [
+    "engines-runtimes"
+  ],
+  "keywords": [
+    "amd",
+    "radeon",
+    "rocm",
+    "gpu",
+    "faster",
+    "ai engine"
+  ],
+  "icon": "zap",
+  "useCases": [
+    "Speed up AI tools on a Radeon card"
+  ],
+  "howTo": [
+    "Install ROCm with MIGraphX on your computer",
+    "Install this engine",
+    "Open the AI engine details and choose AMD graphics"
+  ],
+  "unlocks": [
+    {
+      "label": "Faster AI tools",
+      "location": "Throughout Drift"
+    }
+  ],
+  "requires": [],
+  "recommends": [],
+  "images": [],
+  "links": [],
+  "order": 30
+}

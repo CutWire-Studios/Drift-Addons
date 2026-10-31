@@ -1,0 +1,51 @@
+{
+  "id": "rvm.resnet50",
+  "tagline": "Cleaner people cutouts for difficult shots",
+  "summary": "A larger, slower version of People Cutout with tighter edges on fine hair and fast motion. Works alongside the standard version, and you can switch between them.",
+  "categories": [
+    "cutouts-masking"
+  ],
+  "keywords": [
+    "background removal",
+    "matting",
+    "high quality",
+    "hair"
+  ],
+  "icon": "scissors",
+  "useCases": [
+    "Get cleaner edges on messy hair",
+    "Cut out people moving quickly",
+    "Final-quality cutouts"
+  ],
+  "howTo": [
+    "Open the People cutout tool on a clip",
+    "Pick the Best quality option",
+    "Run the cutout and wait for it to finish"
+  ],
+  "unlocks": [
+    {
+      "label": "Best quality cutout",
+      "location": "People cutout tool"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "onnxruntime",
+      "prefer": {
+        "android-arm64": "onnxruntime.cpu.android-arm64",
+        "linux-arm64": "onnxruntime.cpu.linux-arm64",
+        "linux-x64": "onnxruntime.cpu.linux-x64",
+        "osx-arm64": "onnxruntime.cpu.osx-arm64",
+        "osx-x64": "onnxruntime.cpu.osx-x64",
+        "win-arm64": "onnxruntime.cpu.win-arm64",
+        "win-x64": "onnxruntime.cpu.win-x64"
+      },
+      "default": null,
+      "reason": "Runs on the AI engine"
+    }
+  ],
+  "recommends": [],
+  "images": [],
+  "links": [],
+  "order": 20
+}

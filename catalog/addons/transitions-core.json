@@ -1,0 +1,40 @@
+{
+  "id": "transitions.core",
+  "tagline": "Over a hundred ways to move between clips",
+  "summary": "Fades, wipes, slides, zooms, page turns and many more transitions to join two clips smoothly. From simple cuts to dramatic effects such as a cube flip or water drop.",
+  "categories": [
+    "essentials",
+    "effects-transitions"
+  ],
+  "keywords": [
+    "fade",
+    "wipe",
+    "slide",
+    "zoom",
+    "page turn",
+    "dissolve"
+  ],
+  "icon": "layers",
+  "useCases": [
+    "Fade smoothly between scenes",
+    "Add a quick slide or zoom to keep a fast pace",
+    "Use a dramatic transition for a big reveal"
+  ],
+  "howTo": [
+    "Place two clips next to each other on the timeline",
+    "Open the Transitions panel",
+    "Drag a transition onto the join between the clips",
+    "Change its length in the Inspector"
+  ],
+  "unlocks": [
+    {
+      "label": "Transitions",
+      "location": "Transitions panel"
+    }
+  ],
+  "requires": [],
+  "recommends": [],
+  "images": [],
+  "links": [],
+  "order": 30
+}

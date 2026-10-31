@@ -1,0 +1,42 @@
+{
+  "id": "stickers.harmonyos",
+  "tagline": "Colorful emoji stickers for your timeline",
+  "summary": "Smileys, hearts, hands, animals, food and more, as stickers you can drop onto a video. Also adds the emoji font so every emoji shows correctly in your text.",
+  "categories": [
+    "text-fonts-stickers"
+  ],
+  "keywords": [
+    "emoji",
+    "sticker",
+    "smiley",
+    "heart",
+    "reaction"
+  ],
+  "icon": "smile",
+  "useCases": [
+    "Add a reaction to a funny moment",
+    "Decorate a short video",
+    "Use emoji inside titles and captions"
+  ],
+  "howTo": [
+    "Open the Stickers panel",
+    "Search or browse for an emoji",
+    "Drag it onto the timeline or click to add it",
+    "Move and resize it in the preview"
+  ],
+  "unlocks": [
+    {
+      "label": "Emoji stickers",
+      "location": "Stickers panel"
+    },
+    {
+      "label": "Emoji in text",
+      "location": "Text clips"
+    }
+  ],
+  "requires": [],
+  "recommends": [],
+  "images": [],
+  "links": [],
+  "order": 60
+}

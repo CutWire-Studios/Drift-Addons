@@ -1,0 +1,53 @@
+{
+  "id": "face.landmark",
+  "tagline": "Funny face effects that follow faces",
+  "summary": "Finds faces in your clip once, so warps and other face effects stay locked on as people move.",
+  "categories": [
+    "faces-fun"
+  ],
+  "keywords": [
+    "face",
+    "warp",
+    "funny",
+    "landmarks",
+    "big eyes"
+  ],
+  "icon": "smile",
+  "useCases": [
+    "Add funny face warps to a vlog",
+    "Retouch faces consistently through a clip",
+    "Make playful reaction videos"
+  ],
+  "howTo": [
+    "Select a clip with faces on the timeline",
+    "Open the Effects panel",
+    "Add a Funny face effect",
+    "Let Drift scan the clip, then adjust"
+  ],
+  "unlocks": [
+    {
+      "label": "Funny face warps",
+      "location": "Effects panel"
+    }
+  ],
+  "requires": [
+    {
+      "kind": "onnxruntime",
+      "prefer": {
+        "android-arm64": "onnxruntime.cpu.android-arm64",
+        "linux-arm64": "onnxruntime.cpu.linux-arm64",
+        "linux-x64": "onnxruntime.cpu.linux-x64",
+        "osx-arm64": "onnxruntime.cpu.osx-arm64",
+        "osx-x64": "onnxruntime.cpu.osx-x64",
+        "win-arm64": "onnxruntime.cpu.win-arm64",
+        "win-x64": "onnxruntime.cpu.win-x64"
+      },
+      "default": null,
+      "reason": "Runs on the AI engine"
+    }
+  ],
+  "recommends": [],
+  "images": [],
+  "links": [],
+  "order": 10
+}

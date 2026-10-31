@@ -163,3 +163,7 @@ GPL-3.0, while the GL Transitions ports stay MIT under their original authors â€
 [Credits](#credits). MIT is compatible with GPL-3.0, so the pack redistributes cleanly, but the
 MIT notice travels with the shaders: it is in every ported `main.frag` and in
 `content/transitions/ATTRIBUTION.md`, both of which ship inside the package.
+
+## Store catalog
+
+Store metadata (categories, taglines, how-tos, dependencies) lives in `catalog/` and is served by the Worker at `/v1/catalog` and `/v1/media/*`, both public. Check it with `python3 packer/catalog.py --dry-run` (add `--offline` to validate against recipes only). `packer/publish.py` uploads it at the end of every real publish, and `python3 packer/catalog.py` uploads it alone. Schema: [catalog/README.md](catalog/README.md). Worker tests: `cd worker && bun test`.

@@ -167,6 +167,9 @@ def main() -> None:
 
     print(f"index.json updated: {len(index['addons'])} addons")
 
+    import catalog
+    catalog.upload(index)
+
 
 if __name__ == "__main__":
     main()

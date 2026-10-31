@@ -1,0 +1,38 @@
+{
+  "id": "fonts.essentials",
+  "tagline": "21 good-looking fonts for titles and captions",
+  "summary": "A hand-picked set of fonts covering bold display styles, clean sans-serifs, editorial serifs and playful options. Handy so your titles look good on any computer.",
+  "categories": [
+    "essentials",
+    "text-fonts-stickers"
+  ],
+  "keywords": [
+    "typeface",
+    "title",
+    "caption",
+    "text",
+    "display"
+  ],
+  "icon": "type",
+  "useCases": [
+    "Give titles a bold, modern look",
+    "Keep captions easy to read",
+    "Use the same fonts on every device"
+  ],
+  "howTo": [
+    "Add a text clip to the timeline",
+    "Select it and open the Inspector",
+    "Choose the new font from the font list"
+  ],
+  "unlocks": [
+    {
+      "label": "21 extra fonts",
+      "location": "Text font list"
+    }
+  ],
+  "requires": [],
+  "recommends": [],
+  "images": [],
+  "links": [],
+  "order": 50
+}
