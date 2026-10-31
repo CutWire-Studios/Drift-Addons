@@ -1,0 +1,38 @@
+{
+ "format": 1,
+ "model": "clap_audio.onnx",
+ "source": {
+  "repo": "laion/larger_clap_general",
+  "revision": "16c8cc3159a3c8a31e8ff5ef1f66b0d9ab3667db",
+  "weights": "model.safetensors",
+  "weights_sha256": "c3d0e564a97cb5eccea412f11d5c51c8a1ccceb80c51e3c6957bb5a796b423b6"
+ },
+ "input": {
+  "name": "waveform",
+  "dtype": "float32",
+  "shape": [
+   "batch",
+   "samples"
+  ],
+  "sample_rate": 48000,
+  "channels": "mono, 0.707 * (L + R) for stereo (ffmpeg -ac 1, what earshot and its calibration used)",
+  "range": "nominal +-1",
+  "max_samples": 480000,
+  "note": "samples beyond 480000 are ignored; shorter clips are zero-padded to 480 samples, then repeat-padded to 10 s inside the graph. All items in a batch share one length"
+ },
+ "output": {
+  "name": "embedding",
+  "dtype": "float32",
+  "shape": [
+   "batch",
+   512
+  ],
+  "normalised": true
+ },
+ "front_end_in_graph": true,
+ "weights": "fp16 initializers, fp32 compute",
+ "window_s": 10.0,
+ "window_hop_s": 5.0,
+ "window_reduce": "mean of unit embeddings, renormalised",
+ "vocabulary": "vocab.json"
+}

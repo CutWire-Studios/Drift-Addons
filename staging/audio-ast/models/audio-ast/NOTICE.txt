@@ -1,0 +1,36 @@
+Audio Spectrogram Transformer (speech / music detection)
+
+ast_audioset.onnx is a converted derivative of MIT/ast-finetuned-audioset-10-10-0.4593, revision f826b80d28226b62986cc218e5cec390b1096902
+(https://huggingface.co/MIT/ast-finetuned-audioset-10-10-0.4593), the AST of Gong, Chung and Glass fine-tuned on AudioSet
+(https://github.com/YuanGongND/ast), released under the BSD 3-Clause License (full text in
+LICENSE-BSD-3-Clause.txt; Copyright (c) 2021 Yuan Gong). The conversion changed the weights only by storing
+them in fp16; the Kaldi-style filterbank front end was added to the graph so Drift can feed raw audio.
+Exported by recipes/export-ast.py.
+
+The model was initialised from an ImageNet-pretrained DeiT and trained on AudioSet; the weights licence does
+not clear the licences of that training data.
+
+The probability thresholds in config.json come from earshot (https://github.com/Leonxlnx/earshot, commit
+591fa3e028032e6dce56620a20e932e35667e8d8), used under the MIT License:
+
+MIT License
+
+Copyright (c) 2026 Leon Lin
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

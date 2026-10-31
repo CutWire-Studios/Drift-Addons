@@ -1,0 +1,18 @@
+{
+  "id": "audio.clap",
+  "version": "1.0.0",
+  "name": "Audio Tagging",
+  "description": "Describes what you can hear in a clip, a section or the whole timeline, and finds the moments that match a sound like a whoosh, applause or rain.",
+  "details": "LAION CLAP (HTSAT audio encoder, laion/larger_clap_general) in ONNX with fp16 weights. Drift turns audio into a 512-number fingerprint and compares it with a built-in vocabulary of 322 sound, music and ambience descriptions and 49 sound-effect phrases, scored with the calibration from the earshot project (MIT). Used for sound tags on events and sections, searching a clip for a sound and ranking media by how well it matches. No text model is installed: the vocabulary is precomputed. Package id: audio.clap.",
+  "author": "CutWire",
+  "license": "Apache-2.0",
+  "minAppVersion": "0.9.0",
+  "source": "../staging/audio-clap",
+  "provides": [
+    {
+      "kind": "audio-tag-model",
+      "root": "models/audio-clap"
+    }
+  ],
+  "zstdLevel": 3
+}

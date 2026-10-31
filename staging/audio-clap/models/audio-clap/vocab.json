@@ -1,0 +1,1989 @@
+{
+ "format": 1,
+ "model": {
+  "repo": "laion/larger_clap_general",
+  "revision": "16c8cc3159a3c8a31e8ff5ef1f66b0d9ab3667db",
+  "logit_scale": 38.75
+ },
+ "source": {
+  "what": "vocabulary, templates, background means, reference mean embedding and thresholds are earshot's data; only the text embeddings are computed here (fp32 PyTorch text tower)",
+  "repo": "https://github.com/Leonxlnx/earshot",
+  "commit": "591fa3e028032e6dce56620a20e932e35667e8d8",
+  "license": "MIT, Copyright (c) 2026 Leon Lin (see NOTICE.txt)",
+  "files": {
+   "earshot/data/vocab.json": "6e5ccf7b7d718caa1b3f896ae776f8fabd1540d41dd504e9c6c608740b65852a",
+   "earshot/data/vocab_stats.json": "a43adf61888fbc35162635c0c85a48b9ae5904b27c9eb8441a20f40a3e5eef6e",
+   "earshot/timeline.py": "4b1d036af173c1539cf21b67a256a461a838673c68fd1a9d58bda8a4226b72e5",
+   "earshot/match.py": "4e78dcf0160d12688eb6bd712609b8efa7a500f61186469a48e315635398e300",
+   "LICENSE": "d9177365c7471d18ecd623ce7b8849e26ab8d7e7fea13e1fcbda62397ecb9db8"
+  },
+  "reference_set": "the 219 tuning recordings of the Clawd project + 7 professional launch films + Clawd soundtrack/stems + retired code-synthesized stems (eval/semantics/run_eval.py ship_refs); disjoint from the held-out library",
+  "reference_recordings": 241,
+  "reference_folders": 13,
+  "reference_pad": "repeatpad",
+  "reference_precision": "bf16"
+ },
+ "embeddings": {
+  "file": "text_embeddings.bin",
+  "dtype": "float32",
+  "byte_order": "little-endian",
+  "dim": 512,
+  "rows": {
+   "event_phrases": {
+    "first": 0,
+    "count": 49
+   },
+   "vocab_terms": {
+    "first": 49,
+    "count": 322
+   },
+   "reference_mean": {
+    "first": 371,
+    "count": 1
+   }
+  },
+  "note": "phrase and term rows are unit length (each term through every template, rows unit-normalised, averaged, unit-normalised again); the reference mean row is the folder-balanced mean of the audio embeddings of the reference recordings and is not unit length"
+ },
+ "templates": [
+  "{}",
+  "the sound of {}",
+  "a recording of {}",
+  "{} sound effect",
+  "an audio clip of {}"
+ ],
+ "event_phrases": [
+  {
+   "text": "a fast air whoosh",
+   "kind": "WHOOSH",
+   "background_mean": -0.0137
+  },
+  {
+   "text": "a swoosh passing by",
+   "kind": "WHOOSH",
+   "background_mean": -0.0271
+  },
+  {
+   "text": "a short swish",
+   "kind": "WHOOSH",
+   "background_mean": 0.0538
+  },
+  {
+   "text": "a whip pan whoosh transition",
+   "kind": "WHOOSH",
+   "background_mean": 0.0173
+  },
+  {
+   "text": "a rising riser building tension",
+   "kind": "RISER",
+   "background_mean": -0.0403
+  },
+  {
+   "text": "a reverse cymbal swell",
+   "kind": "RISER",
+   "background_mean": -0.0354
+  },
+  {
+   "text": "an uplifter sweep",
+   "kind": "RISER",
+   "background_mean": -0.0522
+  },
+  {
+   "text": "a deep cinematic boom",
+   "kind": "HIT",
+   "background_mean": -0.0294
+  },
+  {
+   "text": "a punchy impact hit",
+   "kind": "HIT",
+   "background_mean": 0.0361
+  },
+  {
+   "text": "a heavy thud",
+   "kind": "HIT",
+   "background_mean": 0.0383
+  },
+  {
+   "text": "a sub bass drop",
+   "kind": "HIT",
+   "background_mean": -0.0194
+  },
+  {
+   "text": "a soft thump",
+   "kind": "HIT",
+   "background_mean": -0.0344
+  },
+  {
+   "text": "a mechanical keyboard key press",
+   "kind": "KEY",
+   "background_mean": 0.1109
+  },
+  {
+   "text": "typing on a computer keyboard",
+   "kind": "KEY",
+   "background_mean": -0.0065
+  },
+  {
+   "text": "a laptop key click",
+   "kind": "KEY",
+   "background_mean": 0.1327
+  },
+  {
+   "text": "a spacebar press",
+   "kind": "KEY",
+   "background_mean": 0.1456
+  },
+  {
+   "text": "a mouse click",
+   "kind": "UI",
+   "background_mean": 0.0743
+  },
+  {
+   "text": "a soft UI button tap",
+   "kind": "UI",
+   "background_mean": 0.0578
+  },
+  {
+   "text": "a notification ding",
+   "kind": "UI",
+   "background_mean": 0.0487
+  },
+  {
+   "text": "a chat message pop",
+   "kind": "UI",
+   "background_mean": 0.1634
+  },
+  {
+   "text": "a toggle switch click",
+   "kind": "UI",
+   "background_mean": 0.103
+  },
+  {
+   "text": "a camera shutter click",
+   "kind": "UI",
+   "background_mean": 0.0964
+  },
+  {
+   "text": "footsteps on grass",
+   "kind": "STEP",
+   "background_mean": -0.0284
+  },
+  {
+   "text": "footsteps on wood",
+   "kind": "STEP",
+   "background_mean": -0.0025
+  },
+  {
+   "text": "a small soft footstep",
+   "kind": "STEP",
+   "background_mean": 0.0282
+  },
+  {
+   "text": "a plastic click",
+   "kind": "FOLEY",
+   "background_mean": 0.0729
+  },
+  {
+   "text": "lego bricks clicking",
+   "kind": "FOLEY",
+   "background_mean": -0.0168
+  },
+  {
+   "text": "a wooden block hit",
+   "kind": "FOLEY",
+   "background_mean": 0.0335
+  },
+  {
+   "text": "glass clinking",
+   "kind": "FOLEY",
+   "background_mean": -0.0419
+  },
+  {
+   "text": "paper rustling",
+   "kind": "FOLEY",
+   "background_mean": -0.0469
+  },
+  {
+   "text": "leaves rustling",
+   "kind": "FOLEY",
+   "background_mean": -0.0228
+  },
+  {
+   "text": "a cork pop",
+   "kind": "FOLEY",
+   "background_mean": 0.0633
+  },
+  {
+   "text": "a bubble pop",
+   "kind": "FOLEY",
+   "background_mean": 0.0977
+  },
+  {
+   "text": "a water drop",
+   "kind": "FOLEY",
+   "background_mean": 0.1012
+  },
+  {
+   "text": "a small object dropping on a table",
+   "kind": "FOLEY",
+   "background_mean": 0.0316
+  },
+  {
+   "text": "a piano note",
+   "kind": "NOTE",
+   "background_mean": 0.0143
+  },
+  {
+   "text": "a bell chime",
+   "kind": "NOTE",
+   "background_mean": -0.0081
+  },
+  {
+   "text": "a plucked string note",
+   "kind": "NOTE",
+   "background_mean": 0.0687
+  },
+  {
+   "text": "an orchestral stab",
+   "kind": "NOTE",
+   "background_mean": 0.064
+  },
+  {
+   "text": "a celesta note",
+   "kind": "NOTE",
+   "background_mean": 0.0378
+  },
+  {
+   "text": "a glockenspiel note",
+   "kind": "NOTE",
+   "background_mean": 0.035
+  },
+  {
+   "text": "a kick drum",
+   "kind": "DRUM",
+   "background_mean": 0.0659
+  },
+  {
+   "text": "a snare drum hit",
+   "kind": "DRUM",
+   "background_mean": 0.0322
+  },
+  {
+   "text": "a hi-hat",
+   "kind": "DRUM",
+   "background_mean": 0.0719
+  },
+  {
+   "text": "a drum hit",
+   "kind": "DRUM",
+   "background_mean": 0.0758
+  },
+  {
+   "text": "a spoken word",
+   "kind": "VOICE",
+   "background_mean": -0.014
+  },
+  {
+   "text": "a person talking",
+   "kind": "VOICE",
+   "background_mean": -0.1026
+  },
+  {
+   "text": "a breath",
+   "kind": "VOICE",
+   "background_mean": 0.052
+  },
+  {
+   "text": "a short vocal sound",
+   "kind": "VOICE",
+   "background_mean": 0.0318
+  }
+ ],
+ "vocab_terms": [
+  {
+   "text": "a fast whoosh",
+   "category": "transitions",
+   "bias": 0.01616
+  },
+  {
+   "text": "a soft air whoosh",
+   "category": "transitions",
+   "bias": 0.00612
+  },
+  {
+   "text": "a deep cinematic whoosh",
+   "category": "transitions",
+   "bias": 0.00925
+  },
+  {
+   "text": "a short swish",
+   "category": "transitions",
+   "bias": 0.07009
+  },
+  {
+   "text": "a swoosh passing by",
+   "category": "transitions",
+   "bias": 0.01413
+  },
+  {
+   "text": "a stick swung fast through the air",
+   "category": "transitions",
+   "bias": 0.01619
+  },
+  {
+   "text": "cloth whipping through the air",
+   "category": "transitions",
+   "bias": 0.00612
+  },
+  {
+   "text": "a gust of wind rushing past",
+   "category": "transitions",
+   "bias": 0.01083
+  },
+  {
+   "text": "a rising riser building tension",
+   "category": "transitions",
+   "bias": 0.0519
+  },
+  {
+   "text": "an uplifter sweep",
+   "category": "transitions",
+   "bias": 0.05027
+  },
+  {
+   "text": "a reverse cymbal swell",
+   "category": "transitions",
+   "bias": 0.03666
+  },
+  {
+   "text": "a downlifter falling sweep",
+   "category": "transitions",
+   "bias": 0.03734
+  },
+  {
+   "text": "a tape stop slowing down",
+   "category": "transitions",
+   "bias": 0.06153
+  },
+  {
+   "text": "a record scratch",
+   "category": "transitions",
+   "bias": 0.04495
+  },
+  {
+   "text": "a quick swipe",
+   "category": "transitions",
+   "bias": 0.05486
+  },
+  {
+   "text": "a whip pan transition",
+   "category": "transitions",
+   "bias": 0.07195
+  },
+  {
+   "text": "a stutter glitch transition",
+   "category": "transitions",
+   "bias": 0.07975
+  },
+  {
+   "text": "a deep cinematic boom",
+   "category": "impacts",
+   "bias": -0.00612
+  },
+  {
+   "text": "a sub bass drop",
+   "category": "impacts",
+   "bias": 0.01971
+  },
+  {
+   "text": "a punchy impact hit",
+   "category": "impacts",
+   "bias": -0.04433
+  },
+  {
+   "text": "a big braam",
+   "category": "impacts",
+   "bias": 0.03868
+  },
+  {
+   "text": "a heavy thud",
+   "category": "impacts",
+   "bias": -0.01595
+  },
+  {
+   "text": "a soft thump",
+   "category": "impacts",
+   "bias": -0.02053
+  },
+  {
+   "text": "a cinematic hit with a long tail",
+   "category": "impacts",
+   "bias": -0.019
+  },
+  {
+   "text": "a big drum hit",
+   "category": "impacts",
+   "bias": -0.01238
+  },
+  {
+   "text": "a metallic clang",
+   "category": "impacts",
+   "bias": 0.00668
+  },
+  {
+   "text": "a door slam",
+   "category": "impacts",
+   "bias": -0.00895
+  },
+  {
+   "text": "a snare hit",
+   "category": "impacts",
+   "bias": -0.02616
+  },
+  {
+   "text": "a kick drum",
+   "category": "impacts",
+   "bias": -0.00309
+  },
+  {
+   "text": "a hand clap",
+   "category": "impacts",
+   "bias": 0.06774
+  },
+  {
+   "text": "a gunshot",
+   "category": "impacts",
+   "bias": 0.00951
+  },
+  {
+   "text": "an explosion",
+   "category": "impacts",
+   "bias": -0.03057
+  },
+  {
+   "text": "a low rumble",
+   "category": "impacts",
+   "bias": -0.00621
+  },
+  {
+   "text": "a body falling on the ground",
+   "category": "impacts",
+   "bias": -0.01201
+  },
+  {
+   "text": "a wooden knock",
+   "category": "impacts",
+   "bias": 0.01437
+  },
+  {
+   "text": "a mouse click",
+   "category": "ui",
+   "bias": 0.0469
+  },
+  {
+   "text": "a soft UI button tap",
+   "category": "ui",
+   "bias": 0.02447
+  },
+  {
+   "text": "a crisp interface click",
+   "category": "ui",
+   "bias": 0.07859
+  },
+  {
+   "text": "a notification ding",
+   "category": "ui",
+   "bias": 0.04132
+  },
+  {
+   "text": "a chat message pop",
+   "category": "ui",
+   "bias": 0.10454
+  },
+  {
+   "text": "a phone vibration buzz",
+   "category": "ui",
+   "bias": -0.00119
+  },
+  {
+   "text": "a camera shutter click",
+   "category": "ui",
+   "bias": 0.05284
+  },
+  {
+   "text": "a toggle switch click",
+   "category": "ui",
+   "bias": 0.0751
+  },
+  {
+   "text": "a light switch flicked",
+   "category": "ui",
+   "bias": 0.06294
+  },
+  {
+   "text": "a scroll wheel tick",
+   "category": "ui",
+   "bias": 0.06823
+  },
+  {
+   "text": "a success chime",
+   "category": "ui",
+   "bias": 0.08676
+  },
+  {
+   "text": "an error buzz",
+   "category": "ui",
+   "bias": 0.01187
+  },
+  {
+   "text": "a digital glitch",
+   "category": "ui",
+   "bias": 0.06091
+  },
+  {
+   "text": "a typing cursor blip",
+   "category": "ui",
+   "bias": 0.05492
+  },
+  {
+   "text": "a touchscreen tap",
+   "category": "ui",
+   "bias": 0.05442
+  },
+  {
+   "text": "a button being pressed",
+   "category": "ui",
+   "bias": 0.0377
+  },
+  {
+   "text": "a keyboard typing fast",
+   "category": "keyboard",
+   "bias": 0.04517
+  },
+  {
+   "text": "a single mechanical keyboard key press",
+   "category": "keyboard",
+   "bias": 0.06518
+  },
+  {
+   "text": "a deep thocky mechanical keyboard",
+   "category": "keyboard",
+   "bias": 0.07961
+  },
+  {
+   "text": "a clicky mechanical keyboard",
+   "category": "keyboard",
+   "bias": 0.04628
+  },
+  {
+   "text": "a laptop keyboard typing",
+   "category": "keyboard",
+   "bias": 0.05884
+  },
+  {
+   "text": "a spacebar press",
+   "category": "keyboard",
+   "bias": 0.08146
+  },
+  {
+   "text": "an enter key press",
+   "category": "keyboard",
+   "bias": 0.09663
+  },
+  {
+   "text": "a soft key release click",
+   "category": "keyboard",
+   "bias": 0.02356
+  },
+  {
+   "text": "slow typing with separate key presses",
+   "category": "keyboard",
+   "bias": 0.06204
+  },
+  {
+   "text": "an old typewriter",
+   "category": "keyboard",
+   "bias": 0.02123
+  },
+  {
+   "text": "a plastic click",
+   "category": "foley",
+   "bias": 0.06487
+  },
+  {
+   "text": "a plastic toy snapping together",
+   "category": "foley",
+   "bias": 0.07971
+  },
+  {
+   "text": "lego bricks clicking",
+   "category": "foley",
+   "bias": 0.04436
+  },
+  {
+   "text": "a plastic case snapping shut",
+   "category": "foley",
+   "bias": 0.03624
+  },
+  {
+   "text": "a latch clicking shut",
+   "category": "foley",
+   "bias": 0.02623
+  },
+  {
+   "text": "a box lid closing",
+   "category": "foley",
+   "bias": 0.05289
+  },
+  {
+   "text": "a ratchet clicking",
+   "category": "foley",
+   "bias": 0.0381
+  },
+  {
+   "text": "a fidget toy clicking",
+   "category": "foley",
+   "bias": 0.05309
+  },
+  {
+   "text": "a pen click",
+   "category": "foley",
+   "bias": 0.06869
+  },
+  {
+   "text": "a cork pop",
+   "category": "foley",
+   "bias": 0.07515
+  },
+  {
+   "text": "a mouth pop",
+   "category": "foley",
+   "bias": 0.06122
+  },
+  {
+   "text": "a bubble pop",
+   "category": "foley",
+   "bias": 0.09323
+  },
+  {
+   "text": "a balloon squeak",
+   "category": "foley",
+   "bias": -0.00879
+  },
+  {
+   "text": "a rubber stretch",
+   "category": "foley",
+   "bias": 0.01495
+  },
+  {
+   "text": "a suction cup pop",
+   "category": "foley",
+   "bias": 0.08044
+  },
+  {
+   "text": "a finger squeaking on glass",
+   "category": "foley",
+   "bias": -0.02423
+  },
+  {
+   "text": "a finger tapping on wood",
+   "category": "foley",
+   "bias": 0.02888
+  },
+  {
+   "text": "a finger tapping on glass",
+   "category": "foley",
+   "bias": 0.04672
+  },
+  {
+   "text": "glass clinking",
+   "category": "foley",
+   "bias": -0.00914
+  },
+  {
+   "text": "coins dropping",
+   "category": "foley",
+   "bias": 0.01572
+  },
+  {
+   "text": "paper rustling",
+   "category": "foley",
+   "bias": 0.02296
+  },
+  {
+   "text": "a page turning",
+   "category": "foley",
+   "bias": 0.04114
+  },
+  {
+   "text": "a zipper",
+   "category": "foley",
+   "bias": 0.03557
+  },
+  {
+   "text": "cloth rustling",
+   "category": "foley",
+   "bias": 0.0286
+  },
+  {
+   "text": "footsteps on wood",
+   "category": "foley",
+   "bias": -0.03698
+  },
+  {
+   "text": "footsteps on gravel",
+   "category": "foley",
+   "bias": -0.06506
+  },
+  {
+   "text": "high heels walking",
+   "category": "foley",
+   "bias": -0.04865
+  },
+  {
+   "text": "a small object dropping on a table",
+   "category": "foley",
+   "bias": 0.01315
+  },
+  {
+   "text": "a plastic object falling on a table",
+   "category": "foley",
+   "bias": 0.05017
+  },
+  {
+   "text": "dominoes falling",
+   "category": "foley",
+   "bias": 0.01948
+  },
+  {
+   "text": "a wooden block hit",
+   "category": "foley",
+   "bias": 0.03039
+  },
+  {
+   "text": "a wood creak",
+   "category": "foley",
+   "bias": 0.01959
+  },
+  {
+   "text": "a creaking door",
+   "category": "foley",
+   "bias": -0.01567
+  },
+  {
+   "text": "a metal scrape",
+   "category": "foley",
+   "bias": -0.02
+  },
+  {
+   "text": "a drawer closing",
+   "category": "foley",
+   "bias": 0.05579
+  },
+  {
+   "text": "scissors cutting",
+   "category": "foley",
+   "bias": 0.02954
+  },
+  {
+   "text": "a knife chopping on a board",
+   "category": "foley",
+   "bias": 0.04387
+  },
+  {
+   "text": "a can opening",
+   "category": "foley",
+   "bias": 0.06995
+  },
+  {
+   "text": "a squishy wet squelch",
+   "category": "foley",
+   "bias": -0.01221
+  },
+  {
+   "text": "water splashing",
+   "category": "water",
+   "bias": 0.01047
+  },
+  {
+   "text": "a water drop",
+   "category": "water",
+   "bias": 0.07488
+  },
+  {
+   "text": "a liquid bloop",
+   "category": "water",
+   "bias": 0.065
+  },
+  {
+   "text": "pouring water",
+   "category": "water",
+   "bias": -0.00246
+  },
+  {
+   "text": "ice cubes in a glass",
+   "category": "water",
+   "bias": 0.02024
+  },
+  {
+   "text": "an object plunging into water",
+   "category": "water",
+   "bias": 0.04097
+  },
+  {
+   "text": "bubbles underwater",
+   "category": "water",
+   "bias": 0.00889
+  },
+  {
+   "text": "being underwater",
+   "category": "water",
+   "bias": 0.02395
+  },
+  {
+   "text": "a stream flowing",
+   "category": "water",
+   "bias": 0.04635
+  },
+  {
+   "text": "a waterfall",
+   "category": "water",
+   "bias": 0.05135
+  },
+  {
+   "text": "a dripping tap",
+   "category": "water",
+   "bias": 0.04994
+  },
+  {
+   "text": "footsteps on grass",
+   "category": "nature",
+   "bias": -0.02514
+  },
+  {
+   "text": "walking through dry leaves",
+   "category": "nature",
+   "bias": 0.00082
+  },
+  {
+   "text": "leaves rustling",
+   "category": "nature",
+   "bias": 0.01595
+  },
+  {
+   "text": "a tree shaking",
+   "category": "nature",
+   "bias": 0.03035
+  },
+  {
+   "text": "a branch snapping",
+   "category": "nature",
+   "bias": 0.03329
+  },
+  {
+   "text": "an apple falling on grass",
+   "category": "nature",
+   "bias": 0.01353
+  },
+  {
+   "text": "something falling into bushes",
+   "category": "nature",
+   "bias": 0.01656
+  },
+  {
+   "text": "digging in soil",
+   "category": "nature",
+   "bias": -0.04189
+  },
+  {
+   "text": "a small animal running through grass",
+   "category": "nature",
+   "bias": 0.01006
+  },
+  {
+   "text": "insects buzzing",
+   "category": "nature",
+   "bias": 0.00928
+  },
+  {
+   "text": "a bee flying by",
+   "category": "nature",
+   "bias": 0.00404
+  },
+  {
+   "text": "a bird flapping its wings",
+   "category": "nature",
+   "bias": -0.01082
+  },
+  {
+   "text": "a horse galloping",
+   "category": "nature",
+   "bias": -0.00131
+  },
+  {
+   "text": "a small bell",
+   "category": "chimes",
+   "bias": 0.04224
+  },
+  {
+   "text": "a glass ting",
+   "category": "chimes",
+   "bias": 0.05024
+  },
+  {
+   "text": "a wine glass ring",
+   "category": "chimes",
+   "bias": -0.00766
+  },
+  {
+   "text": "a triangle hit",
+   "category": "chimes",
+   "bias": -0.01197
+  },
+  {
+   "text": "wind chimes",
+   "category": "chimes",
+   "bias": 0.04141
+  },
+  {
+   "text": "a glissando on bar chimes",
+   "category": "chimes",
+   "bias": 0.05452
+  },
+  {
+   "text": "a celesta note",
+   "category": "chimes",
+   "bias": 0.08568
+  },
+  {
+   "text": "a kalimba note",
+   "category": "chimes",
+   "bias": 0.03933
+  },
+  {
+   "text": "a glockenspiel run",
+   "category": "chimes",
+   "bias": 0.08969
+  },
+  {
+   "text": "a singing bowl",
+   "category": "chimes",
+   "bias": -0.02907
+  },
+  {
+   "text": "a sustained glass harp tone",
+   "category": "chimes",
+   "bias": -0.02631
+  },
+  {
+   "text": "a music box melody",
+   "category": "chimes",
+   "bias": 0.06233
+  },
+  {
+   "text": "a doorbell",
+   "category": "chimes",
+   "bias": 0.05924
+  },
+  {
+   "text": "church bells",
+   "category": "chimes",
+   "bias": 0.00961
+  },
+  {
+   "text": "a magic sparkle chime",
+   "category": "chimes",
+   "bias": 0.07705
+  },
+  {
+   "text": "rain on a window",
+   "category": "ambience",
+   "bias": 0.04847
+  },
+  {
+   "text": "heavy rain",
+   "category": "ambience",
+   "bias": 0.06155
+  },
+  {
+   "text": "rain on a roof",
+   "category": "ambience",
+   "bias": 0.04085
+  },
+  {
+   "text": "a thunderstorm",
+   "category": "ambience",
+   "bias": 0.04271
+  },
+  {
+   "text": "wind blowing",
+   "category": "ambience",
+   "bias": -0.02378
+  },
+  {
+   "text": "a gentle breeze in tall grass",
+   "category": "ambience",
+   "bias": -0.0079
+  },
+  {
+   "text": "wind in pine trees",
+   "category": "ambience",
+   "bias": 0.01745
+  },
+  {
+   "text": "birds singing in the morning",
+   "category": "ambience",
+   "bias": -0.04809
+  },
+  {
+   "text": "skylarks over a meadow",
+   "category": "ambience",
+   "bias": 0.01671
+  },
+  {
+   "text": "a forest ambience",
+   "category": "ambience",
+   "bias": 0.01222
+  },
+  {
+   "text": "a quiet countryside morning",
+   "category": "ambience",
+   "bias": -0.03136
+  },
+  {
+   "text": "a summer meadow with insects",
+   "category": "ambience",
+   "bias": 0.00537
+  },
+  {
+   "text": "a city street with traffic",
+   "category": "ambience",
+   "bias": -0.0626
+  },
+  {
+   "text": "a busy cafe",
+   "category": "ambience",
+   "bias": -0.09802
+  },
+  {
+   "text": "an office ambience",
+   "category": "ambience",
+   "bias": -0.04123
+  },
+  {
+   "text": "a quiet room tone",
+   "category": "ambience",
+   "bias": -0.03587
+  },
+  {
+   "text": "a quiet room at night",
+   "category": "ambience",
+   "bias": -0.0375
+  },
+  {
+   "text": "a computer fan hum",
+   "category": "ambience",
+   "bias": -0.01272
+  },
+  {
+   "text": "an electrical hum",
+   "category": "ambience",
+   "bias": -0.02187
+  },
+  {
+   "text": "ocean waves",
+   "category": "ambience",
+   "bias": 0.06311
+  },
+  {
+   "text": "a crackling fire",
+   "category": "ambience",
+   "bias": 0.04725
+  },
+  {
+   "text": "crickets at night",
+   "category": "ambience",
+   "bias": -0.02672
+  },
+  {
+   "text": "an airplane flying overhead",
+   "category": "ambience",
+   "bias": -0.00077
+  },
+  {
+   "text": "a crowd cheering",
+   "category": "ambience",
+   "bias": -0.05415
+  },
+  {
+   "text": "a dog barking",
+   "category": "ambience",
+   "bias": -0.04086
+  },
+  {
+   "text": "people talking in the background",
+   "category": "ambience",
+   "bias": -0.11158
+  },
+  {
+   "text": "a car horn honking",
+   "category": "everyday",
+   "bias": -0.04402
+  },
+  {
+   "text": "a car engine starting",
+   "category": "everyday",
+   "bias": 0.02268
+  },
+  {
+   "text": "a car driving past",
+   "category": "everyday",
+   "bias": -0.0249
+  },
+  {
+   "text": "a motorcycle revving",
+   "category": "everyday",
+   "bias": 0.00562
+  },
+  {
+   "text": "a train passing",
+   "category": "everyday",
+   "bias": -0.00817
+  },
+  {
+   "text": "a helicopter flying overhead",
+   "category": "everyday",
+   "bias": 0.02415
+  },
+  {
+   "text": "a police siren",
+   "category": "everyday",
+   "bias": -0.02755
+  },
+  {
+   "text": "a bicycle bell",
+   "category": "everyday",
+   "bias": 0.01231
+  },
+  {
+   "text": "a knock on a door",
+   "category": "everyday",
+   "bias": -0.02023
+  },
+  {
+   "text": "a phone ringing",
+   "category": "everyday",
+   "bias": -0.00137
+  },
+  {
+   "text": "an alarm clock beeping",
+   "category": "everyday",
+   "bias": 0.0018
+  },
+  {
+   "text": "a microwave beep",
+   "category": "everyday",
+   "bias": 0.01287
+  },
+  {
+   "text": "a kettle whistling",
+   "category": "everyday",
+   "bias": -0.05041
+  },
+  {
+   "text": "a vacuum cleaner",
+   "category": "everyday",
+   "bias": -0.00375
+  },
+  {
+   "text": "a toilet flushing",
+   "category": "everyday",
+   "bias": -0.00991
+  },
+  {
+   "text": "a clock ticking",
+   "category": "everyday",
+   "bias": 0.02578
+  },
+  {
+   "text": "a cash register",
+   "category": "everyday",
+   "bias": 0.02034
+  },
+  {
+   "text": "a printer printing",
+   "category": "everyday",
+   "bias": 0.01603
+  },
+  {
+   "text": "keys jingling",
+   "category": "everyday",
+   "bias": 0.00693
+  },
+  {
+   "text": "a match being struck",
+   "category": "everyday",
+   "bias": -0.01279
+  },
+  {
+   "text": "a spray can hissing",
+   "category": "everyday",
+   "bias": -0.00401
+  },
+  {
+   "text": "a hammer hitting a nail",
+   "category": "everyday",
+   "bias": 0.04625
+  },
+  {
+   "text": "a power drill",
+   "category": "everyday",
+   "bias": -0.01418
+  },
+  {
+   "text": "a saw cutting wood",
+   "category": "everyday",
+   "bias": 0.00831
+  },
+  {
+   "text": "a sword being drawn",
+   "category": "everyday",
+   "bias": -0.00474
+  },
+  {
+   "text": "a basketball bouncing",
+   "category": "everyday",
+   "bias": 0.04669
+  },
+  {
+   "text": "fireworks exploding",
+   "category": "everyday",
+   "bias": -0.03146
+  },
+  {
+   "text": "a thunder clap",
+   "category": "everyday",
+   "bias": 0.02907
+  },
+  {
+   "text": "a heartbeat",
+   "category": "everyday",
+   "bias": 0.02276
+  },
+  {
+   "text": "applause",
+   "category": "everyday",
+   "bias": -0.0052
+  },
+  {
+   "text": "a cat meowing",
+   "category": "everyday",
+   "bias": -0.03439
+  },
+  {
+   "text": "a bird chirping",
+   "category": "everyday",
+   "bias": -0.03982
+  },
+  {
+   "text": "a rooster crowing",
+   "category": "everyday",
+   "bias": 0.01475
+  },
+  {
+   "text": "a cow mooing",
+   "category": "everyday",
+   "bias": -0.03382
+  },
+  {
+   "text": "a horse neighing",
+   "category": "everyday",
+   "bias": -0.04579
+  },
+  {
+   "text": "minimal electronic music",
+   "category": "music_genre",
+   "bias": 0.10124
+  },
+  {
+   "text": "future bass music",
+   "category": "music_genre",
+   "bias": 0.09048
+  },
+  {
+   "text": "lo-fi hip hop beat",
+   "category": "music_genre",
+   "bias": 0.075
+  },
+  {
+   "text": "cinematic orchestral music",
+   "category": "music_genre",
+   "bias": 0.05191
+  },
+  {
+   "text": "uplifting orchestral film score",
+   "category": "music_genre",
+   "bias": 0.04759
+  },
+  {
+   "text": "epic trailer music",
+   "category": "music_genre",
+   "bias": 0.08129
+  },
+  {
+   "text": "ambient synth pad music",
+   "category": "music_genre",
+   "bias": 0.01816
+  },
+  {
+   "text": "upbeat corporate pop music",
+   "category": "music_genre",
+   "bias": 0.11706
+  },
+  {
+   "text": "inspirational corporate background music",
+   "category": "music_genre",
+   "bias": 0.08961
+  },
+  {
+   "text": "synthwave music",
+   "category": "music_genre",
+   "bias": 0.07277
+  },
+  {
+   "text": "house music",
+   "category": "music_genre",
+   "bias": 0.09026
+  },
+  {
+   "text": "tech house music",
+   "category": "music_genre",
+   "bias": 0.10193
+  },
+  {
+   "text": "drum and bass music",
+   "category": "music_genre",
+   "bias": 0.01624
+  },
+  {
+   "text": "trap beat",
+   "category": "music_genre",
+   "bias": 0.07634
+  },
+  {
+   "text": "glitch hop music",
+   "category": "music_genre",
+   "bias": 0.07741
+  },
+  {
+   "text": "indie pop music",
+   "category": "music_genre",
+   "bias": 0.09313
+  },
+  {
+   "text": "solo piano music",
+   "category": "music_genre",
+   "bias": 0.0592
+  },
+  {
+   "text": "playful children's piano music",
+   "category": "music_genre",
+   "bias": 0.06865
+  },
+  {
+   "text": "cheerful ukulele music",
+   "category": "music_genre",
+   "bias": 0.0565
+  },
+  {
+   "text": "acoustic guitar music",
+   "category": "music_genre",
+   "bias": 0.07014
+  },
+  {
+   "text": "jazz music",
+   "category": "music_genre",
+   "bias": 0.03212
+  },
+  {
+   "text": "rock music with electric guitars",
+   "category": "music_genre",
+   "bias": 0.02826
+  },
+  {
+   "text": "hip hop beat with heavy bass",
+   "category": "music_genre",
+   "bias": 0.0122
+  },
+  {
+   "text": "chiptune video game music",
+   "category": "music_genre",
+   "bias": 0.06853
+  },
+  {
+   "text": "dubstep music",
+   "category": "music_genre",
+   "bias": 0.05716
+  },
+  {
+   "text": "classical string quartet",
+   "category": "music_genre",
+   "bias": 0.01431
+  },
+  {
+   "text": "funk music",
+   "category": "music_genre",
+   "bias": 0.06004
+  },
+  {
+   "text": "techno music",
+   "category": "music_genre",
+   "bias": 0.04348
+  },
+  {
+   "text": "uplifting and hopeful music",
+   "category": "music_mood",
+   "bias": 0.09261
+  },
+  {
+   "text": "playful and quirky music",
+   "category": "music_mood",
+   "bias": 0.08939
+  },
+  {
+   "text": "dark and tense music",
+   "category": "music_mood",
+   "bias": 0.06921
+  },
+  {
+   "text": "sad and melancholic music",
+   "category": "music_mood",
+   "bias": 0.07453
+  },
+  {
+   "text": "calm and relaxing music",
+   "category": "music_mood",
+   "bias": 0.03939
+  },
+  {
+   "text": "energetic and driving music",
+   "category": "music_mood",
+   "bias": 0.05151
+  },
+  {
+   "text": "dreamy and ethereal music",
+   "category": "music_mood",
+   "bias": 0.04518
+  },
+  {
+   "text": "triumphant and heroic music",
+   "category": "music_mood",
+   "bias": 0.03885
+  },
+  {
+   "text": "mysterious music",
+   "category": "music_mood",
+   "bias": 0.08837
+  },
+  {
+   "text": "romantic music",
+   "category": "music_mood",
+   "bias": 0.11366
+  },
+  {
+   "text": "aggressive music",
+   "category": "music_mood",
+   "bias": 0.04875
+  },
+  {
+   "text": "warm and cozy music",
+   "category": "music_mood",
+   "bias": 0.1014
+  },
+  {
+   "text": "futuristic music",
+   "category": "music_mood",
+   "bias": 0.08626
+  },
+  {
+   "text": "confident and cool music",
+   "category": "music_mood",
+   "bias": 0.08167
+  },
+  {
+   "text": "suspenseful build-up music",
+   "category": "music_mood",
+   "bias": 0.08077
+  },
+  {
+   "text": "celebratory and joyful music",
+   "category": "music_mood",
+   "bias": 0.04378
+  },
+  {
+   "text": "a deep sub bass",
+   "category": "instruments",
+   "bias": 0.03143
+  },
+  {
+   "text": "a punchy kick drum pattern",
+   "category": "instruments",
+   "bias": -0.02928
+  },
+  {
+   "text": "crisp hi-hats",
+   "category": "instruments",
+   "bias": 0.03412
+  },
+  {
+   "text": "a snare roll",
+   "category": "instruments",
+   "bias": -0.01039
+  },
+  {
+   "text": "a synthesizer lead",
+   "category": "instruments",
+   "bias": 0.0697
+  },
+  {
+   "text": "a warm analog synth pad",
+   "category": "instruments",
+   "bias": 0.02438
+  },
+  {
+   "text": "a plucked synth arpeggio",
+   "category": "instruments",
+   "bias": 0.08991
+  },
+  {
+   "text": "a grand piano",
+   "category": "instruments",
+   "bias": 0.0393
+  },
+  {
+   "text": "an electric piano",
+   "category": "instruments",
+   "bias": 0.08114
+  },
+  {
+   "text": "strings ensemble",
+   "category": "instruments",
+   "bias": 0.05936
+  },
+  {
+   "text": "pizzicato strings",
+   "category": "instruments",
+   "bias": 0.04991
+  },
+  {
+   "text": "brass section",
+   "category": "instruments",
+   "bias": 0.03815
+  },
+  {
+   "text": "a celesta",
+   "category": "instruments",
+   "bias": 0.10996
+  },
+  {
+   "text": "a glockenspiel",
+   "category": "instruments",
+   "bias": 0.1137
+  },
+  {
+   "text": "bells",
+   "category": "instruments",
+   "bias": 0.06403
+  },
+  {
+   "text": "a marimba",
+   "category": "instruments",
+   "bias": 0.09523
+  },
+  {
+   "text": "an acoustic guitar",
+   "category": "instruments",
+   "bias": 0.07223
+  },
+  {
+   "text": "an electric guitar",
+   "category": "instruments",
+   "bias": 0.0574
+  },
+  {
+   "text": "a bass guitar",
+   "category": "instruments",
+   "bias": 0.04419
+  },
+  {
+   "text": "a ukulele",
+   "category": "instruments",
+   "bias": 0.05746
+  },
+  {
+   "text": "a choir",
+   "category": "instruments",
+   "bias": -0.0066
+  },
+  {
+   "text": "a vocal chop",
+   "category": "instruments",
+   "bias": 0.09093
+  },
+  {
+   "text": "orchestral percussion",
+   "category": "instruments",
+   "bias": 0.06775
+  },
+  {
+   "text": "a music box",
+   "category": "instruments",
+   "bias": 0.07802
+  },
+  {
+   "text": "a cymbal roll",
+   "category": "instruments",
+   "bias": 0.02521
+  },
+  {
+   "text": "a man speaking",
+   "category": "voice",
+   "bias": -0.10692
+  },
+  {
+   "text": "a woman speaking",
+   "category": "voice",
+   "bias": -0.09337
+  },
+  {
+   "text": "a voice-over narration",
+   "category": "voice",
+   "bias": -0.0128
+  },
+  {
+   "text": "someone whispering",
+   "category": "voice",
+   "bias": -0.038
+  },
+  {
+   "text": "singing vocals",
+   "category": "voice",
+   "bias": -0.0003
+  },
+  {
+   "text": "a crowd talking",
+   "category": "voice",
+   "bias": -0.11118
+  },
+  {
+   "text": "children laughing",
+   "category": "voice",
+   "bias": -0.08106
+  },
+  {
+   "text": "a person breathing",
+   "category": "voice",
+   "bias": -0.01386
+  },
+  {
+   "text": "a person coughing",
+   "category": "voice",
+   "bias": -0.04182
+  },
+  {
+   "text": "people laughing",
+   "category": "voice",
+   "bias": -0.11829
+  },
+  {
+   "text": "a baby crying",
+   "category": "voice",
+   "bias": -0.04414
+  },
+  {
+   "text": "a man shouting",
+   "category": "voice",
+   "bias": -0.11082
+  },
+  {
+   "text": "a deep sound",
+   "category": "quality",
+   "bias": 0.04966
+  },
+  {
+   "text": "a bright sound",
+   "category": "quality",
+   "bias": 0.06088
+  },
+  {
+   "text": "a thin sound",
+   "category": "quality",
+   "bias": -0.0028
+  },
+  {
+   "text": "a warm sound",
+   "category": "quality",
+   "bias": 0.08931
+  },
+  {
+   "text": "a harsh sound",
+   "category": "quality",
+   "bias": 0.02944
+  },
+  {
+   "text": "a muffled sound",
+   "category": "quality",
+   "bias": -0.04588
+  },
+  {
+   "text": "a crisp sound",
+   "category": "quality",
+   "bias": 0.03456
+  },
+  {
+   "text": "a punchy sound",
+   "category": "quality",
+   "bias": 0.0266
+  },
+  {
+   "text": "a soft sound",
+   "category": "quality",
+   "bias": -0.00628
+  },
+  {
+   "text": "a loud sound",
+   "category": "quality",
+   "bias": -0.02418
+  },
+  {
+   "text": "a quiet sound",
+   "category": "quality",
+   "bias": -0.02058
+  },
+  {
+   "text": "a short sound",
+   "category": "quality",
+   "bias": 0.07434
+  },
+  {
+   "text": "a long sound",
+   "category": "quality",
+   "bias": 0.07565
+  },
+  {
+   "text": "a dry close sound",
+   "category": "quality",
+   "bias": 0.12776
+  },
+  {
+   "text": "a reverberant sound in a large hall",
+   "category": "quality",
+   "bias": -0.02891
+  },
+  {
+   "text": "a distant sound",
+   "category": "quality",
+   "bias": -0.03782
+  },
+  {
+   "text": "a tight snappy sound",
+   "category": "quality",
+   "bias": 0.03894
+  },
+  {
+   "text": "a boomy sound",
+   "category": "quality",
+   "bias": 0.0568
+  },
+  {
+   "text": "an airy sound",
+   "category": "quality",
+   "bias": 0.00225
+  },
+  {
+   "text": "a metallic sound",
+   "category": "quality",
+   "bias": -0.02107
+  },
+  {
+   "text": "a hollow sound",
+   "category": "quality",
+   "bias": 0.02161
+  },
+  {
+   "text": "a satisfying sound",
+   "category": "quality",
+   "bias": 0.08626
+  },
+  {
+   "text": "a real recording of a physical object",
+   "category": "production",
+   "bias": 0.07038
+  },
+  {
+   "text": "a close-miked foley recording",
+   "category": "production",
+   "bias": 0.04622
+  },
+  {
+   "text": "a field recording outdoors",
+   "category": "production",
+   "bias": -0.0134
+  },
+  {
+   "text": "a professionally mixed and mastered music track",
+   "category": "production",
+   "bias": 0.18322
+  },
+  {
+   "text": "a high quality studio recording",
+   "category": "production",
+   "bias": 0.17443
+  },
+  {
+   "text": "a cheap synthesized beep",
+   "category": "production",
+   "bias": -0.0019
+  },
+  {
+   "text": "a pure sine wave tone",
+   "category": "production",
+   "bias": 0.03359
+  },
+  {
+   "text": "a square wave chiptune blip",
+   "category": "production",
+   "bias": 0.02042
+  },
+  {
+   "text": "a computer-generated electronic tone",
+   "category": "production",
+   "bias": 0.03584
+  },
+  {
+   "text": "white noise",
+   "category": "production",
+   "bias": -0.00451
+  },
+  {
+   "text": "pink noise",
+   "category": "production",
+   "bias": 0.03064
+  },
+  {
+   "text": "a retro video game sound effect",
+   "category": "production",
+   "bias": 0.04828
+  },
+  {
+   "text": "an 8-bit sound effect",
+   "category": "production",
+   "bias": 0.04276
+  },
+  {
+   "text": "a robotic synthetic sound",
+   "category": "production",
+   "bias": 0.10742
+  },
+  {
+   "text": "a low quality recording with hiss",
+   "category": "production",
+   "bias": -0.00569
+  },
+  {
+   "text": "a distorted clipped recording",
+   "category": "production",
+   "bias": 0.00759
+  },
+  {
+   "text": "a low bitrate mp3 with artifacts",
+   "category": "production",
+   "bias": 0.05491
+  },
+  {
+   "text": "a recording made on a phone",
+   "category": "production",
+   "bias": 0.01655
+  },
+  {
+   "text": "silence",
+   "category": "production",
+   "bias": 0.06018
+  }
+ ],
+ "scoring": {
+  "event_tags": "cos = A @ phrases.T; d = cos - event_tag_center * background_mean; z = (d - mean_over_phrases(d)) / (std_over_phrases(d) + 1e-9); population std; top 3 by z; kind of the best phrase is the event kind. A is the unit embedding of the event excerpt (event start - 20 ms .. + clamp(length, 0.3 s, 1.5 s); swells rise_ms before to 0.3 s after), repeat-padded to 10 s (done inside the graph)",
+  "section_tags": "cos = A @ terms.T; z = (cos - mean_over_terms) / (std_over_terms + 1e-9); no bias removal; top 2 per category in section_categories. A is the normalised mean of the section's window embeddings",
+  "calibrated_match": "u = cos - bias (bias = term . reference_mean); z = (u - mean_over_terms(u)) / (std_over_terms(u) + 1e-9); verdict from verdict_thresholds_z. This is earshot's match / describe / find / rank score. bias of any other query = query . reference_mean"
+ },
+ "constants": {
+  "event_tag_center": 0.5,
+  "exposed_db": 12.0,
+  "burst_s": 0.5,
+  "near_s": 0.1,
+  "verdict_thresholds_z": {
+   "strong": 3.0,
+   "plausible": 2.5,
+   "weak": 2.0
+  },
+  "section_categories": [
+   "music_genre",
+   "music_mood",
+   "instruments",
+   "ambience",
+   "voice"
+  ],
+  "z_ok": 2.5,
+  "z_weak": 1.5,
+  "section_merge_cos": 0.84,
+  "section_min_len_s": 4.0,
+  "section_ast_budget": 4,
+  "section_novelty_z": 3.0,
+  "section_max_count": "max(2, ceil(duration_s / 8))",
+  "detail_presets": {
+   "low": {
+    "tag": 12,
+    "ast": 0,
+    "win": 4.0,
+    "hop": 4.0,
+    "max_win": 30,
+    "ast_sec": 0
+   },
+   "normal": {
+    "tag": 20,
+    "ast": 1,
+    "win": 3.0,
+    "hop": 2.0,
+    "max_win": 32,
+    "ast_sec": 3
+   },
+   "high": {
+    "tag": 96,
+    "ast": 16,
+    "win": 3.0,
+    "hop": 1.5,
+    "max_win": 200,
+    "ast_sec": 12
+   }
+  },
+  "ast_generic_labels": [
+   "Animal",
+   "Inside, large room or hall",
+   "Inside, small room",
+   "Music",
+   "Musical instrument",
+   "Outside, rural or natural",
+   "Outside, urban or manmade",
+   "Silence",
+   "Sound effect",
+   "Speech"
+  ],
+  "window_s": 10.0,
+  "window_hop_s": 5.0,
+  "unvalidated_categories": [
+   "music_genre",
+   "music_mood",
+   "instruments",
+   "voice"
+  ]
+ }
+}

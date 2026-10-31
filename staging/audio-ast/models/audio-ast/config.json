@@ -1,0 +1,102 @@
+{
+ "format": 1,
+ "model": "ast_audioset.onnx",
+ "source": {
+  "repo": "MIT/ast-finetuned-audioset-10-10-0.4593",
+  "revision": "f826b80d28226b62986cc218e5cec390b1096902",
+  "weights": "model.safetensors",
+  "weights_sha256": "ae0c1e2ad4e1381d851fa9bf298ba13ebc9c5a914cdee2dbe427a6583869924d"
+ },
+ "input": {
+  "name": "waveform",
+  "dtype": "float32",
+  "shape": [
+   "batch",
+   "samples"
+  ],
+  "sample_rate": 16000,
+  "channels": "mono, 0.707 * (L + R) for stereo (ffmpeg -ac 1, as earshot)",
+  "resample": "from 48 kHz with soxr HQ in earshot; any good resampler",
+  "range": "nominal +-1",
+  "note": "at least 1600 samples are used (shorter input is zero-padded); frames beyond 1024 (163840 samples = 10.24 s) are ignored. All items in a batch share one length"
+ },
+ "outputs": [
+  {
+   "name": "logits",
+   "dtype": "float32",
+   "shape": [
+    "batch",
+    527
+   ]
+  },
+  {
+   "name": "probabilities",
+   "dtype": "float32",
+   "shape": [
+    "batch",
+    527
+   ],
+   "note": "sigmoid(logits), independent per class"
+  }
+ ],
+ "front_end_in_graph": true,
+ "weights": "fp16 initializers, fp32 compute",
+ "window_s": 10.24,
+ "window_hop_s": 5.12,
+ "window_alignment": "starts 0, hop, ...; one extra window aligned to the end when the tail is left over",
+ "window_reduce": {
+  "events": "max over windows",
+  "sections": "mean over windows"
+ },
+ "labels": "labels.json",
+ "label_index": {
+  "Speech": 0,
+  "Music": 137,
+  "Silence": 500
+ },
+ "earshot": {
+  "commit": "591fa3e028032e6dce56620a20e932e35667e8d8",
+  "license": "MIT, Copyright (c) 2026 Leon Lin (see NOTICE.txt)",
+  "event_voice_threshold": {
+   "label": "Speech",
+   "min_probability": 0.5,
+   "meaning": "an event whose AST Speech probability is >= 0.5 is a VOICE"
+  },
+  "event_top_labels": {
+   "count": 4,
+   "min_probability": 0.05
+  },
+  "section_music_threshold": {
+   "label": "Music",
+   "min_probability": 0.3
+  },
+  "section_speech_threshold": {
+   "label": "Speech",
+   "min_probability": 0.3
+  },
+  "section_presence_labels": [
+   "Music",
+   "Speech",
+   "Silence"
+  ],
+  "section_top_labels": {
+   "count": 5,
+   "min_probability": 0.05
+  },
+  "section_extra_source_min_probability": 0.08,
+  "section_extra_sources_max": 3,
+  "section_extra_sources_exclude": [
+   "Animal",
+   "Inside, large room or hall",
+   "Inside, small room",
+   "Music",
+   "Musical instrument",
+   "Outside, rural or natural",
+   "Outside, urban or manmade",
+   "Silence",
+   "Sound effect",
+   "Speech"
+  ],
+  "section_crop_s": 10.24
+ }
+}
