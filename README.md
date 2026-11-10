@@ -20,7 +20,7 @@ publishes them.
 | Essential Transitions | Fades, wipes, slides and other shot-to-shot transitions, including ports of the [GL Transitions](https://gl-transitions.com/) collection |
 | Essential Audio Effects | Reverb, EQ, pitch and voice shaping |
 | Essential Fonts | 21 font families for titles and captions |
-| Looks | Film emulations and creative colour looks for the Color workspace, in Essential Looks and More Looks |
+| Color Grading LUTs | Film emulations and creative colour grading LUTs for the Color workspace, in Essential Color Grading LUTs and More Color Grading LUTs |
 | Emoji Stickers | Emoji sticker set and the emoji font used for text |
 | Auto Captions | Whisper speech-to-text model for automatic subtitles |
 | Subject Cutout | SAM 2 model for isolating a subject from the background |

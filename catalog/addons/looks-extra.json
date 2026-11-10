@@ -1,7 +1,9 @@
 {
   "id": "looks.extra",
-  "tagline": "Hundreds more creative color looks",
-  "summary": "A large extra collection of creative color looks for when the essentials are not enough. Works the same way, with an intensity slider for each.",
+  "name": "More Color Grading LUTs",
+  "description": "Hundreds of creative color grading LUTs.",
+  "tagline": "Hundreds more creative color grading LUTs",
+  "summary": "A large extra collection of creative color grading LUTs for when the essentials are not enough. Works the same way, with an intensity slider for each.",
   "categories": [
     "color-looks"
   ],
@@ -16,18 +18,18 @@
   "useCases": [
     "Explore bolder, more stylized colors",
     "Match the mood of a scene",
-    "Find a look that fits your brand"
+    "Find a grade that fits your brand"
   ],
   "howTo": [
     "Select a clip and open the Color workspace",
-    "Open the Looks panel",
-    "Browse or search the extra looks",
+    "Open the Color Grading LUTs panel",
+    "Browse or search the extra LUTs",
     "Click one and adjust its intensity"
   ],
   "unlocks": [
     {
-      "label": "More looks",
-      "location": "Color workspace, Looks panel"
+      "label": "More color grading LUTs",
+      "location": "Color workspace, Color Grading LUTs panel"
     }
   ],
   "requires": [],

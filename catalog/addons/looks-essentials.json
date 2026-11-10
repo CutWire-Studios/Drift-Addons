@@ -1,7 +1,9 @@
 {
   "id": "looks.essentials",
-  "tagline": "Film looks and editor's-choice color grades",
-  "summary": "One-click color looks, including film emulations of classic stocks and hand-made grades. Each look has an intensity slider so you can make it as subtle as you like.",
+  "name": "Essential Color Grading LUTs",
+  "description": "Film emulations and editor's-choice color grading LUTs.",
+  "tagline": "Film emulation and editor's-choice color grading LUTs",
+  "summary": "One-click color grading LUTs, including film emulations of classic stocks and hand-made grades. Each LUT has an intensity slider so you can make it as subtle as you like.",
   "categories": [
     "color-looks"
   ],
@@ -15,20 +17,20 @@
   ],
   "icon": "palette",
   "useCases": [
-    "Give a whole video a consistent look quickly",
+    "Give a whole video a consistent grade quickly",
     "Get a classic film feel",
     "Start from a grade and fine-tune it"
   ],
   "howTo": [
     "Select a clip and open the Color workspace",
-    "Open the Looks panel",
-    "Click a look to preview it",
+    "Open the Color Grading LUTs panel",
+    "Click a LUT to preview it",
     "Use the intensity slider to blend it in"
   ],
   "unlocks": [
     {
-      "label": "Looks",
-      "location": "Color workspace, Looks panel"
+      "label": "Color grading LUTs",
+      "location": "Color workspace, Color Grading LUTs panel"
     }
   ],
   "requires": [],

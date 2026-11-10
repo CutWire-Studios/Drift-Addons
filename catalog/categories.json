@@ -1,7 +1,7 @@
 [
   {"id": "essentials", "title": "Essentials", "subtitle": "The basics most projects need", "icon": "star", "order": 10},
   {"id": "effects-transitions", "title": "Effects & Transitions", "subtitle": "Style your clips and move between them", "icon": "sparkles", "order": 20},
-  {"id": "color-looks", "title": "Color & Looks", "subtitle": "One-click film and creative color grades", "icon": "palette", "order": 30},
+  {"id": "color-looks", "title": "Color Grading", "subtitle": "One-click film and creative color grading LUTs", "icon": "palette", "order": 30},
   {"id": "text-fonts-stickers", "title": "Text, Fonts & Stickers", "subtitle": "Titles, typefaces and emoji to decorate your video", "icon": "type", "order": 40},
   {"id": "captions-speech", "title": "Captions & Speech", "subtitle": "Turn speech into text, and text into speech", "icon": "captions", "order": 50},
   {"id": "audio-cleanup", "title": "Audio Cleanup & Analysis", "subtitle": "Clean up sound and find what is in it", "icon": "audio", "order": 60},
