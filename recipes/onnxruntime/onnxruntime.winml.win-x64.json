@@ -1,0 +1,20 @@
+{
+  "id": "onnxruntime.winml.win-x64",
+  "version": "1.0.0",
+  "name": "AI Engine \u2014 Windows ML (DirectX 12)",
+  "description": "Same AI features, sped up by any modern graphics card (AMD, Intel, NVIDIA, Qualcomm) with nothing else to install. On Windows 11 24H2 and newer, Windows also adds AMD, NVIDIA and Intel speedups automatically. Falls back to this computer if the card can't be used.",
+  "details": "Microsoft Windows ML runtime 2.5.96 (ONNX Runtime 1.28.3) with the DirectML execution provider, which runs on any DirectX 12 graphics card. Vendor execution providers from the Windows ML catalog (AMD MIGraphX, NVIDIA TensorRT for RTX, Intel OpenVINO, Qualcomm QNN) are registered when Windows has them, which needs Windows 11 24H2; Windows downloads them on demand, so the first launch uses DirectML meanwhile. Requires Windows 10 1903 or newer. Licensed under the Microsoft Windows ML Runtime license terms. Platform: win-x64.",
+  "author": "Microsoft",
+  "license": "Microsoft Windows ML Runtime",
+  "minAppVersion": "0.9.2",
+  "platform": "win-x64",
+  "source": "../../staging/onnxruntime-winml-win-x64",
+  "provides": [
+    {
+      "kind": "onnxruntime",
+      "root": "runtime",
+      "items": 1
+    }
+  ],
+  "zstdLevel": 6
+}

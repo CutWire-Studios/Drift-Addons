@@ -20,7 +20,7 @@
   "howTo": [
     "Install ROCm with MIGraphX on your computer",
     "Install this engine",
-    "Open the AI engine details and choose AMD graphics"
+    "Open the AI engine details and choose AMD ROCm (MIGraphX)"
   ],
   "unlocks": [
     {

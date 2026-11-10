@@ -19,7 +19,7 @@
   ],
   "howTo": [
     "Install this engine",
-    "Open the AI engine details and choose NVIDIA graphics",
+    "Open the AI engine details and choose NVIDIA CUDA",
     "Run any AI tool as usual"
   ],
   "unlocks": [

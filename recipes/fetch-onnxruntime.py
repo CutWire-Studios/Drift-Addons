@@ -32,6 +32,11 @@ carries the complete C API runtime beside the Python binding, so it stages into 
 shape. ROCm itself is deliberately not bundled — it is gigabytes per GPU family — so the EP's
 RUNPATH points at the standard /opt/rocm locations and the user installs ROCm with MIGraphX.
 
+The `winml:` variant is the Windows engine. Microsoft's standalone Windows ML NuGet package carries
+ONNX Runtime with the DirectML execution provider built in, plus the Windows ML catalog through
+which Drift registers vendor providers Windows has installed on the system (AMD MIGraphX and so
+on). The user installs nothing besides the addon.
+
 The archives are large and are cached under ../staging/.cache.
 """
 
@@ -65,7 +70,9 @@ ORT_RELEASE = f"https://github.com/microsoft/onnxruntime/releases/download/v{ORT
 # The WebGPU plugin EP is versioned and published separately from the core, which is the whole
 # point of the plugin architecture: it iterates on its own cadence and works against any core from
 # 1.24.4 on. NuGet is the only place it ships as native binaries; a .nupkg is a plain zip.
-WEBGPU_VERSION = "0.1.0"
+WEBGPU_VERSION = "0.5.0"
+# 1.1.0 moves to upstream 0.5.0, which also adds linux-arm64 and no longer ships dxil.dll.
+WEBGPU_PACKAGE_VERSION = "1.1.0"
 WEBGPU_NUPKG = ("https://www.nuget.org/api/v2/package/"
                 f"Microsoft.ML.OnnxRuntime.EP.WebGpu/{WEBGPU_VERSION}")
 WEBGPU_MIN_API = 24
@@ -120,13 +127,28 @@ MIGRAPHX_RUNPATH = "$ORIGIN:/opt/rocm/lib:/opt/rocm/lib/migraphx/lib"
 # The app needs the "migraphx" variant to pick the provider and explain a missing ROCm.
 MIGRAPHX_MIN_APP_VERSION = "0.9.0"
 
+# The standalone Windows ML package is the only place Microsoft ships ONNX Runtime with DirectML
+# and the execution-provider catalog together; a .nupkg is a plain zip. It runs unpackaged on
+# Windows 10 1903+ without the Windows App SDK.
+WINML_VERSION = "2.5.96"
+WINML_ORT_VERSION = "1.28.3"
+WINML_API_VERSION = 28
+WINML_NUPKG = ("https://api.nuget.org/v3-flatcontainer/microsoft.windows.ai.machinelearning/"
+               f"{WINML_VERSION}/microsoft.windows.ai.machinelearning.{WINML_VERSION}.nupkg")
+WINML_SHA256 = "35d6e84feb4142e8cecaf36704fa3ab0fc8251d892850fb80e8341f7d09653a3"
+WINML_PLATFORMS = {"win-x64", "win-arm64"}
+WINML_LIBRARIES = ["onnxruntime.dll", "DirectML.dll", "Microsoft.Windows.AI.MachineLearning.dll"]
+# The app needs the "winml" variant to enable DirectML and the catalog.
+WINML_MIN_APP_VERSION = "0.9.2"
+
 # NuGet runtime identifier -> the extra files that ride along with the EP library. The Windows
 # builds need the DirectX shader compiler beside them.
 WEBGPU_PLATFORMS = {
     "linux-x64": ("libonnxruntime_providers_webgpu.so", []),
+    "linux-arm64": ("libonnxruntime_providers_webgpu.so", []),
     "osx-arm64": ("libonnxruntime_providers_webgpu.dylib", []),
-    "win-x64": ("onnxruntime_providers_webgpu.dll", ["dxil.dll", "dxcompiler.dll"]),
-    "win-arm64": ("onnxruntime_providers_webgpu.dll", ["dxil.dll", "dxcompiler.dll"]),
+    "win-x64": ("onnxruntime_providers_webgpu.dll", ["dxcompiler.dll"]),
+    "win-arm64": ("onnxruntime_providers_webgpu.dll", ["dxcompiler.dll"]),
 }
 
 # Android is the one platform Microsoft does not publish as a release archive. It ships as an AAR
@@ -202,6 +224,25 @@ MIGRAPHX_COPY = {
         "--filesystem=/opt:ro --device=all org.cutwire.Drift\". Falls back to CPU when the "
         "device cannot be used. Upstream: Microsoft ONNX "
         "Runtime {version}, the onnxruntime-migraphx wheel from PyPI."
+    ),
+}
+
+WINML_COPY = {
+    "name": "AI Engine — Windows ML (DirectX 12)",
+    "description": (
+        "Same AI features, sped up by any modern graphics card (AMD, Intel, NVIDIA, Qualcomm) "
+        "with nothing else to install. On Windows 11 24H2 and newer, Windows also adds "
+        "AMD, NVIDIA and Intel speedups automatically. Falls back to this computer if the card "
+        "can't be used."
+    ),
+    "details": (
+        "Microsoft Windows ML runtime {winml_version} (ONNX Runtime {version}) with the DirectML "
+        "execution provider, which runs on any DirectX 12 graphics card. Vendor execution "
+        "providers from the Windows ML catalog (AMD MIGraphX, NVIDIA TensorRT for RTX, Intel "
+        "OpenVINO, Qualcomm QNN) are registered when Windows has them, which needs Windows 11 "
+        "24H2; Windows downloads them on demand, so the first launch uses DirectML meanwhile. "
+        "Requires Windows 10 1903 or newer. Licensed under the Microsoft Windows ML Runtime "
+        "license terms."
     ),
 }
 
@@ -568,7 +609,7 @@ def stage_webgpu(platform: str) -> None:
 
     recipe = _write_recipe({
         "id": f"onnxruntime.ep.webgpu.{platform}",
-        "version": PACKAGE_VERSION,
+        "version": WEBGPU_PACKAGE_VERSION,
         "name": "Speed boost — Any graphics card",
         "description": "Makes AI features faster using your graphics card (AMD, Intel, or NVIDIA) "
                        "— no extra toolkit to install. Install an AI Engine first; this just "
@@ -647,6 +688,51 @@ def stage_migraphx(platform: str) -> None:
     print(f"{name}: {size / 1e6:.0f} MB -> {recipe.relative_to(HERE.parent)}")
 
 
+def stage_winml(platform: str) -> None:
+    nupkg = _download(WINML_NUPKG, f"windows-ml-{WINML_VERSION}.nupkg", WINML_SHA256)
+
+    name = f"onnxruntime-winml-{platform}"
+    target = _reset(name)
+    root = target / "runtime"
+    lib = root / "lib"
+    lib.mkdir(parents=True)
+
+    with zipfile.ZipFile(nupkg) as zf:
+        native = f"runtimes/{platform}/native/"
+        members = {native + library: lib / library for library in WINML_LIBRARIES}
+        members["license.txt"] = root / "LICENSE.txt"
+        members["ThirdPartyNotices.txt"] = root / "ThirdPartyNotices.txt"
+        for member, dest in members.items():
+            with zf.open(member) as src, dest.open("wb") as dst:
+                shutil.copyfileobj(src, dst)
+
+    (root / "runtime.json").write_text(json.dumps({
+        "variant": "winml",
+        "ortVersion": WINML_ORT_VERSION,
+        "apiVersion": WINML_API_VERSION,
+        "platform": platform,
+    }, indent=2) + "\n")
+
+    recipe = _write_recipe({
+        "id": f"onnxruntime.winml.{platform}",
+        "version": PACKAGE_VERSION,
+        "name": WINML_COPY["name"],
+        "description": WINML_COPY["description"],
+        "details": WINML_COPY["details"].format(winml_version=WINML_VERSION,
+                                                version=WINML_ORT_VERSION)
+                   + f" Platform: {platform}.",
+        "author": "Microsoft",
+        "license": "Microsoft Windows ML Runtime",
+        "minAppVersion": WINML_MIN_APP_VERSION,
+        "platform": platform,
+        "source": f"../../staging/{name}",
+        "provides": [{"kind": "onnxruntime", "root": "runtime", "items": 1}],
+        "zstdLevel": 6,
+    })
+    size = sum(f.stat().st_size for f in target.rglob("*") if f.is_file())
+    print(f"{name}: {size / 1e6:.0f} MB -> {recipe.relative_to(HERE.parent)}")
+
+
 def stage_android(platform: str) -> None:
     abi = ANDROID_PLATFORMS[platform]
     aar = _download(ANDROID_AAR, f"onnxruntime-android-{ORT_VERSION}.aar", ANDROID_AAR_SHA256)
@@ -700,6 +786,7 @@ def all_targets() -> list[str]:
     targets += [f"webgpu:{platform}" for platform in WEBGPU_PLATFORMS]
     targets += [f"android:{platform}" for platform in ANDROID_PLATFORMS]
     targets += [f"migraphx:{platform}" for platform in sorted(MIGRAPHX_PLATFORMS)]
+    targets += [f"winml:{platform}" for platform in sorted(WINML_PLATFORMS)]
     return targets
 
 
@@ -719,6 +806,10 @@ def main() -> None:
             if platform not in MIGRAPHX_PLATFORMS:
                 sys.exit(f"upstream publishes no MIGraphX build for {platform}")
             stage_migraphx(platform)
+        elif variant == "winml":
+            if platform not in WINML_PLATFORMS:
+                sys.exit(f"upstream publishes no Windows ML build for {platform}")
+            stage_winml(platform)
         elif variant == "android":
             if platform not in ANDROID_PLATFORMS:
                 sys.exit(f"upstream publishes no Android build for {platform}")

@@ -1,0 +1,6 @@
+{
+  "variant": "webgpu",
+  "library": "onnxruntime_providers_webgpu.dll",
+  "minApiVersion": 24,
+  "platform": "win-arm64"
+}

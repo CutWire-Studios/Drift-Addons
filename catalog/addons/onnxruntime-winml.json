@@ -1,0 +1,39 @@
+{
+  "match": "onnxruntime.winml.*",
+  "tagline": "Faster AI with Windows ML on any DirectX 12 graphics card",
+  "summary": "The same AI features, sped up by any modern graphics card (AMD, Intel, NVIDIA or Qualcomm) with nothing else to install. On Windows 11 24H2 and newer, Windows adds vendor-tuned speedups by itself, and Drift falls back to the processor if the card can't be used.",
+  "categories": [
+    "engines-runtimes"
+  ],
+  "keywords": [
+    "directml",
+    "windows ml",
+    "amd",
+    "radeon",
+    "intel",
+    "nvidia",
+    "gpu",
+    "faster",
+    "ai engine",
+    "migraphx"
+  ],
+  "icon": "zap",
+  "useCases": [
+    "Speed up AI tools on any Windows graphics card"
+  ],
+  "howTo": [
+    "Install this engine",
+    "Open the AI engine details and choose a graphics option, or leave it on Automatic"
+  ],
+  "unlocks": [
+    {
+      "label": "Faster AI tools",
+      "location": "Throughout Drift"
+    }
+  ],
+  "requires": [],
+  "recommends": [],
+  "images": [],
+  "links": [],
+  "order": 50
+}
