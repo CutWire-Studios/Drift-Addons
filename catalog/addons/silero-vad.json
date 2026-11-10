@@ -1,5 +1,6 @@
 {
   "id": "silero.vad",
+  "name": "Voice Activity Detection",
   "tagline": "Find exactly where people are talking",
   "summary": "Detects speech so silence removal skips breaths, music and room noise instead of treating them as talking. Also tightens caption timing.",
   "categories": [

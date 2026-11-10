@@ -32,7 +32,7 @@ MEDIA_PREFIX = "catalog/media/"
 SCHEMA = 1
 
 ENTRY_KEYS = {
-    "id", "match", "tagline", "summary", "categories", "keywords", "icon", "accent",
+    "id", "match", "name", "description", "details", "tagline", "summary", "categories", "keywords", "icon", "accent",
     "useCases", "howTo", "unlocks", "requires", "recommends", "images", "links",
     "hidden", "order",
 }
@@ -97,6 +97,9 @@ def validate(categories, collections, entries, rows, offline_note: str) -> tuple
         for key in e:
             if key not in ENTRY_KEYS:
                 warnings.append(f"{label}: unknown key '{key}'")
+        for key in ("name", "description", "details"):
+            if key in e and not (isinstance(e[key], str) and e[key].strip()):
+                errors.append(f"{label}: {key} must be a non-empty string")
         if "id" in e and e["id"] not in ids:
             errors.append(f"{label}: id not in index or recipes")
         if "match" in e and not any(covers(e, i) for i in ids):

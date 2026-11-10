@@ -1,5 +1,6 @@
 {
   "match": "onnxruntime.cuda.*",
+  "name": "AI Engine — NVIDIA CUDA",
   "tagline": "Faster AI on NVIDIA graphics cards",
   "summary": "The same AI features, sped up by an NVIDIA graphics card. Needs a recent NVIDIA driver, and falls back to the processor if the card cannot be used.",
   "categories": [

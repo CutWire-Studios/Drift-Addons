@@ -2,7 +2,9 @@
  * Drift addon delivery.
  *
  * Four endpoints:
- *   GET /v1/index          -> the addon catalogue, with a short-lived signed URL per addon
+ *   GET /v1/index          -> the addon catalogue, with a short-lived signed URL per addon; name,
+ *                             description and details are overridden by the store catalog when it
+ *                             has them, so a text change never needs a package republish
  *   GET /v1/dl/<key>       -> the bytes, if the ticket in the query string checks out
  *   GET /v1/catalog        -> store metadata (categories, descriptions, dependencies), public
  *   GET /v1/media/<path>   -> images referenced by the store metadata, public
@@ -149,6 +151,73 @@ function pickForClient(
   return [...best.values()].map(({ row }) => row);
 }
 
+/**
+ * Fetches the catalog for the request's language (localized first, then the default), through
+ * the edge cache. Null when neither exists.
+ */
+async function loadCatalog(request: Request, env: Env, ctx: ExecutionContext): Promise<Response | null> {
+  const language = preferredLanguage(request);
+  const keys = language && language !== "en"
+    ? [`catalog/catalog.${language}.json`, CATALOG_KEY]
+    : [CATALOG_KEY];
+
+  const cache = caches.default;
+  for (const key of keys) {
+    const cacheKey = new Request(`https://addons.internal/${key}`, { method: "GET" });
+    const hit = await cache.match(cacheKey);
+    if (hit) return hit;
+    const object = await env.BUCKET.get(key);
+    if (!object) continue;
+    const text = await object.text();
+    let revision = "";
+    try {
+      revision = String((JSON.parse(text) as { revision?: unknown }).revision ?? "");
+    } catch {
+      // An unparseable catalog still serves; the R2 etag identifies it instead.
+    }
+    const found = new Response(text, {
+      headers: {
+        "Content-Type": "application/json",
+        "Cache-Control": `public, max-age=${INDEX_CACHE_SECONDS}`,
+        ETag: revision ? `"${revision}"` : object.httpEtag,
+      },
+    });
+    ctx.waitUntil(cache.put(cacheKey, found.clone()));
+    return found;
+  }
+  return null;
+}
+
+type CatalogEntry = { id?: string; match?: string } & Record<string, unknown>;
+
+/** fnmatch-style glob where only * and ? are special. */
+function globMatches(pattern: string, id: string): boolean {
+  const source = [...pattern]
+    .map((c) => (c === "*" ? ".*" : c === "?" ? "." : c.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")))
+    .join("");
+  return new RegExp(`^${source}$`, "s").test(id);
+}
+
+/** Exact id first, else the first matching glob — the same resolution Drift applies. */
+function entryFor(entries: CatalogEntry[], id: string): CatalogEntry | undefined {
+  return entries.find((e) => e.id === id)
+    ?? entries.find((e) => typeof e.match === "string" && globMatches(e.match, id));
+}
+
+async function catalogEntries(request: Request, env: Env, ctx: ExecutionContext): Promise<CatalogEntry[]> {
+  try {
+    const response = await loadCatalog(request, env, ctx);
+    if (!response) return [];
+    const { entries } = (await response.json()) as { entries?: unknown };
+    return Array.isArray(entries) ? (entries as CatalogEntry[]) : [];
+  } catch {
+    // The catalog only decorates the index; never let it take the index down.
+    return [];
+  }
+}
+
+const OVERRIDABLE = ["name", "description", "details"] as const;
+
 async function handleIndex(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
   const url = new URL(request.url);
   const { success } = await env.INDEX_LIMITER.limit({ key: clientKey(request) });
@@ -173,11 +242,20 @@ async function handleIndex(request: Request, env: Env, ctx: ExecutionContext): P
 
   const index = (await raw.json()) as { addons?: Array<Record<string, unknown>> };
   const clientVersion = request.headers.get("X-Drift-Version") || LEGACY_CLIENT_VERSION;
+  const picked = pickForClient(index.addons ?? [], clientVersion);
+  const entries = await catalogEntries(request, env, ctx);
   const addons = await Promise.all(
-    pickForClient(index.addons ?? [], clientVersion).map(async ({ key, ...addon }) => ({
-      ...addon,
-      url: await mintTicket(env, String(key), url.origin),
-    })),
+    picked.map(async ({ key, ...addon }) => {
+      const entry = entryFor(entries, String(addon.id));
+      for (const field of OVERRIDABLE) {
+        const value = entry?.[field];
+        if (typeof value === "string" && value.trim()) addon[field] = value;
+      }
+      return {
+        ...addon,
+        url: await mintTicket(env, String(key), url.origin),
+      };
+    }),
   );
 
   return Response.json({ ...index, addons }, {
@@ -258,37 +336,7 @@ async function handleCatalog(request: Request, env: Env, ctx: ExecutionContext):
   const { success } = await env.INDEX_LIMITER.limit({ key: clientKey(request) });
   if (!success) return problem(429, "Too many requests");
 
-  const language = preferredLanguage(request);
-  const keys = language && language !== "en"
-    ? [`catalog/catalog.${language}.json`, CATALOG_KEY]
-    : [CATALOG_KEY];
-
-  const cache = caches.default;
-  let found: Response | null = null;
-  for (const key of keys) {
-    const cacheKey = new Request(`https://addons.internal/${key}`, { method: "GET" });
-    found = (await cache.match(cacheKey)) ?? null;
-    if (!found) {
-      const object = await env.BUCKET.get(key);
-      if (!object) continue;
-      const text = await object.text();
-      let revision = "";
-      try {
-        revision = String((JSON.parse(text) as { revision?: unknown }).revision ?? "");
-      } catch {
-        // An unparseable catalog still serves; the R2 etag identifies it instead.
-      }
-      found = new Response(text, {
-        headers: {
-          "Content-Type": "application/json",
-          "Cache-Control": `public, max-age=${INDEX_CACHE_SECONDS}`,
-          ETag: revision ? `"${revision}"` : object.httpEtag,
-        },
-      });
-      ctx.waitUntil(cache.put(cacheKey, found.clone()));
-    }
-    break;
-  }
+  const found = await loadCatalog(request, env, ctx);
   if (!found) return problem(503, "Catalog is unavailable");
 
   const headers = new Headers(found.headers);

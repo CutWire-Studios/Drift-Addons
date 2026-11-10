@@ -1,5 +1,6 @@
 {
   "id": "audio.ast",
+  "name": "Sound Type Detection",
   "tagline": "Tell speech, music and silence apart",
   "summary": "Marks which parts of your timeline are speech, music or silence and names the sounds in between. Useful for quickly understanding long recordings.",
   "categories": [

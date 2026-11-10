@@ -15,6 +15,9 @@ Addons without an entry are ignored by the store (the validator warns).
 
 ```
 id | match      exact addon id, or a glob such as "onnxruntime.cpu.*" (one card for all platform builds)
+name            overrides the package's own name wherever Drift shows it
+description     overrides the package's description
+details         overrides the package's details
 tagline         one line, 60 characters at most
 summary         2-3 sentences
 categories[]    category ids
@@ -35,6 +38,8 @@ Platform keys in `prefer`: android-arm64, linux-arm64, linux-x64, osx-arm64, osx
 Icon names: star, sparkles, palette, type, captions, audio, mic, scissors, wand, smile, brain, bot, cpu, zap, layers, file.
 
 ## Compiled output
+
+`name`, `description` and `details` are merged by the Worker into `/v1/index` rows, so text changes never need a repack.
 
 `{schema: 1, revision, generated, categories, collections, entries}`. `revision` is the first 16 hex of a SHA-256 over the content and is the response ETag. Compiled `images[].src` is the hashed filename, served from `/v1/media/<src>`. Clients must ignore unknown fields; breaking changes bump `schema`.
 

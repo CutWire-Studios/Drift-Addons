@@ -11,6 +11,10 @@ const cached = new Map<string, Response>();
   },
 };
 
+// Workers-only API; the index route checks the client token with it.
+(crypto.subtle as any).timingSafeEqual ??= (a: Uint8Array, b: Uint8Array) =>
+  a.byteLength === b.byteLength && a.every((v, i) => v === b[i]);
+
 const env = {
   BUCKET: {
     get: async (key: string) => {
@@ -108,5 +112,67 @@ describe("routing", () => {
 
   test("POST is 405", async () => {
     expect((await call("/v1/catalog", { method: "POST" })).status).toBe(405);
+  });
+});
+
+describe("/v1/index catalog overrides", () => {
+  const rows = [
+    { id: "onnxruntime.cpu.linux-x64", version: "1.0.0", name: "Old CPU", description: "old d", details: "old x", key: "a" },
+    { id: "onnxruntime.cuda.linux-x64", version: "1.0.0", name: "Old CUDA", description: "old d", details: "old x", key: "b" },
+    { id: "silero.vad", version: "1.0.0", name: "Silero", description: "vad d", details: "vad x", key: "c" },
+  ];
+
+  beforeEach(() => {
+    files.set("index.json", JSON.stringify({ addons: rows }));
+  });
+
+  async function addons(headers: Record<string, string> = {}) {
+    const response = await call("/v1/index", { headers: { "X-Drift-Client": "token", ...headers } });
+    expect(response.status).toBe(200);
+    const body = await response.json() as any;
+    return Object.fromEntries(body.addons.map((a: any) => [a.id, a]));
+  }
+
+  function setCatalog(entries: unknown[], key = "catalog/catalog.json") {
+    files.set(key, JSON.stringify({ schema: 1, revision: "r", entries }));
+  }
+
+  test("a match entry overrides name, description and details", async () => {
+    setCatalog([{ match: "onnxruntime.cpu.*", name: "CPU", description: "d", details: "x" }]);
+    const by = await addons();
+    expect(by["onnxruntime.cpu.linux-x64"]).toMatchObject({ name: "CPU", description: "d", details: "x" });
+    expect(by["onnxruntime.cuda.linux-x64"].name).toBe("Old CUDA");
+  });
+
+  test("an exact id entry wins over a match entry", async () => {
+    setCatalog([
+      { match: "onnxruntime.*", name: "Glob" },
+      { id: "onnxruntime.cpu.linux-x64", name: "Exact" },
+    ]);
+    const by = await addons();
+    expect(by["onnxruntime.cpu.linux-x64"].name).toBe("Exact");
+    expect(by["onnxruntime.cuda.linux-x64"].name).toBe("Glob");
+  });
+
+  test("entries without the fields leave the row untouched", async () => {
+    setCatalog([{ id: "silero.vad", tagline: "t" }, { match: "onnxruntime.cpu.*", name: "" }]);
+    const by = await addons();
+    expect(by["silero.vad"]).toMatchObject({ name: "Silero", description: "vad d", details: "vad x" });
+    expect(by["onnxruntime.cpu.linux-x64"].name).toBe("Old CPU");
+  });
+
+  test("uses the localized catalog when Accept-Language asks for it", async () => {
+    setCatalog([{ id: "silero.vad", name: "English" }]);
+    setCatalog([{ id: "silero.vad", name: "Deutsch" }], "catalog/catalog.de.json");
+    expect((await addons({ "Accept-Language": "de-DE,de;q=0.9" }))["silero.vad"].name).toBe("Deutsch");
+    expect((await addons())["silero.vad"].name).toBe("English");
+  });
+
+  test("a missing catalog leaves the index unchanged", async () => {
+    files.delete("catalog/catalog.json");
+    files.delete("catalog/catalog.de.json");
+    const by = await addons();
+    expect(by["silero.vad"]).toMatchObject({ name: "Silero", description: "vad d" });
+    expect(by["silero.vad"].url).toContain("/v1/dl/c");
   });
 });

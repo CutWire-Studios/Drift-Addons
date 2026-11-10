@@ -1,5 +1,6 @@
 {
   "match": "onnxruntime.cpu.*",
+  "name": "AI Engine — Processor (CPU)",
   "tagline": "The AI engine that works on every computer",
   "summary": "Powers Drift's AI tools such as captions, cutouts and noise removal. It runs on your computer's processor and is installed automatically the first time an AI tool needs it.",
   "categories": [

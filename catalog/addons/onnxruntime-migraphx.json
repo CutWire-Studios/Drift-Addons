@@ -1,5 +1,6 @@
 {
   "match": "onnxruntime.migraphx.*",
+  "name": "AI Engine — AMD ROCm (MIGraphX)",
   "tagline": "Faster AI on AMD graphics cards",
   "summary": "The same AI features, sped up by an AMD Radeon card. It needs ROCm with MIGraphX installed on your computer, and falls back to the processor if it is missing.",
   "categories": [
