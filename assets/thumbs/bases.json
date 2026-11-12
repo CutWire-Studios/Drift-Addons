@@ -42,6 +42,8 @@
     "twirl": "tulips.jpg",
     "wave_warp": "tulips.jpg",
     "stylize.sharpen": "macaw.jpg",
-    "face_swap": "swap-target.jpg"
+    "face_swap": "swap-target.jpg",
+    "motion.blur": "side-car.jpg",
+    "builtin.effects.privacy_blur": "street-portrait.jpg"
   }
 }
