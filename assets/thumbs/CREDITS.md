@@ -17,7 +17,9 @@ effect and template thumbnails from; `bases.json` says which effect uses which.
 | `neon.jpg` | [Blue and red neon sign (Unsplash).jpg](https://commons.wikimedia.org/wiki/File:Blue_and_red_neon_sign_(Unsplash).jpg) | Seb sebasqien | CC0 |
 | `parrot-on-black.jpg` | [Parrot (Unsplash).jpg](https://commons.wikimedia.org/wiki/File:Parrot_(Unsplash).jpg) | Ruth Caron carondesign | CC0 |
 | `portrait.jpg` | [Portrait of a man (Unsplash).jpg](https://commons.wikimedia.org/wiki/File:Portrait_of_a_man_(Unsplash).jpg) | William Stitt willpower | CC0 |
+| `standing-woman.jpg` | [New York Street Fashion (Unsplash).jpg](https://commons.wikimedia.org/wiki/File:New_York_Street_Fashion_(Unsplash).jpg) | Yegide Matthews yegidem | CC0 |
 | `stag.jpg` | [Wild Deer (Unsplash).jpg](https://commons.wikimedia.org/wiki/File:Wild_Deer_(Unsplash).jpg) | Nathan Anderson nathananderson | CC0 |
 | `sunset.jpg` | [Silhouette surfer at sunset (Unsplash).jpg](https://commons.wikimedia.org/wiki/File:Silhouette_surfer_at_sunset_(Unsplash).jpg) | Rafael Leão raflfc | CC0 |
 | `tulips.jpg` | [Colorful tulip bouquets (Unsplash).jpg](https://commons.wikimedia.org/wiki/File:Colorful_tulip_bouquets_(Unsplash).jpg) | John-Mark Kuznietsov mrrrk_smith | CC0 |
+| `walker.jpg` | [Man carrying skateboard (Unsplash).jpg](https://commons.wikimedia.org/wiki/File:Man_carrying_skateboard_(Unsplash).jpg) | Brooke Cagle brookecagle | CC0 |
 | `vintage-car.jpg` | [Yellow vintage car Havana (Unsplash).jpg](https://commons.wikimedia.org/wiki/File:Yellow_vintage_car_Havana_(Unsplash).jpg) | Wolf Schram wolfbroadcast | CC0 |

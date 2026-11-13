@@ -27,8 +27,8 @@
     "builtin.effects.gaussian_blur": "tulips.jpg",
     "stylize.blur": "tulips.jpg",
     "stylize.vignette": "vintage-car.jpg",
-    "time_echo": "cyclist.jpg",
-    "corner_pin": "tulips.jpg",
+    "time_echo": "walker.jpg",
+    "corner_pin": "landscape.jpg",
     "droste_zoom": "tulips.jpg",
     "kaleidoscope": "tulips.jpg",
     "lens_distortion": "tulips.jpg",
@@ -43,7 +43,17 @@
     "wave_warp": "tulips.jpg",
     "stylize.sharpen": "macaw.jpg",
     "face_swap": "swap-target.jpg",
-    "motion.blur": "side-car.jpg",
-    "builtin.effects.privacy_blur": "street-portrait.jpg"
+    "motion.blur": "walker.jpg",
+    "builtin.effects.privacy_blur": "street-portrait.jpg",
+    "anamorphic_streak": "city-night.jpg",
+    "camera_punch": "vintage-car.jpg",
+    "speed_streaks": "cyclist.jpg",
+    "directional_blur": "side-car.jpg",
+    "clone_parade": "standing-woman.jpg",
+    "feedback": "walker.jpg",
+    "trails": "walker.jpg",
+    "frame_delay": "walker.jpg",
+    "slit_scan": "walker.jpg",
+    "face_props": "beauty.jpg"
   }
 }
