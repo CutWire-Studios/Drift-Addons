@@ -1,0 +1,448 @@
+{
+  "id": "move_subject",
+  "displayName": "Move Subject",
+  "category": "impact",
+  "thumbnail": "thumbnail.webp",
+  "description": "Redraws the masked subject moved, rotated, scaled or squashed around its feet or centre, with a contact shadow, background shake and a smeared-in background where it stood. Keyframe the parameters to animate it.",
+  "order": 545,
+  "backend": "gpu",
+  "requires": "mask",
+  "parameters": [
+    {
+      "identifier": "offsetX",
+      "displayName": "Offset X",
+      "type": "float",
+      "minValue": -1.5,
+      "maxValue": 1.5,
+      "defaultValue": 0,
+      "group": "Transform"
+    },
+    {
+      "identifier": "offsetY",
+      "displayName": "Offset Y",
+      "type": "float",
+      "minValue": -1.5,
+      "maxValue": 1.5,
+      "defaultValue": 0,
+      "group": "Transform"
+    },
+    {
+      "identifier": "rotation",
+      "displayName": "Rotation",
+      "type": "float",
+      "minValue": -1080,
+      "maxValue": 1080,
+      "defaultValue": 0,
+      "group": "Transform"
+    },
+    {
+      "identifier": "scale",
+      "displayName": "Scale",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 4,
+      "defaultValue": 1,
+      "group": "Transform"
+    },
+    {
+      "identifier": "pivot",
+      "displayName": "Pivot",
+      "type": "choice",
+      "options": [
+        "Feet",
+        "Centre"
+      ],
+      "defaultValue": 0,
+      "group": "Transform"
+    },
+    {
+      "identifier": "squash",
+      "displayName": "Squash",
+      "type": "float",
+      "minValue": -0.6,
+      "maxValue": 0.6,
+      "defaultValue": 0,
+      "group": "Impact"
+    },
+    {
+      "identifier": "shadow",
+      "displayName": "Shadow",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0,
+      "group": "Impact"
+    },
+    {
+      "identifier": "shake",
+      "displayName": "Shake",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0,
+      "group": "Impact"
+    },
+    {
+      "identifier": "background",
+      "displayName": "Background",
+      "type": "choice",
+      "options": [
+        "Keep original",
+        "Smear fill",
+        "Hide background"
+      ],
+      "defaultValue": 1,
+      "group": "Background"
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [
+      {
+        "id": "dil",
+        "scale": 1
+      },
+      {
+        "id": "seed",
+        "scale": 0.5
+      },
+      {
+        "id": "d1",
+        "scale": 0.25
+      },
+      {
+        "id": "d2",
+        "scale": 0.125
+      },
+      {
+        "id": "d3",
+        "scale": 0.0625
+      },
+      {
+        "id": "d4",
+        "scale": 0.03125
+      },
+      {
+        "id": "d5",
+        "scale": 0.015625
+      },
+      {
+        "id": "u4",
+        "scale": 0.03125
+      },
+      {
+        "id": "u3",
+        "scale": 0.0625
+      },
+      {
+        "id": "u2",
+        "scale": 0.125
+      },
+      {
+        "id": "u1",
+        "scale": 0.25
+      },
+      {
+        "id": "u0",
+        "scale": 0.5
+      },
+      {
+        "id": "sa",
+        "scale": 0.015625
+      },
+      {
+        "id": "sb",
+        "scale": 0.015625
+      },
+      {
+        "id": "pv",
+        "scale": 0.015625
+      },
+      {
+        "id": "gm",
+        "scale": 0.015625
+      }
+    ],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "dilate.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "dil"
+        }
+      },
+      {
+        "passIndex": 1,
+        "fragmentShader": "seed.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          },
+          {
+            "type": "buffer",
+            "id": "dil"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "seed"
+        }
+      },
+      {
+        "passIndex": 2,
+        "fragmentShader": "down.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "seed"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "d1"
+        }
+      },
+      {
+        "passIndex": 3,
+        "fragmentShader": "down.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "d1"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "d2"
+        }
+      },
+      {
+        "passIndex": 4,
+        "fragmentShader": "down.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "d2"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "d3"
+        }
+      },
+      {
+        "passIndex": 5,
+        "fragmentShader": "down.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "d3"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "d4"
+        }
+      },
+      {
+        "passIndex": 6,
+        "fragmentShader": "down.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "d4"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "d5"
+        }
+      },
+      {
+        "passIndex": 7,
+        "fragmentShader": "up.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "d4"
+          },
+          {
+            "type": "buffer",
+            "id": "d5"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "u4"
+        }
+      },
+      {
+        "passIndex": 8,
+        "fragmentShader": "up.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "d3"
+          },
+          {
+            "type": "buffer",
+            "id": "u4"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "u3"
+        }
+      },
+      {
+        "passIndex": 9,
+        "fragmentShader": "up.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "d2"
+          },
+          {
+            "type": "buffer",
+            "id": "u3"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "u2"
+        }
+      },
+      {
+        "passIndex": 10,
+        "fragmentShader": "up.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "d1"
+          },
+          {
+            "type": "buffer",
+            "id": "u2"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "u1"
+        }
+      },
+      {
+        "passIndex": 11,
+        "fragmentShader": "up.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "seed"
+          },
+          {
+            "type": "buffer",
+            "id": "u1"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "u0"
+        }
+      },
+      {
+        "passIndex": 12,
+        "fragmentShader": "statsA.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "sa"
+        }
+      },
+      {
+        "passIndex": 13,
+        "fragmentShader": "statsB.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "sb"
+        }
+      },
+      {
+        "passIndex": 14,
+        "fragmentShader": "pivot.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "sa"
+          },
+          {
+            "type": "buffer",
+            "id": "sb"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "pv"
+        }
+      },
+      {
+        "passIndex": 15,
+        "fragmentShader": "geom.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "sa"
+          },
+          {
+            "type": "buffer",
+            "id": "sb"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "gm"
+        }
+      },
+      {
+        "passIndex": 16,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          },
+          {
+            "type": "buffer",
+            "id": "dil"
+          },
+          {
+            "type": "buffer",
+            "id": "u0"
+          },
+          {
+            "type": "buffer",
+            "id": "pv"
+          },
+          {
+            "type": "buffer",
+            "id": "gm"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}
