@@ -1,0 +1,60 @@
+{
+  "id": "speed_streaks",
+  "displayName": "Speed Streaks",
+  "category": "glitch",
+  "thumbnail": "thumbnail.webp",
+  "description": "Radial zoom blur from a centre point with an optional RGB fringe, for fast push-ins.",
+  "order": 405,
+  "parameters": [
+    {
+      "identifier": "strength",
+      "displayName": "Zoom Blur",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.38
+    },
+    {
+      "identifier": "chromatic",
+      "displayName": "RGB Fringe",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.3
+    },
+    {
+      "identifier": "centerX",
+      "displayName": "Center X",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.5
+    },
+    {
+      "identifier": "centerY",
+      "displayName": "Center Y",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.5
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

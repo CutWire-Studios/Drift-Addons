@@ -1,0 +1,49 @@
+{
+  "id": "slit_scan",
+  "displayName": "Slit Scan",
+  "category": "time",
+  "thumbnail": "thumbnail.webp",
+  "order": 640,
+  "nextFeatures": [
+    "history:source"
+  ],
+  "parameters": [
+    {
+      "identifier": "direction",
+      "displayName": "Direction",
+      "type": "choice",
+      "options": [
+        "Horizontal",
+        "Vertical"
+      ],
+      "defaultValue": 0
+    },
+    {
+      "identifier": "frames",
+      "displayName": "Frames used",
+      "type": "int",
+      "minValue": 2,
+      "maxValue": 32,
+      "defaultValue": 32
+    }
+  ],
+  "history": 32,
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

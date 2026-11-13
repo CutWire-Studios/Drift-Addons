@@ -1,0 +1,39 @@
+{
+  "id": "frame_delay",
+  "displayName": "Frame Delay",
+  "category": "time",
+  "thumbnail": "thumbnail.webp",
+  "order": 630,
+  "nextFeatures": [
+    "history:source"
+  ],
+  "parameters": [
+    {
+      "identifier": "delay",
+      "displayName": "Delay (frames)",
+      "type": "int",
+      "minValue": 0,
+      "maxValue": 32,
+      "defaultValue": 8
+    }
+  ],
+  "history": 32,
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

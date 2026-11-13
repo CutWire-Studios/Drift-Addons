@@ -1,0 +1,142 @@
+{
+  "id": "anamorphic_streak",
+  "displayName": "Anamorphic Streak",
+  "category": "dreamy",
+  "thumbnail": "thumbnail.webp",
+  "description": "Smooth horizontal blue-orange lens streaks pulled from the bright highlights.",
+  "order": 245,
+  "parameters": [
+    {
+      "identifier": "intensity",
+      "displayName": "Intensity",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 2,
+      "defaultValue": 1.0
+    },
+    {
+      "identifier": "streakLength",
+      "displayName": "Streak Length",
+      "type": "float",
+      "minValue": 0.01,
+      "maxValue": 0.5,
+      "defaultValue": 0.25
+    },
+    {
+      "identifier": "threshold",
+      "displayName": "Highlight Threshold",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.8
+    },
+    {
+      "identifier": "cool",
+      "displayName": "Cool Blue",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.8
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [
+      {
+        "id": "buf_a",
+        "scale": 0.5
+      },
+      {
+        "id": "buf_b",
+        "scale": 0.5
+      }
+    ],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "bright.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "buf_a"
+        }
+      },
+      {
+        "passIndex": 1,
+        "fragmentShader": "streak1.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "buf_a"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "buf_b"
+        }
+      },
+      {
+        "passIndex": 2,
+        "fragmentShader": "streak2.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "buf_b"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "buf_a"
+        }
+      },
+      {
+        "passIndex": 3,
+        "fragmentShader": "streak3.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "buf_a"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "buf_b"
+        }
+      },
+      {
+        "passIndex": 4,
+        "fragmentShader": "streak4.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "buf_b"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "buf_a"
+        }
+      },
+      {
+        "passIndex": 5,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          },
+          {
+            "type": "buffer",
+            "id": "buf_a"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

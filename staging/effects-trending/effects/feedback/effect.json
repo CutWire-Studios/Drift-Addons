@@ -1,0 +1,79 @@
+{
+  "id": "feedback",
+  "displayName": "Feedback",
+  "category": "time",
+  "thumbnail": "thumbnail.webp",
+  "order": 600,
+  "nextFeatures": [
+    "history:previous-output"
+  ],
+  "parameters": [
+    {
+      "identifier": "zoom",
+      "displayName": "Zoom",
+      "type": "float",
+      "minValue": 0.8,
+      "maxValue": 1.2,
+      "defaultValue": 1.02
+    },
+    {
+      "identifier": "rotation",
+      "displayName": "Rotation (degrees)",
+      "type": "float",
+      "minValue": -15,
+      "maxValue": 15,
+      "defaultValue": 1
+    },
+    {
+      "identifier": "offsetX",
+      "displayName": "Offset X",
+      "type": "float",
+      "minValue": -0.1,
+      "maxValue": 0.1,
+      "defaultValue": 0
+    },
+    {
+      "identifier": "offsetY",
+      "displayName": "Offset Y",
+      "type": "float",
+      "minValue": -0.1,
+      "maxValue": 0.1,
+      "defaultValue": 0
+    },
+    {
+      "identifier": "decay",
+      "displayName": "Decay",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.9
+    },
+    {
+      "identifier": "mixAmount",
+      "displayName": "Mix",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 1
+    }
+  ],
+  "previousOutput": true,
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "id": "clone_parade",
+  "displayName": "Clone Parade",
+  "category": "impact",
+  "thumbnail": "thumbnail.webp",
+  "description": "Two glowing copies of the person step out to either side, scaled from their feet with a linear transform.",
+  "order": 540,
+  "backend": "gpu",
+  "requires": "mask",
+  "parameters": [
+    {
+      "identifier": "swayRate",
+      "displayName": "Sway speed",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 3,
+      "defaultValue": 0.5
+    },
+    {
+      "identifier": "spread",
+      "displayName": "Spread",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 0.5,
+      "defaultValue": 0.28
+    },
+    {
+      "identifier": "cloneSize",
+      "displayName": "Clone size",
+      "type": "float",
+      "minValue": 0.5,
+      "maxValue": 1.2,
+      "defaultValue": 0.9
+    },
+    {
+      "identifier": "cloneTint",
+      "displayName": "Clone tint",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.45
+    },
+    {
+      "identifier": "rightColor",
+      "displayName": "Right clone",
+      "type": "color",
+      "defaultValue": "#ff3d7f"
+    },
+    {
+      "identifier": "leftColor",
+      "displayName": "Left clone",
+      "type": "color",
+      "defaultValue": "#3dd2ff"
+    },
+    {
+      "identifier": "haloSize",
+      "displayName": "Halo size",
+      "type": "float",
+      "minValue": 2,
+      "maxValue": 48,
+      "defaultValue": 18
+    },
+    {
+      "identifier": "haloColor",
+      "displayName": "Halo",
+      "type": "color",
+      "defaultValue": "#ff4f6d"
+    },
+    {
+      "identifier": "halo",
+      "displayName": "Halo glow",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.9
+    }
+  ],
+  "pipeline": {
+    "intermediateBuffers": [
+      {
+        "id": "buf0",
+        "scale": 1
+      },
+      {
+        "id": "buf1",
+        "scale": 1
+      }
+    ],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "pass1.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "buf0"
+        }
+      },
+      {
+        "passIndex": 1,
+        "fragmentShader": "pass2.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "buf0"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "buf1"
+        }
+      },
+      {
+        "passIndex": 2,
+        "fragmentShader": "pass3.frag",
+        "inputs": [
+          {
+            "type": "buffer",
+            "id": "buf1"
+          }
+        ],
+        "output": {
+          "type": "buffer",
+          "id": "buf0"
+        }
+      },
+      {
+        "passIndex": 3,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          },
+          {
+            "type": "buffer",
+            "id": "buf0"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "id": "time_echo",
+  "displayName": "Time Echo",
+  "category": "time",
+  "thumbnail": "thumbnail.webp",
+  "order": 620,
+  "nextFeatures": [
+    "history:source"
+  ],
+  "parameters": [
+    {
+      "identifier": "echoes",
+      "displayName": "Echoes",
+      "type": "int",
+      "minValue": 1,
+      "maxValue": 8,
+      "defaultValue": 3
+    },
+    {
+      "identifier": "spacing",
+      "displayName": "Spacing (frames)",
+      "type": "int",
+      "minValue": 1,
+      "maxValue": 4,
+      "defaultValue": 4
+    },
+    {
+      "identifier": "decay",
+      "displayName": "Decay",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.6
+    }
+  ],
+  "history": 32,
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

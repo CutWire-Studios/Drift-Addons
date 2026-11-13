@@ -1,0 +1,50 @@
+{
+  "id": "trails",
+  "displayName": "Trails",
+  "category": "time",
+  "thumbnail": "thumbnail.webp",
+  "order": 610,
+  "nextFeatures": [
+    "history:previous-output"
+  ],
+  "parameters": [
+    {
+      "identifier": "decay",
+      "displayName": "Decay",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 1,
+      "defaultValue": 0.9
+    },
+    {
+      "identifier": "blend",
+      "displayName": "Blend",
+      "type": "choice",
+      "options": [
+        "Max",
+        "Add",
+        "Mix"
+      ],
+      "defaultValue": 0
+    }
+  ],
+  "previousOutput": true,
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}

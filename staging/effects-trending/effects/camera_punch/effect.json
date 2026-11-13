@@ -1,0 +1,60 @@
+{
+  "id": "camera_punch",
+  "displayName": "Camera Punch",
+  "category": "glitch",
+  "thumbnail": "thumbnail.webp",
+  "description": "Impact jolt: a stepped camera shake with a punch-in zoom and an RGB split.",
+  "order": 407,
+  "parameters": [
+    {
+      "identifier": "shake",
+      "displayName": "Shake (px)",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 35,
+      "defaultValue": 12
+    },
+    {
+      "identifier": "rate",
+      "displayName": "Shake Speed",
+      "type": "float",
+      "minValue": 1,
+      "maxValue": 30,
+      "defaultValue": 12
+    },
+    {
+      "identifier": "rgb",
+      "displayName": "RGB Impact (px)",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 12,
+      "defaultValue": 3
+    },
+    {
+      "identifier": "zoom",
+      "displayName": "Zoom",
+      "type": "float",
+      "minValue": 0,
+      "maxValue": 0.2,
+      "defaultValue": 0.06
+    }
+  ],
+  "backend": "gpu",
+  "pipeline": {
+    "intermediateBuffers": [],
+    "passes": [
+      {
+        "passIndex": 0,
+        "fragmentShader": "main.frag",
+        "inputs": [
+          {
+            "type": "source_texture"
+          }
+        ],
+        "output": {
+          "type": "canvas"
+        }
+      }
+    ]
+  }
+}
