@@ -3,7 +3,7 @@
   "displayName": "Speed Streaks",
   "category": "glitch",
   "thumbnail": "thumbnail.webp",
-  "description": "Radial zoom blur from a centre point with an optional RGB fringe, for fast push-ins.",
+  "description": "Radial zoom blur from a centre point with an optional RGB fringe, for fast push-ins. It does not follow movement in the footage: for that, use Motion Blur.",
   "order": 405,
   "parameters": [
     {

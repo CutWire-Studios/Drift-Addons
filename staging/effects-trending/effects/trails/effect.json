@@ -4,6 +4,7 @@
   "category": "time",
   "thumbnail": "thumbnail.webp",
   "order": 610,
+  "description": "Leaves fading copies of the picture behind as it changes, by feeding each frame back into the next. A stylised look, not motion blur: for a camera-like blur of movement in the footage, use Motion Blur.",
   "nextFeatures": [
     "history:previous-output"
   ],
