@@ -1,0 +1,18 @@
+{
+  "id": "llm.qwen35-4b",
+  "version": "1.0.0",
+  "name": "Qwen 3.5 4B",
+  "description": "A small language model that runs on this computer, so the local agent can read and edit the open project.",
+  "details": "Qwen3.5-4B Q4_K_M GGUF (about 2.7 GB) from Unsloth. Text only — no vision projector. Needs the Local Assistant Engine (llama.cpp). Package id: llm.qwen35-4b.",
+  "author": "Qwen, Unsloth",
+  "license": "Apache-2.0",
+  "minAppVersion": "0.8.0",
+  "source": "../staging/qwen35-4b",
+  "provides": [
+    {
+      "kind": "llm-model",
+      "root": "models/qwen35-4b"
+    }
+  ],
+  "zstdLevel": 3
+}

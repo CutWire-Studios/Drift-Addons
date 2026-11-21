@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parent.parent
 STAGING = ROOT / "staging"
 
 # Must stay in sync with .gitignore patterns under staging/.
-LARGE_SUFFIXES = (".onnx", ".onnx_data", ".bin", ".so", ".dylib", ".dll", ".wav")
+LARGE_SUFFIXES = (".onnx", ".onnx_data", ".bin", ".so", ".dylib", ".dll", ".wav", ".gguf")
 SKIP_DIR_NAMES = {".cache", "__pycache__", "node_modules"}
 
 
@@ -25,6 +25,8 @@ def is_large_artifact(path: Path) -> bool:
     name = path.name.lower()
     if name.endswith(".sha256"):
         return False
+    if name == "llama-server":
+        return True
     if any(name.endswith(suffix) for suffix in LARGE_SUFFIXES):
         return True
     # NVIDIA SONAMEs keep a version after .so (libcudnn.so.9, libnvrtc-builtins.so.13.3).

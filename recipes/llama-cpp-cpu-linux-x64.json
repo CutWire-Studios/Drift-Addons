@@ -1,0 +1,20 @@
+{
+  "id": "llama.cpp.cpu.linux-x64",
+  "version": "1.0.0",
+  "name": "Local Assistant Engine (llama.cpp)",
+  "description": "Runs a language model on this computer's processor, so the local agent can edit the project without a graphics card.",
+  "details": "llama.cpp b11693, CPU build for linux-x64 (llama-server). Package id: llama.cpp.cpu.linux-x64.",
+  "author": "llama.cpp authors",
+  "license": "MIT",
+  "minAppVersion": "0.9.3",
+  "platform": "linux-x64",
+  "source": "../staging/llama-cpp-cpu-linux-x64",
+  "provides": [
+    {
+      "kind": "llama-runtime",
+      "root": "runtime",
+      "items": 1
+    }
+  ],
+  "zstdLevel": 6
+}

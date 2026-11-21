@@ -1,0 +1,18 @@
+{
+  "id": "llm.drift-command-qwen3-0.6b",
+  "version": "1.0.0",
+  "name": "Command Bar Model",
+  "description": "Lets you type editing commands in the Ctrl+K search bar, like \"trim the selected clip to 5 seconds\", and runs them. Works offline on this computer.",
+  "details": "Qwen3-0.6B fine-tuned by CutWire Studios for editing commands (Q6_K GGUF, about 495 MB). Needs the Local Assistant Engine (llama.cpp). Package id: llm.drift-command-qwen3-0.6b.",
+  "author": "CutWire Studios, Qwen",
+  "license": "Apache-2.0",
+  "minAppVersion": "0.9.3",
+  "source": "../staging/drift-command-qwen3",
+  "provides": [
+    {
+      "kind": "command-model",
+      "root": "models/drift-command-qwen3"
+    }
+  ],
+  "zstdLevel": 3
+}

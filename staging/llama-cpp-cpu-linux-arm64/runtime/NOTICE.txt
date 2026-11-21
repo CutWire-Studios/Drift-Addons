@@ -1,0 +1,4 @@
+llama.cpp
+Copyright (c) 2023-2026 The llama.cpp authors
+Licensed under the MIT License.
+Source: https://github.com/ggml-org/llama.cpp (release b11693, CPU build)

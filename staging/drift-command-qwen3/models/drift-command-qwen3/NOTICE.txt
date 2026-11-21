@@ -1,0 +1,5 @@
+Drift Command Bar Model (drift-command-qwen3-0.6b)
+Licensed under the Apache License, Version 2.0.
+Base model: Qwen/Qwen3-0.6B (Copyright 2025 Alibaba Cloud), https://huggingface.co/Qwen/Qwen3-0.6B
+Fine-tuned by CutWire Studios on the dataset CutWire-Studios/drift-command-calls.
+Weights: https://huggingface.co/CutWire-Studios/drift-command-qwen3-0.6b (revision 4962a7c8aaf3f3f22a8eed0498372dba57035d3d), Q6_K GGUF.

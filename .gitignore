@@ -19,6 +19,8 @@ staging/**/*.so
 staging/**/*.so.*
 staging/**/*.dylib
 staging/**/*.dll
+staging/**/*.gguf
+staging/**/llama-server
 !staging/**/*.sha256
 
 # Upstream gl-transitions checkout, fetched by hand and pinned in

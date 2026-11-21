@@ -1,0 +1,7 @@
+{
+  "format": "qwen3-chat",
+  "variant": "full",
+  "context": 8192,
+  "tools_k": 10,
+  "decode": "raw-completion"
+}
