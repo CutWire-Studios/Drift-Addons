@@ -18,6 +18,7 @@ import hashlib
 import hmac
 import os
 import sys
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -115,7 +116,7 @@ def _request(method: str, account: str, access_key: str, secret: str, path: str,
     )
 
     try:
-        with urllib.request.urlopen(request) as response:
+        with urllib.request.urlopen(request, timeout=1200) as response:
             if method == "PUT":
                 # Multipart part upload returns the ETag in a header and nothing in the body.
                 etag = response.headers.get("ETag")
@@ -262,6 +263,26 @@ def _text(xml: bytes, tag: str) -> str:
     raise SystemExit(f"no <{tag}> in response:\n{xml.decode()}")
 
 
+def _put_part(account: str, access_key: str, secret: str, object_path: str,
+              upload_id: str, number: int, chunk: bytes) -> str:
+    """Upload one multipart part, retrying when the connection drops mid-body."""
+    delay = 5
+    for attempt in range(1, 6):
+        try:
+            return _request(
+                "PUT", account, access_key, secret, object_path,
+                {"partNumber": str(number), "uploadId": upload_id}, chunk,
+            ).decode()
+        except (urllib.error.URLError, TimeoutError, OSError) as error:
+            if attempt == 5:
+                raise
+            print(f"  part {number} failed ({error}); retry {attempt}/4 in {delay}s",
+                  file=sys.stderr, flush=True)
+            time.sleep(delay)
+            delay = min(delay * 2, 60)
+    raise RuntimeError(f"part {number} failed")
+
+
 def upload(bucket: str, key: str, path: Path, content_type: str = "application/octet-stream") -> None:
     account, access_key, secret = credentials()
     object_path = f"{bucket}/{key}"
@@ -275,8 +296,7 @@ def upload(bucket: str, key: str, path: Path, content_type: str = "application/o
         with path.open("rb") as f:
             number = 1
             while chunk := f.read(PART_SIZE):
-                etag = _request("PUT", account, access_key, secret, object_path,
-                                {"partNumber": str(number), "uploadId": upload_id}, chunk).decode()
+                etag = _put_part(account, access_key, secret, object_path, upload_id, number, chunk)
                 parts.append((number, etag))
                 done = min(total, number * PART_SIZE)
                 print(f"  part {number}: {done / 1e6:.0f}/{total / 1e6:.0f} MB", flush=True)
