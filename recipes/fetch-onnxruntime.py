@@ -181,7 +181,7 @@ ANDROID_COPY = {
 
 CORE_COPY = {
     "cpu": {
-        "name": "AI Engine — Any computer",
+        "name": "AI Engine — Processor (CPU)",
         "description": (
             "Powers auto captions, subject cutout, funny face effects, and noise removal. "
             "Works on every computer — install this first unless you know you want a faster "
@@ -193,7 +193,7 @@ CORE_COPY = {
         ),
     },
     "cuda": {
-        "name": "AI Engine — NVIDIA graphics (faster)",
+        "name": "AI Engine — NVIDIA CUDA",
         "description": (
             "Same AI features, sped up by an NVIDIA graphics card. Needs NVIDIA driver 580 or "
             "newer; CUDA and cuDNN are included. Falls back to this computer if the card can't "
@@ -210,7 +210,7 @@ CORE_COPY = {
 }
 
 MIGRAPHX_COPY = {
-    "name": "AI Engine — AMD graphics (faster)",
+    "name": "AI Engine — AMD ROCm (MIGraphX)",
     "description": (
         "Same AI features, sped up by an AMD Radeon graphics card. Needs ROCm 7 with MIGraphX "
         "installed on this computer — Drift explains what to install if it is missing. Falls "
@@ -610,7 +610,7 @@ def stage_webgpu(platform: str) -> None:
     recipe = _write_recipe({
         "id": f"onnxruntime.ep.webgpu.{platform}",
         "version": WEBGPU_PACKAGE_VERSION,
-        "name": "Speed boost — Any graphics card",
+        "name": "Speed boost — WebGPU (any graphics card)",
         "description": "Makes AI features faster using your graphics card (AMD, Intel, or NVIDIA) "
                        "— no extra toolkit to install. Install an AI Engine first; this just "
                        "speeds it up.",

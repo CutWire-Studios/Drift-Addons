@@ -1,7 +1,7 @@
 {
   "id": "audio.ast",
   "version": "1.0.0",
-  "name": "Speech & Music Detection",
+  "name": "Sound Type Detection",
   "description": "Tells speech, music and silence apart and names the sounds in between, so audio analysis can say what each part of a timeline is.",
   "details": "Audio Spectrogram Transformer fine-tuned on AudioSet (MIT/ast-finetuned-audioset-10-10-0.4593) in ONNX with fp16 weights: probabilities for 527 sound classes per 10 second window, including Speech, Music and Silence. Used by audio analysis to mark speech and music sections and to name sound sources. Package id: audio.ast.",
   "author": "CutWire",

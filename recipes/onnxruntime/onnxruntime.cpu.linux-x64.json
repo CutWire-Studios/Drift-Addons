@@ -1,7 +1,7 @@
 {
   "id": "onnxruntime.cpu.linux-x64",
   "version": "1.0.0",
-  "name": "AI Engine — Any computer",
+  "name": "AI Engine — Processor (CPU)",
   "description": "Powers auto captions, subject cutout, funny face effects, and noise removal. Works on every computer — install this first unless you know you want a faster graphics option.",
   "details": "Complete ONNX Runtime build that Drift dlopens for AI features. Ships the CPU execution provider only. Upstream: Microsoft ONNX Runtime 1.27.0. Platform: linux-x64.",
   "author": "Microsoft",
